@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import sigmaLogo from '../../public/logos/sigma-logo.svg';
+import laferlaLogo from '../../public/logos/laferla-logo.svg';
+import spinbetLogo from '../../public/logos/spinbet-logo.svg';
+import C21Logo from '../../public/logos/C21-logo.svg';
+import boomerangLogo from '../../public/logos/boomerang-logo.svg';
+import medilinkLogo from '../../public/logos/medilink-logo.svg';
+import quantumLogo from '../../public/logos/quantum-logo.svg';
+import alunafiLogo from '../../public/logos/alunafi-logo.svg';
+import gamanzaLogo from '../../public/logos/gamanza-logo.svg';
+---
+
+<section class="sc-pd sc-grey sc-grey-C ps-rel">
+    <div class="container">
+        <div class="sl-row fx fx-jb">
+            <div class="sl-lcol">
+                <h2>Solutions That Deliver</h2>
+                <div class="sc-txt">
+                    <p>We don't just promise results, we prove them. Our clients' experience:</p>
+                    <ul>
+                        <li>Increased engagement & retention</li>
+                        <li>Higher revenue per visitor</li>
+                        <li>Streamlined, future-proof digital operations</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sl-rcol">
+                <div class="sl-logos-row fx fx-jb fx-wrap">
+                    <div class="logo-col fx fx-jc fx-ac">
+                        <Image src={sigmaLogo} alt=" " />
+                    </div>
+                    <div class="logo-col fx fx-jc fx-ac">
+                        <Image src={laferlaLogo} alt=" " />
+                    </div>
+                    <div class="logo-col fx fx-jc fx-ac">
+                        <Image src={spinbetLogo} alt=" " />
+                    </div>
+                    <div class="logo-col fx fx-jc fx-ac">
+                        <Image src={C21Logo} alt=" " />
+                    </div>
+                    <div class="logo-col fx fx-jc fx-ac">
+                        <Image src={boomerangLogo} alt=" " />
+                    </div>
+                    <div class="logo-col fx fx-jc fx-ac">
+                        <Image src={medilinkLogo} alt=" " />
+                    </div>
+                    <div class="logo-col fx fx-jc fx-ac">
+                        <Image src={quantumLogo} alt=" " />
+                    </div>
+                    <div class="logo-col fx fx-jc fx-ac">
+                        <Image src={alunafiLogo} alt=" " />
+                    </div>
+                    <div class="logo-col fx fx-jc fx-ac">
+                        <Image src={gamanzaLogo} alt=" " />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .sl-lcol{
+        width: 46%;
+    }
+    .sl-rcol{
+        width: 50%;
+    }
+    .sl-logos-row{
+        gap: 1rem;
+    }
+    .logo-col{
+        border-radius: 1.25rem;
+        background: var(--white);
+        width: calc((100% - 2rem) / 3);
+        cursor: pointer;
+    }
+    .logo-col img{
+        -webkit-transition: transform 0.5s ease;
+        -moz-transition: transform 0.5s ease;
+        transition: transform 0.5s ease;
+    }
+    .logo-col:hover img{
+        transform: scale(1.05);
+    }
+    .logo-col::before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+    @media screen and (max-width: 479px){
+        .sl-row{
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        .sl-lcol, .sl-rcol{
+            width: 100%;
+        }
+    }
+</style>

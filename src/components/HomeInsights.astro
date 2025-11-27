@@ -1,0 +1,133 @@
+---
+import { Image } from 'astro:assets';
+import testPostPic1 from '../../public/test-post1.jpg';
+import testPostPic2 from '../../public/test-post2.jpg';
+import testPostPic3 from '../../public/test-post3.jpg';
+import testPostPic4 from '../../public/test-post4.jpg';
+import testPostPic5 from '../../public/test-post5.jpg';
+import testPostPic6 from '../../public/test-post6.jpg';
+import testPostPic7 from '../../public/test-post7.jpg';
+import testPostPic8 from '../../public/test-post8.jpg';
+
+const posts = [
+    { image: testPostPic1, title: 'The Hidden Cost of Average: Why Premium Digital Experiences Win in iGaming & Beyond', date: '2025.10.03' },
+    { image: testPostPic2, title: 'The 2025 Digital Shift: Why Premium Beats Average', date: '2025.9.05' },
+    { image: testPostPic3, title: 'Website Personality Matters! See Which One Is Perfect For You And Why', date: '2025.9.05' },
+    { image: testPostPic4, title: 'iGaming Marketing Malta: Strategies That Build Sustainable Growth', date: '2025.11.02' },
+    { image: testPostPic5, title: 'The Hidden Cost of Average: Why Premium Digital Experiences Win in iGaming & Beyond', date: '2025.10.03' },
+    { image: testPostPic6, title: 'The 2025 Digital Shift: Why Premium Beats Average', date: '2025.9.05' },
+    { image: testPostPic7, title: 'Website Personality Matters! See Which One Is Perfect For You And Why', date: '2025.9.05' },
+    { image: testPostPic8, title: 'iGaming Marketing Malta: Strategies That Build Sustainable Growth', date: '2025.11.02' },
+];
+
+---
+
+<section class="sc-pd sc-grey sc-grey-C sc-al-cnt ps-rel">
+    <div class="container">
+        <div class="headline ps-rel">
+            <h2>IPOINT INT Insights</h2>
+            <div class="sc-txt">
+                <p>From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.</p>
+            </div>
+        </div>
+        <div class="posts-grid-wrap" id="masonry-grid">
+            {posts.map(post => (
+                <div class="post-card">
+                    <a href="#">
+                        <div class="post-image">
+                            <Image src={post.image} alt={post.title} />
+                        </div>
+                        <div class="post-info">
+                            <h6>{post.title}</h6>
+                            <p>{post.date}</p>
+                        </div>
+                    </a>
+                </div>
+            ))}
+        </div>
+        <div class="btn-row fx fx-jc">
+            <a class="btn-primary-sm btn-dark fx fx-ac fx-jc"><span>Get More Insights</span></a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .posts-grid-wrap{
+        margin: 3.75rem 0;
+        font-size: 0;
+        opacity: 0;
+        transition: opacity .25s ease;
+    }
+    .posts-grid-wrap.masonry-loaded {
+        opacity: 1;
+    }
+    .post-card{
+        display: inline-block;
+        vertical-align: top;
+        width: calc(25% - 1.5rem);
+        margin-bottom: 1.5rem;
+        border-radius: 20px;
+        break-inside: avoid;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity .4s ease, transform .4s ease;
+    }
+    .post-image{
+        overflow: hidden;
+        border-radius: 1.25rem 1.25rem 0 0;
+        max-height: 30rem;
+    }
+    .post-card:hover .post-image img{
+        transform: scale(1.05);
+    }
+    .post-card.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .post-card a{
+        color: var(--darkGey);
+    }
+    .post-card img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 1.25rem 1.25rem 0 0;
+        -webkit-transition: transform 0.5s ease;
+        -moz-transition: transform 0.5s ease;
+        transition: transform 0.5s ease;
+    }
+    .post-info{
+        padding: 1.25rem;
+        background: var(--white);
+        border-radius: 0 0 1.25rem 1.25rem;
+    }
+    .post-info h6{
+        color: var(--darkGey);
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        margin: 0;
+    }
+    .post-info p{
+        color: rgba(44, 44, 44, 0.40);
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1rem;
+        margin: 2.5rem 0 0 0;
+    }
+    @media screen and (max-width:479px){
+        .post-card{
+            position: relative !important;
+            width: 100%;
+            left: 0 !important;
+            top: 0 !important;
+        }
+    }
+</style>
+
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
+<script type="module" client:visible>
+    import initMasonry from '/js/MasonryGrid.js';
+    initMasonry('#masonry-grid');
+</script>

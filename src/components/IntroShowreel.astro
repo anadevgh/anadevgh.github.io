@@ -1,0 +1,104 @@
+---
+import { Image } from 'astro:assets';
+import soundOffIcon from '../../public/sound-off.svg';
+import soundOnIcon from '../../public/sound-on.svg';
+
+
+---
+
+
+<section class="hp-hero" id="intro-video-section">
+    <div class="container">
+        <div class="intro-vd ps-rel">
+            <div class="sound-switcher" id="sound-toggle">
+                <div class="sound-switcher-icon ps-rel">
+                    <Image src={soundOffIcon} alt="sound off icon" class="icon-off"/>
+                    <Image src={soundOnIcon} alt="sound on icon" class="icon-on" />
+                </div>
+            </div>
+            <video id="intro-video" muted playsinline>
+                <source src="/vd/ipoint-intro.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
+
+<style>
+    video{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1.25rem;
+    }
+    .sound-switcher{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.50);
+        background: rgba(255, 255, 255, 0.20);
+        backdrop-filter: blur(10px);
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .sound-switcher-icon img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        -webkit-transition: opacity .3s linear;
+        -moz-transition: opacity .3s linear;
+        transition: opacity .3s linear;
+    }
+    .sound-switcher-icon .icon-off { 
+        opacity: 1; 
+    }
+    .sound-switcher-icon.sound-on .icon-off { 
+        opacity: 0; 
+    }
+    .sound-switcher-icon.sound-on .icon-on { 
+        opacity: 1; 
+    }
+    .sound-switcher-icon .icon-on {
+        opacity: 0;
+    }
+    .sound-switcher-icon{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    const video = document.getElementById('intro-video');
+    const section = document.getElementById('intro-video-section');
+    const soundToggle = document.getElementById("sound-toggle");
+    const iconWrap = soundToggle.querySelector(".sound-switcher-icon");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0.5 // play when 50% of section is visible
+    });
+
+    observer.observe(section);
+
+    soundToggle.addEventListener("click", () => {
+        if (video.muted) {
+            video.muted = false;   // turn sound ON
+            iconWrap.classList.add("sound-on");
+        } else {
+            video.muted = true;    // turn sound OFF
+            iconWrap.classList.remove("sound-on");
+        }
+    });
+</script>

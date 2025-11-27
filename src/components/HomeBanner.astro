@@ -1,0 +1,76 @@
+<section class="hp-hero sc-al-cnt">
+    <div class="container">
+        <div class="hero-anim">
+            <img src="ipoint-logo-reveal-black.png" alt="IPOINT Logo"/>
+            <img src="ipoint-logo-reveal-color.png" alt="IPOINT Logo"/>
+        </div>
+        <div class="hero-wrap">
+            <h1>Premium Digital Solutions That Drive Results</h1>
+            <div class="sc-txt">
+                <p>At IPOINT INT, we transform ambitious businesses into digital leaders through branding, UX/UI design, custom web development, and tailored growth solutions.</p>
+            </div>
+            <div class="btn-row btn-row-rs fx fx-jc">
+                <a class="btn-primary fx fx-ac fx-jc"><span>Start Your Growth Journey</span></a>
+            </div>
+        </div>    
+    </div>
+</section>
+
+<style>
+    .hp-hero{
+        height: 100vh;
+    }
+    .hp-hero .container{
+        height: 100%;
+    }
+    .hero-wrap{
+        padding: 12.5rem 0 12.5rem 0;
+        width: 45rem;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    .hero-anim{
+        position: relative;
+        text-align: center;
+        height: 100%;
+    }
+    .hero-anim img{
+        height: 100%;
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        transition: all .3s linear;
+    }
+    .hero-anim img:last-child{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        opacity: 0;
+    }
+    @media screen and (max-width: 479px){
+        .hero-wrap{
+            width: 100%;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        .hp-hero{
+            height: 56rem;
+        }
+    }
+</style>
+
+<script>
+    window.addEventListener("scroll", () => {
+        const secondImg = document.querySelector(".hero-anim img:last-child");
+
+        if (window.scrollY > 10) { 
+            secondImg.style.opacity = "1";
+        } else {
+            secondImg.style.opacity = "0";
+        }
+    });
+</script>
