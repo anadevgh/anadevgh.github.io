@@ -163,7 +163,7 @@ img {
 }
 .btn-primary{
     height: 3rem;
-    padding: 0 2.25rem;
+    padding: 0 1.25rem;
     border-radius: 6px;
     background: var(--white);
     color: var(--darkGrey);
