@@ -845,6 +845,7 @@ const year = new Date().getFullYear();
                             if(step < stepsData.length){
                                 renderStep();
                             } else {
+                                row.style.opacity = 0;
                                 lastStep.style.display = 'block';
                                 setTimeout(()=> lastStep.style.opacity = 1, 50);
                                 headline.style.display = 'none';
@@ -866,4 +867,3 @@ const year = new Date().getFullYear();
 
     renderStep();
 </script>
-
