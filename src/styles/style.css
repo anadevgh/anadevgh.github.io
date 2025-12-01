@@ -162,12 +162,13 @@ img {
     margin: auto;
 }
 .btn-primary{
-    height: 3rem;
-    padding: 0 1.25rem;
-    border-radius: 6px;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 8px;
     background: var(--white);
     color: var(--darkGrey);
-    font-size: 1rem;
+    font-size: 14px;
+    line-height: 16px;
     font-weight: 500;
 }
 .btn-dark{
