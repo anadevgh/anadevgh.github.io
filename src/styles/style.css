@@ -212,9 +212,10 @@ h5{
 }
 .sc-txt p, .sc-txt ul{
     color: var(--white);
-    font-size: 1.25rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.05rem;
     font-weight: 400;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
     margin: 0;
     font-family: 'pp_neue_montrealbook';
 }
