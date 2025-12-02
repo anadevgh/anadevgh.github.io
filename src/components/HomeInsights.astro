@@ -31,24 +31,24 @@ const posts = [
                     <p>From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.</p>
                 </div>
             </div>
-            <div class="posts-grid-wrap" id="masonry-grid">
-                {posts.map(post => (
-                    <div class="post-card">
-                        <a href="#">
-                            <div class="post-image">
-                                <Image src={post.image} alt={post.title} />
-                            </div>
-                            <div class="post-info">
-                                <h6>{post.title}</h6>
-                                <p>{post.date}</p>
-                            </div>
-                        </a>
-                    </div>
-                ))}
-            </div>
-            <div class="btn-row fx fx-jc">
-                <a class="btn-primary btn-dark fx fx-ac fx-jc"><span>Get More Insights</span></a>
-            </div>
+        </div>
+        <div class="posts-grid-wrap" id="masonry-grid">
+            {posts.map(post => (
+                <div class="post-card">
+                    <a href="#">
+                        <div class="post-image">
+                            <Image src={post.image} alt={post.title} />
+                        </div>
+                        <div class="post-info">
+                            <h6>{post.title}</h6>
+                            <p>{post.date}</p>
+                        </div>
+                    </a>
+                </div>
+            ))}
+        </div>
+        <div class="btn-row fx fx-jc">
+            <a class="btn-primary btn-dark fx fx-ac fx-jc"><span>Get More Insights</span></a>
         </div>
     </div>
 </section>
