@@ -170,6 +170,7 @@ img {
     font-size: 14px;
     line-height: 16px;
     font-weight: 500;
+    letter-spacing: 0.01rem;
 }
 .btn-dark{
     background: var(--darkGrey);
