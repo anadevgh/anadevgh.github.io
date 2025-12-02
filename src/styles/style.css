@@ -232,6 +232,10 @@ h5{
 .sc-pd{
     padding: 6.25rem 0;
 }
+.sc-wrapper{
+    width: 50rem;
+    margin: auto;
+}
 .ps-rel{
     position: relative;
 }
