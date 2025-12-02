@@ -24,29 +24,31 @@ const posts = [
 
 <section class="sc-pd sc-grey sc-grey-C sc-al-cnt ps-rel">
     <div class="container">
-        <div class="headline ps-rel">
-            <h2>IPOINT INT Insights</h2>
-            <div class="sc-txt">
-                <p>From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.</p>
-            </div>
-        </div>
-        <div class="posts-grid-wrap" id="masonry-grid">
-            {posts.map(post => (
-                <div class="post-card">
-                    <a href="#">
-                        <div class="post-image">
-                            <Image src={post.image} alt={post.title} />
-                        </div>
-                        <div class="post-info">
-                            <h6>{post.title}</h6>
-                            <p>{post.date}</p>
-                        </div>
-                    </a>
+        <div class="sc-wrapper">
+            <div class="headline ps-rel">
+                <h2>IPOINT INT Insights</h2>
+                <div class="sc-txt">
+                    <p>From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.</p>
                 </div>
-            ))}
-        </div>
-        <div class="btn-row fx fx-jc">
-            <a class="btn-primary btn-dark fx fx-ac fx-jc"><span>Get More Insights</span></a>
+            </div>
+            <div class="posts-grid-wrap" id="masonry-grid">
+                {posts.map(post => (
+                    <div class="post-card">
+                        <a href="#">
+                            <div class="post-image">
+                                <Image src={post.image} alt={post.title} />
+                            </div>
+                            <div class="post-info">
+                                <h6>{post.title}</h6>
+                                <p>{post.date}</p>
+                            </div>
+                        </a>
+                    </div>
+                ))}
+            </div>
+            <div class="btn-row fx fx-jc">
+                <a class="btn-primary btn-dark fx fx-ac fx-jc"><span>Get More Insights</span></a>
+            </div>
         </div>
     </div>
 </section>
