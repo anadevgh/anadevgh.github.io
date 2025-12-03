@@ -147,41 +147,41 @@ import ctText from '../../public/ct-txt.svg';
                 </a>
             </div>
         </div>
-        <div class="ct-animation-bar">
-            <div class="ct-rolling-bar fx">
-                <div class="ct-rolling fx fx-ac">
-                    <div class="ct-txt">
-                        <Image src={ctText} alt=" "/>
-                    </div>
-                    <div class="ct-arr">
-                        <Image src={ctArr} alt=" "/>
-                    </div>
-                    <div class="ct-txt">
-                        <Image src={getQuoteText} alt=" "/>
-                    </div>
-                    <div class="ct-arr">
-                        <Image src={ctArr} alt=" "/>
-                    </div>
-                    <div class="ct-txt">
-                        <Image src={ctText} alt=" "/>
-                    </div>
+    </div>
+    <div class="ct-animation-bar">
+        <div class="ct-rolling-bar fx ps-rel">
+            <div class="ct-rolling fx fx-ac">
+                <div class="ct-txt">
+                    <Image src={ctText} alt=" "/>
                 </div>
-                <div class="ct-rolling fx fx-ac" aria-hidden>
-                    <div class="ct-txt">
-                        <Image src={ctText} alt=" "/>
-                    </div>
-                    <div class="ct-arr">
-                        <Image src={ctArr} alt=" "/>
-                    </div>
-                    <div class="ct-txt">
-                        <Image src={getQuoteText} alt=" "/>
-                    </div>
-                    <div class="ct-arr">
-                        <Image src={ctArr} alt=" "/>
-                    </div>
-                    <div class="ct-txt">
-                        <Image src={ctText} alt=" "/>
-                    </div>
+                <div class="ct-arr">
+                    <Image src={ctArr} alt=" "/>
+                </div>
+                <div class="ct-txt">
+                    <Image src={getQuoteText} alt=" "/>
+                </div>
+                <div class="ct-arr">
+                    <Image src={ctArr} alt=" "/>
+                </div>
+                <div class="ct-txt">
+                    <Image src={ctText} alt=" "/>
+                </div>
+            </div>
+            <div class="ct-rolling fx fx-ac" aria-hidden>
+                <div class="ct-txt">
+                    <Image src={ctText} alt=" "/>
+                </div>
+                <div class="ct-arr">
+                    <Image src={ctArr} alt=" "/>
+                </div>
+                <div class="ct-txt">
+                    <Image src={getQuoteText} alt=" "/>
+                </div>
+                <div class="ct-arr">
+                    <Image src={ctArr} alt=" "/>
+                </div>
+                <div class="ct-txt">
+                    <Image src={ctText} alt=" "/>
                 </div>
             </div>
         </div>
@@ -268,7 +268,8 @@ import ctText from '../../public/ct-txt.svg';
         width: 100%;
     }
     .ct-animation-bar{
-        margin: 12.5rem 0;
+        padding: 12.5rem 0;
+        overflow: hidden;
     }
     @-webkit-keyframes scroll {
         0% {
@@ -319,5 +320,20 @@ import ctText from '../../public/ct-txt.svg';
         white-space: nowrap;
         flex-shrink: 0;
         padding-right: 1rem;
+    }
+    .ct-rolling-bar::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: 
+            linear-gradient(
+                to right, 
+                transparent, 
+                white 40%, 
+                white 60%, 
+                transparent
+            );
+        mix-blend-mode: lighten;
     }
 </style>
