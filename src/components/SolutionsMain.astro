@@ -101,7 +101,6 @@
         background: var(--white);
         color: var(--darkBlue);
     }
-
     .pj-ft-image{
         overflow: hidden;
         border-radius: 1.25rem;
@@ -143,13 +142,13 @@
         margin: 0;
         letter-spacing: 0.02rem;
     }
-    .pj-featured-2col{
-        margin: 4rem 0;
-    }
-    .pj-featured-2col .pj-featured-item{
+    .pj-featured-item{
         width: 49%;
     }
-    .pj-featured-2col .pj-ft-info-txt{
+    .pj-featured-item:nth-child(3n + 1){
+        width: 100%;
+    }
+    .pj-featured-item:nth-child(3n + 1) .pj-ft-info-txt{
         width: 100%;
     }
 </style>
