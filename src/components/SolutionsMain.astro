@@ -166,6 +166,23 @@ import ctText from '../../public/ct-txt.svg';
                         <Image src={ctText} alt=" "/>
                     </div>
                 </div>
+                <div class="ct-rolling fx fx-ac" aria-hidden>
+                    <div class="ct-txt">
+                        <Image src={ctText} alt=" "/>
+                    </div>
+                    <div class="ct-arr">
+                        <Image src={ctArr} alt=" "/>
+                    </div>
+                    <div class="ct-txt">
+                        <Image src={getQuoteText} alt=" "/>
+                    </div>
+                    <div class="ct-arr">
+                        <Image src={ctArr} alt=" "/>
+                    </div>
+                    <div class="ct-txt">
+                        <Image src={ctText} alt=" "/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -253,7 +270,54 @@ import ctText from '../../public/ct-txt.svg';
     .ct-animation-bar{
         margin: 12.5rem 0;
     }
+    @-webkit-keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    @-moz-keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    @-ms-keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    @-o-keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
     .ct-rolling{
         gap: 2.5rem;
+        -moz-animation: scroll 30s linear infinite;
+        -webkit-animation: scroll 30s linear infinite;
+        -o-animation: scroll 30s linear infinite;
+        animation: scroll 30s linear infinite;
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding-right: 1rem;
     }
 </style>
