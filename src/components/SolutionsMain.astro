@@ -3,7 +3,11 @@
         <h1>Results.</h1>
         <h2>This is how our Solutions are helping our clients reach their business goals.</h2>
         <div class="sl-filter-row fx fx-wrap fx-ac">
-            <a href="#">All Solutions</a>
+            <a href="#" class="active">All Solutions</a>
+            <a href="#">Startup Solution</a>
+            <a href="#">Growth Solution</a>
+            <a href="#">Expansion Solution</a>
+            <a href="#">Franchise Solution</a>
         </div>
     </div>
 </section>
@@ -23,6 +27,12 @@
         color: var(--white);
         font-size: 1rem;
         font-weight: 500;
-        line-height: 1.25rem;
+        transition: all .5s linear;
+        -webkit-transition: all .5s linear;
+        -moz-transition: all .5s linear;
+    }
+    .sl-filter-row a.active{
+        background: var(--white);
+        color: var(--darkBlue);
     }
 </style>
