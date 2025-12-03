@@ -1,8 +1,8 @@
 ---
 import { Image } from 'astro:assets';
-import ctArr from '../../public/ct-arr.svg';
-import getQuoteText from '../../public/get-quote.svg';
-import ctText from '../../public/ct-txt.svg';
+import ctArr from '../../public/ct-arr.svg?raw';
+import getQuoteText from '../../public/get-quote.svg?raw';
+import ctText from '../../public/ct-txt.svg?raw';
 
 ---
 
@@ -151,38 +151,18 @@ import ctText from '../../public/ct-txt.svg';
     <div class="ct-animation-bar">
         <div class="ct-rolling-bar fx ps-rel">
             <div class="ct-rolling fx fx-ac">
-                <div class="ct-txt">
-                    <Image src={ctText} alt=" "/>
-                </div>
-                <div class="ct-arr">
-                    <Image src={ctArr} alt=" "/>
-                </div>
-                <div class="ct-txt">
-                    <Image src={getQuoteText} alt=" "/>
-                </div>
-                <div class="ct-arr">
-                    <Image src={ctArr} alt=" "/>
-                </div>
-                <div class="ct-txt">
-                    <Image src={ctText} alt=" "/>
-                </div>
+                <div class="ct-txt" innerHTML={ctText}></div>
+                <div class="ct-arr" innerHTML={ctArr}></div>
+                <div class="ct-txt" innerHTML={getQuoteText}></div>
+                <div class="ct-arr" innerHTML={ctArr}></div>
+                <div class="ct-txt" innerHTML={ctText}></div>
             </div>
             <div class="ct-rolling fx fx-ac" aria-hidden>
-                <div class="ct-txt">
-                    <Image src={ctText} alt=" "/>
-                </div>
-                <div class="ct-arr">
-                    <Image src={ctArr} alt=" "/>
-                </div>
-                <div class="ct-txt">
-                    <Image src={getQuoteText} alt=" "/>
-                </div>
-                <div class="ct-arr">
-                    <Image src={ctArr} alt=" "/>
-                </div>
-                <div class="ct-txt">
-                    <Image src={ctText} alt=" "/>
-                </div>
+                <div class="ct-txt" innerHTML={ctText}></div>
+                <div class="ct-arr" innerHTML={ctArr}></div>
+                <div class="ct-txt" innerHTML={getQuoteText}></div>
+                <div class="ct-arr" innerHTML={ctArr}></div>
+                <div class="ct-txt" innerHTML={ctText}></div>
             </div>
         </div>
     </div>
