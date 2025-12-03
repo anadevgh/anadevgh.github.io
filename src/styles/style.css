@@ -254,6 +254,9 @@ h5{
 .sc-grey{
     background: var(--lightGrey3);
 }
+.pg-wrap{
+    padding-top: 12.5rem;
+}
 
 @media screen and (max-width:1600px){
     html{
