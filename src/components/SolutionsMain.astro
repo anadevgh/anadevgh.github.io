@@ -371,48 +371,69 @@ import ctText from '../../public/ct-txt.svg?raw';
         height: 100%;
         pointer-events: none;
     }
-    .ct-txt svg {
-        fill: #676B78;
-    }
-    .to-white:not(.ct-arr) path {
-        fill: #ffffff !important;
-    }
     .ct-txt-ln{
         color: var(--white);
         font-size: 7.25rem;
         font-weight: 500;
         line-height: 8.75rem;
+        transition: color 0.4s ease;
     }
     .ct-txt{
         color: var(--white);
         font-size: 2.25rem;
         font-weight: 500;
         line-height: 100%;
+        transition: color 0.4s ease;
+    }
+    .ct-arr svg path {
+        stroke: #676B78;
+        transition: stroke 0.4s ease;
+    }
+    .ct-active {
+        color: #ffffff !important;
+    }
+    .ct-active path {
+        stroke: #ffffff !important;
     }
 </style>
 
 <script>
-    const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-            const svg = entry.target.querySelector('svg');
-            if (!svg) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const rollingRows = document.querySelectorAll(".ct-rolling");
 
-            if (entry.isIntersecting) {
-                svg.classList.add('to-white');
-            } else {
-                svg.classList.remove('to-white');
-            }
-            });
-        },
-        {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.6,
+  function updateColors() {
+    const centerX = window.innerWidth / 2;
+
+    rollingRows.forEach(row => {
+      const items = row.children;
+
+      let closest = null;
+      let closestDistance = Infinity;
+
+      [...items].forEach(item => {
+        // remove active class first
+        item.classList.remove("ct-active");
+
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(centerX - itemCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closest = item;
         }
-    );
+      });
 
-    document.querySelectorAll('.ct-txt').forEach(el => {
-        observer.observe(el);
+      // make the center-most item white
+      if (closest) closest.classList.add("ct-active");
     });
+  }
+
+  // update on scroll + on animation frame
+  function loop() {
+    updateColors();
+    requestAnimationFrame(loop);
+  }
+  loop();
+});
 </script>
