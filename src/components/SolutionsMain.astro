@@ -398,42 +398,42 @@ import ctText from '../../public/ct-txt.svg?raw';
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const rollingRows = document.querySelectorAll(".ct-rolling");
+  document.addEventListener("DOMContentLoaded", () => {
+  const rows = document.querySelectorAll(".ct-rolling");
 
   function updateColors() {
     const centerX = window.innerWidth / 2;
 
-    rollingRows.forEach(row => {
-      const items = row.children;
+    rows.forEach(row => {
+      const items = Array.from(row.querySelectorAll(".ct-txt, .ct-txt-ln, .ct-arr"));
 
-      let closest = null;
-      let closestDistance = Infinity;
+      let closestItem = null;
+      let minDistance = Infinity;
 
-      [...items].forEach(item => {
-        // remove active class first
-        item.classList.remove("ct-active");
-
+      items.forEach(item => {
         const rect = item.getBoundingClientRect();
         const itemCenter = rect.left + rect.width / 2;
         const distance = Math.abs(centerX - itemCenter);
 
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closest = item;
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestItem = item;
         }
+
+        // RESET to grey color
+        item.classList.remove("ct-active");
       });
 
-      // make the center-most item white
-      if (closest) closest.classList.add("ct-active");
+      // Highlight the center-most element
+      if (closestItem) closestItem.classList.add("ct-active");
     });
   }
 
-  // update on scroll + on animation frame
+  // Run continuously without stopping your scrolling animation
   function loop() {
     updateColors();
     requestAnimationFrame(loop);
   }
-  loop();
+  requestAnimationFrame(loop);
 });
 </script>
