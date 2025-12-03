@@ -379,7 +379,6 @@ import ctText from '../../public/ct-txt.svg?raw';
         transition: color 0.4s ease;
     }
     .ct-txt{
-        color: var(--white);
         font-size: 2.25rem;
         font-weight: 500;
         line-height: 100%;
@@ -402,7 +401,7 @@ import ctText from '../../public/ct-txt.svg?raw';
     }
 
     @keyframes wave {
-    0% {
+        0% {
             color: #676B78;
         }
         40% {
@@ -417,19 +416,3 @@ import ctText from '../../public/ct-txt.svg?raw';
     }
 </style>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const texts = document.querySelectorAll(".ct-txt, .ct-txt-ln");
-
-  texts.forEach(block => {
-    const letters = block.innerText.split("");
-
-    block.innerHTML = letters
-      .map((char, i) => {
-        const delay = i * 0.08; // speed between letters
-        return `<span class="letter" style="animation-delay:${delay}s">${char}</span>`;
-      })
-      .join("");
-  });
-});
-</script>
