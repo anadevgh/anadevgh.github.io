@@ -330,11 +330,13 @@ import ctText from '../../public/ct-txt.svg?raw';
 </section>
 
 <script>
-    document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
-        const letters = el.textContent.split('');
-        el.innerHTML = letters
-            .map((l, i) => `<span style="animation-delay:${i * 0.08}s">${l}</span>`)
-            .join('');
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
+            const letters = el.textContent.split('');
+            el.innerHTML = letters
+                .map((l, i) => `<span style="animation-delay:${i * 0.08}s">${l === ' ' ? '&nbsp;' : l}</span>`)
+                .join('');
+        });
     });
 </script>
 
@@ -471,15 +473,6 @@ import ctText from '../../public/ct-txt.svg?raw';
         flex-shrink: 0;
         padding-right: 2.5rem;
     }
-    /*.ct-rolling-bar:before{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: radial-gradient(492.91% 49.98% at 50.03% 50%, #FFF 0%, #676B78 41.83%);
-        width: 100%;
-        height: 100%;
-    }*/
     .ct-txt-ln{
         color: var(--lightGrey);
         font-size: 7.25rem;
@@ -525,4 +518,12 @@ import ctText from '../../public/ct-txt.svg?raw';
         50% { stroke: #ffffff; }
         100% { stroke: #676B78; }
     }
+    .ct-rolling:nth-child(1) span,
+    .ct-rolling:nth-child(1) .ct-arr path { animation-delay: 0s; }
+
+    .ct-rolling:nth-child(2) span,
+    .ct-rolling:nth-child(2) .ct-arr path { animation-delay: 1s; }
+
+    .ct-rolling:nth-child(3) span,
+    .ct-rolling:nth-child(3) .ct-arr path { animation-delay: 2s; }
 </style>
