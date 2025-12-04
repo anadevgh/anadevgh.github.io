@@ -496,4 +496,33 @@ import ctText from '../../public/ct-txt.svg?raw';
         background-size: 100% 100%;
         z-index: 0;
     }
+    .ct-txt-ln span,
+    .ct-txt span {
+        display: inline-block;
+        color: #676B78;
+        animation: letterFade 2s linear infinite;
+    }
+    @keyframes letterFade {
+        0% { color: #676B78; }
+        50% { color: #ffffff; }
+        100% { color: #676B78; }
+    }
+    .ct-arr path {
+        stroke: #676B78;
+        animation: arrowFade 2s linear infinite;
+    }
+    @keyframes arrowFade {
+        0% { stroke: #676B78; }
+        50% { stroke: #ffffff; }
+        100% { stroke: #676B78; }
+    }
 </style>
+
+<script>
+    document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
+        const letters = el.textContent.split('');
+        el.innerHTML = letters
+            .map((l, i) => `<span style="animation-delay:${i * 0.08}s">${l}</span>`)
+            .join('');
+    });
+</script>
