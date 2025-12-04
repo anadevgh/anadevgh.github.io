@@ -1,11 +1,3 @@
----
-import { Image } from 'astro:assets';
-import ctArr from '../../public/ct-arr.svg?raw';
-import getQuoteText from '../../public/get-quote.svg?raw';
-import ctText from '../../public/ct-txt.svg?raw';
-
----
-
 <section class="hp-solutions">
     <div class="container">
         <h1>Results.</h1>
@@ -329,17 +321,6 @@ import ctText from '../../public/ct-txt.svg?raw';
     <div class="sl-gradient"></div>
 </section>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
-            const letters = el.textContent.split('');
-            el.innerHTML = letters
-                .map((l, i) => `<span style="animation-delay:${i * 0.08}s">${l === ' ' ? '&nbsp;' : l}</span>`)
-                .join('');
-        });
-    });
-</script>
-
 <style>
     .hp-solutions h1{
         color: var(--lightGrey);
@@ -478,14 +459,12 @@ import ctText from '../../public/ct-txt.svg?raw';
         font-size: 7.25rem;
         font-weight: 500;
         line-height: 8.75rem;
-        transition: color 0.4s ease;
     }
     .ct-txt{
         color: var(--lightGrey);
         font-size: 2.25rem;
         font-weight: 500;
         line-height: 100%;
-        transition: color 0.4s ease;
     }
     .ct-arr svg path {
         stroke: var(--lightGrey);
@@ -527,3 +506,29 @@ import ctText from '../../public/ct-txt.svg?raw';
     .ct-rolling:nth-child(3) span,
     .ct-rolling:nth-child(3) .ct-arr path { animation-delay: 2s; }
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const rollingTexts = document.querySelectorAll(".ct-txt-ln, .ct-txt");
+
+    rollingTexts.forEach(block => {
+        const text = block.innerHTML;
+        const letters = text.split("");
+
+        block.innerHTML = ""; // reset
+
+        letters.forEach((letter, i) => {
+            const span = document.createElement("span");
+            span.textContent = letter;
+            span.style.animationDelay = (i * 0.12) + "s"; // delay per letter
+            block.appendChild(span);
+        });
+    });
+
+    // Animate SVG arrows also with stagger
+    const arrows = document.querySelectorAll(".ct-arr svg path");
+    arrows.forEach((path, i) => {
+        path.style.animationDelay = (i * 0.15) + "s";
+    });
+});
+</script>
