@@ -161,7 +161,7 @@
                         </svg>
                     </div>
                     <div class="ct-txt">
-                        Get a Quote <br/> for your Project
+                        Get a Quote <br/>for your Project
                     </div>
                     <div class="ct-arr">
                         <svg width="64" height="104" viewBox="0 0 64 104" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -321,7 +321,7 @@
     <div class="sl-gradient"></div>
 </section>
 
-<style>
+<style is:global>
     .hp-solutions h1{
         color: var(--lightGrey);
     }
@@ -477,44 +477,95 @@
         background-size: 100% 100%;
         z-index: 0;
     }
-     @keyframes letterFade {
-        0% { color: #676B78; }
-        50% { color: #ffffff; }
-        100% { color: #676B78; }
-    }
-    @keyframes arrowFade {
-        0% { stroke: #676B78; }
-        50% { stroke: #ffffff; }
-        100% { stroke: #676B78; }
-    }
-    .ct-txt-ln span,
-    .ct-txt span {
+    .ct-txt-ln span, .ct-txt span {
         display: inline-block;
-        color: #676B78;
-        animation: letterFade 2s forwards infinite;
+        transition: color 0.1s linear;
     }
-    .ct-arr path {
-        stroke: #676B78;
-        animation: arrowFade 2s forwards infinite;
+    .ct-animation-bar:after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: linear-gradient(to right, rgba(23,25,35,0.6) 0%, rgba(23,25,35,0) 45%, rgba(23,25,35,0) 55%, rgba(23,25,35,0.6) 100%);
     }
-    .ct-rolling:nth-child(1) span,
-    .ct-rolling:nth-child(1) .ct-arr path { animation-delay: 0s; }
-
-    .ct-rolling:nth-child(2) span,
-    .ct-rolling:nth-child(2) .ct-arr path { animation-delay: 1s; }
-
-    .ct-rolling:nth-child(3) span,
-    .ct-rolling:nth-child(3) .ct-arr path { animation-delay: 2s; }
 </style>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-    // Wrap each letter of all rolling texts
-        document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
-            const letters = el.textContent.split('');
-            el.innerHTML = letters.map((l, i) =>
-            `<span style="animation-delay:${i * 0.08}s">${l === ' ' ? '&nbsp;' : l}</span>`
-            ).join('');
+
+  // Split letters and keep <br>
+  document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
+    const nodes = Array.from(el.childNodes); 
+    el.innerHTML = nodes.map(node => {
+      if (node.nodeName === "BR") return "<br/>";
+      return node.textContent.split('').map(l => `<span>${l===' ' ? '&nbsp;' : l}</span>`).join('');
+    }).join('');
+  });
+
+  const rollingBlocks = document.querySelectorAll('.ct-rolling');
+  let speed = 0.2; // default lerp speed
+  const animationBar = document.querySelector('.ct-animation-bar');
+
+  // Slow down on hover
+  animationBar.addEventListener('mouseenter', () => speed = 0.05);
+  animationBar.addEventListener('mouseleave', () => speed = 0.2);
+
+  function animateWave() {
+    const centerX = window.innerWidth / 2;
+
+    rollingBlocks.forEach(block => {
+      const textLines = block.querySelectorAll('.ct-txt-ln, .ct-txt');
+      const arrows = block.querySelectorAll('.ct-arr');
+
+      textLines.forEach((txtEl, idx) => {
+        const letters = txtEl.querySelectorAll('span');
+
+        letters.forEach(letter => {
+          const rect = letter.getBoundingClientRect();
+          const letterCenter = rect.left + rect.width / 2;
+          const distance = Math.abs(centerX - letterCenter);
+          const intensity = Math.max(0, 1 - distance / 250);
+          const colorValue = Math.floor(103 + 152 * intensity);
+          letter.style.color = `rgb(${colorValue},${colorValue},${colorValue})`;
         });
+
+        // Arrow color sync
+        if (arrows[idx]) {
+          const arrowPaths = arrows[idx].querySelectorAll('path'); 
+          const arrowRect = arrows[idx].getBoundingClientRect();
+          const arrowCenter = arrowRect.left + arrowRect.width / 2;
+
+          let nearestLetter = null;
+          let minDistance = Infinity;
+          letters.forEach(letter => {
+            const lRect = letter.getBoundingClientRect();
+            const lCenter = lRect.left + lRect.width / 2;
+            const d = Math.abs(lCenter - arrowCenter);
+            if(d < minDistance) { minDistance = d; nearestLetter = letter; }
+          });
+
+          if(nearestLetter){
+            arrowPaths.forEach(path => {
+              const currentColor = path.style.stroke
+                ? path.style.stroke.match(/\d+/g).map(Number)
+                : [103,103,103];
+              const targetColor = nearestLetter.style.color.match(/\d+/g).map(Number);
+              const lerped = currentColor.map((c,i) => Math.round(c + (targetColor[i]-c)*speed));
+              path.style.stroke = `rgb(${lerped.join(',')})`;
+            });
+          }
+        }
+
+      });
+
     });
+
+    requestAnimationFrame(animateWave);
+  }
+
+  requestAnimationFrame(animateWave);
+
+});
 </script>
