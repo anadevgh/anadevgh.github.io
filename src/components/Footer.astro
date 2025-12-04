@@ -2,94 +2,102 @@
 import { Image } from 'astro:assets';
 import quoteIcon from '../../public/quotation-icon.png';
 const year = new Date().getFullYear();
+
+const currentPath = Astro.url.pathname;
+const hideOn = ["/results/paperless-case"];
+const shouldHide = hideOn.includes(currentPath);
+
 ---
 
-<section class="get-started-form sc-pd sc-grey sc-grey-C ps-rel">
-    <div class="container">
-        <div class="headline ps-rel">
-            <h2 id="gts-headline"></h2>
-        </div>
-        <div class="gts-form-wrap">
-            <div class="gs-form-progress-bar fx fx-ac fx-jb">
-                <div class="gs-fn-step-prev">
-                    <a class="gs-prev-step fx fx-ac">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M15 10H5" stroke="#2D3035" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M10 5L5 10L10 15" stroke="#2D3035" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>Previous step</span>
-                    </a>
-                </div>
-                <div class="fm-progress fx fx-wrap">
-                    <div class="fm-progress-txt">
-                        <p>
-                            <span>Step</span>
-                            <span>1</span>
-                            <span>of </span>
-                            <span>5</span>
-                        </p>
-                    </div>
-                    <div class="fm-progress-bar ps-rel">
-                        <div class="fm-progress-bar-spin"></div>
-                    </div>
-                </div>
+{ !shouldHide && (
+    <section class="get-started-form sc-pd sc-grey sc-grey-C ps-rel">
+        <div class="container">
+            <div class="headline ps-rel">
+                <h2 id="gts-headline"></h2>
             </div>
-            <div class="gts-form-main ps-rel">
-                <div id="gts-row" class="gts-form-row gts-form-step fourcol fx"></div>
-                <div class="gts-form-last-step" id="gts-last-step">
-                    <div class="gts-form-main-wrapper">
-                        <div class="gts-quote-icon">
-                            <Image src={quoteIcon} alt=" " />
+            <div class="gts-form-wrap">
+                <div class="gs-form-progress-bar fx fx-ac fx-jb">
+                    <div class="gs-fn-step-prev">
+                        <a class="gs-prev-step fx fx-ac">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M15 10H5" stroke="#2D3035" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M10 5L5 10L10 15" stroke="#2D3035" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Previous step</span>
+                        </a>
+                    </div>
+                    <div class="fm-progress fx fx-wrap">
+                        <div class="fm-progress-txt">
+                            <p>
+                                <span>Step</span>
+                                <span>1</span>
+                                <span>of </span>
+                                <span>5</span>
+                            </p>
                         </div>
-                        <div class="gts-lstep-form-main">
-                            <h5>Thanks! Your answers show strong potential for working with us.</h5>
-                            <h6>Leave your details and we'll reach out with next steps.</h6>
-                            <div class="gts-lstep-form">
-                                <form id="ct-form" method="post" autocomplete="off">
-                                    <div class="field-group fx fx-jb">
-                                        <div class="field-group-h ps-rel">
-                                            <label for="ct-name">Name</label>
-                                            <input type="text" name="ct-name" id="ct-name" value="" autocomplete="nope">
-                                        </div>
-                                        <div class="field-group-h ps-rel">
-                                            <label for="ct-email">Email</label>
-                                            <input type="text" name="ct-email" id="ct-email" value="" placeholder="example@email.com" autocomplete="nope">
-                                            <div class="err-msg" id="err-email">
-                                                <div class="fx fx-ac">
-                                                    <span>Invalid email: only letters, numbers, '@', and '.' allowed</span>
+                        <div class="fm-progress-bar ps-rel">
+                            <div class="fm-progress-bar-spin"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gts-form-main ps-rel">
+                    <div id="gts-row" class="gts-form-row gts-form-step fourcol fx"></div>
+                    <div class="gts-form-last-step" id="gts-last-step">
+                        <div class="gts-form-main-wrapper">
+                            <div class="gts-quote-icon">
+                                <Image src={quoteIcon} alt=" " />
+                            </div>
+                            <div class="gts-lstep-form-main">
+                                <h5>Thanks! Your answers show strong potential for working with us.</h5>
+                                <h6>Leave your details and we'll reach out with next steps.</h6>
+                                <div class="gts-lstep-form">
+                                    <form id="ct-form" method="post" autocomplete="off">
+                                        <div class="field-group fx fx-jb">
+                                            <div class="field-group-h ps-rel">
+                                                <label for="ct-name">Name</label>
+                                                <input type="text" name="ct-name" id="ct-name" value="" autocomplete="nope">
+                                            </div>
+                                            <div class="field-group-h ps-rel">
+                                                <label for="ct-email">Email</label>
+                                                <input type="text" name="ct-email" id="ct-email" value="" placeholder="example@email.com" autocomplete="nope">
+                                                <div class="err-msg" id="err-email">
+                                                    <div class="fx fx-ac">
+                                                        <span>Invalid email: only letters, numbers, '@', and '.' allowed</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="field-group">
-                                        <label for="ct-company">Company</label>
-                                        <input type="text" name="ct-company" id="ct-company" value="" autocomplete="nope">
-                                    </div>
-                                    <div class="field-group ps-rel">
-                                        <div  class="field-lbl fx fx-jb fx-ac">
-                                            <label for="ct-message">Message</label>
-                                            <span>Optional</span>
+                                        <div class="field-group">
+                                            <label for="ct-company">Company</label>
+                                            <input type="text" name="ct-company" id="ct-company" value="" autocomplete="nope">
                                         </div>
-                                        <textarea id="ct-message" name="ct-message" placeholder="Leave a message if you'd like" rows="2" autocomplete="off"></textarea>
-                                    </div>
-                                    <div class="field-group-btm field-terms fx fx-jb fx-ac fx-wrap">
-                                        <div class="field-group-ack fx fx-ac">
-                                            <label>By sending your data, you confirm you have read and agree with our <a>Privacy Policy</a>, which details data collection purposes, recipients, retention periods, and your rights.</label>
+                                        <div class="field-group ps-rel">
+                                            <div  class="field-lbl fx fx-jb fx-ac">
+                                                <label for="ct-message">Message</label>
+                                                <span>Optional</span>
+                                            </div>
+                                            <textarea id="ct-message" name="ct-message" placeholder="Leave a message if you'd like" rows="2" autocomplete="off"></textarea>
                                         </div>
-                                        <div class="ct-apply-btn fx ps-rel">
-                                            <button id="ct-submit" type="submit" class="btn-submit fx fx-ac" disabled="">Submit</button>
-                                            <div class="hidden-mask"></div>
+                                        <div class="field-group-btm field-terms fx fx-jb fx-ac fx-wrap">
+                                            <div class="field-group-ack fx fx-ac">
+                                                <label>By sending your data, you confirm you have read and agree with our <a>Privacy Policy</a>, which details data collection purposes, recipients, retention periods, and your rights.</label>
+                                            </div>
+                                            <div class="ct-apply-btn fx ps-rel">
+                                                <button id="ct-submit" type="submit" class="btn-submit fx fx-ac" disabled="">Submit</button>
+                                                <div class="hidden-mask"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+) }
+
 <footer>
     <div class="ft-wrap">
         <div class="container">
