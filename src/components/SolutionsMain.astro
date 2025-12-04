@@ -508,27 +508,12 @@
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const rollingTexts = document.querySelectorAll(".ct-txt-ln, .ct-txt");
-
-    rollingTexts.forEach(block => {
-        const text = block.innerHTML;
-        const letters = text.split("");
-
-        block.innerHTML = ""; // reset
-
-        letters.forEach((letter, i) => {
-            const span = document.createElement("span");
-            span.textContent = letter;
-            span.style.animationDelay = (i * 0.12) + "s"; // delay per letter
-            block.appendChild(span);
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
+            const letters = el.textContent.split('');
+            el.innerHTML = letters
+                .map((l, i) => `<span style="animation-delay:${i * 0.08}s">${l === ' ' ? '&nbsp;' : l}</span>`)
+                .join('');
         });
     });
-
-    // Animate SVG arrows also with stagger
-    const arrows = document.querySelectorAll(".ct-arr svg path");
-    arrows.forEach((path, i) => {
-        path.style.animationDelay = (i * 0.15) + "s";
-    });
-});
 </script>
