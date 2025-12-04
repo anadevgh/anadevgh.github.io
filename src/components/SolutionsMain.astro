@@ -140,7 +140,7 @@
             </div>
         </div>
     </div>
-    <div class="ct-animation-bar">
+    <div class="ct-animation-bar ps-rel">
         <a href="#">
             <div class="ct-rolling-bar fx ps-rel">
                 <div class="ct-rolling fx fx-ac">
@@ -495,77 +495,74 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
 
-  // Split letters and keep <br>
-  document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
-    const nodes = Array.from(el.childNodes); 
-    el.innerHTML = nodes.map(node => {
-      if (node.nodeName === "BR") return "<br/>";
-      return node.textContent.split('').map(l => `<span>${l===' ' ? '&nbsp;' : l}</span>`).join('');
-    }).join('');
-  });
-
-  const rollingBlocks = document.querySelectorAll('.ct-rolling');
-  let speed = 0.2; // default lerp speed
-  const animationBar = document.querySelector('.ct-animation-bar');
-
-  // Slow down on hover
-  animationBar.addEventListener('mouseenter', () => speed = 0.05);
-  animationBar.addEventListener('mouseleave', () => speed = 0.2);
-
-  function animateWave() {
-    const centerX = window.innerWidth / 2;
-
-    rollingBlocks.forEach(block => {
-      const textLines = block.querySelectorAll('.ct-txt-ln, .ct-txt');
-      const arrows = block.querySelectorAll('.ct-arr');
-
-      textLines.forEach((txtEl, idx) => {
-        const letters = txtEl.querySelectorAll('span');
-
-        letters.forEach(letter => {
-          const rect = letter.getBoundingClientRect();
-          const letterCenter = rect.left + rect.width / 2;
-          const distance = Math.abs(centerX - letterCenter);
-          const intensity = Math.max(0, 1 - distance / 250);
-          const colorValue = Math.floor(103 + 152 * intensity);
-          letter.style.color = `rgb(${colorValue},${colorValue},${colorValue})`;
+        document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
+            const nodes = Array.from(el.childNodes); 
+            el.innerHTML = nodes.map(node => {
+                if (node.nodeName === "BR") return "<br/>";
+                return node.textContent.split('').map(l => `<span>${l===' ' ? '&nbsp;' : l}</span>`).join('');
+            }).join('');
         });
 
-        // Arrow color sync
-        if (arrows[idx]) {
-          const arrowPaths = arrows[idx].querySelectorAll('path'); 
-          const arrowRect = arrows[idx].getBoundingClientRect();
-          const arrowCenter = arrowRect.left + arrowRect.width / 2;
+        const rollingBlocks = document.querySelectorAll('.ct-rolling');
+        let speed = 0.2;
+        const animationBar = document.querySelector('.ct-animation-bar');
 
-          let nearestLetter = null;
-          let minDistance = Infinity;
-          letters.forEach(letter => {
-            const lRect = letter.getBoundingClientRect();
-            const lCenter = lRect.left + lRect.width / 2;
-            const d = Math.abs(lCenter - arrowCenter);
-            if(d < minDistance) { minDistance = d; nearestLetter = letter; }
-          });
+        // Slow down on hover
+        //animationBar.addEventListener('mouseenter', () => speed = 0.05);
+        //animationBar.addEventListener('mouseleave', () => speed = 0.2);
 
-          if(nearestLetter){
-            arrowPaths.forEach(path => {
-              const currentColor = path.style.stroke
-                ? path.style.stroke.match(/\d+/g).map(Number)
-                : [103,103,103];
-              const targetColor = nearestLetter.style.color.match(/\d+/g).map(Number);
-              const lerped = currentColor.map((c,i) => Math.round(c + (targetColor[i]-c)*speed));
-              path.style.stroke = `rgb(${lerped.join(',')})`;
+        function animateWave() {
+            const centerX = window.innerWidth / 2;
+
+            rollingBlocks.forEach(block => {
+            const textLines = block.querySelectorAll('.ct-txt-ln, .ct-txt');
+            const arrows = block.querySelectorAll('.ct-arr');
+
+            textLines.forEach((txtEl, idx) => {
+                const letters = txtEl.querySelectorAll('span');
+
+                letters.forEach(letter => {
+                    const rect = letter.getBoundingClientRect();
+                    const letterCenter = rect.left + rect.width / 2;
+                    const distance = Math.abs(centerX - letterCenter);
+                    const intensity = Math.max(0, 1 - distance / 250);
+                    const colorValue = Math.floor(103 + 152 * intensity);
+                    letter.style.color = `rgb(${colorValue},${colorValue},${colorValue})`;
+                });
+
+                // Arrow color sync
+                if (arrows[idx]) {
+                    const arrowPaths = arrows[idx].querySelectorAll('path'); 
+                    const arrowRect = arrows[idx].getBoundingClientRect();
+                    const arrowCenter = arrowRect.left + arrowRect.width / 2;
+
+                    let nearestLetter = null;
+                    let minDistance = Infinity;
+                    letters.forEach(letter => {
+                        const lRect = letter.getBoundingClientRect();
+                        const lCenter = lRect.left + lRect.width / 2;
+                        const d = Math.abs(lCenter - arrowCenter);
+                        if(d < minDistance) { minDistance = d; nearestLetter = letter; }
+                    });
+
+                    if(nearestLetter){
+                        arrowPaths.forEach(path => {
+                        const currentColor = path.style.stroke
+                            ? path.style.stroke.match(/\d+/g).map(Number)
+                            : [103,103,103];
+                        const targetColor = nearestLetter.style.color.match(/\d+/g).map(Number);
+                        const lerped = currentColor.map((c,i) => Math.round(c + (targetColor[i]-c)*speed));
+                        path.style.stroke = `rgb(${lerped.join(',')})`;
+                        });
+                    }
+                }
             });
-          }
+
+        });
+
+            requestAnimationFrame(animateWave);
         }
 
-      });
-
+        requestAnimationFrame(animateWave);
     });
-
-    requestAnimationFrame(animateWave);
-  }
-
-  requestAnimationFrame(animateWave);
-
-});
 </script>
