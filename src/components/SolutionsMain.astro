@@ -329,6 +329,15 @@ import ctText from '../../public/ct-txt.svg?raw';
     <div class="sl-gradient"></div>
 </section>
 
+<script>
+    document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
+        const letters = el.textContent.split('');
+        el.innerHTML = letters
+            .map((l, i) => `<span style="animation-delay:${i * 0.08}s">${l}</span>`)
+            .join('');
+    });
+</script>
+
 <style>
     .hp-solutions h1{
         color: var(--lightGrey);
@@ -517,12 +526,3 @@ import ctText from '../../public/ct-txt.svg?raw';
         100% { stroke: #676B78; }
     }
 </style>
-
-<script>
-    document.querySelectorAll('.ct-txt-ln, .ct-txt').forEach(el => {
-        const letters = el.textContent.split('');
-        el.innerHTML = letters
-            .map((l, i) => `<span style="animation-delay:${i * 0.08}s">${l}</span>`)
-            .join('');
-    });
-</script>
