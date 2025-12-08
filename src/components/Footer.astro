@@ -865,7 +865,6 @@ const shouldHide = hideOn.includes(currentPath);
                     answers[step] = item.title;
                     step++;
                     if (step < stepsData.length) {
-                    
                         col.classList.add("click-animate");
                         col.addEventListener('animationend', () => {
                             col.classList.remove("click-animate");
@@ -877,11 +876,21 @@ const shouldHide = hideOn.includes(currentPath);
                             renderStep();
                         }, 1500);
                     } else {
-                        row.style.display = 'none';
-                        headline.style.display = 'none';
-                        pgBarMain.style.display = 'none';
-                        lastStep.style.display = 'block';
-                        requestAnimationFrame(() => lastStep.style.opacity = 1);
+
+                        col.classList.add("click-animate");
+                        col.addEventListener('animationend', () => {
+                            col.classList.remove("click-animate");
+                        }, { once: true });
+
+                        playBoxVideo(col);
+                        stepTimeout = setTimeout(() => {
+                            clearTimeout(stepTimeout);
+                            row.style.display = 'none';
+                            headline.style.display = 'none';
+                            pgBarMain.style.display = 'none';
+                            lastStep.style.display = 'block';
+                            requestAnimationFrame(() => lastStep.style.opacity = 1);
+                        }, 1400);
                     }
                 };
             } else {
