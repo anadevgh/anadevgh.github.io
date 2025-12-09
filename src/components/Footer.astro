@@ -4,7 +4,7 @@ import quoteIcon from '../../public/quotation-icon.png';
 const year = new Date().getFullYear();
 
 const currentPath = Astro.url.pathname;
-const hideOn = ["/results/paperless"];
+const hideOn = ["/results/paperless", "/expertise/branding"];
 const shouldHide = hideOn.includes(currentPath);
 
 ---
@@ -772,7 +772,9 @@ const shouldHide = hideOn.includes(currentPath);
     for (let i = 0; i < MAX_COLS; i++) {
         const col = document.createElement('div');
         col.className = 'gts-form-col';
-        row.appendChild(col);
+        if(row){
+            row.appendChild(col);
+        }
     }
 
     function animateWidths(columns) {

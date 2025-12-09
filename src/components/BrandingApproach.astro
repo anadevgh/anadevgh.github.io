@@ -1,0 +1,115 @@
+---
+import { Image } from 'astro:assets';
+import expIcon from '../../public/ex-icon.svg';
+
+---
+
+<section class="exp-approach sc-al-cnt sc-pd sc-grey-C">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-headline ps-rel">
+                <h2>Our Branding Approach</h2>
+                <div class="sc-txt">
+                    <p>Branding at IPOINT INT is not an art project. <br/> It is a strategic, engineered system designed to help your business perform. <br/>Our approach combines:</p>
+                </div>
+            </div>
+        </div>
+        <div class="exp-approach-row fx fx-wrap">
+            <div class="exp-approach-col fx fx-wrap">
+                <div class="exp-approach-icon">
+                    <Image src={expIcon} alt=" " />
+                </div>
+                <div class="exp-approach-info fwidth">
+                    <h6>Premium Design</h6>
+                    <div class="sc-txt">
+                        <p>Sharp, intentional, crafted identities that stand out and elevate perception.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="exp-approach-col fx fx-wrap">
+                <div class="exp-approach-icon">
+                    <Image src={expIcon} alt=" " />
+                </div>
+                <div class="exp-approach-info fwidth">
+                    <h6>Strategic Simplicity</h6>
+                    <div class="sc-txt">
+                        <p>A brand that feels effortless to understand, remember, and use across all touchpoints.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="exp-approach-col fx fx-wrap">
+                <div class="exp-approach-icon">
+                    <Image src={expIcon} alt=" " />
+                </div>
+                <div class="exp-approach-info fwidth">
+                    <h6>Impact-Driven Execution</h6>
+                    <div class="sc-txt">
+                        <p>Everything is designed to drive real results — trust, recognition, and measurable engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="exp-approach-txt-row">
+            <div class="sc-wrapper">
+                <div class="exp-txt">
+                    <p>We begin with <span>clarity</span>, build with <span>precision</span>, and end with a <span>scalable brand system</span> <br/>
+                    that works across platforms, markets, and teams. <br/>
+                    This is branding that doesn't expire — it evolves.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .exp-approach{
+        background: var(--lightGrey3);
+    }
+    .exp-approach-row{
+        margin-top: 3.75rem;
+        gap: 1.5rem;
+    }
+    .exp-approach-col{
+        border-radius: 1.25rem;
+        background: var(--white);
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+        padding: 2rem;
+        width: calc((100% - 2 * 1.5rem) / 3);
+    }
+    .exp-approach-info{
+        margin-top: 2rem;
+    }
+    .exp-approach-info h6{
+        color: var(--darkBlue);
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.75rem;
+        letter-spacing: 0.015rem;
+        margin: 0;
+    }
+    .exp-approach-info .sc-txt{
+        margin-top: 0.5rem;
+    }
+    .exp-approach-info .sc-txt p{
+        text-align: left;
+    }
+    .exp-approach-txt-row{
+        margin-top: 3.75rem;
+    }
+    .exp-txt{
+        color: var(--darkBlue);
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.025rem;
+        text-align: center;
+    }
+    .exp-txt p span:first-child{
+        color: #80A0FF;
+    }
+    .exp-txt p span:nth-child(2){
+        color: #FF6C6C;
+    }
+    .exp-txt p span:last-child{
+        color: #1ECE76;
+    }
+</style>
