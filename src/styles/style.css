@@ -6,6 +6,7 @@
     --lightGrey: #676B78;
     --lightGrey2: #E3DFD9;
     --lightGrey3: #F5F5F7;
+    --lightGrey4: #E9EDEF;
     --grey: #B5B8BC;
     --lightblue: #DEE6EE;
     --lightblue2: #48A3FF;
@@ -92,6 +93,7 @@ input:-webkit-autofill:focus {
     border: 1px solid var(--lightGrey6) !important;
 }
 input[type=number] {
+    appearance: textfield;
     -moz-appearance: textfield;
 }
 input {
@@ -257,6 +259,107 @@ h5{
 .pg-wrap{
     padding-top: 12.5rem;
 }
+/* results styles start */
+.rs-banner {
+    height: 100vh;
+}
+ .rs-video {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+ }
+ .rs-video video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    object-fit: cover;
+}
+.rs-details {
+    padding: 12.5rem 0;
+    background: var(--lightGrey3);
+}
+.rs-heading {
+    color: var(--darkGrey);    
+}
+.col {
+    width: 49%;
+}
+.rs-info {
+    font-family: 'pp_neue_montrealbook';
+    margin-top: 1.5rem;
+    color: var(--darkGrey);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2rem;
+    letter-spacing: 0.03rem;
+    border-bottom: 0.063rem solid rgba(44, 44, 44, 0.20);
+    padding-bottom: 3.75rem;
+}
+.rs-info p {
+    margin: 0 0 1.25rem 0;
+}
+.rs-info p:last-child {
+    margin-bottom: 0;
+}
+.rs-actions-row {
+    margin: 2.5rem 0;
+}
+.md-text {
+    color: var(--darkGrey);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    letter-spacing: 0.02rem;
+}
+.rs-action-links span {
+    margin-right: 1rem;
+    line-height: 0.8rem;
+}
+.rs-action-links svg {
+    width: 1.5rem;
+    height: auto;
+}
+.rs-action-links a:not(:last-child) {
+    margin-right: 0.5rem;
+}
+.rs-sharing {
+    margin-right: 2rem;
+}
+.rs-info-cols {
+    margin-top: 3.75rem;
+}
+.rs-info-col span {
+    color: rgba(44, 44, 44, 0.40);
+}
+.rs-info-rows {
+    margin-top: 1rem;
+}
+.rs-info-rows > * {
+    display: block;
+}
+.rs-fw-video video, .rs-inner-cols video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.rs-inner-cols {
+    border-radius: 2.5rem;
+    background: var(--lightGrey4);
+    padding: 3.75rem;
+}
+.with-rds-shadow {
+    border-radius: 1rem;
+    box-shadow: 4.543px 4.543px 22.716px 0 rgba(68, 84, 98, 0.10);
+}
+
+
+
+
+/* results styles end */
 
 @media screen and (max-width:1600px){
     html{
