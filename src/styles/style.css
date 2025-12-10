@@ -405,9 +405,86 @@ h5{
 .white-sc {
     background: var(--white);
 }
-
-
-
+.btn-primary-blue {
+    background: var(--blue);
+    color: var(--white);
+}
+.rs-btn-row {
+    margin: 2.5rem 0;
+}
+.next-rs-link-text {
+    margin: 0;
+    color: rgba(44, 44, 44, 0.40);
+}
+.next-rs-link-text a {
+    color: var(--blue);
+    border-bottom: 0.063rem solid var(--blue);
+}
+.rs-similar {
+    padding: 6.25rem 0;
+}
+.pj-list{
+    margin-top: 2.5rem;
+}
+.pj-ft-image{
+    overflow: hidden;
+    border-radius: 1.25rem;
+}
+.pj-ft-image img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.25rem;
+    -webkit-transition: transform 0.5s ease;
+    -moz-transition: transform 0.5s ease;
+    transition: transform 0.5s ease;
+}
+.pj-ft-image:hover img{
+    transform: scale(1.05);
+}
+.pj-ft-info-row{
+    padding: 1.5rem;
+}
+.pj-ft-info-lcol{
+    width: 50%;
+}
+.pj-ft-info-rcol{
+    width: 50%;
+}
+.pj-ft-info-txt{
+    margin-top: 1.5rem;
+}
+.pj-ft-info-txt h4{
+    color: var(--lightGrey);
+}
+.pj-ft-info-rcol p{
+    font-family: 'pp_neue_montrealbook';
+    color: var(--lightGrey);
+    text-align: right;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin: 0;
+    letter-spacing: 0.02rem;
+}
+.pj-featured-2col{
+    margin: 4rem 0;
+}
+.pj-featured-2col .pj-featured-item{
+    width: 49%;
+}
+.pj-featured-2col .pj-ft-info-txt{
+    width: 100%;
+}
+.rs-similar .pj-ft-info-lcol-wrap h3 {
+    color: var(--darkGrey);
+}
+.pj-featured-cols {
+    margin-top: 3.75rem;
+}
+.pj-featured-cols .pj-featured-item {
+    margin-right: 1.5rem;
+}
 
 
 /* results styles end */
@@ -425,5 +502,23 @@ h5{
 @media screen and (max-width:479px){
     .container {
         padding: 0 2rem;
+    }
+    .sc-wrapper{
+        width: 100%;
+    }
+    .pj-ft-info-lcol, .pj-ft-info-rcol,
+    .pj-featured-2col .pj-featured-item{
+        width: 100%;
+    }
+    .pj-ft-info-row, .pj-featured-2col{
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .pj-ft-info-lcol{
+        order: 1;
+    }
+    .pj-ft-info-rcol p{
+        text-align: left;
     }
 }
