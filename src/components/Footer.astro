@@ -901,11 +901,16 @@ const shouldHide = hideOn.includes(currentPath);
         });
     }
 
-    prevBtn.onclick = () => {
-        if (step === 0) return;
-        step--;
-        renderStep();
-    };
+    if(prevBtn){
+        prevBtn.onclick = () => {
+            if (step === 0) return;
+            step--;
+            renderStep();
+        };
+    }
 
-    renderStep();
+    if(row){
+        renderStep();
+    }
+
 </script>
