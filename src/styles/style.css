@@ -194,7 +194,7 @@ h3, h4{
     color: var(--white);
     font-size: 1.5rem;
     font-weight: 500;
-    line-height: 1.5rem;
+    line-height: 1.75rem;
     margin: 0;
     font-family: 'pp_neue_montrealbook';
     letter-spacing: 0.02rem;
@@ -282,7 +282,7 @@ h5{
     padding: 12.5rem 0;
     background: var(--lightGrey3);
 }
-.rs-heading {
+.dark-gray {
     color: var(--darkGrey);    
 }
 .col {
@@ -341,20 +341,71 @@ h5{
 .rs-info-rows > * {
     display: block;
 }
-.rs-fw-video video, .rs-inner-cols video {
+.rs-fw-video video, .rs-inner-cols video, .boxed-col video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 .rs-inner-cols {
+    padding: 3.75rem;
+}
+.rs-inner-cols, .boxed-col {
     border-radius: 2.5rem;
     background: var(--lightGrey4);
-    padding: 3.75rem;
+}
+.boxed-col {
+    padding: 3.75rem 2.5rem;
+    position: relative;
+    overflow: hidden;
 }
 .with-rds-shadow {
     border-radius: 1rem;
     box-shadow: 4.543px 4.543px 22.716px 0 rgba(68, 84, 98, 0.10);
 }
+.inner-rows-mg {
+    margin-top: 1.5rem;
+}
+.fw-gray {
+    padding: 6.25rem 0;
+    background: var(--lightGrey3);
+}
+.rs-inner-sm-col {
+    width: 24%;
+}
+.box-without-pd .boxed-col {
+    padding: 0;
+}
+.obj-ps-left {
+    object-position: left;
+}
+.md-subheading {
+    margin: 0;
+    color: var(--darkGrey);
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 2rem;
+}
+.sm-text {
+    color: var(--darkGrey);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+}
+.rs-next-ref {
+    padding: 12.5rem 0;
+}
+.sm-wrap {
+    width: 45rem;
+    margin: 0 auto;
+}
+.tx-center {
+    text-align: center;
+}
+.white-sc {
+    background: var(--white);
+}
+
 
 
 

@@ -1,5 +1,23 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ResultEnd from '../../components/ResultEnd.astro';
+
+import { Image } from 'astro:assets';
+import laptopGraphic from '../../assets/results/pl/laptop-graphic.webp';
+import starGraphic from '../../assets/results/pl/star-graphic.webp';
+import mobileViewBg from '../../assets/results/pl/pl-mobile-view.webp';
+import mobileScreen1 from '../../assets/results/pl/mobile-screen-1.webp';
+import mobileScreen2 from '../../assets/results/pl/mobile-screen-2.webp';
+import mobileScreen3 from '../../assets/results/pl/mobile-screen-3.webp';
+import mobileScreen4 from '../../assets/results/pl/mobile-screen-4.webp';
+import mobileScreen5 from '../../assets/results/pl/mobile-screen-5.webp';
+import mobileScreen6 from '../../assets/results/pl/mobile-screen-6.webp';
+import mobileScreen7 from '../../assets/results/pl/mobile-screen-7.webp';
+import mobileScreen8 from '../../assets/results/pl/mobile-screen-8.webp';
+import mobileOnHandGraphic from '../../assets/results/pl/mobile-on-hand-graphic.png';
+import iconsBundle1 from '../../assets/results/pl/icons-bundle-1.svg';
+import iconsBundle2 from '../../assets/results/pl/icons-bundle-2.svg';
+import macbookBg from '../../assets/results/pl/macbook-bg.webp';
 ---
 
 <Layout>
@@ -14,7 +32,7 @@ import Layout from '../../layouts/Layout.astro';
         <div class="container">
             <div class="cols-wrap fx fx-jb fx-wrap">
                 <div class="col">
-                    <h1 class="rs-heading">Paperless</h1>
+                    <h1 class="rs-heading dark-gray">Paperless</h1>
                 </div>
                 <div class="col">
                     <div class="rs-info">
@@ -120,7 +138,7 @@ import Layout from '../../layouts/Layout.astro';
             <source src="/vd/PL/pl-sc-2-video.webm" type="video/webm">
         </video>
     </section>
-    <section class="rs-ds-lpt-comparison">
+    <section class="fw-gray">
         <div class="container">
             <div class="rs-inner-cols fx fx-jb fx-wrap">
                 <div class="rs-inner-smcol">
@@ -134,19 +152,85 @@ import Layout from '../../layouts/Layout.astro';
                     </video>
                 </div>
             </div>
+            <div class="cols-wrap inner-rows-mg fx fx-jb fx-wrap">
+                <div class="boxed-col col">
+                    <Image src={laptopGraphic} alt="laptop-graphic" />
+                </div>
+                <div class="boxed-col col">
+                    <Image src={starGraphic} alt="star-graphic-with-text" />
+                </div>
+            </div>
         </div>
     </section>
+    <section class="rs-fw-image">
+        <Image src={mobileViewBg} alt="mobile-view" />
+    </section>
+    <section class="fw-gray mobile-views">
+        <div class="container">
+            <div class="rs-inner-cols fx fx-jb fx-wrap">
+                <div class="rs-inner-sm-col">
+                    <Image src={mobileScreen1} alt="mobile-screen-1" class="with-rds-shadow" />
+                </div>
+                <div class="rs-inner-sm-col">
+                    <Image src={mobileScreen2} alt="mobile-screen-2" class="with-rds-shadow" />
+                </div>
+                <div class="rs-inner-sm-col">
+                    <Image src={mobileScreen3} alt="mobile-screen-3" class="with-rds-shadow" />
+                </div>
+                <div class="rs-inner-sm-col">
+                    <Image src={mobileScreen4} alt="mobile-screen-4" class="with-rds-shadow" />
+                </div>
+                <div class="rs-inner-sm-col">
+                    <Image src={mobileScreen5} alt="mobile-screen-5" class="with-rds-shadow" />
+                </div>
+                <div class="rs-inner-sm-col">
+                    <Image src={mobileScreen6} alt="mobile-screen-6" class="with-rds-shadow" />
+                </div>
+                <div class="rs-inner-sm-col">
+                    <Image src={mobileScreen7} alt="mobile-screen-7" class="with-rds-shadow" />
+                </div>
+                <div class="rs-inner-sm-col">
+                    <Image src={mobileScreen8} alt="mobile-screen-8" class="with-rds-shadow" />
+                </div>
+            </div>
+            <div class="cols-wrap box-without-pd inner-rows-mg fx fx-jb fx-wrap">
+                <div class="boxed-col col">
+                    <Image src={mobileOnHandGraphic} alt="mobile-on-hand-graphic" />
+                </div>
+                <div class="boxed-col col">
+                    <video autoplay muted loop playsinline class="obj-ps-left">
+                        <source src="/vd/PL/process-video.webm" type="video/webm">
+                    </video>
+                </div>
+            </div>
+            <div class="icons-bundle-row rs-inner-cols inner-rows-mg">
+                <h2 class="md-subheading">Over 10 tailored infographics that tell a complex story</h2>
+                <div class="fx fx-jb fx-wrap">
+                    <div class="col">
+                        <Image src={iconsBundle1} alt="icons-bundle-1" />
+                    </div>
+                    <div class="col">
+                        <Image src={iconsBundle2} alt="icons-bundle-2" />
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="rs-fw-image">
+        <Image src={macbookBg} alt="macbook-background" />
+    </section>
+    <ResultEnd />
 </Layout>
 
 <style>
-.rs-ds-lpt-comparison {
-    padding: 6.25rem 0;
-    background: var(--lightGrey3);
-}
 .rs-inner-smcol {
     width: 26%;
 }
 .rs-inner-lgcol {
     width: 71%;
+}
+.mobile-views .rs-inner-cols:first-child {
+    row-gap: 1.5rem;
 }
 </style>
