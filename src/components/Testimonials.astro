@@ -2,10 +2,16 @@
 import { Swiper, SwiperWrapper, SwiperSlide } from "astro-swiper";
 import { Image } from 'astro:assets';
 import keithProfile from '../../public/keith-laferla.jpg';
+const { theme } = Astro.props;
+
 
 ---
 
-<section class="hp-testimonials sc-al-cnt sc-pd sc-grey ps-rel">
+<section
+    class={`hp-testimonials sc-al-cnt sc-pd ps-rel ${
+        theme === "dark" ? "sc-dark" : "sc-grey"
+    }`}
+>
     <div class="container">
         <div class="sc-wrapper">
             <div class="tst-headline ps-rel">
@@ -287,7 +293,7 @@ import keithProfile from '../../public/keith-laferla.jpg';
 </section>
 
 <style>
-    .hp-testimonials:before{
+    .hp-testimonials:not(.sc-dark):before{
         content: '';
         position: absolute;
         top: 0;

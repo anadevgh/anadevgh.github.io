@@ -8,8 +8,8 @@
                 </div>
             </div>
         </div>
-        <div class="exp-list-items fx fx-wrap fx-jc">
-            <div class="exp-acc-item fx fx-wrap">
+        <div class="exp-list-items fx fx-wrap fx-jc ps-rel">
+            <div class="exp-acc-item">
                 <div class="exp-acc-top fx fx-ac fx-jb fwidth">
                     <div class="exp-acc-top-lcol">
                         <h5>Brand Discovery & Strategy</h5>
@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="exp-acc-item fx fx-wrap">
+            <div class="exp-acc-item">
                 <div class="exp-acc-top fx fx-ac fx-jb fwidth">
                     <div class="exp-acc-top-lcol">
                         <h5>Visual Identity System</h5>
@@ -153,7 +153,7 @@
                     </div>
                 </div>
             </div>
-            <div class="exp-acc-item fx fx-wrap">
+            <div class="exp-acc-item">
                 <div class="exp-acc-top fx fx-ac fx-jb fwidth">
                     <div class="exp-acc-top-lcol">
                         <h5>Brand Guidelines</h5>
@@ -231,7 +231,7 @@
                     </div>
                 </div>
             </div>
-            <div class="exp-acc-item fx fx-wrap">
+            <div class="exp-acc-item">
                 <div class="exp-acc-top fx fx-ac fx-jb fwidth">
                     <div class="exp-acc-top-lcol">
                         <h5>Brand Applications</h5>
@@ -309,7 +309,7 @@
                     </div>
                 </div>
             </div>
-            <div class="exp-acc-item fx fx-wrap">
+            <div class="exp-acc-item">
                 <div class="exp-acc-top fx fx-ac fx-jb fwidth">
                     <div class="exp-acc-top-lcol">
                         <h5>Brand Architecture</h5>
@@ -384,6 +384,7 @@
         margin-top: 3.75rem;
         gap: 1.5rem;
         align-items: flex-start;
+        z-index: 1;
     }
     .exp-acc-item{
         background: #252831;
@@ -471,9 +472,6 @@
         padding: 0.75rem 20px 0.75rem 0.75rem;
         width: calc((100% - 2 * 0.75rem) / 3);
     }
-    .exp-acc-dot{
-        margin-right: 0.5rem;
-    }
     .exp-acc-key-point span{
         color: var(--white);
         font-size: 1rem;
@@ -500,6 +498,7 @@
         width: 1.5rem;
         height: 1.5rem;
         flex-shrink: 0;
+        margin-right: 0.5rem;
     }
     .exp-dot{
         width: 0.5rem;
@@ -516,9 +515,11 @@
             const header = item.querySelector('.exp-acc-top');
             const content = item.querySelector('.exp-acc-main');
 
-            item.classList.add('opened');
-            content.style.maxHeight = content.scrollHeight + 'px';
-
+            if(!item.classList.contains('exp-faq')){
+                item.classList.add('opened');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+            
             header.addEventListener('click', () => {
             const isOpen = item.classList.contains('opened');
 
