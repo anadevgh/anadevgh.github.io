@@ -315,7 +315,7 @@ h5{
     line-height: 1.25rem;
     letter-spacing: 0.02rem;
 }
-.rs-action-links span {
+.rs-action-links > span {
     margin-right: 1rem;
     line-height: 0.8rem;
 }
@@ -484,6 +484,35 @@ h5{
 }
 .pj-featured-cols .pj-featured-item {
     margin-right: 1.5rem;
+}
+.vct-icon svg * {
+    -webkit-transition: fill .4s, stroke .4s;
+    -moz-transition: fill .4s, stroke .4s;
+    transition: fill .4s, stroke .4s;
+}
+.copy-link-btn svg {
+    cursor: pointer;
+}
+.copy-status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background: rgba(44, 44, 44, 0.2);
+    color: var(--lightGrey3);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1rem;
+    margin-left: 1rem;
+    opacity: 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.visible {
+    opacity: 1;
+}
+.rs-sc-sharing-links a:hover svg rect, .x-icon:hover svg g path, .copy-link-btn svg:hover rect:nth-child(1) {
+    fill: var(--blue);
 }
 
 
