@@ -488,9 +488,16 @@ h5{
 }
 .pj-featured-cols {
     margin-top: 3.75rem;
+    position: relative;
+    overflow: hidden;
 }
 .pj-featured-cols .pj-featured-item {
     margin-right: 1.5rem;
+    flex-shrink: 0;
+    width: 38%;
+}
+.pj-featured-cols .pj-featured-item:last-child {
+    margin-right: 0;
 }
 .vct-icon svg * {
     -webkit-transition: fill .4s, stroke .4s;
@@ -521,6 +528,11 @@ h5{
 .rs-sc-sharing-links a:hover svg rect, .x-icon:hover svg g path, .copy-link-btn svg:hover rect:nth-child(1) {
     fill: var(--blue);
 }
+.rs-similar .container {
+    padding-right: 0;
+}
+
+
 
 
 /* results styles end */
