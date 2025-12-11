@@ -174,6 +174,13 @@ img {
     font-weight: 500;
     letter-spacing: 0.01rem;
 }
+.btn-primary-lg {
+    height: 56px;
+    padding: 0 40px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+}
 .btn-dark{
     background: var(--darkGrey);
     color: var(--white);
