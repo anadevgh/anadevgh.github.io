@@ -1,24 +1,303 @@
 ---
-import BrandingHero from '../components/BrandingHero.astro';
-import BrandingIssues from '../components/BrandingIssues.astro';
-import BrandingApproach from '../components/BrandingApproach.astro';
-import BrandingExpertiseList from '../components/BrandingExpertiseList.astro';
-import BrandingProcess from '../components/BrandingProcess.astro';
-import BrandingDeliverables from '../components/BrandingDeliverables.astro';
+import ExpertiseHero from '../components/ExpertiseHero.astro';
+import ExpertiseIssues from '../components/ExpertiseIssues.astro';
+import ExpertiseApproach from '../components/ExpertiseApproach.astro';
+import ExpertiseList from '../components/ExpertiseList.astro';
+import ExpertiseProcess from '../components/ExpertiseProcess.astro';
+import ExpertiseDeliverables from '../components/ExpertiseDeliverables.astro';
 import Testimonials from '../components/Testimonials.astro';
-import BrandingSolutions from '../components/BrandingSolutions.astro';
-import BrandingFAQ from '../components/BrandingFAQ.astro';
-import BrandingCTA from '../components/BrandingCTA.astro';
+import ExpertiseSolutions from '../components/ExpertiseSolutions.astro';
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
+import ExpertiseCTA from '../components/ExpertiseCTA.astro';
+
+import brandingHero from '../assets/branding-graphic.png';
+
+const brandingHeroData = {
+    img: brandingHero,
+    heading: `Branding <br/> & Identity Design`,
+    description: "Your brand is more than visuals — it's the story people believe about your business. We build brand systems that communicate authority, inspire trust, and position you for long-term success.",
+}
+
+const issuesData = {
+    heading: "What This Expertise Solves",
+    description: `A strong brand does more than look good — <br/> 
+                 it removes friction, creates trust, and drives decisions. <br/> 
+                 Businesses come to us when they struggle with:`,
+
+    items: [
+        { title: "Lack of brand clarity", text: "Your audience cannot understand who you are or why you matter." },
+        { title: "Inconsistent or outdated visual identity", text: "Your brand feels mismatched, disconnected, or unprofessional." },
+        { title: "Difficulty standing out in a saturated market", text: "Competitors blend together — your brand disappears in the noise." },
+        { title: "Low trust or low confidence in digital channels", text: "Users hesitate to engage or convert because the brand lacks credibility." },
+        { title: "Internal confusion on messaging and positioning", text: "Different departments say different things — creating misalignment." },
+        { title: "Scaling challenges across markets or regions", text: "Your brand breaks when you try to expand or internationalise." },
+    ]
+};
+
+const approachData = {
+    heading: "Our Branding Approach",
+    description: `Branding at IPOINT INT is not an art project. <br/> 
+                  It is a strategic, engineered system designed to help your business perform. <br/>
+                  Our approach combines:`,
+    secDesc: `We begin with <span class="blue">clarity</span>, build with <span class="red">precision</span>, and end with a <span class="green">scalable brand system</span> <br/>
+              that works across platforms, markets, and teams. <br/>
+              This is branding that doesn't expire — it evolves.`,              
+                
+    items: [
+        { title: "Premium Design", text: "Sharp, intentional, crafted identities that stand out and elevate perception." },
+        { title: "Strategic Simplicity", text: "A brand that feels effortless to understand, remember, and use across all touchpoints." },
+        { title: "Impact-Driven Execution", text: "Everything is designed to drive real results — trust, recognition, and measurable engagement." },
+    ]              
+}
+
+const expertiseListData = {
+    heading: "Full Branding Expertise",
+    description: "Coprehensive capabilities designed to build brands that perform",        
+    items: [
+        {
+            title: "Brand Discovery & Strategy",
+            subtitle: "Where every great brand begins — clarity.",
+            keyPoints: [
+                "Brand audit & competitive landscape",
+                "Core purpose, values, and positioning",
+                "Audience personas & behaviour mapping",
+                "Tone of voice and messaging framework",
+                "Brand narrative and story development"
+            ],
+            outcome: "A clear, strategic foundation for how your brand should sound, look, and behave."
+        },
+        {
+            title: "Visual Identity System",
+            subtitle: "Your visual DNA — built for recognition and consistency.",
+            keyPoints: [
+                "Logo design & responsive logo system",
+                "Colour palette & accessibility testing",
+                "Typography system",
+                "Iconography & graphic elements",
+                "Visual behaviour (layout, spacing, motion cues)"
+            ],
+            outcome: "A distinctive, premium identity that works across every digital and physical environment."
+        },
+        {
+            title: "Brand Guidelines",
+            subtitle: "The instruction manual for brand consistency and integrity.",
+            keyPoints: [
+                "Visual identity rules",
+                "Tone of voice guidelines",
+                "Content do's & don'ts",
+                "UI & product branding alignment",
+                "Digital and print usage",
+                "Social media identity"
+            ],
+            outcome: "A brand that stays consistent — no matter who uses it."
+        },
+        {
+            title: "Brand Applications",
+            subtitle: "Where strategy and design meet real-world execution.",
+            keyPoints: [
+                "Website & digital assets",
+                "Social media templates",
+                "Campaign assets",
+                "Pitch decks & business collateral",
+                "Brand launch content",
+                "In-product branding"
+            ],
+            outcome: "A brand that feels complete, professional, and ready for growth."
+        },
+        {
+            title: "Brand Architecture",
+            subtitle: "For businesses scaling into new verticals, locations, or products.",
+            keyPoints: [
+                "Multi-brand and sub-brand frameworks",
+                "International brand adaptation",
+                "Naming conventions",
+                "Franchise or multi-location identity rules"
+            ],
+            outcome: "A scalable brand system that grows with your business."
+        }
+    ]
+}
+
+const expertiseProcessData = {
+    heading: "Our Branding Process",
+    description: "Branding is precision work. Our process ensures clarity at every stage:",
+    steps: [
+        {
+            stepNumber: "01",
+            title: "Discovery",
+            description: "We understand your business, audience, competitors, and goals."
+        },
+        {
+            stepNumber: "02",
+            title: "Strategy",
+            description: "We define your positioning, messaging, and brand story."
+        },
+        {
+            stepNumber: "03",
+            title: "Identity Creation",
+            description: "We design your visual system with intention and differentiation."
+        },
+        {
+            stepNumber: "04",
+            title: "System Development",
+            description: "We build the guidelines, rules, and behaviours that form your identity."
+        },
+        {
+            stepNumber: "05",
+            title: "Application",
+            description: "We roll out your brand across all touchpoints."
+        },
+        {
+            stepNumber: "06",
+            title: "Launch & Support",
+            description: "We support your brand rollout and ensure consistency moving forward."
+        }
+    ],
+    resultText: "The result: A brand designed to perform today — and evolve tomorrow."
+}
+
+const deliverablesData = {
+    heading: "Deliverables",
+    description: "Depending on your Solution tier, branding deliverables include:",
+
+    items: [
+        { title: "Brand strategy document" },
+        { title: "Brand guidelines" },
+        { title: "Messaging & tone of voice" },
+        { title: "Social & marketing assets" },
+        { title: "Logo system" },
+        { title: "Digital brand application" },
+        { title: "Colour & typography" },
+        { title: "Brand architecture documentation" },
+        { title: "Visual identity toolkit" },
+    ]
+}
+
+const expertiseSolutionsData = {
+    heading: `How Branding Connects <br/> to Our Solutions`,
+    description: "Branding plays a critical role across all IPOINT INT Solutions:",        
+    items: [
+        {
+            title: `Startup <br/> Solution`,
+            subtitle: "Branding Tier: Tier 1",
+            text: "Brand identity, story, and foundational assets that give new businesses credibility from day one."
+        },
+        {
+            title: `Growth <br/> Solution`,
+            subtitle: "Branding Tier: Tier 2",
+            text: "Brand refresh, repositioning, and visual system upgrade for companies ready to elevate."
+        },
+        {
+            title: `Expansion <br/> Solution`,
+            subtitle: "Branding Tier: Tier 3",
+            text: "Brand architecture, localisation, and global scalability across regions."
+        },
+        {
+            title: `Franchise <br/> Solution`,
+            subtitle: "Branding Tier: Tier 3+",
+            text: "Brand consistency frameworks and multi-location identity systems."
+        },
+        {
+            title: `Enterprise Custom <br/> Solution`,
+            subtitle: "Branding Tier: Tier 3+",
+            text: "Enterprise-level brand architecture, guidelines, and system design across departments and markets."
+        },
+    ]
+}
+
+const expertiseCTAData = {
+    heading: `Build a Brand That <br/> Creates Confidence`,
+    description: "Whether you՛re launching something new or evolving an established identity, we'll help you build a brand engineered for clarity, trust, and long-term performance.",
+    button1text: "Explore Solutions",
+    button1Link: "#",
+    button2text: "Connect With Us",
+    button2Link: "#",
+}
+
+const expertiseFAQData = {
+    heading: "Branding FAQs",      
+    items: [
+        {
+            title: "What is included in a full branding project?",
+            text: `<p>A complete branding project covers strategy, messaging, visual identity, guidelines, and digital/print applications. For larger organisations, it can also include brand architecture and international adaptation.</p>`
+        },
+        {
+            title: "How long does branding take?",
+            text: `<p>Most branding projects take 4 to 8 weeks depending on complexity.</p>
+                    <p>Startups are often faster.</p>
+                    <p>Enterprises or multi-brand structures require more time for research and architecture.</p>`
+        },
+        {
+            title: "Can you refresh an existing brand instead of creating a new one?",
+            text: `<p>Yes. Many clients come to us with strong foundations but outdated visuals or unclear messaging.</p>
+                   <p>A brand refresh can provide major results without losing existing equity.</p>`
+        },
+        {
+            title: "Do you provide only the logo?",
+            text: `<p>We do not sell “logo-only” projects.</p>
+                    <p> A premium brand requires a full system — strategy, identity, behaviour, and application. Logos are only one piece of a complete brand.</p>`
+        },
+        {
+            title: "How do I know if I need branding or a full Solution?",
+            text: `<p>If your challenge is purely identity-related, branding might be enough.</p>
+                    <p>If you also need a website, strategy, or digital presence, then a Solution (Startup or Growth) will deliver more value and clarity.</p>`
+        },
+        {
+            title: "Do you offer naming services?",
+            text: `<p>Yes — naming is part of brand architecture and storytelling, included in select branding tiers or the Enterprise Solution.</p>`
+        }
+    ]
+}
 
 ---
 
-<BrandingHero />
-<BrandingIssues />
-<BrandingApproach />
-<BrandingExpertiseList />
-<BrandingProcess />
-<BrandingDeliverables />
+<ExpertiseHero 
+    img={brandingHeroData.img}
+    title={brandingHeroData.heading}
+    text={brandingHeroData.description}
+/>
+<ExpertiseIssues 
+    heading={issuesData.heading}
+    description={issuesData.description}
+    items={issuesData.items}
+/>
+<ExpertiseApproach 
+    heading={approachData.heading}
+    description={approachData.description}
+    secDesc={approachData.secDesc}
+    items={approachData.items}
+/>
+<ExpertiseList 
+    heading={expertiseListData.heading}
+    description={expertiseListData.description}
+    items={expertiseListData.items}
+/>
+<ExpertiseProcess 
+    heading={expertiseProcessData.heading}
+    description={expertiseProcessData.description}
+    steps={expertiseProcessData.steps}
+    resultText={expertiseProcessData.resultText}
+/>
+<ExpertiseDeliverables 
+    heading={deliverablesData.heading}
+    description={deliverablesData.description}
+    items={deliverablesData.items}
+/>
 <Testimonials theme="dark" />
-<BrandingSolutions />
-<BrandingFAQ />
-<BrandingCTA />
+<ExpertiseSolutions 
+    heading={expertiseSolutionsData.heading}
+    description={expertiseSolutionsData.description}
+    items={expertiseSolutionsData.items}
+/>
+<ExpertiseFAQ 
+    heading={expertiseFAQData.heading}
+    items={expertiseFAQData.items}
+/>
+<ExpertiseCTA 
+    heading={expertiseCTAData.heading}
+    description={expertiseCTAData.description}
+    button1text={expertiseCTAData.button1text}
+    button1Link={expertiseCTAData.button1Link}
+    button2text={expertiseCTAData.button2text}
+    button2Link={expertiseCTAData.button2Link}
+/>

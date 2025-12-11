@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import brandingHero from '../../public/branding-graphic.png';
+const { img, title, text } = Astro.props;
 
 ---
 
@@ -8,12 +8,12 @@ import brandingHero from '../../public/branding-graphic.png';
     <div class="container">
         <div class="exp-sc-wrap fx fx-wrap">
             <div class="exp-graphic">
-                <Image src={brandingHero} alt=" " />
+                <Image src={img} alt={title} />
             </div>
             <div class="exp-intro-text">
-                <h1>Branding <br/> & Identity Design</h1>
+                <h1 set:html={title}></h1>
                 <div class="sc-txt">
-                    <p>Your brand is more than visuals — it's the story people believe about your business. We build brand systems that communicate authority, inspire trust, and position you for long-term success.</p>
+                    <p>{text}</p>
                 </div>
             </div>
         </div>
