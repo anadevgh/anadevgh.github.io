@@ -1,0 +1,333 @@
+---
+import ExpertiseHero from '../components/ExpertiseHero.astro';
+import ExpertiseIssues from '../components/ExpertiseIssues.astro';
+import ExpertiseApproach from '../components/ExpertiseApproach.astro';
+import ExpertiseList from '../components/ExpertiseList.astro';
+import ExpertiseProcess from '../components/ExpertiseProcess.astro';
+import ExpertiseDeliverables from '../components/ExpertiseDeliverables.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ExpertiseSolutions from '../components/ExpertiseSolutions.astro';
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
+import ExpertiseCTA from '../components/ExpertiseCTA.astro';
+
+import HeroImage from '../assets/ux-graphic.png';
+
+const HeroData = {
+    img: HeroImage,
+    heading: `Creative Production`,
+    description: "From motion graphics to video, 3D, and campaign assets — we produce visuals that feel premium, communicate clearly, and stand out in competitive markets.",
+}
+
+const issuesData = {
+    heading: "What This Expertise Solves",
+    description: `Great ideas fall flat with poor execution.<br/> 
+                 Great brands lose momentum without consistent visuals.<br/>
+                 Great products underperform when they don’t look the part. <br/>
+                 We solve creative problems that limit brand perception:`,
+
+    items: [
+        { 
+            title: "Visuals that don’t match your brand’s quality", 
+            text: "Outdated or inconsistent imagery harms trust."
+        },
+        { 
+            title: "Marketing assets that feel generic or templated", 
+            text: "Nothing stands out or communicates your unique value." 
+        },
+        { 
+            title: "Content that lacks clarity or purpose", 
+            text: "Your message gets lost instead of landing with impact." 
+        },
+        { 
+            title: "Inconsistent output across teams and platforms", 
+            text: "Different styles, colours, layouts — visual chaos." 
+        },
+        { 
+            title: "Creative teams without structure or direction", 
+            text: "Frequent revisions, unclear briefs, wasted time." 
+        },
+        { 
+            title: "Zero visual identity across video and motion", 
+            text: "Static brands feel outdated and less credible." 
+        }
+    ]
+};
+
+const approachData = {
+    heading: "Our Creative Philosophy",
+    description: `Creative work should feel effortless, precise, and unmistakably yours.`,              
+                
+    items: [
+        { 
+            title: "Premium Quality First", 
+            text: "Every visual is polished, intentional, and built to last." 
+        },
+        { 
+            title: "Strategic Creativity", 
+            text: "Beautiful design tied to outcomes — not decoration." 
+        },
+        { 
+            title: "Brand Alignment", 
+            text: "Consistency across every asset: social, web, video, print." 
+        },
+        { 
+            title: "Engineered Production", 
+            text: "Clear systems, predictable delivery, repeatable quality." 
+        },
+        { 
+            title: "Modern, High-End Visuals", 
+            text: "3D, motion, graphics, editorial style — aligned with your brand." 
+        }
+    ]              
+}
+
+const expertiseListData = {
+    heading: "Full Creative Expertise",
+    description: "",        
+    items: [
+        {
+            title: "Video Production",
+            subtitle: "Premium-quality video designed to communicate, convert, and inspire.",
+            keyPoints: [
+                "Brand videos",
+                "Corporate storytelling",
+                "Event recaps",
+                "Testimonial videos",
+                "Product & feature videos",
+                "Social-first video content"
+            ],
+            outcome: "Professional, emotionally engaging video that elevates your brand’s credibility."
+        },
+        {
+            title: "Motion Graphics & Animation",
+            subtitle: "Dynamic visuals that bring ideas to life.",
+            keyPoints: [
+                "Explainer animations",
+                "UI/UX animations",
+                "Logo animations",
+                "Campaign motion assets",
+                "Technical process animations"
+            ],
+            outcome: "Clarity, engagement, and a modern visual identity that feels alive."
+        },
+        {
+            title: "3D Visuals & CGI",
+            subtitle: "Stunning visuals for high-end brands.",
+            keyPoints: [
+                "3D product renders",
+                "Abstract 3D objects (your signature style)",
+                "Event visuals & animations",
+                "Campaign hero assets",
+                "Brand-driven CGI visuals"
+            ],
+            outcome: "Premium, distinctive imagery that stands out instantly."
+        },
+        {
+            title: "Graphic Design & Visual Communication",
+            subtitle: "Clear, consistent design for daily operations and long-term branding.",
+            keyPoints: [
+                "Social media creatives",
+                "Pitch decks & presentations",
+                "Brochures & sales materials",
+                "Website graphics",
+                "Print & corporate materials"
+            ],
+            outcome: "A cohesive, professional visual presence across every channel."
+        },
+        {
+            title: "Event & Campaign Creative",
+            subtitle: "High-impact visuals designed for visibility.",
+            keyPoints: [
+                "Event branding",
+                "Exhibition stand graphics",
+                "Stage screens & loop videos",
+                "Campaign visual concepts",
+                "Digital billboards & large-format assets"
+            ],
+            outcome: "Maximum impact at events, expos, and product launches."
+        }
+    ]
+}
+
+const expertiseProcessData = {
+    heading: "Our Creative Production Process",
+    description: "A structured, predictable workflow designed to deliver excellence every time.",
+    steps: [
+        {
+            stepNumber: "01",
+            title: `Creative <br/> Direction`,
+            description: "Understanding brand, tone, message, and goals."
+        },
+        {
+            stepNumber: "02",
+            title: `Concept <br/> Development`,
+            description: "Storyboards, visual references, and narrative alignment."
+        },
+        {
+            stepNumber: "03",
+            title: `Production`,
+            description: "3D, video, animation, design — executed with precision."
+        },
+        {
+            stepNumber: "04",
+            title: `Refinement`,
+            description: "Optimisation, polishing, and quality checks."
+        },
+        {
+            stepNumber: "05",
+            title: `Delivery`,
+            description: "Formats optimised for social, web, ads, or events."
+        },
+        {
+            stepNumber: "06",
+            title: `Ongoing <br/> Support`,
+            description: "Retainers available for clients needing consistent high-quality output."
+        }
+    ],
+    resultText: "The result: Creative is more than visuals — It’s communication engineered with intent."
+}
+
+const deliverablesData = {
+    heading: "Deliverables",
+    description: "Your creative package may include:",
+
+    items: [
+        { title: "Full campaign creative direction" },
+        { title: "Video production (short, medium, long-form)" },
+        { title: "Animated explainers" },
+        { title: "Motion graphics" },
+        { title: "3D visuals" },
+        { title: "Event visuals" },
+        { title: "Social templates" },
+        { title: "Presentation decks" },
+        { title: "Brand asset packs" },
+        { title: "Digital ads & motion banners" }
+    ]
+}
+
+const expertiseSolutionsData = {
+    heading: `How Creative Production Connects to Our Solutions`,
+    description: "",        
+    items: [
+        {
+            title: `Startup <br/> Solution`,
+            subtitle: "Creative Tier: 1",
+            text: "Launch-ready visuals: brand assets, marketing visuals, social kits."
+        },
+        {
+            title: `Growth <br/> Solution`,
+            subtitle: "Creative Tier: Tier 2",
+            text: "Campaign production, motion graphics, video testimonials, and high-performance ad creatives."
+        },
+        {
+            title: `Expansion <br/> Solution`,
+            subtitle: "Creative Tier: Tier 3",
+            text: "International campaigns, event visuals, multilingual assets."
+        },
+        {
+            title: `Franchise <br/> Solution`,
+            subtitle: "Creative Tier: Tier 3+",
+            text: "Scaled creative systems for multi-location rollouts."
+        },
+        {
+            title: `Enterprise Custom <br/> Solution`,
+            subtitle: "Creative Tier: Tier 3+",
+            text: "3D, motion, video, campaign systems, and high-end production at scale."
+        },
+    ]
+}
+
+const expertiseFAQData = {
+    heading: "Creative Production FAQs",      
+    items: [
+        {
+            title: "What creative formats do you specialise in?",
+            text: `<p>Video, 3D, animation, graphic design, and high-end digital assets for campaigns, websites, and events.</p>`
+        },
+        {
+            title: "What industries do you serve?",
+            text: `<p>iGaming, fintech, SaaS, corporate, event-driven industries, and brands that require premium production quality.</p>`
+        },
+        {
+            title: "Can you handle everything from concept to delivery?",
+            text: `<p>Yes — from creative direction to full production, including scripting, storyboards, filming, motion, and editing.</p>`
+        },
+        {
+            title: "Do you produce video testimonials and case studies?",
+            text: `<p>Yes — including on-site filming, interview direction, and editing.</p>`
+        },
+        {
+            title: "Can you match our existing brand identity?",
+            text: `<p>Absolutely — or we can elevate it with a more modern, premium visual direction.</p>`
+        },
+        {
+            title: "How fast can creative production be delivered?",
+            text: `<p>Small assets: 3–7 days</p>
+                    <p>Motion graphics: 1–3 weeks</p>
+                    <p>Video production: 2–6 weeks</p>
+                    <p>Campaign packages: depends on scope</p>`
+        }
+    ]
+}
+
+const expertiseCTAData = {
+    heading: `Your Brand Deserves <br/> Creative That Feels Premium`,
+    description: "Whether you need video, motion, 3D, or complete campaign production, we’ll elevate your brand and amplify your results.",
+    button1text: "Explore Solutions",
+    button1Link: "#",
+    button2text: "Connect With Us",
+    button2Link: "#",
+}
+
+---
+
+<ExpertiseHero 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+/>
+<ExpertiseIssues 
+    heading={issuesData.heading}
+    description={issuesData.description}
+    items={issuesData.items}
+/>
+<ExpertiseApproach 
+    heading={approachData.heading}
+    description={approachData.description}
+    secDesc={approachData.secDesc}
+    items={approachData.items}
+/>
+<ExpertiseList 
+    heading={expertiseListData.heading}
+    description={expertiseListData.description}
+    items={expertiseListData.items}
+/>
+<ExpertiseProcess 
+    heading={expertiseProcessData.heading}
+    description={expertiseProcessData.description}
+    steps={expertiseProcessData.steps}
+    resultText={expertiseProcessData.resultText}
+/>
+<ExpertiseDeliverables 
+    heading={deliverablesData.heading}
+    description={deliverablesData.description}
+    items={deliverablesData.items}
+/>
+<Testimonials theme="dark" />
+<ExpertiseSolutions 
+    heading={expertiseSolutionsData.heading}
+    description={expertiseSolutionsData.description}
+    items={expertiseSolutionsData.items}
+/>
+<ExpertiseFAQ 
+    heading={expertiseFAQData.heading}
+    items={expertiseFAQData.items}
+/>
+<ExpertiseCTA 
+    heading={expertiseCTAData.heading}
+    description={expertiseCTAData.description}
+    button1text={expertiseCTAData.button1text}
+    button1Link={expertiseCTAData.button1Link}
+    button2text={expertiseCTAData.button2text}
+    button2Link={expertiseCTAData.button2Link}
+/>

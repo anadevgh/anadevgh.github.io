@@ -1,0 +1,358 @@
+---
+import ExpertiseHero from '../components/ExpertiseHero.astro';
+import ExpertiseIssues from '../components/ExpertiseIssues.astro';
+import ExpertiseApproach from '../components/ExpertiseApproach.astro';
+import ExpertiseList from '../components/ExpertiseList.astro';
+import ExpertiseProcess from '../components/ExpertiseProcess.astro';
+import ExpertiseDeliverables from '../components/ExpertiseDeliverables.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ExpertiseSolutions from '../components/ExpertiseSolutions.astro';
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
+import ExpertiseCTA from '../components/ExpertiseCTA.astro';
+
+import HeroImage from '../assets/ux-graphic.png';
+
+const HeroData = {
+    img: HeroImage,
+    heading: `Digital Marketing`,
+    description: "We build marketing systems that connect your brand, product, and audience — delivering measurable results that compound over time.",
+}
+
+const issuesData = {
+    heading: "What This Expertise Solves",
+    description: `Marketing fails when it relies on guesswork.<br/> 
+                 Our marketing succeeds because it’s engineered.<br/> 
+                 We solve core marketing problems:`,
+
+    items: [
+        { 
+            title: "Inconsistent visibility or weak brand presence", 
+            text: "People see you, but don’t remember you."
+        },
+        { 
+            title: "Traffic without conversions", 
+            text: "Your marketing is working, but your experience isn’t." 
+        },
+        { 
+            title: "Marketing teams without strategic direction", 
+            text: "Activity instead of impact." 
+        },
+        { 
+            title: "Inefficient ad spend", 
+            text: "Money leaking through poorly optimised campaigns." 
+        },
+        { 
+            title: "No clear content strategy or message", 
+            text: "Unclear communication reduces trust." 
+        },
+        { 
+            title: "Misalignment between brand, website, and marketing", 
+            text: "Your touchpoints work separately instead of together." 
+        },
+        { 
+            title: "Markets too competitive to rely on “more spending”", 
+            text: "You need smarter systems, not bigger budgets." 
+        },
+    ]
+};
+
+const approachData = {
+    heading: "Our Marketing Philosophy",
+    description: `Marketing is not posting.<br/> 
+                  Marketing is not guessing.<br/>
+                  Marketing is not “hoping the campaign works.” <br/><br/>
+                  Marketing is:`,
+    secDesc: `Our marketing is engineered around outcomes — not activity.`,              
+                
+    items: [
+        { 
+            title: "Strategic", 
+            text: "Clarity before action." 
+        },
+        { 
+            title: "Consistent", 
+            text: "Daily, weekly, and monthly systems that compound." 
+        },
+        { 
+            title: "Aligned", 
+            text: "Brand, design, and website working together." 
+        },
+        { 
+            title: "Measurable", 
+            text: "Data-driven decisions, not opinions." 
+        },
+        { 
+            title: "Premium", 
+            text: "High-quality content and communication that makes competitors look average." 
+        }
+    ]              
+}
+
+const expertiseListData = {
+    heading: "Full Marketing Expertise",
+    description: "",        
+    items: [
+        {
+            title: "Marketing Strategy & Positioning",
+            subtitle: "The blueprint that aligns your brand with your market.",
+            keyPoints: [
+                "Competitor analysis",
+                "Market positioning",
+                "Messaging frameworks",
+                "ICP definition & segmentation",
+                "Funnel architecture",
+                "Go-to-market strategy"
+            ],
+            outcome: "Clear direction for every campaign, channel, and message."
+        },
+        {
+            title: "Content Marketing",
+            subtitle: "Value-driven content that builds authority and trust.",
+            keyPoints: [
+                "Article & insight creation",
+                "Thought leadership strategy",
+                "Content calendars",
+                "LinkedIn content for founders (your voice, strategically amplified)",
+                "SEO content designed to rank"
+            ],
+            outcome: "Consistency, credibility, and conversion-focused communication."
+        },
+        {
+            title: "Social Media Management",
+            subtitle: "Professional, branded, purposeful content — not noise.",
+            keyPoints: [
+                "Content creation",
+                "Visual social templates",
+                "Social tone of voice",
+                "Community management",
+                "Reporting & optimisation"
+            ],
+            outcome: "Strong digital presence that builds trust and recognition."
+        },
+        {
+            title: "Paid Advertising (PPC & Performance Marketing)",
+            subtitle: "Growth built on data, not emotion.",
+            keyPoints: [
+                "Google Ads",
+                "Meta Ads",
+                "LinkedIn Ads",
+                "Retargeting funnels",
+                "Conversion tracking & attribution",
+                "Campaign optimisation"
+            ],
+            outcome: "Predictable, measurable growth with efficient ad spend."
+        },
+        {
+            title: "SEO & Organic Growth",
+            subtitle: "Visibility that compounds.",
+            keyPoints: [
+                "Keyword strategy",
+                "Technical SEO",
+                "Content optimisation",
+                "On-page & off-page improvements",
+                "Website performance enhancements",
+                "Authority building"
+            ],
+            outcome: "Sustainable visibility that supports long-term growth."
+        },
+        {
+            title: "Email Marketing & Automation",
+            subtitle: "Retention and engagement — automated.",
+            keyPoints: [
+                "Email sequence creation",
+                "CRM segmentation",
+                "Monthly newsletters",
+                "Automation workflows",
+                "Lead nurturing systems"
+            ],
+            outcome: "Higher lifetime value, lower acquisition cost."
+        },
+        {
+            title: "Creative Campaign Execution",
+            subtitle: "Campaigns that move people to action.",
+            keyPoints: [
+                "Creative direction",
+                "Landing pages",
+                "Conversion-focused campaigns",
+                "Creator/Influencer collaborations (where applicable)"
+            ],
+            outcome: "High-impact campaigns that drive engagement and sales."
+        }
+    ]
+}
+
+const expertiseProcessData = {
+    heading: "Our Marketing Process",
+    description: "A complete, structured system:",
+    steps: [
+        {
+            stepNumber: "01",
+            title: `Discovery <br/> & Goal Setting`,
+            description: "Understanding your position, audience, and growth goals."
+        },
+        {
+            stepNumber: "02",
+            title: `Strategy <br/> Framework`,
+            description: "Messaging, funnel architecture, and channel selection."
+        },
+        {
+            stepNumber: "03",
+            title: `Execution`,
+            description: "Content, ads, optimisation, creative output."
+        },
+        {
+            stepNumber: "04",
+            title: `Measurement`,
+            description: "Monthly reporting, insights, and adjustments."
+        },
+        {
+            stepNumber: "05",
+            title: `Optimisation`,
+            description: "Refining results, improving margins, increasing efficiency."
+        }
+    ],
+    resultText: "The result: Marketing becomes predictable when the system is clear."
+}
+
+const deliverablesData = {
+    heading: "Deliverables",
+    description: "Depending on your Solution tier, marketing deliverables include:",
+
+    items: [
+        { title: "Marketing strategy report" },
+        { title: "Annual/quarterly plans" },
+        { title: "Social content calendars" },
+        { title: "Paid ad campaigns" },
+        { title: "Newsletter systems" },
+        { title: "Reporting dashboards" },
+        { title: "SEO strategy" },
+        { title: "Conversion-optimised landing pages" },
+        { title: "Analytics implementation" },
+    ]
+}
+
+const expertiseSolutionsData = {
+    heading: `How Marketing Connects to Our Solutions`,
+    description: "",        
+    items: [
+        {
+            title: `Startup <br/> Solution`,
+            subtitle: "Marketing Tier: 1",
+            text: "Brand launch marketing, early traction systems, foundational visibility."
+        },
+        {
+            title: `Growth <br/> Solution`,
+            subtitle: "Marketing Tier: Tier 2",
+            text: "Performance marketing, refined messaging, funnel optimisation."
+        },
+        {
+            title: `Expansion <br/> Solution`,
+            subtitle: "Marketing Tier: Tier 3",
+            text: "Multi-market campaigns, localisation, multi-language content engines."
+        },
+        {
+            title: `Franchise <br/> Solution`,
+            subtitle: "Marketing Tier: Tier 3+",
+            text: "Master campaigns, multi-location strategies, centralised + local rollouts."
+        },
+        {
+            title: `Enterprise Custom <br/> Solution`,
+            subtitle: "Marketing Tier: Tier 3+",
+            text: "Marketing systems engineered for multi-division brands with layered KPIs."
+        },
+    ]
+}
+
+const expertiseFAQData = {
+    heading: "Marketing FAQs",      
+    items: [
+        {
+            title: "What makes your marketing approach different?",
+            text: `<p>We don’t run random campaigns. We engineer systems that drive predictable results through clarity, alignment, and strategy.</p>`
+        },
+        {
+            title: "Do you handle both organic and paid marketing?",
+            text: `<p>Yes — including SEO, social content, email, and all major paid advertising channels.</p>`
+        },
+        {
+            title: "How soon can we see results?",
+            text: `<p>Early signals appear within weeks.</p>
+                   <p>Measured growth often appears within 60–120 days depending on scope and channels.</p>`
+        },
+        {
+            title: "Can you work with our internal marketing team?",
+            text: `<p>Absolutely. We can support, guide, or lead — depending on your structure.</p>`
+        },
+        {
+            title: "Do you specialise in specific industries?",
+            text: `<p>Yes — iGaming, fintech, SaaS, and high-stakes sectors where precision, trust, and compliance are critical.</p>`
+        },
+        {
+            title: "What budgets do you usually work with for paid ads?",
+            text: `<p>We support efficient budgets for startups and scale up significantly for established brands.</p>
+                   <p>We always tailor budgets to goals and expected ROI.</p>`
+        }
+    ]
+}
+
+const expertiseCTAData = {
+    heading: `Marketing Should Be Predictable. <br/> Let’s Build a System That Scales.`,
+    description: "Whether you need visibility, performance, or a complete growth engine, we’ll build the system that moves your business forward.",
+    button1text: "Explore Solutions",
+    button1Link: "#",
+    button2text: "Connect With Us",
+    button2Link: "#",
+}
+
+---
+
+<ExpertiseHero 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+/>
+<ExpertiseIssues 
+    heading={issuesData.heading}
+    description={issuesData.description}
+    items={issuesData.items}
+/>
+<ExpertiseApproach 
+    heading={approachData.heading}
+    description={approachData.description}
+    secDesc={approachData.secDesc}
+    items={approachData.items}
+/>
+<ExpertiseList 
+    heading={expertiseListData.heading}
+    description={expertiseListData.description}
+    items={expertiseListData.items}
+/>
+<ExpertiseProcess 
+    heading={expertiseProcessData.heading}
+    description={expertiseProcessData.description}
+    steps={expertiseProcessData.steps}
+    resultText={expertiseProcessData.resultText}
+/>
+<ExpertiseDeliverables 
+    heading={deliverablesData.heading}
+    description={deliverablesData.description}
+    items={deliverablesData.items}
+/>
+<Testimonials theme="dark" />
+<ExpertiseSolutions 
+    heading={expertiseSolutionsData.heading}
+    description={expertiseSolutionsData.description}
+    items={expertiseSolutionsData.items}
+/>
+<ExpertiseFAQ 
+    heading={expertiseFAQData.heading}
+    items={expertiseFAQData.items}
+/>
+<ExpertiseCTA 
+    heading={expertiseCTAData.heading}
+    description={expertiseCTAData.description}
+    button1text={expertiseCTAData.button1text}
+    button1Link={expertiseCTAData.button1Link}
+    button2text={expertiseCTAData.button2text}
+    button2Link={expertiseCTAData.button2Link}
+/>

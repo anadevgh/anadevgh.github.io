@@ -3,7 +3,7 @@ const { heading, description, items } = Astro.props;
 
 ---
 
-<section class="exp-issues sc-pd ps-rel">
+<section class="exp-issues sc-pd-dbl ps-rel">
     <div class="container">
         <div class="exp-issues-row fx fx-jb ps-rel">
             <div class="exp-lcol">
@@ -37,6 +37,9 @@ const { heading, description, items } = Astro.props;
 </section>
 
 <style>
+    .sc-pd-dbl{
+        padding: 13rem 0 6.25rem 0;
+    }
     .exp-issues:after {
         content: "";
         position: absolute;
@@ -52,7 +55,7 @@ const { heading, description, items } = Astro.props;
         z-index: 1;
     }
     .exp-lcol{
-        width: 42%;
+        width: 40%;
     }
     .exp-rcol{
         width: 56%;

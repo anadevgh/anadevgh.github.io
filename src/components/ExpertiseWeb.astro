@@ -1,0 +1,359 @@
+---
+import ExpertiseHero from '../components/ExpertiseHero.astro';
+import ExpertiseIssues from '../components/ExpertiseIssues.astro';
+import ExpertiseApproach from '../components/ExpertiseApproach.astro';
+import ExpertiseList from '../components/ExpertiseList.astro';
+import ExpertiseProcess from '../components/ExpertiseProcess.astro';
+import ExpertiseDeliverables from '../components/ExpertiseDeliverables.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ExpertiseSolutions from '../components/ExpertiseSolutions.astro';
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
+import ExpertiseCTA from '../components/ExpertiseCTA.astro';
+
+import HeroImage from '../assets/ux-graphic.png';
+
+const HeroData = {
+    img: HeroImage,
+    heading: `Custom Web Development`,
+    description: "We don’t build websites — we build digital infrastructure. Clean, robust, scalable systems engineered to perform today and evolve tomorrow.",
+}
+
+const issuesData = {
+    heading: "What This Expertise Solves",
+    description: `Your platform is your business engine.<br/> 
+                 If it breaks, slows down, confuses users, or fails under pressure — growth collapses.<br/> 
+                 We solve development problems that stop companies from scaling:`,
+
+    items: [
+        { 
+            title: "Websites that look good but break under real traffic", 
+            text: "Performance, caching, backend structure, server load."
+        },
+        { 
+            title: "Platforms built on templates that limit growth", 
+            text: "Cheap builds cannot scale, integrate, or withstand complexity." 
+        },
+        { 
+            title: "Technical debt from past developers", 
+            text: "Messy code, inconsistent structures, and no documentation." 
+        },
+        { 
+            title: "Slow loading speeds that destroy conversions", 
+            text: "Mobile and cross-device performance issues." 
+        },
+        { 
+            title: "Broken functionality or user flows", 
+            text: "Payments, forms, dashboards, account areas, integrations." 
+        },
+        { 
+            title: "Systems that do not communicate", 
+            text: "CRMs, PSPs, APIs, gateways, internal tools." 
+        },
+        { 
+            title: "Security risks and compliance concerns", 
+            text: "Especially in regulated sectors like iGaming and fintech." 
+        },
+    ]
+};
+
+const approachData = {
+    heading: "Our Development Philosophy",
+    description: `We treat development like engineering, not production.<br/> 
+                  Our principles:`,
+    secDesc: `Great development disappears in the background.<br/>
+              Great performance does not.`,              
+                
+    items: [
+        { 
+            title: "Clean Code", 
+            text: "Readable. Documented. Scalable. Maintainable." 
+        },
+        { 
+            title: "Performance-First Architecture", 
+            text: "Speed, reliability, caching, optimisation." 
+        },
+        { 
+            title: "Security at the Core", 
+            text: "Encrypted data, secure integrations, best-practice standards." 
+        },
+        { 
+            title: "Scalability by Design", 
+            text: "Your system grows with your business, not against it." 
+        },
+        { 
+            title: "Integration-Friendly", 
+            text: "No lock-ins, no limitations — fully API-ready." 
+        },
+        { 
+            title: "Pixel-Perfect Execution", 
+            text: "Front-end aligned exactly with UX/UI design systems." 
+        }
+    ]              
+}
+
+const expertiseListData = {
+    heading: "Full Development Expertise",
+    description: "",        
+    items: [
+        {
+            title: "Front-End Development",
+            subtitle: "Fast, responsive, accessible interfaces.",
+            keyPoints: [
+                "Custom component development",
+                "Animation & micro-interactions",
+                "Clean, semantic code",
+                "Mobile-first engineering",
+                "Design system implementation"
+            ],
+            outcome: "A front-end that feels smooth, modern, and intuitive."
+        },
+        {
+            title: "Back-End Development",
+            subtitle: "The engine that powers your platform.",
+            keyPoints: [
+                "Custom backend architecture",
+                "Secure database structures",
+                "API development & integrations",
+                "Server-side optimisation",
+                "Multi-environment deployments"
+            ],
+            outcome: "Stability, reliability, and speed at scale."
+        },
+        {
+            title: "Custom Web Platforms",
+            subtitle: "Built for businesses that need more than a brochure site.",
+            keyPoints: [
+                "Dashboards",
+                "Account areas",
+                "Multi-role permission systems",
+                "Transaction flows",
+                "Multi-language systems",
+                "Multi-market frameworks"
+            ],
+            outcome: "A platform engineered around your business operations."
+        },
+        {
+            title: "Headless CMS & Modular Architecture",
+            subtitle: "Modern, flexible, future-proof.",
+            keyPoints: [
+                "Headless WordPress",
+                "Strapi, Sanity, Craft CMS",
+                "Modular component systems",
+                "Structured content models"
+            ],
+            outcome: "Faster builds, easier updates, unlimited scalability."
+        },
+        {
+            title: "Integrations & Automation",
+            subtitle: "Your systems should work together seamlessly.",
+            keyPoints: [
+                "CRM integrations (HubSpot, Zoho, custom CRMs)",
+                "PSPs & payment gateways",
+                "iGaming platforms & providers",
+                "ERP integrations",
+                "Email automation",
+                "Internal tools & workflows"
+            ],
+            outcome: "Less manual work, more efficiency, and real-time accuracy."
+        },
+        {
+            title: "Performance Optimisation",
+            subtitle: "Speed is revenue.",
+            keyPoints: [
+                "Lighthouse optimisation",
+                "Server caching strategies",
+                "Image compression pipelines",
+                "Code audits",
+                "CDN setup"
+            ],
+            outcome: "Faster load times, higher conversions, better SEO."
+        }
+    ]
+}
+
+const expertiseProcessData = {
+    heading: "Our Development Process",
+    description: "A reliable, engineered flow that protects quality from start to finish:",
+    steps: [
+        {
+            stepNumber: "01",
+            title: `Technical <br/> Discovery`,
+            description: "We define requirements, architecture, integrations, and constraints."
+        },
+        {
+            stepNumber: "02",
+            title: `UX/UI <br/> Handoff`,
+            description: "Design is translated into components, states, and behaviours."
+        },
+        {
+            stepNumber: "03",
+            title: `Development`,
+            description: "Front-end + back-end built in parallel with agile cycles."
+        },
+        {
+            stepNumber: "04",
+            title: `Integration <br/> Layer`,
+            description: "Connecting CRMs, PSPs, APIs, and any required systems."
+        },
+        {
+            stepNumber: "05",
+            title: `QA & Security <br/> Testing`,
+            description: "Stress tests, device tests, compliance checks."
+        },
+        {
+            stepNumber: "06",
+            title: `Deployment`,
+            description: "Zero-downtime launch, CDN setup, caching strategy."
+        },
+        {
+            stepNumber: "07",
+            title: `Ongoing Support <br/> (Optional)`,
+            description: "Performance monitoring, updates, new features."
+        },
+    ],
+    resultText: "The result: Development is not just code. It’s architecture, structure, and confidence."
+}
+
+const deliverablesData = {
+    heading: "Deliverables",
+    description: "Depending on your Solution tier, deliverables may include:",
+
+    items: [
+        { title: "Technical architecture plan" },
+        { title: "Component-based front-end system" },
+        { title: "Back-end development & database structure" },
+        { title: "Custom CMS setup" },
+        { title: "API documentation" },
+        { title: "Deployment pipeline" },
+        { title: "Performance optimisation plan" },
+        { title: "Integration playbooks" },
+        { title: "DevOps support" },
+    ]
+}
+
+const expertiseSolutionsData = {
+    heading: `How Development Connects to Our Solutions`,
+    description: "",        
+    items: [
+        {
+            title: `Startup <br/> Solution`,
+            subtitle: "Development Tier: 1",
+            text: "A fast, scalable, secure Tier 1 website — built for early traction and credibility."
+        },
+        {
+            title: `Growth <br/> Solution`,
+            subtitle: "Development Tier: Tier 2",
+            text: "Site restructuring, speed optimisation, scalable modules, stronger back-end architecture."
+        },
+        {
+            title: `Expansion <br/> Solution`,
+            subtitle: "Development Tier: Tier 3",
+            text: "Multi-language systems, multi-regional content structures, high-performance global setups."
+        },
+        {
+            title: `Franchise <br/> Solution`,
+            subtitle: "Development Tier: Tier 3+",
+            text: "Multi-location digital frameworks, central dashboards, shared data systems."
+        },
+        {
+            title: `Enterprise Custom <br/> Solution`,
+            subtitle: "Development Tier: Tier 3+",
+            text: "Fully tailored end-to-end platforms, dashboards, workflows, and complex integrations — engineered at scale."
+        },
+    ]
+}
+
+const expertiseFAQData = {
+    heading: "Development FAQs",      
+    items: [
+        {
+            title: "Do you work with templates?",
+            text: `<p>No. Every build is custom. Templates limit performance, scalability, and brand differentiation.</p>`
+        },
+        {
+            title: "What technologies do you use?",
+            text: `<p>We use modern, stable, scalable technologies depending on project needs, including React, Next.js, Node.js, Laravel, and headless CMS systems.</p>
+                    <p>Technology is chosen based on your long-term goals.</p>`
+        },
+        {
+            title: "How long does a custom development project take?",
+            text: `<p>Small websites: 4–8 weeks</p>
+                   <p>Custom platforms: 10–24+ weeks</p>
+                   <p>Timing depends on complexity, integrations, and scope.</p>`
+        },
+        {
+            title: "Can you fix or improve our existing website?",
+            text: `<p>Yes — after a technical audit, we determine whether improvement or rebuild is the best option.</p>`
+        },
+        {
+            title: "Do you handle hosting and maintenance?",
+            text: `<p>Yes. We offer ongoing support, monitoring, and optimisation for clients who require long-term stability.</p>`
+        },
+        {
+            title: "What industries do you specialise in?",
+            text: `<p>We work extensively with iGaming, fintech, SaaS, and performance-sensitive sectors, where security and reliability are critical.</p>`
+        }
+    ]
+}
+
+const expertiseCTAData = {
+    heading: `Build the Platform  <br/> Users Your Business Deserves`,
+    description: "Whether you need a high-performance website or a custom platform built from scratch, we’ll engineer a system built for longevity, speed, and scale.",
+    button1text: "Explore Solutions",
+    button1Link: "#",
+    button2text: "Connect With Us",
+    button2Link: "#",
+}
+
+---
+
+<ExpertiseHero 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+/>
+<ExpertiseIssues 
+    heading={issuesData.heading}
+    description={issuesData.description}
+    items={issuesData.items}
+/>
+<ExpertiseApproach 
+    heading={approachData.heading}
+    description={approachData.description}
+    secDesc={approachData.secDesc}
+    items={approachData.items}
+/>
+<ExpertiseList 
+    heading={expertiseListData.heading}
+    description={expertiseListData.description}
+    items={expertiseListData.items}
+/>
+<ExpertiseProcess 
+    heading={expertiseProcessData.heading}
+    description={expertiseProcessData.description}
+    steps={expertiseProcessData.steps}
+    resultText={expertiseProcessData.resultText}
+/>
+<ExpertiseDeliverables 
+    heading={deliverablesData.heading}
+    description={deliverablesData.description}
+    items={deliverablesData.items}
+/>
+<Testimonials theme="dark" />
+<ExpertiseSolutions 
+    heading={expertiseSolutionsData.heading}
+    description={expertiseSolutionsData.description}
+    items={expertiseSolutionsData.items}
+/>
+<ExpertiseFAQ 
+    heading={expertiseFAQData.heading}
+    items={expertiseFAQData.items}
+/>
+<ExpertiseCTA 
+    heading={expertiseCTAData.heading}
+    description={expertiseCTAData.description}
+    button1text={expertiseCTAData.button1text}
+    button1Link={expertiseCTAData.button1Link}
+    button2text={expertiseCTAData.button2text}
+    button2Link={expertiseCTAData.button2Link}
+/>

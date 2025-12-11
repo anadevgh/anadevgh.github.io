@@ -1,0 +1,357 @@
+---
+import ExpertiseHero from '../components/ExpertiseHero.astro';
+import ExpertiseIssues from '../components/ExpertiseIssues.astro';
+import ExpertiseApproach from '../components/ExpertiseApproach.astro';
+import ExpertiseList from '../components/ExpertiseList.astro';
+import ExpertiseProcess from '../components/ExpertiseProcess.astro';
+import ExpertiseDeliverables from '../components/ExpertiseDeliverables.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ExpertiseSolutions from '../components/ExpertiseSolutions.astro';
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
+import ExpertiseCTA from '../components/ExpertiseCTA.astro';
+
+import HeroImage from '../assets/ux-graphic.png';
+
+const HeroData = {
+    img: HeroImage,
+    heading: `Software Development & Systems Engineering`,
+    description: "We build custom software and automated systems that streamline operations, scale across markets, and give your business the infrastructure it needs to grow without chaos.",
+}
+
+const issuesData = {
+    heading: "What This Expertise Solves",
+    description: `Businesses often grow faster than their systems — and that’s where problems begin.<br/> 
+                 We solve the pains that limit scalability:`,
+
+    items: [
+        { 
+            title: "Too many tools that don’t communicate", 
+            text: "Your team wastes hours jumping between systems."
+        },
+        { 
+            title: "Manual processes slowing your operations", 
+            text: "Repetitive work = lost revenue." 
+        },
+        { 
+            title: "Inflexible software that cannot scale", 
+            text: "Your current system cannot evolve as your business grows." 
+        },
+        { 
+            title: "Internal tools built by outdated agencies", 
+            text: "Legacy code, inefficient flows, no documentation." 
+        },
+        { 
+            title: "Fragmented data across platforms", 
+            text: "No centralised view = no real control." 
+        },
+        { 
+            title: "Complex workflows that break under pressure", 
+            text: "Operational bottlenecks cost time, money, and growth." 
+        },
+        { 
+            title: " Lack of visibility & reporting", 
+            text: "You cannot optimise what you cannot measure." 
+        },
+    ]
+};
+
+const approachData = {
+    heading: "Our Engineering Philosophy",
+    description: `We build systems that last.<br/> 
+                  Not quick fixes. Not shortcuts. Not fragile platforms.<br/>`,
+    secDesc: `Our marketing is engineered around outcomes — not activity.`,              
+                
+    items: [
+        { 
+            title: "Engineered for Scale", 
+            text: "Designed to support growth across markets, teams, and workflows." 
+        },
+        { 
+            title: "Automation First", 
+            text: "If a process can be automated, it should be." 
+        },
+        { 
+            title: "Security & Compliance", 
+            text: "Enterprise-grade encryption, standards, and architecture." 
+        },
+        { 
+            title: "Integration-Ready", 
+            text: "Your systems should talk to each other — with no friction." 
+        },
+        { 
+            title: "Clean Architecture", 
+            text: "Structured, documented, maintainable code built for longevity." 
+        },
+        { 
+            title: "Modular & Extensible", 
+            text: "Adding new features should be straightforward, not painful." 
+        }
+    ]              
+}
+
+const expertiseListData = {
+    heading: "Full Software Development Expertise ",
+    description: "",        
+    items: [
+        {
+            title: "Custom Internal Tools",
+            subtitle: "Your operations, streamlined.",
+            keyPoints: [
+                "Workflow tools",
+                "Process automation",
+                "Task and team management systems",
+                "Multi-role permission structures",
+                "Internal dashboards",
+                "Resource allocation systems"
+            ],
+            outcome: "Faster workflows, fewer errors, higher output."
+        },
+        {
+            title: "Automated Systems & Workflows",
+            subtitle: "Engineering consistency and productivity.",
+            keyPoints: [
+                "Automation frameworks",
+                "Email, CRM, and workflow automation",
+                "Trigger-based systems",
+                "Scheduling systems",
+                "Cross-department automation"
+            ],
+            outcome: "Hours saved every week, compounding efficiency."
+        },
+        {
+            title: "API Development & Integrations",
+            subtitle: "Systems that communicate seamlessly.",
+            keyPoints: [
+                "Custom API development",
+                "Third-party integrations",
+                "iGaming provider integrations",
+                "CRM/ERP/PSP/Gateway integrations",
+                "Webhooks & callback systems"
+            ],
+            outcome: "Real-time communication and centralised operations."
+        },
+        {
+            title: "Custom Platforms",
+            subtitle: "Complex digital systems engineered from the ground up.",
+            keyPoints: [
+                "SaaS platforms",
+                "Multi-level dashboards",
+                "Analytics portals",
+                "Marketplace systems",
+                "Financial tracking systems",
+                "Client account areas",
+                "Multi-tenant platforms"
+            ],
+            outcome: "A platform built around your business — not the other way around."
+        },
+        {
+            title: "Database Architecture & Data Flow",
+            subtitle: "Where performance, structure, and clarity meet.",
+            keyPoints: [
+                "Database schema design",
+                "Secure data storage",
+                "Data modelling & mapping",
+                "Cross-system data normalisation",
+                "Reporting pipelines"
+            ],
+            outcome: "Reliable data, accurate insights, real control."
+        },
+        {
+            title: "Performance & Security Engineering",
+            subtitle: "Critical for regulated sectors like iGaming and fintech.",
+            keyPoints: [
+                "Code audits",
+                "Load testing",
+                "Vulnerability scanning",
+                "Secure authentication",
+                "Compliance-ready structures"
+            ],
+            outcome: "A stable, resilient system prepared for scale."
+        }
+    ]
+}
+
+const expertiseProcessData = {
+    heading: "Our Engineering Process",
+    description: "Clear. Structured. Predictable.",
+    steps: [
+        {
+            stepNumber: "01",
+            title: `Technical <br/> Strategy`,
+            description: "We define what needs to be built, how it works, and how it scales."
+        },
+        {
+            stepNumber: "02",
+            title: `System <br/> Architecture`,
+            description: "Blueprints for data, modules, flows, permission layers, and integrations."
+        },
+        {
+            stepNumber: "03",
+            title: `Development`,
+            description: "Backend, frontend, infrastructure, APIs, automation."
+        },
+        {
+            stepNumber: "04",
+            title: `Integration <br/> Testing`,
+            description: "Security, reliability, and user experience validated across environments."
+        },
+        {
+            stepNumber: "05",
+            title: `Deployment`,
+            description: "Zero-downtime launches and stress-tested architecture."
+        },
+        {
+            stepNumber: "06",
+            title: `Support <br/> & Evolution`,
+            description: "Your system grows and adapts as your business does."
+        }
+    ],
+    resultText: "The result: This is engineering — not production work."
+}
+
+const deliverablesData = {
+    heading: "Deliverables",
+    description: "Deliverables scale depending on your Solution tier:",
+
+    items: [
+        { title: "Technical specification" },
+        { title: "Architecture diagrams" },
+        { title: "API documentation" },
+        { title: "Database schema" },
+        { title: "User roles & permission mapping" },
+        { title: "Full backend system" },
+        { title: "Custom dashboard/frontend" },
+        { title: "Automation workflows" },
+        { title: "DevOps setup & deployment" },
+        { title: "Monitoring & maintenance plans" }
+    ]
+}
+
+const expertiseSolutionsData = {
+    heading: `How Software Connects to Our Solutions`,
+    description: "",        
+    items: [
+        {
+            title: `Startup <br/> Solution`,
+            subtitle: "Software Tier: 1",
+            text: "Lightweight systems to support early-stage operations."
+        },
+        {
+            title: `Growth <br/> Solution`,
+            subtitle: "Software Tier: Tier 2",
+            text: "Automation tools, dashboards, better data alignment."
+        },
+        {
+            title: `Expansion <br/> Solution`,
+            subtitle: "Software Tier: Tier 3",
+            text: "Multi-market, multi-language, multi-team digital systems."
+        },
+        {
+            title: `Franchise <br/> Solution`,
+            subtitle: "Software Tier: Tier 3+",
+            text: "Multi-location management tools, shared data hubs, reporting frameworks."
+        },
+        {
+            title: `Enterprise Custom <br/> Solution`,
+            subtitle: "Software Tier: Tier 3+",
+            text: "Large-scale platform engineering, custom workflows, deep integrations, full system ecosystems."
+        },
+    ]
+}
+
+const expertiseFAQData = {
+    heading: "Software Development FAQs",      
+    items: [
+        {
+            title: "What’s the difference between Custom Web Development and Software Development?",
+            text: `<p>Web Development builds public-facing platforms.</p>
+                   <p>Software Development builds internal systems, tools, and multi-layered ecosystems.</p>`
+        },
+        {
+            title: "Can you integrate with our existing systems?",
+            text: `<p>Yes — CRMs, ERPs, PSPs, iGaming providers, dashboards, APIs, custom tools — anything with a secure integration layer.</p>`
+        },
+        {
+            title: "How long does custom software take?",
+            text: `<p>Small systems: 8–12 weeks</p>
+                   <p>Complex systems: 16–32+ weeks</p>
+                   <p>Enterprise platforms: ongoing cycles</p>
+                   <p>Software is built to last decades — not months.</p>`
+        },
+        {
+            title: "Will the software be secure?",
+            text: `<p>Yes — encryption, secure authentication, best practices, audit trails, and industry-standard compliance.</p>`
+        },
+        {
+            title: "Do you provide maintenance?",
+            text: `<p>Yes. We support ongoing maintenance plans, feature updates, and monitoring.</p>`
+        },
+        {
+            title: "Can software replace multiple tools?",
+            text: `<p>Often yes.</p>
+                    <p>We consolidate systems into a single, efficient operational engine.</p>`
+        }
+    ]
+}
+
+const expertiseCTAData = {
+    heading: `Build Systems That Give <br/> You a Competitive Advantage`,
+    description: "From automated workflows to enterprise platforms, we engineer solutions that create efficiency, clarity, and scalable operations.",
+    button1text: "Explore Solutions",
+    button1Link: "#",
+    button2text: "Connect With Us",
+    button2Link: "#",
+}
+
+---
+
+<ExpertiseHero 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+/>
+<ExpertiseIssues 
+    heading={issuesData.heading}
+    description={issuesData.description}
+    items={issuesData.items}
+/>
+<ExpertiseApproach 
+    heading={approachData.heading}
+    description={approachData.description}
+    secDesc={approachData.secDesc}
+    items={approachData.items}
+/>
+<ExpertiseList 
+    heading={expertiseListData.heading}
+    description={expertiseListData.description}
+    items={expertiseListData.items}
+/>
+<ExpertiseProcess 
+    heading={expertiseProcessData.heading}
+    description={expertiseProcessData.description}
+    steps={expertiseProcessData.steps}
+    resultText={expertiseProcessData.resultText}
+/>
+<ExpertiseDeliverables 
+    heading={deliverablesData.heading}
+    description={deliverablesData.description}
+    items={deliverablesData.items}
+/>
+<Testimonials theme="dark" />
+<ExpertiseSolutions 
+    heading={expertiseSolutionsData.heading}
+    description={expertiseSolutionsData.description}
+    items={expertiseSolutionsData.items}
+/>
+<ExpertiseFAQ 
+    heading={expertiseFAQData.heading}
+    items={expertiseFAQData.items}
+/>
+<ExpertiseCTA 
+    heading={expertiseCTAData.heading}
+    description={expertiseCTAData.description}
+    button1text={expertiseCTAData.button1text}
+    button1Link={expertiseCTAData.button1Link}
+    button2text={expertiseCTAData.button2text}
+    button2Link={expertiseCTAData.button2Link}
+/>

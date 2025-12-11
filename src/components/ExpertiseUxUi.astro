@@ -1,0 +1,335 @@
+---
+import ExpertiseHero from '../components/ExpertiseHero.astro';
+import ExpertiseIssues from '../components/ExpertiseIssues.astro';
+import ExpertiseApproach from '../components/ExpertiseApproach.astro';
+import ExpertiseList from '../components/ExpertiseList.astro';
+import ExpertiseProcess from '../components/ExpertiseProcess.astro';
+import ExpertiseDeliverables from '../components/ExpertiseDeliverables.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ExpertiseSolutions from '../components/ExpertiseSolutions.astro';
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
+import ExpertiseCTA from '../components/ExpertiseCTA.astro';
+
+import HeroImage from '../assets/ux-graphic.png';
+
+const HeroData = {
+    img: HeroImage,
+    heading: `UX/UI & Web Experience`,
+    description: "Your digital experience is the moment your brand becomes real. We design intuitive, seamless, conversion-focused web experiences that turn first impressions into lasting engagement.",
+}
+
+const issuesData = {
+    heading: "What This Expertise Solves",
+    description: `Users don’t tolerate friction.<br/> 
+                 They don’t wait, they don’t guess, and they don’t forgive bad experiences.<br/> 
+                 We solve UX/UI problems that block growth:`,
+
+    items: [
+        { title: "Platforms that confuse users or feel outdated", text: "Users can’t navigate, find what they need, or complete actions." },
+        { title: "Low conversion rates despite strong traffic", text: "Something in the experience breaks trust or motivation." },
+        { title: "Designs that look good but don’t perform", text: "Pretty visuals without usability = wasted value." },
+        { title: "Complex user journeys", text: "Users drop off because steps are unclear, long, or inconsistent." },
+        { title: "UX that doesn’t scale across markets or devices", text: "Inconsistent patterns harm recognition and reduce confidence." },
+        { title: "Internal teams struggling with unclear web systems", text: "No design system → no consistency → constant redesign chaos." },
+    ]
+};
+
+const approachData = {
+    heading: "Our UX/UI Approach",
+    description: `UX and UI are not cosmetic layers.<br/> 
+                  They are engineered foundations for digital performance.<br/>
+                  Our approach combines:`,
+    secDesc: `UX/UI isn’t just design — <br/>
+              It’s invisible value that shapes how users trust, interact, and stay.`,              
+                
+    items: [
+        { 
+            title: "Human-Driven UX", 
+            text: "Understanding how users think, behave, decide, and convert." 
+        },
+        { 
+            title: "Pixel-Perfect UI", 
+            text: "A visual system aligned with your brand and optimised for clarity." 
+        },
+        { 
+            title: "Conversion Psychology", 
+            text: "Design choices that encourage action, trust, and retention." 
+        },
+        { 
+            title: "Functional Simplicity", 
+            text: "Seamless flows that remove friction and increase efficiency." 
+        },
+        { 
+            title: "Scalable Systems", 
+            text: "Patterns, components, and behaviours that grow with your platform." 
+        }
+    ]              
+}
+
+const expertiseListData = {
+    heading: "Full UX/UI Expertise",
+    description: "Coprehensive capabilities designed to build brands that perform",        
+    items: [
+        {
+            title: "User Research & Behaviour Analysis",
+            subtitle: "Understanding what your users need — and why.",
+            keyPoints: [
+                "Stakeholder interviews",
+                "UX audit & heuristic evaluation",
+                "Behavioural analysis",
+                "Competitive UX benchmarking",
+                "Heatmap & analytics review",
+                "User persona development"
+            ],
+            outcome: "Data-driven clarity on what improves user trust and conversion."
+        },
+        {
+            title: "User Journeys & Flow Architecture",
+            subtitle: "Mapping the primary pathways users take.",
+            keyPoints: [
+                "Journey mapping",
+                "Funnel structure",
+                "Conversion-point identification",
+                "Task flow optimisation",
+                "Multi-market journey variations"
+            ],
+            outcome: "A frictionless experience from first click to final action."
+        },
+        {
+            title: "Wireframes & UX Structure",
+            subtitle: "The blueprint for a seamless user experience.",
+            keyPoints: [
+                "Low-fidelity wireframes",
+                "Mid-fidelity layouts",
+                "Component structure",
+                "Navigation logic",
+                "Information hierarchy"
+            ],
+            outcome: "A logical, intuitive experience users instantly understand."
+        },
+        {
+            title: "UI Design & Interface Systems",
+            subtitle: "Where aesthetics meet performance.",
+            keyPoints: [
+                "Visual design",
+                "Component libraries",
+                "Interaction patterns",
+                "Micro-animations",
+                "UI states (hover, focus, actions)",
+                "Accessibility standards"
+            ],
+            outcome: "A modern, polished interface that reinforces trust and credibility."
+        },
+        {
+            title: "Design Systems",
+            subtitle: "Scalable systems for long-term consistency.",
+            keyPoints: [
+                "Component rules",
+                "Grid & spacing systems",
+                "Interaction guidelines",
+                "Digital brand behaviour",
+                "Light/dark mode extensions"
+            ],
+            outcome: "A UI that scales fast, stays consistent, and reduces long-term costs."
+        },
+        {
+            title: "Conversion & Performance UX",
+            subtitle: "UX where performance meets psychology.",
+            keyPoints: [
+                "CRO (conversion rate optimisation)",
+                "A/B test recommendations",
+                "Trust signal integration",
+                "CTA psychology",
+                "Mobile-first optimisation"
+            ],
+            outcome: "More users completing more actions — with less friction."
+        }
+    ]
+}
+
+const expertiseProcessData = {
+    heading: "Our UX/UI Process",
+    description: "A structured, engineered approach for clarity and predictability:",
+    steps: [
+        {
+            stepNumber: "01",
+            title: "Research & Data",
+            description: "We collect insights, behaviour data, and internal knowledge."
+        },
+        {
+            stepNumber: "02",
+            title: "UX Architecture",
+            description: "We define journeys, flows, and wireframes."
+        },
+        {
+            stepNumber: "03",
+            title: "UI Creation",
+            description: "We design interface systems, visuals, and interactions."
+        },
+        {
+            stepNumber: "04",
+            title: "Design System Development",
+            description: "We build reusable patterns that reduce long-term cost and friction."
+        },
+        {
+            stepNumber: "05",
+            title: "Handoff to Development",
+            description: "We collaborate with development teams to ensure pixel-perfect execution."
+        },
+        {
+            stepNumber: "06",
+            title: "QA & Optimisation",
+            description: "We test usability, accessibility, and conversion performance."
+        }
+    ],
+    resultText: "The result: A digital experience engineered for clarity, speed, trust, and conversion."
+}
+
+const deliverablesData = {
+    heading: "Deliverables",
+    description: "Depending on your Solution tier, UX/UI deliverables include:",
+
+    items: [
+        { title: "UX audit & research report" },
+        { title: "User journeys" },
+        { title: "Wireframes (low to mid fidelity)" },
+        { title: "High-fidelity UI designs" },
+        { title: "Component library" },
+        { title: "Full design system" },
+        { title: "Interaction behaviour guidelines" },
+        { title: "Developer-ready design files" },
+        { title: "Conversion framework recommendations" },
+    ]
+}
+
+const expertiseSolutionsData = {
+    heading: `How UX/UI Connects to <br/> Our Solutions`,
+    description: "Branding plays a critical role across all IPOINT INT Solutions:",        
+    items: [
+        {
+            title: `Startup <br/> Solution`,
+            subtitle: "UX/UI Tier: Tier 1",
+            text: "Clear, conversion-ready UX and a clean, modern UI to give new businesses a strong digital foundation."
+        },
+        {
+            title: `Growth <br/> Solution`,
+            subtitle: "UX/UI Tier: Tier 2",
+            text: "UX/UI redesigns, conversion optimisation, and refined journeys for companies ready to elevate their performance."
+        },
+        {
+            title: `Expansion <br/> Solution`,
+            subtitle: "UX/UI Tier: Tier 3",
+            text: "Complex UX architecture, multi-market flow systems, multilingual interfaces, and enterprise-level design systems."
+        },
+        {
+            title: `Franchise <br/> Solution`,
+            subtitle: "UX/UI Tier: Tier 3+",
+            text: "Multi-location UX systems, shared navigation frameworks, templated UI components."
+        },
+        {
+            title: `Enterprise Custom <br/> Solution`,
+            subtitle: "UX/UI Tier: Tier 3+",
+            text: "Large-scale UX/UI for SaaS platforms, fintech interfaces, dashboards, and end-to-end ecosystems."
+        },
+    ]
+}
+
+const expertiseFAQData = {
+    heading: "UX/UI FAQs",      
+    items: [
+        {
+            title: "What is the difference between UX and UI?",
+            text: `<p>UX (User Experience) focuses on structure, flow, and interaction patterns.</p>
+                    <p>UI (User Interface) focuses on visual design, components, and aesthetics.</p>
+                    <p>Together, they create a digital experience that users understand, trust, and enjoy.</p>`
+        },
+        {
+            title: "How long does a UX/UI project take?",
+            text: `<p>Most UX/UI projects range from 4–10 weeks depending on complexity.</p>
+                    <p> A simple marketing website is faster.</p>
+                    <p>A multi-level platform with dashboards, flows, and localisation requires extended architecture.</p>`
+        },
+        {
+            title: "Do you redesign the entire website or only parts of it?",
+            text: `<p>Both options are available. If only certain flows are problematic, we fix those.</p>
+                   <p>If the whole system needs alignment, we rebuild the full UX/UI foundation.</p>`
+        },
+        {
+            title: "Can you work with our existing development team?",
+            text: `<p>Yes. We often collaborate with internal tech teams and external partners.</p>
+                    <p>Our design systems ensure seamless handoff and execution.</p>`
+        },
+        {
+            title: "What industries do you specialise in for UX/UI?",
+            text: `<p>We specialise in experiences where trust, clarity, and performance are critical:</p>
+                    <p>iGaming, fintech, SaaS, corporate platforms, and regulated industries.</p>`
+        },
+        {
+            title: "How do UX and UI improve conversion?",
+            text: `<p>By reducing friction, clarifying actions, improving trust signals, and designing flows that align with user psychology.</p>
+            <p>Good design removes obstacles — great design motivates action.</p>`
+        }
+    ]
+}
+
+const expertiseCTAData = {
+    heading: `Design Experiences That  <br/> Users Choose to Return To`,
+    description: "Whether you need a full UX/UI transformation or targeted improvements, we’ll help you design experiences that work — beautifully and effortlessly.",
+    button1text: "Explore Solutions",
+    button1Link: "#",
+    button2text: "Connect With Us",
+    button2Link: "#",
+}
+
+---
+
+<ExpertiseHero 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+/>
+<ExpertiseIssues 
+    heading={issuesData.heading}
+    description={issuesData.description}
+    items={issuesData.items}
+/>
+<ExpertiseApproach 
+    heading={approachData.heading}
+    description={approachData.description}
+    secDesc={approachData.secDesc}
+    items={approachData.items}
+/>
+<ExpertiseList 
+    heading={expertiseListData.heading}
+    description={expertiseListData.description}
+    items={expertiseListData.items}
+/>
+<ExpertiseProcess 
+    heading={expertiseProcessData.heading}
+    description={expertiseProcessData.description}
+    steps={expertiseProcessData.steps}
+    resultText={expertiseProcessData.resultText}
+/>
+<ExpertiseDeliverables 
+    heading={deliverablesData.heading}
+    description={deliverablesData.description}
+    items={deliverablesData.items}
+/>
+<Testimonials theme="dark" />
+<ExpertiseSolutions 
+    heading={expertiseSolutionsData.heading}
+    description={expertiseSolutionsData.description}
+    items={expertiseSolutionsData.items}
+/>
+<ExpertiseFAQ 
+    heading={expertiseFAQData.heading}
+    items={expertiseFAQData.items}
+/>
+<ExpertiseCTA 
+    heading={expertiseCTAData.heading}
+    description={expertiseCTAData.description}
+    button1text={expertiseCTAData.button1text}
+    button1Link={expertiseCTAData.button1Link}
+    button2text={expertiseCTAData.button2text}
+    button2Link={expertiseCTAData.button2Link}
+/>

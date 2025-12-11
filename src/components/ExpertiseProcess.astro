@@ -12,7 +12,9 @@ const { heading, description, steps, resultText } = Astro.props;
                 </div>
             </div>
         </div>
-        <div class="exp-br-prc-row fx fx-wrap">
+    </div>
+    <div class="exp-br-prc-scroll" style={`--steps: ${steps.length}`}>
+        <div class={`exp-br-prc-row fx ${steps.length <= 5 ? 'fx-jc m-pd' : ''}`}>
             {steps.map((step: { stepNumber: string; title: string; description: string; }) => (
                 <div class="exp-br-prc-col fx fx-wrap fx-ae ps-rel">
                     <div class="exp-acc-dot fx fx-ac fx-jc">
@@ -20,7 +22,7 @@ const { heading, description, steps, resultText } = Astro.props;
                     </div>
                     <div class="exp-br-prc-top">
                         <p>{step.stepNumber}</p>
-                        <h6>{step.title}</h6>
+                        <h6 set:html={step.title}></h6>
                     </div>
                     <div class="exp-br-prc-btm">
                         <p>{step.description}</p>
@@ -28,6 +30,8 @@ const { heading, description, steps, resultText } = Astro.props;
                 </div>
             ))}
         </div>
+    </div>
+    <div class="container">
         <div class="sc-wrapper">
             <div class="sc-txt">
                 <p>{resultText}</p>
@@ -48,16 +52,33 @@ const { heading, description, steps, resultText } = Astro.props;
         background-size: 100% 100%;
         z-index: 0;
     }
+    .exp-br-prc-row.m-pd{
+        padding-right: 5rem;
+    }
+    .exp-br-prc-scroll {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        cursor: grab;
+    }
+    .exp-br-prc-scroll::-webkit-scrollbar {
+        display: none;
+    }
     .exp-br-prc-row{
         margin: 5.75rem 0 3.75rem 0;
         gap: 1.5rem;
+        padding: 0 0 0 5rem;
+        flex-wrap: nowrap;
+        min-width: max-content;
     }
     .exp-br-prc-col{
-        width: calc((100% - 5 * 1.5rem) / 6);
+        width: 18rem;
         height: 21rem;
         border-radius: 1.25rem;
         background: #252831;
         padding: 2.5rem 2rem;
+        flex-shrink: 0;
     }
     .exp-br-prc-col:not(:last-child):before{
         content: "";
@@ -122,4 +143,67 @@ const { heading, description, steps, resultText } = Astro.props;
         background: linear-gradient(0deg, #999A9F 0%, #6B6C70 27.88%, #CDCFD6 82.69%, #EBECF2 100%);
         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
     }
+    @media screen and (min-width:1601px){
+        .exp-br-prc-row{
+            padding-right: 5rem;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+    }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = document.querySelector('.exp-br-prc-scroll');
+
+        const updateCursor = () => {
+            if (slider.scrollWidth > slider.clientWidth) {
+                slider.style.cursor = 'grab';
+            } else {
+                slider.style.cursor = 'default';
+            }
+        };
+
+        updateCursor();
+        window.addEventListener('resize', updateCursor);
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX);
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        slider.addEventListener('wheel', (e) => {
+            const canScrollHorizontally =
+            slider.scrollWidth > slider.clientWidth &&
+            (e.deltaY > 0 && slider.scrollLeft < slider.scrollWidth - slider.clientWidth ||
+            e.deltaY < 0 && slider.scrollLeft > 0);
+
+            if (canScrollHorizontally) {
+            e.preventDefault();
+            slider.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+    });
+</script>

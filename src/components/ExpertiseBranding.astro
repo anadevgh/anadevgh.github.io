@@ -10,10 +10,10 @@ import ExpertiseSolutions from '../components/ExpertiseSolutions.astro';
 import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
 import ExpertiseCTA from '../components/ExpertiseCTA.astro';
 
-import brandingHero from '../assets/branding-graphic.png';
+import HeroImage from '../assets/branding-graphic.png';
 
-const brandingHeroData = {
-    img: brandingHero,
+const HeroData = {
+    img: HeroImage,
     heading: `Branding <br/> & Identity Design`,
     description: "Your brand is more than visuals — it's the story people believe about your business. We build brand systems that communicate authority, inspire trust, and position you for long-term success.",
 }
@@ -124,32 +124,32 @@ const expertiseProcessData = {
     steps: [
         {
             stepNumber: "01",
-            title: "Discovery",
+            title: `Discovery`,
             description: "We understand your business, audience, competitors, and goals."
         },
         {
             stepNumber: "02",
-            title: "Strategy",
+            title: `Strategy`,
             description: "We define your positioning, messaging, and brand story."
         },
         {
             stepNumber: "03",
-            title: "Identity Creation",
+            title: `Identity <br/> Creation`,
             description: "We design your visual system with intention and differentiation."
         },
         {
             stepNumber: "04",
-            title: "System Development",
+            title: `System <br/> Development`,
             description: "We build the guidelines, rules, and behaviours that form your identity."
         },
         {
             stepNumber: "05",
-            title: "Application",
+            title: `Application`,
             description: "We roll out your brand across all touchpoints."
         },
         {
             stepNumber: "06",
-            title: "Launch & Support",
+            title: `Launch <br/> & Support`,
             description: "We support your brand rollout and ensure consistency moving forward."
         }
     ],
@@ -205,15 +205,6 @@ const expertiseSolutionsData = {
     ]
 }
 
-const expertiseCTAData = {
-    heading: `Build a Brand That <br/> Creates Confidence`,
-    description: "Whether you՛re launching something new or evolving an established identity, we'll help you build a brand engineered for clarity, trust, and long-term performance.",
-    button1text: "Explore Solutions",
-    button1Link: "#",
-    button2text: "Connect With Us",
-    button2Link: "#",
-}
-
 const expertiseFAQData = {
     heading: "Branding FAQs",      
     items: [
@@ -249,12 +240,21 @@ const expertiseFAQData = {
     ]
 }
 
+const expertiseCTAData = {
+    heading: `Build a Brand That <br/> Creates Confidence`,
+    description: "Whether you՛re launching something new or evolving an established identity, we'll help you build a brand engineered for clarity, trust, and long-term performance.",
+    button1text: "Explore Solutions",
+    button1Link: "#",
+    button2text: "Connect With Us",
+    button2Link: "#",
+}
+
 ---
 
 <ExpertiseHero 
-    img={brandingHeroData.img}
-    title={brandingHeroData.heading}
-    text={brandingHeroData.description}
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
 />
 <ExpertiseIssues 
     heading={issuesData.heading}
