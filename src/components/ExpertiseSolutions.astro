@@ -14,8 +14,8 @@ const { heading, description, items } = Astro.props;
             <div class="sl-rcol">
                 <div class="exp-sl-row fx fx-wrap">
                     {items.map((item: { title: string; subtitle: string; text: string; }) => (
-                        <div class="exp-sl-col fx fx-wrap fx-ae">
-                            <a href="#">
+                        <div class="exp-sl-col">
+                            <a href="#" class="fx fx-wrap fx-ae">
                                 <div class="exp-sl-col-top fwidth">
                                     <div class="exp-sl-name-row fx fx-jb fx-ac">
                                         <h3 set:html={item.title}></h3>
@@ -72,6 +72,9 @@ const { heading, description, items } = Astro.props;
         border-radius: 1.25rem;
         background: #252831;
     }
+    .exp-sl-col a{
+        height: 100%;
+    }
     .exp-sl-col-top{
         align-self: flex-start;
     }
@@ -112,7 +115,7 @@ const { heading, description, items } = Astro.props;
     .exp-sl-col-last a span{
         color: var(--white);
         text-align: center;
-        font-size: 0.875rem;
+        font-size: 1em;
         font-weight: 500;
         line-height: 1.25rem;
         margin-top: 1.5rem;

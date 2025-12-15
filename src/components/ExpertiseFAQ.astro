@@ -28,7 +28,7 @@ const { heading, items } = Astro.props;
                         <div class="exp-acc-main fwidth">
                             <div class="exp-acc-wrap fx fx-wrap">
                                 <div class="sc-txt sc-br-faq">
-                                    <p>{item.text}</p>
+                                    <p set:html={item.text}></p>
                                 </div>
                             </div>
                         </div>

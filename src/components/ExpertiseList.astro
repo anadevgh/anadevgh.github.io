@@ -14,7 +14,7 @@ const { heading, description, items } = Astro.props;
         </div>
         <div class="exp-list-items fx fx-wrap fx-jc ps-rel">
             {items.map((item: { title: string; subtitle: string; keyPoints: any[]; outcome: string; }) => (
-                <div class="exp-acc-item">
+                <div class="exp-acc-item ps-rel">
                     <div class="exp-acc-top fx fx-ac fx-jb fwidth">
                         <div class="exp-acc-top-lcol">
                             <h5>{item.title}</h5>
@@ -73,11 +73,13 @@ const { heading, description, items } = Astro.props;
     .exp-list-items{
         margin-top: 3.75rem;
         gap: 1.5rem;
-        align-items: flex-start;
         z-index: 1;
     }
-    .exp-acc-item{
+    .exp-acc-item.opened{
         background: #252831;
+        border-radius: 1.25rem;
+    }
+    .exp-acc-item{
         border-radius: 1.25rem;
         width: calc((100% - 1.5rem) / 2);
     }
@@ -134,7 +136,7 @@ const { heading, description, items } = Astro.props;
         background: #252831;
     }
     .exp-acc-btm{
-        border-radius: 0 0 0.75rem 0.75rem;
+        border-radius: 0 0 1.25rem 1.25rem;
     }
     .exp-acc-md-wrap, .exp-acc-btm-wrap{
         padding: 0 2rem 2rem 2rem;
