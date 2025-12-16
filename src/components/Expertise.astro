@@ -1,0 +1,17 @@
+---
+import ExpertiseHero from '../components/ExpertiseHero.astro';
+import HeroImage from '../assets/expertise-main.png';
+
+const HeroData = {
+    img: HeroImage,
+    heading: `Expertise That Builds Your Competitive Advantage`,
+    description: "At IPOINT INT, expertise is more than a capability — it’s your pathway to clarity, confidence, and growth. Our disciplines work together to create powerful digital experiences that elevate your brand and strengthen your position in the market.",
+}
+
+---
+
+<ExpertiseHero 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+/>
