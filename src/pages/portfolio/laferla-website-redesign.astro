@@ -1,0 +1,295 @@
+---
+import { Swiper, SwiperWrapper, SwiperSlide } from "astro-swiper";
+import Layout from '../../layouts/Layout.astro';
+import ResultEnd from '../../components/ResultEnd.astro';
+
+import { Image } from 'astro:assets';
+import laptopGraphic from '../../assets/results/pl/laptop-graphic.webp';
+import starGraphic from '../../assets/results/pl/star-graphic.webp';
+import mobileViewBg from '../../assets/results/pl/pl-mobile-view.webp';
+
+const currentPageLink = Astro.url.href;
+const currentPageTitle = "Laferla Website";
+const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
+---
+
+<Layout>
+    <section class="rs-banner">
+        <div class="rs-banner-slider">
+            <Swiper
+                options={{
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: false,
+                    },
+                    speed: 1000,
+                    effect: 'fade',
+                    fadeEffect: { crossFade: true },
+                }}>
+                <SwiperWrapper>
+                    <SwiperSlide>
+                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-1.webp) no-repeat center top; background-size:cover;"></div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-2.webp) no-repeat center top; background-size:cover;"></div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-3.webp) no-repeat center top; background-size:cover;"></div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-4.webp) no-repeat center top; background-size:cover;"></div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-5.webp) no-repeat center top; background-size:cover;"></div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-6.webp) no-repeat center top; background-size:cover;"></div>
+                    </SwiperSlide>
+                </SwiperWrapper>
+            </Swiper>
+
+        </div>
+    </section>
+    <section class="rs-details">
+        <div class="container">
+            <div class="cols-wrap fx fx-jb fx-wrap">
+                <div class="col">
+                    <h1 class="rs-heading dark-gray">{currentPageTitle}</h1>
+                </div>
+                <div class="col">
+                    <div class="rs-info">
+                        <p>With decades of trust behind them, Laferla was already a household name in insurance and financial services. But their digital presence no longer reflected their leadership position. In 2024, they set out to evolve their static, informational website into a fully functional digital platform, one that enhances user experience, drives engagement, and supports business growth.</p>
+                        <p>Laferla partnered with IPOINT INT to deliver a full-scale digital and brand transformation. From the ground up, we redefined their online experience, merging sleek design with intelligent functionality.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cols-wrap rls-cols fx fx-jb fx-wrap">
+                <div class="col">
+                    <div class="rs-actions-row fx">
+                        <div class="rs-action-links rs-sharing fx fx-ac">
+                            <span class="md-text">Share:</span>
+                            <div class="rs-sc-sharing-links fx">
+                                <a class="fx vct-icon" href={`https://www.facebook.com/sharer/sharer.php?u=${currentPageLink}`} onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=100,width=200');return false;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g clip-path="url(#clip0_542_2056)">
+                                            <rect width="24" height="24" rx="4" fill="#2C2C2C"/>
+                                            <path d="M12.3519 24V15.7986H9.56843V12.6238H12.3519V10.2427C12.2942 9.68373 12.361 9.11902 12.5475 8.58821C12.734 8.05741 13.0357 7.57336 13.4315 7.17003C13.8273 6.76669 14.3075 6.45383 14.8386 6.2534C15.3696 6.05296 15.9386 5.9698 16.5056 6.00975C17.3389 6.00468 18.1717 6.04708 19 6.13674V8.99401H17.2978C15.9489 8.99401 15.692 9.62896 15.692 10.5496V12.5921H18.9037L18.4861 15.7668H15.692V24C25.475 24 -18.9524 24 12.3519 24Z" fill="white"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_542_2056">
+                                            <rect width="24" height="24" fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                                <a class="fx vct-icon" href={`https://www.linkedin.com/shareArticle?mini=true&url=${currentPageLink}&title=${currentPageMetaTitle}`} onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g clip-path="url(#clip0_542_2059)">
+                                            <rect width="24" height="24" rx="4" fill="#2C2C2C"/>
+                                            <path d="M19 19V13.4252C19 12.5158 18.6387 11.6436 17.9957 11.0006C17.3526 10.3575 16.4804 9.99624 15.571 9.99624C14.6769 9.99624 13.6356 10.5432 13.1307 11.3636V10.1961H10.1961V19H13.1307V13.8144C13.1307 13.0045 13.7829 12.3418 14.5928 12.3418C14.9833 12.3418 15.3579 12.497 15.6341 12.7732C15.9102 13.0493 16.0654 13.4239 16.0654 13.8144V19H19ZM6.77761 8.5447C7.24627 8.5447 7.69574 8.35853 8.02713 8.02713C8.35853 7.69574 8.5447 7.24627 8.5447 6.77761C8.5447 5.7994 7.75582 5 6.77761 5C6.30616 5 5.85402 5.18728 5.52065 5.52065C5.18728 5.85402 5 6.30616 5 6.77761C5 7.75582 5.7994 8.5447 6.77761 8.5447ZM8.23967 19V10.1961H5.32607V19H8.23967Z" fill="white"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_542_2059">
+                                            <rect width="24" height="24" fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                                <a class="fx vct-icon x-icon" href={`https://twitter.com/intent/tweet?text=${currentPageMetaTitle}&url=${currentPageLink}`} onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g clip-path="url(#clip0_542_2062)">
+                                            <path d="M20 0C22.2091 2.57702e-07 24 1.79086 24 4V20C24 22.2091 22.2091 24 20 24H4C1.79086 24 6.44266e-08 22.2091 0 20V4C2.57706e-07 1.79086 1.79086 6.44256e-08 4 0H20ZM10.2568 12.6084L5.28613 18H6.97266L11.0381 13.5908L14.5459 18H19L13.5225 11.1133L18.2363 6H16.5498L12.7412 10.1318L9.4541 6H5L10.2568 12.6084ZM16.4541 16.7998H15.1816L7.5459 7.2002H8.81836L16.4541 16.7998Z" fill="#2C2C2C"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_542_2062">
+                                            <rect width="24" height="24" fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="rs-action-links rs-copy-link fx fx-ac">
+                            <span class="md-text">Copy URL:</span>
+                            <a class="copy-link-btn fx" data-link={`${currentPageLink}`}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="24" height="24" rx="4" fill="#2C2C2C"/>
+                                    <rect x="10" y="9" width="7" height="9" stroke="white" stroke-linejoin="round"/>
+                                    <path d="M14 6H7V15" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="copy-status"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="rs-info-cols fx fx-jb fx-wrap">
+                        <div class="rs-info-col">
+                            <span class="md-text">Expertees</span>
+                            <div class="rs-info-rows">
+                                <a class="md-text">Web Design</a>
+                                <a class="md-text">Branding</a>
+                                <a class="md-text">Consulting</a>
+                            </div>
+                        </div>
+                        <div class="rs-info-col">
+                            <span class="md-text">Industries</span>
+                            <div class="rs-info-rows">
+                                <a class="md-text">Insurance Services</a>
+                            </div>
+                        </div>
+                        <div class="rs-info-col">
+                            <span class="md-text">Country</span>
+                            <div class="rs-info-rows">
+                                <a class="md-text">Malta</a>
+                            </div>
+                        </div>
+                        <div class="rs-info-col">
+                            <span class="md-text">Timeframe</span>
+                            <div class="rs-info-rows">
+                                <a class="md-text">4 Months</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <ResultEnd />
+    <section class="rs-similar sc-grey">
+        <div class="container">
+            <h2 class="dark-gray">Similar Projects</h2>
+        </div>
+        <div class="pj-list hz-scroll">
+            <div class="pj-featured-cols fx fx-jb">
+                <div class="pj-featured-item">
+                    <a href="#">
+                        <div class="pj-ft-image">
+                            <img src="/laferla-app-cover.webp" alt="Laferla"/>
+                        </div>
+                        <div class="pj-ft-info-row fwidth">
+                            <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
+                                <div class="pj-ft-info-lcol">
+                                    <div class="pj-ft-info-lcol-wrap">
+                                        <h3>Laferla App</h3>
+                                    </div>
+                                </div>
+                                <div class="pj-ft-info-rcol">
+                                    <p>UX/UI Design, Wireframing, Prototyping</p>
+                                </div>
+                            </div>
+                            <div class="pj-ft-info-txt">
+                                <h4>Creating an Insurance instrument with all functions in your pocket</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="pj-featured-item">
+                    <a href="#">
+                        <div class="pj-ft-image">
+                            <img src="/laferla-project-cover.webp" alt="Laferla"/>
+                        </div>
+                        <div class="pj-ft-info-row fwidth">
+                            <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
+                                <div class="pj-ft-info-lcol">
+                                    <div class="pj-ft-info-lcol-wrap">
+                                        <h3>Laferla Website</h3>
+                                    </div>
+                                </div>
+                                <div class="pj-ft-info-rcol">
+                                    <p>UX/UI Design, Wireframing, Prototyping</p>
+                                </div>
+                            </div>
+                            <div class="pj-ft-info-txt">
+                                <h4>Creating an Insurance instrument with all functions in your pocket</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="pj-featured-item">
+                    <a href="#">
+                        <div class="pj-ft-image">
+                            <img src="/spinbet-project-cover.webp" alt="Spinbet"/>
+                        </div>
+                        <div class="pj-ft-info-row fwidth">
+                            <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
+                                <div class="pj-ft-info-lcol">
+                                    <div class="pj-ft-info-lcol-wrap">
+                                        <h3>Spinbet</h3>
+                                    </div>
+                                </div>
+                                <div class="pj-ft-info-rcol">
+                                    <p>Brand Identity, Web Design, 3D </p>
+                                </div>
+                            </div>
+                            <div class="pj-ft-info-txt">
+                                <h4>Casino and Sportsbook platforms for an iGaming startup from Germany</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="pj-featured-item">
+                    <a href="#">
+                        <div class="pj-ft-image">
+                            <img src="/laferla-project-cover.webp" alt="Laferla"/>
+                        </div>
+                        <div class="pj-ft-info-row fwidth">
+                            <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
+                                <div class="pj-ft-info-lcol">
+                                    <div class="pj-ft-info-lcol-wrap">
+                                        <h3>Laferla Website</h3>
+                                    </div>
+                                </div>
+                                <div class="pj-ft-info-rcol">
+                                    <p>UX/UI Design, Wireframing, Prototyping</p>
+                                </div>
+                            </div>
+                            <div class="pj-ft-info-txt">
+                                <h4>Creating an Insurance instrument with all functions in your pocket</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+html {
+    background: var(--white);
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.copy-link-btn');
+    const status = document.querySelector('.copy-status');
+
+    btn.addEventListener('click', function () {
+        const url = this.dataset.link;
+
+        navigator.clipboard.writeText(url).then(() => {
+            status.textContent = "Copied!";
+            status.classList.add('visible');
+
+            setTimeout(() => {
+                status.classList.remove('visible');
+            }, 1500);
+
+            status.addEventListener('transitionend', function handler() {
+                if (!status.classList.contains('visible')) {
+                    status.textContent = "";
+                    status.removeEventListener('transitionend', handler);
+                }
+            });
+        });
+    });
+});
+</script>

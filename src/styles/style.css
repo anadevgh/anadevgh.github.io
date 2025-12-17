@@ -617,6 +617,10 @@ h5{
 .hz-scroll::-webkit-scrollbar {
     display: none;
 }
+.rs-banner-slider, .rs-banner-slider .swiper, .rs-banner-slider .swiper-wrapper,
+.rs-banner-slider .swiper-slide, .rs-banner-bg {
+    height: 100%;
+}
 
 
 
