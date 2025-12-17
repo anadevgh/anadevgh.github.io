@@ -504,11 +504,14 @@ h5{
     margin-top: 3.75rem;
     position: relative;
     overflow: hidden;
+    padding: 0 0 0 6rem;
+    flex-wrap: nowrap;
+    min-width: max-content;
 }
 .pj-featured-cols .pj-featured-item {
     margin-right: 1.5rem;
     flex-shrink: 0;
-    width: 38%;
+    width: 36vw;
 }
 .pj-featured-cols .pj-featured-item:last-child {
     margin-right: 0;
@@ -567,9 +570,23 @@ h5{
 .exp-scd-txt-row .sc-txt p{
     font-family: 'pp_neue_montrealregular';
 }
+.hz-scroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    cursor: grab;
+}
+.hz-scroll::-webkit-scrollbar {
+    display: none;
+}
+
 
 
 /* results styles end */
+
+
+
 
 @media screen and (max-width:1600px){
     html{
