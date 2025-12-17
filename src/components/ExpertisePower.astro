@@ -1,0 +1,158 @@
+---
+const { heading, description, items } = Astro.props;
+
+---
+
+<section class="exp-power sc-pd sc-al-cnt">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-headline ps-rel">
+                <h2 set:html={heading}></h2>
+                <div class="sc-txt">
+                    <p set:html={description}></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="exp-pw-scroll">
+        <div class={`exp-pw-row fx`}>
+            {items.map((item: { title: string; subItems: any[]; }) => (
+                <div class="exp-pw-col">
+                   <div class="exp-pw-col-top">
+                        <h4 set:html={item.title}></h4>
+                   </div>
+                   <div class="exp-pw-col-main fx fx-wrap">
+                        {item.subItems.map((subItem: string) => (
+                            <div class="exp-pw-item fx fwidth">
+                               <div class="exp-pw-inner fx fx-ac">
+                                    <div class="exp-pw-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M3 13L9.5 18.5L21.5 4" stroke="#27FF43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <span>{subItem}</span>
+                               </div>
+                            </div>
+                        ))}
+                   </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .exp-pw-scroll {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        cursor: grab;
+    }
+    .exp-pw-scroll::-webkit-scrollbar {
+        display: none;
+    }
+    .exp-pw-row{
+        margin: 5.75rem 0 3.75rem 0;
+        gap: 1.5rem;
+        padding: 0 0 0 5rem;
+        flex-wrap: nowrap;
+        min-width: max-content;
+    }
+    .exp-pw-col{
+        border-radius: 1.25rem;
+        border: 0.125rem solid #2E3037;
+        width: 24rem;
+    }
+    .exp-pw-col-top{
+        border-radius: 1.25rem 1.25rem 0 0;
+        border: 0.125rem solid #2E3037;
+        background: #252831;
+        padding: 1.25rem 2.5rem;
+    }
+    .exp-pw-col-top h4{
+        font-size: 1.75rem;
+        line-height: 2rem;
+        font-family: "pp_neue_montrealmedium";
+    }
+    .exp-pw-col-main{
+        padding: 2.5rem;
+        gap: 0.75rem;
+        height: calc(100% - 5rem);
+    }
+    .exp-pw-item{
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.5rem;
+        background: #252831;
+    }
+    .exp-pw-inner span{
+        margin-left: 0.75rem;
+        color: var(--white);
+        font-size: 1rem;
+        line-height: 1.25rem;
+        letter-spacing: 0.02rem;
+    }
+    @media screen and (min-width:1601px){
+        .exp-pw-row{
+            padding-right: 5rem;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = document.querySelector('.exp-pw-scroll');
+
+        const updateCursor = () => {
+            if (slider.scrollWidth > slider.clientWidth) {
+                slider.style.cursor = 'grab';
+            } else {
+                slider.style.cursor = 'default';
+            }
+        };
+
+        updateCursor();
+        window.addEventListener('resize', updateCursor);
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX);
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        slider.addEventListener('wheel', (e) => {
+            const canScrollHorizontally =
+            slider.scrollWidth > slider.clientWidth &&
+            (e.deltaY > 0 && slider.scrollLeft < slider.scrollWidth - slider.clientWidth ||
+            e.deltaY < 0 && slider.scrollLeft > 0);
+
+            if (canScrollHorizontally) {
+            e.preventDefault();
+            slider.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+    });
+</script>

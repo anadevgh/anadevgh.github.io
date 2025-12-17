@@ -1,0 +1,154 @@
+---
+import { Image } from 'astro:assets';
+const { heading, items } = Astro.props;
+
+---
+
+<section class="exp-grid-sc sc-al-cnt sc-grey sc-grey-C sc-pd ps-rel">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-headline ps-rel">
+                <h2 set:html={heading}></h2>
+            </div>
+        </div>
+        <div class="exp-grid-wrap fx fx-wrap fx-jc ps-rel">
+            {items.map((item: { img: string; title: string; subtitle: string; buttontext: string; buttonLink: string; solutionsBtnText: string; solutionsBtnLink: string; }) => (
+                <div class="exp-item fx fx-wrap fx-ae ps-rel">
+                    <div class="exp-item-wrap fwidth">
+                        <div class="exp-item-top fwidth">
+                            <h4 set:html={item.title}></h4>
+                            <h5 set:html={item.subtitle}></h5>
+                        </div>
+                        <div class="exp-item-main fwidth">
+                            <h6>What we do:</h6>
+                            <div class="exp-acc-points">
+                                {item.whatWeDo.map((point: string) => (
+                                    <div class="exp-acc-key-row fx">
+                                        <div class="exp-acc-key-point fx">
+                                            <div class="exp-acc-dot fx fx-ac fx-jc">
+                                                <div class="exp-dot"></div>
+                                            </div>
+                                            <span>{point}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div class="exp-graphic-main">
+                                <Image src={item.img} alt={item.title} />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="exp-item-btm fwidth">
+                        <div class="btn-row fx">
+                            <a class="btn-primary fx fx-ac fx-jc" href={item.buttonLink}>
+                                <span>{item.buttontext}</span>
+                            </a>
+                        </div>
+                        <div class="exp-sl-btn-row fx">
+                            <a class="exp-sl-btn fx fx-ac fx-jc" href={item.solutionsBtnLink}>
+                                <span>{item.solutionsBtnText}</span>
+                            </a> 
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .exp-grid-sc:after{
+        content: "";
+        position: absolute;
+        bottom: -22rem;
+        left: 0;
+        width: 100%;
+        height: 31.25rem;
+        background: url(/br-grd.webp) no-repeat;
+        background-size: 100% 100%;
+        z-index: 0;
+    }
+    .exp-grid-wrap{
+        margin-top: 3.75rem;
+        gap: 1.5rem;
+        width: 82rem;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 1;
+    }
+    .exp-item{
+        width: calc((100% - 1.5rem)/2);
+        background: #252831;
+        border-radius: 1.25rem;
+    }
+    .exp-item-wrap{
+        align-self: flex-start;
+    }
+    .exp-item-top{
+        padding: 2rem;
+        background: #343741;
+        border-radius: 1.25rem 1.25rem 0 0;
+    }
+    .exp-item-top h4{
+        font-size: 1.75rem;
+        line-height: 2rem;
+        font-family: 'pp_neue_montrealmedium';
+    }
+    .exp-item-top h5{
+        margin: 0.5rem 0 0 0;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        font-family: 'pp_neue_montrealbook';
+        color: var(--white);
+    }
+    .exp-item-main{
+        padding: 2rem;
+    }
+    .exp-item-main h6{
+        color: #999A9F;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+        letter-spacing: 0.01rem;
+        margin: 0;
+    }
+    .exp-acc-points{
+        margin-top: 1rem;
+        width: 60%;
+    }
+    .exp-acc-points .exp-acc-key-point{
+        width: auto;
+    }
+    .exp-acc-key-row:not(:last-child){
+        margin-bottom: 1rem;
+    }
+    .exp-graphic-main{
+        position: absolute;
+        bottom: 9.6rem;
+        right: 0;
+        width: 21.875rem;
+    }
+    .exp-graphic-main img{
+        width: 100%;
+        height: auto;
+    }
+    .exp-item-btm{
+        border-top: 0.125rem solid #343741;
+        padding: 2rem;
+    }
+    .exp-sl-btn-row{
+        margin-top: 1.25rem;
+    }
+    .exp-sl-btn{
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+        letter-spacing: 0.01rem;
+    }
+    @media screen and (min-width:1601px){
+        .exp-graphic-main{
+            bottom: 8.9rem;
+        }
+    }
+</style>

@@ -2,10 +2,14 @@
 import ExpertiseHero from '../components/ExpertiseHero.astro';
 import ExpertiseIntro from '../components/ExpertiseIntro.astro';
 import ExpertisePillars from '../components/ExpertisePillars.astro';
+import ExpertiseGrid from '../components/ExpertiseGrid.astro';
+import ExpertisePower from '../components/ExpertisePower.astro';
+
 import HeroImage from '../assets/expertise-main.png';
 import ExpPillar1Img from '../assets/pillar-1-img.png';
 import ExpPillar2Img from '../assets/pillar-2-img.png';
 import ExpPillar3Img from '../assets/pillar-3-img.png';
+import Exp1Img from '../assets/exp-1.png';
 
 const HeroData = {
     img: HeroImage,
@@ -13,7 +17,7 @@ const HeroData = {
     description: "At IPOINT INT, expertise is more than a capability — it’s your pathway to clarity, confidence, and growth. Our disciplines work together to create powerful digital experiences that elevate your brand and strengthen your position in the market.",
 }
 
-const ExpPillars = {
+const ExpPillarsData = {
     heading: `The Three Pillars of Our Expertise`,
     description: "Everything we do is built on three interconnected pillars that support your vision:",
     addt_txt: `Each pillar stands strong on its own — but when combined, they form a system that <br/> transforms your entire digital future.`,
@@ -37,6 +41,164 @@ const ExpPillars = {
     ]
 }
 
+const ExpGridData = {
+    heading: `Expertise Grid - <br/> The Disciplines Behind Every Solution`,
+
+    items: [
+        {
+            img: Exp1Img,
+            title: `Branding <br/> & Identity Design`,
+            subtitle: `Your brand is your first impression — and your long-term advantage. <br/> We craft identities that communicate trust, confidence, and clarity across every touchpoint.`,
+            buttontext: "Explore Branding Expertise →",
+            buttonLink: "/branding-identity-design/",
+            solutionsBtnText: "See how branding powers the Startup & Growth Solutions →",
+            solutionsBtnLink: "#",
+
+            whatWeDo: [
+                "Logo systems & visual identity",
+                "Brand guidelines & tone of voice",
+                "Messaging frameworks",
+                "Brand architecture",
+                "Asset creation"
+            ]
+        },
+        {
+            img: Exp1Img,
+            title: `UX/UI <br/> & Web Experience`,
+            subtitle: `Your digital experience must feel effortless, intuitive, and built around user psychology. <br/> We design interfaces that guide users, increase conversions, and create lasting engagement.`,
+            buttontext: "Explore UX/UI Expertise →",
+            buttonLink: "/ux-ui-web-experience/",
+            solutionsBtnText: "See how UX/UI powers the Growth & Expansion Solutions →",
+            solutionsBtnLink: "#",
+
+            whatWeDo: [
+                "UX research & user journeys",
+                "Wireframes & design systems",
+                "UI visual design",
+                "Interaction patterns",
+                "Conversion optimisation",
+                "Accessibility & compliance"
+            ]
+        },
+        {
+            img: Exp1Img,
+            title: `Custom Web Development`,
+            subtitle: `Your website is more than a product — it’s an engine. <br/> We build fast, secure, scalable platforms engineered to perform under pressure.`,
+            buttontext: "Explore Development Expertise →",
+            buttonLink: "/custom-web-development/",
+            solutionsBtnText: "See how development powers every Solution →",
+            solutionsBtnLink: "#",
+
+            whatWeDo: [
+                "Front-end & back-end development",
+                "API & systems integrations",
+                "Messaging frameworks",
+                "Enterprise-grade security",
+                "CMS development",
+                "DevOps & infrastructure"
+            ]
+        },
+        {
+            img: Exp1Img,
+            title: `Digital Strategy <br/> & Performance Marketing`,
+            subtitle: `When your business demands more than a website, we build the tools that drive operations, scale, and intelligence.`,
+            buttontext: "Explore Strategy & Marketing Expertise →",
+            buttonLink: "/digital-marketing/",
+            solutionsBtnText: "See how strategy powers the Growth Solution →",
+            solutionsBtnLink: "#",
+
+            whatWeDo: [
+                "SaaS products",
+                "Web applications",
+                "CRM & ERP integrations",
+                "Automation workflows",
+                "Data-driven platforms",
+                "Multi-market systems",
+            ]
+        },
+        {
+            img: Exp1Img,
+            title: `Software & Platform Development <br/> (SaaS, Tools, Automation)`,
+            subtitle: `When your business demands more than a website, we build the tools that drive operations, scale, and intelligence.`,
+            buttontext: "Explore Platform Development Expertise →",
+            buttonLink: "/software-development/",
+            solutionsBtnText: "See how platforms power the Expansion & Enterprise Solutions →",
+            solutionsBtnLink: "#",
+
+            whatWeDo: [
+                "SaaS products",
+                "Web applications",
+                "CRM & ERP integrations",
+                "Automation workflows",
+                "Data-driven platforms",
+                "Multi-market systems"
+            ]
+        },
+        {
+            img: Exp1Img,
+            title: `Creative Production <br/> (Video, Motion, Digital Content)`,
+            subtitle: `Stories drive emotion — and emotion drives decisions. <br/> We create powerful visuals that elevate your brand and bring your message to life.`,
+            buttontext: "Explore Creative Production Expertise →",
+            buttonLink: "/creative-production/",
+            solutionsBtnText: "See how creative powers the Startup & Growth Solutions →",
+            solutionsBtnLink: "#",
+
+            whatWeDo: [
+                "Video production",
+                "Motion graphics",
+                "Campaign visuals",
+                "Storyboarding & direction",
+                "Social content systems"
+            ]
+        }
+    ]
+}
+
+const ExpPowerData = {
+    heading: `How Our Expertise Powers <br/> Your Solution`,
+    description: "Every business challenge deserves a system — not scattered services. <br/> Our Solutions combine these disciplines into integrated, results-driven packages aligned with your business stage:",
+
+    items: [
+        {
+            title: "Startup Solution", 
+            subItems: [
+                "Tier 1 Branding",
+                "Tier 1 Website",
+                "Tier 1 Marketing"
+            ]
+        },
+        {
+            title: "Growth Solution", 
+            subItems: [
+                "Tier 2 Branding",
+                "Tier 2 UX/UI",
+                "Tier 2 Marketing"
+            ]
+        },
+        {
+            title: "Expansion Solution", 
+            subItems: [
+                "Tier 3 UX/UI",
+                "Tier 3 Platform",
+                "Tier 3 Strategy"
+            ]
+        },
+        {
+            title: "Franchise Solution", 
+            subItems: [
+                "Multi-site frameworks",
+                "Brand consistency systems"
+            ]
+        },
+        {
+            title: "Enterprise Solution", 
+            subItems: [
+                "Fully custom architecture built across all six disciplines"
+            ]
+        },
+    ]
+}
+
 ---
 
 <ExpertiseHero 
@@ -46,8 +208,19 @@ const ExpPillars = {
 />
 <ExpertiseIntro />
 <ExpertisePillars 
-    heading={ExpPillars.heading}
-    description={ExpPillars.description}
-    items={ExpPillars.items}
-    addt_txt={ExpPillars.addt_txt}
+    heading={ExpPillarsData.heading}
+    description={ExpPillarsData.description}
+    items={ExpPillarsData.items}
+    addt_txt={ExpPillarsData.addt_txt}
+/>
+
+<ExpertiseGrid 
+    heading={ExpGridData.heading}
+    items={ExpGridData.items}
+/>
+
+<ExpertisePower 
+    heading={ExpPowerData.heading}
+    description={ExpPowerData.description}
+    items={ExpPowerData.items}
 />
