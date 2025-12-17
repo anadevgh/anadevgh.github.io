@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+const { heading, description, addt_txt, items } = Astro.props;
+
+---
+
+<section class="exp-pillars-sc sc-al-cnt sc-grey sc-grey-C sc-pd">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-headline ps-rel">
+                <h2>{heading}</h2>
+                <div class="sc-txt">
+                    <p>{description}</p>
+                </div>
+            </div>
+        </div>
+        <div class="exp-pillars fx fx-wrap fx-jb ps-rel">
+            {items.map((item: { title: string; text: string; img: string; }) => (
+                <div class="exp-pillar-item">
+                    <div class="exp-pillar-grp">
+                        <Image src={item.img} alt={item.title} />
+                    </div>
+                    <div class="exp-pillar-info">
+                        <h3>{item.title}</h3>
+                        <div class="sc-txt">
+                            <p>{item.text}</p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="exp-scd-txt-row">
+            <div class="sc-wrapper">
+                <div class="sc-txt">
+                    <p set:html={addt_txt}></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .exp-pillars{
+        margin-top: 3.75rem;
+        gap: 1.5rem;
+    }
+    .exp-pillar-item{
+        border-radius: 1.25rem;
+        background: var(--white);
+        box-shadow: 0 0 1.25rem 0 rgba(0, 0, 0, 0.04);
+        padding: 2.5rem;
+        width: calc((100% - 2*1.5rem) / 3);
+    }
+    .exp-pillar-info{
+        margin-top: 2rem;
+    }
+    .exp-pillar-item h3{
+        color: var(--darkBlue);
+        font-family: 'pp_neue_montrealmedium';
+    }
+    .exp-pillar-item h3, .exp-pillar-item .sc-txt p{
+        text-align: left;
+    }
+    .exp-pillar-item .sc-txt{
+        margin-top: 0.75rem;
+    }
+</style>

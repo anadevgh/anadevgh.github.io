@@ -36,7 +36,7 @@ const { heading, description, secDesc, items } = Astro.props;
                 </div>
             ))}
         </div>
-        <div class="exp-approach-txt-row">
+        <div class="exp-scd-txt-row">
             <div class="sc-wrapper">
                 <div class="exp-txt">
                     <p set:html={secDesc}></p>
@@ -77,24 +77,5 @@ const { heading, description, secDesc, items } = Astro.props;
     }
     .exp-approach-info .sc-txt p{
         text-align: left;
-    }
-    .exp-approach-txt-row{
-        margin-top: 3.75rem;
-    }
-    .exp-txt{
-        color: var(--darkBlue);
-        font-size: 1.25rem;
-        line-height: 1.5rem;
-        letter-spacing: 0.025rem;
-        text-align: center;
-    }
-    .exp-txt p :global(span.blue){
-        color: #80A0FF;
-    }
-    .exp-txt p :global(span.red){
-        color: #FF6C6C;
-    }
-    .exp-txt p :global(span.green){
-        color: #1ECE76;
     }
 </style>

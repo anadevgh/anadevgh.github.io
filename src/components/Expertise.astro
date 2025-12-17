@@ -1,11 +1,40 @@
 ---
 import ExpertiseHero from '../components/ExpertiseHero.astro';
+import ExpertiseIntro from '../components/ExpertiseIntro.astro';
+import ExpertisePillars from '../components/ExpertisePillars.astro';
 import HeroImage from '../assets/expertise-main.png';
+import ExpPillar1Img from '../assets/pillar-1-img.png';
+import ExpPillar2Img from '../assets/pillar-2-img.png';
+import ExpPillar3Img from '../assets/pillar-3-img.png';
 
 const HeroData = {
     img: HeroImage,
     heading: `Expertise That Builds Your Competitive Advantage`,
     description: "At IPOINT INT, expertise is more than a capability — it’s your pathway to clarity, confidence, and growth. Our disciplines work together to create powerful digital experiences that elevate your brand and strengthen your position in the market.",
+}
+
+const ExpPillars = {
+    heading: `The Three Pillars of Our Expertise`,
+    description: "Everything we do is built on three interconnected pillars that support your vision:",
+    addt_txt: `Each pillar stands strong on its own — but when combined, they form a system that <br/> transforms your entire digital future.`,
+
+    items: [
+        {
+            img: ExpPillar1Img,
+            title: "Brand Systems", 
+            text: "Where identity, clarity, and differentiation begin. From your brand story to your visual language, this pillar creates the foundation for recognition and trust."
+        },
+        {
+            img: ExpPillar2Img,
+            title: "Digital Experience", 
+            text: "Where users interact, engage, and convert. UX/UI, web design, and development come together to deliver seamless performance and intuitive navigation." 
+        },
+        {
+            img: ExpPillar3Img,
+            title: "Growth Engines", 
+            text: "Where your business scales. Strategy, marketing, and advanced digital systems work behind the scenes to accelerate acquisition, retention, and market expansion." 
+        }
+    ]
 }
 
 ---
@@ -14,4 +43,11 @@ const HeroData = {
     img={HeroData.img}
     title={HeroData.heading}
     text={HeroData.description}
+/>
+<ExpertiseIntro />
+<ExpertisePillars 
+    heading={ExpPillars.heading}
+    description={ExpPillars.description}
+    items={ExpPillars.items}
+    addt_txt={ExpPillars.addt_txt}
 />
