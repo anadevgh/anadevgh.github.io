@@ -1,6 +1,13 @@
-<section class="sc-pd sc-grey sc-grey-C ps-rel">
+---
+const { theme } = Astro.props;
+---
+
+<section 
+    class={`sc-pd ps-rel ${
+        theme === "dark" ? "sc-dark" : "sc-grey sc-grey-C"
+    }`}>
     <div class="container">
-        <div class="sl-row fx fx-jb">
+        <div class="sl-row fx fx-jb ps-rel">
             <div class="sl-lcol">
                 <h2>Solutions That Deliver</h2>
                 <div class="sc-txt">
@@ -53,6 +60,9 @@
     }
     .sl-rcol{
         width: 50%;
+    }
+    .sl-row{
+        z-index: 1;
     }
     .sl-logos-row{
         gap: 1rem;

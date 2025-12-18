@@ -1,5 +1,5 @@
 ---
-const { heading, items } = Astro.props;
+const { heading, items, loadJs } = Astro.props;
 ---
 
 <section class="exp-br-faq sc-al-cnt sc-pd sc-grey sc-grey-C ps-rel">
@@ -114,3 +114,36 @@ const { heading, items } = Astro.props;
         text-align: left;
     }
 </style>
+
+{loadJs && (
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.exp-acc-item').forEach(item => {
+            const header = item.querySelector('.exp-acc-top');
+            const content = item.querySelector('.exp-acc-main');
+
+            if(!item.classList.contains('exp-faq')){
+                item.classList.add('opened');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+            
+            header.addEventListener('click', () => {
+            const isOpen = item.classList.contains('opened');
+
+            if (isOpen) {
+                item.classList.remove('opened');
+                content.style.maxHeight = '0px';
+            } else {
+                item.classList.add('opened');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+            });
+        });
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.exp-acc-item.opened .exp-acc-main').forEach(el => {
+                el.style.maxHeight = el.scrollHeight + 'px';
+            });
+        });
+    });
+</script>
+)}
