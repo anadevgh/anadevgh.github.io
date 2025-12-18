@@ -2,7 +2,7 @@
 const { title, text } = Astro.props;
 ---
 
-<section class="sc-hero banner-vd">
+<section class="sc-hero banner-vd" id="dna-hero">
     <div class="sc-hero-vd">
         <video id="dna-video" muted playsinline autoplay>
             <source src="/vd/dna-full-spin-low.mp4" type="video/mp4">
@@ -37,3 +37,41 @@ const { title, text } = Astro.props;
         margin: auto;
     }
 </style>
+
+<script>
+  const video = document.getElementById('dna-video');
+
+  video.addEventListener('loadedmetadata', () => {
+    const halfDuration = video.duration / 2;
+    let scrollEnabled = false;
+
+    // --- Step 1: Play first half automatically ---
+    video.currentTime = 0;
+    video.play();
+
+    const firstHalfInterval = setInterval(() => {
+      if (video.currentTime >= halfDuration) {
+        video.pause();          // stop at half
+        scrollEnabled = true;   // enable scroll control
+        clearInterval(firstHalfInterval);
+      }
+    }, 50);
+
+    // --- Step 2: Scroll-driven control for second half ---
+    window.addEventListener('scroll', () => {
+      if (!scrollEnabled) return; // ignore scroll until first half finishes
+
+      const scrollTop = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const scrollFraction = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+
+      if (scrollFraction === 0) {
+        // At top: reset to first frame
+        video.currentTime = 0;
+      } else {
+        // Map scrollFraction to second half
+        video.currentTime = halfDuration + scrollFraction * halfDuration;
+      }
+    });
+  });
+</script>
