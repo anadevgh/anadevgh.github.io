@@ -1,0 +1,39 @@
+---
+const { title, text } = Astro.props;
+---
+
+<section class="sc-hero banner-vd">
+    <div class="sc-hero-vd">
+        <video id="dna-video" muted playsinline autoplay>
+            <source src="/vd/dna-full-spin-low.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="sc-dna-intro">
+        <div class="container">
+            <div class="dna-sc-wrap sc-al-cnt">
+                <h1 set:html={title}></h1>
+                <div class="sc-txt">
+                    <p set:html={text}></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .sc-hero{
+        padding-bottom: 8.75rem;
+    }
+    video{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .sc-dna-intro{
+        margin-top: 7.5rem;
+    }
+    .dna-sc-wrap{
+        width: 60rem;
+        margin: auto;
+    }
+</style>

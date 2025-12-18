@@ -8,7 +8,7 @@ const { heading, description, button1text, button1Link, button2text, button2Link
             <div class="sc-headline ps-rel">
                 <h2 set:html={heading}></h2>
                 <div class="sc-txt">
-                    <p>{description}</p>
+                    <p set:html={description}></p>
                 </div>
             </div>
             <div class="btn-row btn-exp-row fx fx-jc"> 

@@ -1,0 +1,96 @@
+---
+const { title, text, items } = Astro.props;
+
+---
+
+<section class="dna-fm sc-al-cnt sc-pd ps-rel">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-headline ps-rel">
+                <h2>{title}</h2>
+                <div class="sc-txt">
+                    <p set:html={text}></p>
+                </div>
+            </div>
+            <div class="dna-fm-row fx fx-wrap fx-jc">
+                {items.map((item: { num: string; title: string; subTitle: string; text: string; }) => (
+                    <div class="dna-fm-col">
+                        <div class="dna-num">
+                            <span>{item.num}</span>
+                        </div>
+                        <h5>{item.title}</h5>
+                        <h6>{item.subTitle}</h6>
+                        <div class="sc-txt">
+                            <p set:html={item.text}></p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div class="btn-row fx fx-jc">
+                <a href="#" class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc">
+                    <span>Discover Our Solutions</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .dna-fm:after{
+        content: "";
+        position: absolute;
+        bottom: -17rem;
+        left: 0;
+        width: 100%;
+        height: 36rem;
+        background: url(/sl-grd.webp) no-repeat;
+        background-size: 100% 100%;
+        z-index: 0;
+    }
+    .dna-fm .sc-wrapper{
+        z-index: 1;
+        position: relative;
+    }
+    .dna-fm-col{
+        border-radius: 1.25rem;
+        border: 0.125rem solid #333335;
+        background: radial-gradient(172.78% 84.5% at 50% 100%, #252932 0%, #1E2025 100%);
+        width: calc((100% - 3rem)/3);
+        padding: 1.25rem;
+    }
+    .dna-fm-col h5{
+        color: var(--white);
+        font-size: 7.5rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 7.5rem;
+        margin: 0;
+        text-align: center;
+    }
+    .dna-fm-col h6{
+        color: var(--white);
+        font-size: 2rem;
+        font-weight: 400;
+        line-height: 2rem;
+        margin: 0.5rem;
+        text-align: center;
+    }
+    .dna-fm-row{
+        padding: 3.75rem 0;
+        gap: 1.5rem;
+    }
+    .dna-fm .sc-wrapper{
+        width: 58rem;
+    }
+    .dna-num span{
+        color: rgba(255, 255, 255, 0.60);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.25rem;
+        letter-spacing: 0.03rem;
+    }
+    .dna-fm-col .sc-txt p{
+        color: rgba(255, 255, 255, 0.60);
+        padding: 0 1rem;
+    }
+</style>

@@ -1,0 +1,102 @@
+---
+import DNABanner from "../components/DNABanner.astro";
+import Formula from "../components/Formula.astro";
+import Team from "../components/Team.astro";
+import HomeSolutions from '../components/HomeSolutions.astro';
+
+const HeroData = {
+    heading: `The Pursuit of Excellence`,
+    description: `At IPOINT INT, we don’t just build websites or apps. <br/>
+                    We create digital solutions that deliver peace of mind and lasting results. <br/>
+                    Every project is crafted to be the most fitting, effective, and premium option available to you.`,
+}
+
+const formulaData = {
+    heading: "The IPOINT Formula",
+    description: `Our approach is simple: understand your challenges, tailor the right solution, and deliver <br/> with precision. It’s not about templates or shortcuts. It’s about custom solutions that scale <br/> with your vision.`,             
+                
+    items: [
+        {
+            num: "01",
+            title: "Pr",
+            subTitle: "Premium", 
+            text: "Tools that are seamless, scalable, and effortless to use"
+        },
+        {
+            num: "02",
+            title: "Si",
+            subTitle: "Simplicity", 
+            text: "Custom solutions that outperform and deliver ROI"
+        },
+        {
+            num: "03",
+            title: "Im",
+            subTitle: "Impact", 
+            text: "Work that engages, converts, and drives measurable results"
+        },
+    ]      
+}
+
+const TeamData = {
+    heading: "Who’s Behind Your Success?",
+    description: `Behind every IPOINT INT project is a team of specialists, designers, developers, <br/> and strategists, united by one mission: to make your business thrive.`,             
+                
+    items: [
+        {
+            videoLink: "/vd/team-video-sample.mp4",
+            name: "Antoine",
+            designation: "Vision & Leadership", 
+            text: "Driving excellence across industries"
+        },
+        {
+            videoLink: "/vd/team-video-sample.mp4",
+            name: "Anton",
+            designation: "Art Director", 
+            text: "Crafting visual impact that cuts through the noise"
+        },
+        {
+            videoLink: "/vd/team-video-sample.mp4",
+            name: "Anahit",
+            designation: "Senior Lead Developer", 
+            text: "Architecting clean, scalable solutions"
+        },
+        {
+            videoLink: "/vd/team-video-sample.mp4",
+            name: "Aida",
+            designation: "Senior Lead Developer", 
+            text: "Architecting clean, scalable solutions"
+        },
+        {
+            videoLink: "/vd/team-video-sample.mp4",
+            name: "Teodora",
+            designation: "Social Media Manager", 
+            text: "Creating digital conversations that convert"
+        },
+        {
+            videoLink: "/vd/team-video-sample.mp4",
+            name: "Cheryl",
+            designation: "Administration Manager", 
+            text: "Ensuring clarity, trust, and peace of mind"
+        },
+    ]
+}
+
+---
+
+<DNABanner 
+    title={HeroData.heading}
+    text={HeroData.description}
+/>
+<Formula
+    title={formulaData.heading}
+    text={formulaData.description}
+    items={formulaData.items}
+/>
+
+<Team
+    title={TeamData.heading}
+    text={TeamData.description}
+    items={TeamData.items}
+/>
+
+<HomeSolutions />

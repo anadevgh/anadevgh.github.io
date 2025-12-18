@@ -1,0 +1,174 @@
+---
+const { title, text, items } = Astro.props;
+
+---
+
+<section class="sc-team sc-pd sc-grey-C ps-rel sc-al-cnt">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-headline ps-rel">
+                <h2 set:html={title}></h2>
+                <div class="sc-txt">
+                    <p set:html={text}></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="team-mb-scroll sc-grey">
+        <div class={`team-mb-row fx`}>
+            {items.map((item: { videoLink: string; name: string; designation: string; text: string; }) => (
+                <div class="team-member">
+                    <div class="mmb-vd">
+                         <video muted playsinline preload="metadata">
+                            <source src={item.videoLink} type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="mmb-info ps-rel">
+                        <h6>{item.name}</h6>
+                        <h5>{item.designation}</h5>
+                        <h4>{item.text}</h4>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .sc-team{
+        z-index: 1;
+        padding-bottom: 0;
+    }
+    .team-mb-scroll {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        padding-bottom: 6.25rem;
+    }
+    .team-mb-scroll::-webkit-scrollbar {
+        display: none;
+    }
+    .team-mb-row{
+        margin: 2.5rem 0 0 0;
+        gap: 1.5rem;
+        padding: 0 0 0 5rem;
+        flex-wrap: nowrap;
+        min-width: max-content;
+    }
+    .team-member{
+        border-radius: 2.5rem;
+        width: 24rem;
+        cursor: pointer;
+    }
+    video{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 2.5rem 2.5rem 0 0;
+        color: pointer;
+    }
+    .mmb-info{
+        border-radius: 2.5rem;
+        background: #23252A;
+        padding: 1.5rem 2.5rem;
+        margin-top: -3rem;
+    }
+    .mmb-info h6, .mmb-info h5{
+        color: var(--white);
+        font-size: 1.75rem;
+        font-weight: 500;
+        line-height: 2rem;
+        letter-spacing: 0.018rem;
+        margin: 0;
+    }
+    .mmb-info h5{
+        color: #878B99;
+    }
+    .mmb-info h4{
+        color: #878B99;
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        letter-spacing: 0.013rem;
+        margin: 0.75rem 0 0 0;
+    }
+    @media screen and (min-width:1601px){
+        .team-mb-row{
+            padding-right: 5rem;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const members = document.querySelectorAll('.team-member');
+
+        members.forEach(member => {
+            const video = member.querySelector('video');
+
+            member.addEventListener('mouseenter', () => {
+                video.currentTime = 0;
+                video.play();
+            });
+
+            member.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
+        const slider = document.querySelector('.team-mb-scroll');
+
+        const updateCursor = () => {
+            if (slider.scrollWidth > slider.clientWidth) {
+                slider.style.cursor = 'grab';
+            } else {
+                slider.style.cursor = 'default';
+            }
+        };
+
+        updateCursor();
+        window.addEventListener('resize', updateCursor);
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX);
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        slider.addEventListener('wheel', (e) => {
+            const canScrollHorizontally =
+            slider.scrollWidth > slider.clientWidth &&
+            (e.deltaY > 0 && slider.scrollLeft < slider.scrollWidth - slider.clientWidth ||
+            e.deltaY < 0 && slider.scrollLeft > 0);
+
+            if (canScrollHorizontally) {
+            e.preventDefault();
+            slider.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+    });
+</script>
