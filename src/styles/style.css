@@ -67,6 +67,9 @@ html.dark {
 html.light {
     background: var(--lightGrey3);
 }
+html.light .sc-hero p, html.light .sc-hero h1, html.light .sc-hero h2 {
+    color: var(--darkGrey);
+}
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -631,6 +634,12 @@ h5{
 .rs-banner-slider, .rs-banner-slider .swiper, .rs-banner-slider .swiper-wrapper,
 .rs-banner-slider .swiper-slide, .rs-banner-bg {
     height: 100%;
+}
+.img-after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
 }
 
 

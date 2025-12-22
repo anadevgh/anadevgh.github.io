@@ -6,7 +6,9 @@ import ResultEnd from '../../components/ResultEnd.astro';
 import { Image } from 'astro:assets';
 import laptopBanner from '../../assets/results/laferla/laptop-banner.jpg';
 import card1Before from '../../assets/results/laferla/card-1-before.svg';
+import card2Before from '../../assets/results/laferla/card-2-before.svg';
 import card1After from '../../assets/results/laferla/card-1-after.svg';
+import card2After from '../../assets/results/laferla/card-2-after.svg';
 
 const currentPageLink = Astro.url.href;
 const currentPageTitle = "Laferla";
@@ -171,10 +173,20 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
         <div class="container">
             <div class="cols-wrap boxed-cols fx fx-jb fx-wrap">
                 <div class="boxed-col col no-pd">
-                    <Image src={card1Before} alt="card-1-before" />
+                    <Image src={card1Before} alt="card-1-before" class="img-before" />
+                    <Image src={card1After} alt="card-1-after" class="img-after" />
                 </div>
                 <div class="boxed-col col no-pd">
-                    <Image src={card1After} alt="star-graphic-with-text" />
+                    <Image src={card2Before} alt="card-2-before" class="img-before" />
+                    <Image src={card2After} alt="card-2-after" class="img-after" />
+                </div>
+            </div>
+            <div class="cols-wrap boxed-cols fx fx-jb fx-wrap">
+                <div class="boxed-col col no-pd">
+                    
+                </div>
+                <div class="boxed-col col no-pd">
+                    
                 </div>
             </div>
         </div>
