@@ -33,6 +33,31 @@ import visual4 from '../../assets/results/laferla/visual-4.svg';
 
 import homeBanner from '../../assets/results/laferla/home-banner.jpg';
 
+import businessVisual1 from '../../assets/results/laferla/business-1-visual.svg';
+import businessVisual2 from '../../assets/results/laferla/business-2-visual.svg';
+import businessVisual3 from '../../assets/results/laferla/business-3-visual.svg';
+import businessVisual4 from '../../assets/results/laferla/business-4-visual.svg';
+import businessVisual5 from '../../assets/results/laferla/business-5-visual.svg';
+import businessVisual6 from '../../assets/results/laferla/business-6-visual.svg';
+const businessVisuals = [businessVisual1, businessVisual2, businessVisual3, businessVisual4, businessVisual5, businessVisual6];
+
+import employeeViewBanner from '../../assets/results/laferla/employee-insurance-page.webp';
+import businessViewBanner from '../../assets/results/laferla/business-combined-page.webp';
+import industrialViewBanner from '../../assets/results/laferla/industrial-insurance-page.webp';
+import constructionViewBanner from '../../assets/results/laferla/construction-and-engineering-page.webp';
+
+import businessBanner1 from '../../assets/results/laferla/business-banner-1.webp';
+import businessBanner2 from '../../assets/results/laferla/business-banner-2.webp';
+import businessBanner3 from '../../assets/results/laferla/business-banner-3.webp';
+import businessBanner4 from '../../assets/results/laferla/business-banner-4.webp';
+import businessBanner5 from '../../assets/results/laferla/business-banner-5.webp';
+const businessBanners = [businessBanner1, businessBanner2, businessBanner3, businessBanner4, businessBanner5];
+
+import macbookBanner2 from '../../assets/results/laferla/macbook-banner-2.jpg';
+import KeithThumb from '../../assets/results/laferla/Keith-thumbnail.jpg';
+import starsIcon from '../../assets/results/laferla/5-stars-rating-icon.svg';
+import laferlaLogo from '../../assets/results/laferla/laferla-logo.svg';
+
 const currentPageLink = Astro.url.href;
 const currentPageTitle = "Laferla";
 const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
@@ -77,7 +102,6 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
                     </SwiperSlide>
                 </SwiperWrapper>
             </Swiper>
-
         </div>
     </section>
 
@@ -222,8 +246,8 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
             <div class="rs-page-view-wrap">
                 <div class="rs-tablet-box">
                     <div class="rs-tablet-box-inner">
-                        <div class="rs-tablet-box-view" id="rs-view-banner">
-                            <Image src={homepageViewBanner} alt="view-banner" id="main-view-img" />
+                        <div class="rs-tablet-box-view">
+                            <Image src={homepageViewBanner} alt="view-banner" class="main-view-img" />
                         </div>
                     </div>
                 </div>
@@ -281,16 +305,93 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
             </div>
         </div>
     </section>
-    <section class="fw-banner bottom-pd">
+    <section class="fw-banner">
         <div class="container">
             <Image src={homeBanner} alt="home-banner" />
         </div>
     </section>
-    
-
-
+    <section class="rs-insurance-list bottom-lg-pd">
+        <div class="ticker-wrapper">
+            <div class="ticker fx">
+                {[...businessVisuals, ...businessVisuals, ...businessVisuals].map((img, i) => (
+                    <div class="rs-ins-visual ticker-item">
+                        <Image src={img} alt={`business-visual-${i + 1}`} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+    <section class="pages-web-view bottom-lg-pd">
+        <div class="container">
+            <div class="rs-page-view-wrap">
+                <div class="rs-tablet-box">
+                    <div class="rs-tablet-box-inner">
+                        <div class="rs-tablet-box-view">
+                            <Image src={employeeViewBanner} alt="view-banner" class="main-view-img" />
+                        </div>
+                    </div>
+                </div>
+                <div class="rs-page-view-links fx fx-jc">
+                    <a class="rs-page-view-link active" data-page="1" data-image={employeeViewBanner.src}>Employee</a>
+                    <a class="rs-page-view-link" data-page="2" data-image={businessViewBanner.src}>Business</a>
+                    <a class="rs-page-view-link" data-page="3" data-image={industrialViewBanner.src}>Industrial</a>
+                    <a class="rs-page-view-link" data-page="4" data-image={constructionViewBanner.src}>Construction</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="rs-insurance-banners bottom-pd">
+        <div class="ticker-wrapper">
+            <div class="ticker fx">
+                {[...businessBanners, ...businessBanners].map((img, i) => (
+                    <div class="rs-ins-banner ticker-item">
+                        <Image src={img} alt={`business-visual-${i + 1}`} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+    <section class="rs-fw-image">
+        <Image src={macbookBanner2} alt="macbook-banner-2" />
+    </section>
+    <section class="rs-owner-testimonial">
+        <div class="container">
+            <div class="mid-wrap">
+                <div class="rs-testimonial-box fx fx-wrap">
+                    <div class="rs-testimonial-thumb ps-rel">
+                        <Image src={KeithThumb} alt="Keith Laferla" />
+                        <a class="tst-video-btn fx fx-ac fx-jc">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM8 14.5V5.5L14 10L8 14.5Z" fill="#2C2C2C"/>
+                            </svg>
+                            <span>Watch Testimonial</span>
+                        </a>
+                    </div>
+                    <div class="rs-testimonial-content fx fx-ae fx-wrap">
+                        <div class="rs-testimonial-top-info">
+                            <div class="rs-testimonial-rating">
+                                <Image src={starsIcon} alt="stars-icon" />
+                            </div>
+                            <div class="rs-testimonial-text rs-tst-fsize">
+                                <p>Dear IPOINT Team,<br/>We would like to express our sincere gratitude for the work you have done on the design of our web pages and application. Your team has demonstrated high professionalism, creativity, and attentiveness to our needs. We greatly appreciate your efforts and the contribution you have made to the development of our project.</p>
+                            </div>
+                        </div>
+                        <div class="rs-testimonial-details rs-tst-fsize fx fx-jb fx-ae fx-wrap">
+                            <div class="rs-testimonial-info">
+                                <div class="rs-testimonial-author">Keith Laferla</div>
+                                <div class="rs-testimonial-author-position">CEO, Laferla Group, IMCM, ACI, Chartered Insurer, Director</div>
+                            </div>
+                            <div class="rs-testimonial-logo">
+                                <Image src={laferlaLogo} alt="Laferla logo" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <ResultEnd />
-    <section class="rs-similar sc-grey">
+    <section class="rs-similar">
         <div class="container">
             <h2 class="dark-gray">Similar Projects</h2>
         </div>
@@ -391,7 +492,7 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
 
 <style>
 .rs-details {
-    background: var(--white);
+    background: var(--white); 
 }
 </style>
 <script>
@@ -405,71 +506,40 @@ document.addEventListener('DOMContentLoaded', () => {
         afterImages.forEach(img => img.classList.toggle('show', isVisible));
     }, interval);
 
-    const mainImg = document.getElementById('main-view-img');
-    const links = document.querySelectorAll('.rs-page-view-link');
 
     const imageCache = {};
-    links.forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
+    document.querySelectorAll('.rs-page-view-wrap').forEach(section => {
+        const mainImg = section.querySelector('.main-view-img');
+        const links = section.querySelectorAll('.rs-page-view-link');
 
-            const newSrc = link.dataset.image;
+        links.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
 
-            if (mainImg.src !== newSrc) {
-                // preload image first
+                const newSrc = link.dataset.image;
+                if (mainImg.src === newSrc) return;
+
                 if (!imageCache[newSrc]) {
                     const img = new Image();
                     img.src = newSrc;
-                    imageCache[newSrc] = img;
+                    imageCache[newSrc] = true;
                 }
 
-                // Fade out
                 mainImg.style.opacity = 0;
 
                 mainImg.onload = () => {
                     mainImg.style.opacity = 1;
                 };
 
-                // Change src after tiny timeout to allow fade-out
                 setTimeout(() => {
                     mainImg.src = newSrc;
-                }, 200); // fade-out starts before src change
-            }
+                }, 200);
 
-            // Active class
-            links.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+                links.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
         });
     });
-
-    /*links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            const src = link.dataset.image;
-            if (!imageCache[src]) {
-                const img = new Image();
-                img.src = src;
-                imageCache[src] = img;
-            }
-
-            // Replace the image in the container
-            container.innerHTML = `<img src="${src}" alt="banner" />`;
-
-            // Update active link
-            links.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-        });
-
-        link.addEventListener('mouseenter', () => {
-            const src = link.dataset.image;
-            if (!imageCache[src]) {
-                const img = new Image();
-                img.src = src;
-                imageCache[src] = img;
-            }
-        });
-    });*/
 
     const btn = document.querySelector('.copy-link-btn');
     const status = document.querySelector('.copy-status');

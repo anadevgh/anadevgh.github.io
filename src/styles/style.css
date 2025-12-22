@@ -71,6 +71,9 @@ html.light {
 html.white {
     background: var(--white);
 }
+html.white .rs-next-ref.sc-grey {
+    background: var(--white); 
+}
 html.light .sc-hero p, html.light .sc-hero h1, html.light .sc-hero h2 {
     color: var(--darkGrey);
 }
@@ -721,6 +724,111 @@ h5{
     background: var(--black);
     color: var(--white);
 }
+.bottom-lg-pd {
+    padding-bottom: 12.5rem;
+}
+.ticker {
+    column-gap: 1.5rem;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+.ticker-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+.rs-ins-visual {
+    width: 16.125rem;
+}
+.rs-ins-banner {
+    width: 37.5rem;
+}
+.rs-ins-banner img {
+    border-radius: 1.25rem;
+}
+.ticker-item img {
+    width: 100%;
+}
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-33.333%);
+    }
+}
+.mid-wrap {
+    width: 71.5rem;
+    margin: 0 auto;
+}
+.rs-testimonial-box {
+    border-radius: 1.25rem;
+    background: var(--lightGrey3);
+    position: relative;
+    overflow: hidden;
+}
+.rs-testimonial-box > div {
+    width: 50%;
+}
+.rs-testimonial-content {
+    padding: 2.5rem 2.3rem;
+}
+.rs-testimonial-content > div {
+    flex-grow: 1;
+}
+.rs-testimonial-rating {
+    width: 8.125rem;
+}
+.rs-testimonial-text {
+    margin-top: 0.75rem;
+}
+.rs-testimonial-text p {
+    margin: 0;
+}
+.rs-tst-fsize {
+    color: var(--darkGrey);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1rem;
+}
+.rs-testimonial-author-position {
+    font-family: 'pp_neue_montrealbook';
+    font-weight: 400;
+}
+.rs-testimonial-top-info {
+    align-self: flex-start;
+}
+.rs-testimonial-logo {
+    width: 6.25rem;
+}
+.rs-testimonial-info {
+    padding-right: 1rem;
+}
+.tst-video-btn{
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    background: rgba(255, 255, 255, 0.50);
+    backdrop-filter: blur(10px);
+    height: 3.75rem;
+    position: absolute;
+    bottom: 2.375rem;
+    left: 2.5rem;
+    right: 2.5rem;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.tst-video-btn span{
+    color: var( --darkGrey);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 3.75rem;
+    padding-left: 1rem;
+}
+.rs-testimonial-box .tst-video-btn {
+    width: 15rem;
+    left: 0;
+    right: 0;
+}
+
 
 
 
