@@ -7,10 +7,10 @@ import { Image } from 'astro:assets';
 import laptopBanner from '../../assets/results/laferla/laptop-banner.jpg';
 import card1Before from '../../assets/results/laferla/card-1-before.svg';
 import card2Before from '../../assets/results/laferla/card-2-before.svg';
-import card1After from '../../assets/results/laferla/card-1-after.svg';
-import card2After from '../../assets/results/laferla/card-2-after-v2.svg';
-import card3 from '../../assets/results/laferla/card-3.svg';
-import card4 from '../../assets/results/laferla/card-4.svg';
+import card1After from '../../assets/results/laferla/card-1-after.jpg';
+import card2After from '../../assets/results/laferla/card-2-after.jpg';
+import card3 from '../../assets/results/laferla/card-3.jpg';
+import card4 from '../../assets/results/laferla/card-4.jpg';
 import travelBanner from '../../assets/results/laferla/travel-banner.jpg';
 import motorBanner from '../../assets/results/laferla/motor-banner.jpg';
 
@@ -20,25 +20,25 @@ import travelViewBanner from '../../assets/results/laferla/travel-insurance-page
 import motorViewBanner from '../../assets/results/laferla/motor-insurance-page.webp';
 import companyViewBanner from '../../assets/results/laferla/about-us-page.webp';
 
-import graphicsBunch1 from '../../assets/results/laferla/graphics-bunch-1.svg';
-import graphicsBunch2 from '../../assets/results/laferla/graphics-bunch-2.svg';
-import graphicsBunch3 from '../../assets/results/laferla/graphics-bunch-3.svg';
-import graphicsBunch4 from '../../assets/results/laferla/graphics-bunch-4.svg';
-import macbookBanner from '../../assets/results/laferla/macbook-banner.png';
+import graphicsBunch1 from '../../assets/results/laferla/graphics-bunch-1.jpg';
+import graphicsBunch2 from '../../assets/results/laferla/graphics-bunch-2.jpg';
+import graphicsBunch3 from '../../assets/results/laferla/graphics-bunch-3.jpg';
+import graphicsBunch4 from '../../assets/results/laferla/graphics-bunch-4.jpg';
+import macbookBanner from '../../assets/results/laferla/macbook-banner-1.jpg';
 
 import visual1 from '../../assets/results/laferla/visual-1.svg';
-import visual2 from '../../assets/results/laferla/visual-2.svg';
-import visual3 from '../../assets/results/laferla/visual-3.svg';
-import visual4 from '../../assets/results/laferla/visual-4.svg';
+import visual2 from '../../assets/results/laferla/visual-2.jpg';
+import visual3 from '../../assets/results/laferla/visual-3.jpg';
+import visual4 from '../../assets/results/laferla/visual-4.jpg';
 
 import homeBanner from '../../assets/results/laferla/home-banner.jpg';
 
-import businessVisual1 from '../../assets/results/laferla/business-1-visual.svg';
-import businessVisual2 from '../../assets/results/laferla/business-2-visual.svg';
-import businessVisual3 from '../../assets/results/laferla/business-3-visual.svg';
-import businessVisual4 from '../../assets/results/laferla/business-4-visual.svg';
-import businessVisual5 from '../../assets/results/laferla/business-5-visual.svg';
-import businessVisual6 from '../../assets/results/laferla/business-6-visual.svg';
+import businessVisual1 from '../../assets/results/laferla/business-1-visual.jpg';
+import businessVisual2 from '../../assets/results/laferla/business-2-visual.jpg';
+import businessVisual3 from '../../assets/results/laferla/business-3-visual.jpg';
+import businessVisual4 from '../../assets/results/laferla/business-4-visual.jpg';
+import businessVisual5 from '../../assets/results/laferla/business-5-visual.jpg';
+import businessVisual6 from '../../assets/results/laferla/business-6-visual.jpg';
 const businessVisuals = [businessVisual1, businessVisual2, businessVisual3, businessVisual4, businessVisual5, businessVisual6];
 
 import employeeViewBanner from '../../assets/results/laferla/employee-insurance-page.webp';
@@ -310,7 +310,7 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
             <Image src={homeBanner} alt="home-banner" />
         </div>
     </section>
-    <section class="rs-insurance-list bottom-lg-pd">
+    <section class="rs-insurance-list bottom-pd">
         <div class="ticker-wrapper">
             <div class="ticker fx">
                 {[...businessVisuals, ...businessVisuals, ...businessVisuals].map((img, i) => (
@@ -493,6 +493,22 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
 <style>
 .rs-details {
     background: var(--white); 
+}
+.rs-insurance-list {
+    background: linear-gradient(180deg, #FFF 0%, #EBF1F1 31.5%, #EBF1F1 77.5%, #FFF 100%);
+    margin-bottom: 6.25rem;
+}
+.rs-ins-visual {
+    width: 16.125rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+}
+.rs-ins-banner {
+    width: 37.5rem;
+}
+.rs-ins-banner img {
+    border-radius: 1.25rem;
 }
 </style>
 <script>

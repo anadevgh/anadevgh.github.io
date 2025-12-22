@@ -736,15 +736,6 @@ h5{
     overflow: hidden;
     width: 100%;
 }
-.rs-ins-visual {
-    width: 16.125rem;
-}
-.rs-ins-banner {
-    width: 37.5rem;
-}
-.rs-ins-banner img {
-    border-radius: 1.25rem;
-}
 .ticker-item img {
     width: 100%;
 }
