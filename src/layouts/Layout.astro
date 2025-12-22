@@ -1,11 +1,13 @@
 ---
+const { theme = "dark", isContact = "no" } = Astro.props;
 import "../styles/style.css";
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class={`${theme}`}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -14,9 +16,9 @@ import Footer from '../components/Footer.astro';
 		<meta name="desciption" content="" />
 		<title>IPOINT INT</title>
 	</head>
-	<body>
+	<body class={isContact === "yes" ? "ct-pg" : ""}>
 		<Header />
 		<slot />
-		<Footer />
+		<Footer isContact="yes"/>
 	</body>
 </html>

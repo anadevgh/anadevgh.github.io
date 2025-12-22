@@ -1,0 +1,21 @@
+---
+import HeroGen from '../components/HeroGen.astro';
+import ContactImg from '../../public/quotation-icon.png';
+
+const HeroData = {
+    heading: `Let’s Build Something <br/> That Lasts`,
+    description: `We’re here to make things simple. Whether you’re exploring a new idea, looking
+                  for the right partner, or need clarity on scaling, this is where your next step
+                  begins.`,
+    secText: `No forms lost in space. No waiting weeks. <br/>Expect a fast, real response from our team.`,              
+    img: ContactImg              
+}
+
+---
+
+<HeroGen 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+    secText={HeroData.secText}
+/>

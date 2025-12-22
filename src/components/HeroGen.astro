@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+const { img, title, text, secText } = Astro.props;
+
+---
+
+<section class="sc-hero sc-al-cnt">
+    <div class="container">
+        <div class="sc-hr-wrap fx fx-wrap">
+            <div class="hero-graphic">
+                <Image src={img} alt={title} />
+            </div>
+            <div class="hero-intro-text">
+                <h1 set:html={title}></h1>
+                <div class="sc-txt">
+                    <p set:html={text}></p>
+                </div>
+                <div class="sc-subtext">
+                    <p set:html={secText}></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .sc-hr-wrap{
+        width: 45rem;
+        margin: auto;
+    }
+    .hero-graphic{
+        margin: 2rem auto 2.5rem auto;
+    }
+    .sc-hero{
+        padding-bottom: 9.375rem;
+    }
+    .sc-subtext{
+        margin-top: 1.5rem;
+    }
+    html.light .sc-subtext p{
+        color: rgba(163, 165, 172, 0.50);
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+        letter-spacing: 0.02rem;
+        margin: 0;
+    }
+</style>
