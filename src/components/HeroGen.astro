@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-const { img, title, text, secText } = Astro.props;
+const { img, title, text, secText, buttonText } = Astro.props;
 
 ---
 
@@ -12,24 +12,39 @@ const { img, title, text, secText } = Astro.props;
             </div>
             <div class="hero-intro-text">
                 <h1 set:html={title}></h1>
+                {secText && (
+                    <p class="secondary-text">{secText}</p>
+                )}
                 <div class="sc-txt">
                     <p set:html={text}></p>
                 </div>
-                <div class="sc-subtext">
-                    <p set:html={secText}></p>
-                </div>
+                {secText && (
+                    <div class="sc-subtext">
+                        <p set:html={secText}></p>
+                    </div>
+                )}
+                {buttonText && (
+                    <div class="hero-btn-row fx fx-jc">
+                         <a class="btn-primary btn-primary-lg fx fx-ac fx-jc">
+                            <span>{buttonText}</span>
+                        </a>
+                    </div>
+                )}
             </div>
         </div>
     </div>
 </section>
 
 <style is:global>
+    .hero-btn-row{
+        margin-top: 2.25rem;
+    }
     .sc-hr-wrap{
         width: 45rem;
         margin: auto;
     }
     .hero-graphic{
-        margin: 2rem auto 2.5rem auto;
+        margin: 2rem auto 3.75rem auto;
     }
     .sc-hero{
         padding-bottom: 9.375rem;

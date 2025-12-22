@@ -1,0 +1,65 @@
+---
+const { title, text, items } = Astro.props;
+
+---
+
+<section class="sl-adv sc-al-cnt sc-pd ps-rel">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-headline sc-headline-adv ps-rel">
+                <h2 set:html={title}></h2>
+                <div class="sc-txt">
+                    <p set:html={text}></p>
+                </div>
+            </div>
+        </div>
+        <div class="sl-adv-items fx fx-jb">
+            {items.map((item: { title: string; }) => (
+                <div class="sl-adv-col">
+                   <div class="sl-adv-col-wrap fx fx-as">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 14L9.5 19.5L21.5 5" stroke="#27FF43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span set:html={item.title}></span>
+                   </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .sl-adv-items{
+        margin-top: 3.75rem;
+        gap: 1.5rem;
+    }
+    .sc-headline-adv h2{
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+        text-align: center;
+    }
+    .sl-adv-col{
+        width: calc((100% - 2*1.5rem)/3);
+    }
+    .sl-adv-col-wrap span{
+        color: rgba(255, 255, 255, 0.60);
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        letter-spacing: 0.013rem;
+        margin-left: 1rem;
+    }
+    .sl-adv-col-wrap svg{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    .sl-adv-col-wrap{
+        padding: 2rem;
+        border-radius: 1.25rem;
+        border: 0.125rem solid rgba(39, 255, 67, 0.40);
+        background: #252831;
+    }
+    .sl-adv-col-wrap span{
+        color: var(--white);
+    }
+</style>

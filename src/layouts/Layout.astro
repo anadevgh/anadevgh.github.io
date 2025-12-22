@@ -19,6 +19,6 @@ import Footer from '../components/Footer.astro';
 	<body class={isContact === "yes" ? "ct-pg" : ""}>
 		<Header />
 		<slot />
-		<Footer isContact="yes"/>
+		{isContact === "yes" ? <Footer isContact="yes" /> : <Footer />}
 	</body>
 </html>

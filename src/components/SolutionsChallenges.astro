@@ -1,0 +1,76 @@
+---
+const { title, text, items } = Astro.props;
+
+---
+
+<section class="sl-ch sc-al-cnt sc-pd ps-rel">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-headline ps-rel">
+                <h2 set:html={title}></h2>
+                <div class="sc-txt">
+                    <p set:html={text}></p>
+                </div>
+            </div>
+        </div>
+        <div class="sl-ch-items fx fx-jb">
+            {items.map((item: { title: string; text: string; }) => (
+                <div class="sl-ch-col">
+                   <div class="sl-ch-col-tt fx fx-ac">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23" fill="none">
+                            <path d="M10.2679 2C11.0377 0.666667 12.9623 0.666667 13.7321 2L22.3923 17C23.1621 18.3333 22.1999 20 20.6603 20H3.33975C1.80015 20 0.837895 18.3333 1.6077 17L10.2679 2Z" stroke="#FF6725" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 15C12.5523 15 13 15.4477 13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15ZM12 7C12.5523 7 13 7.44772 13 8V12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12V8C11 7.44772 11.4477 7 12 7Z" fill="#FF6725"/>
+                        </svg>
+                        <span set:html={item.title}></span>
+                   </div>
+                   <div class="sl-ch-col-btm fx fx-ac">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 14L9.5 19.5L21.5 5" stroke="#27FF43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span set:html={item.text}></span>
+                   </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .sl-ch-items{
+        margin-top: 3.75rem;
+        gap: 1.5rem;
+    }
+    .sl-ch-col{
+        width: calc((100% - 2*1.5rem)/3);
+    }
+    .sl-ch-col-tt{
+        padding: 2rem 2rem 2.5rem 2rem;
+        border-radius: 1.25rem 1.25rem 0 0;
+        border: 0.125rem solid rgba(255, 103, 37, 0.40);
+        background: #252831;
+        border-bottom: 0;
+    }
+    .sl-ch-col-tt span, .sl-ch-col-btm span{
+        color: rgba(255, 255, 255, 0.60);
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        letter-spacing: 0.013rem;
+        margin-left: 1rem;
+    }
+    .sl-ch-col-tt svg,
+    .sl-ch-col-btm svg{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    .sl-ch-col-btm{
+        padding: 2rem;
+        border-radius: 1.25rem;
+        border: 0.125rem solid rgba(39, 255, 67, 0.40);
+        background: #252831;
+        margin-top: -1rem;
+    }
+    .sl-ch-col-btm span{
+        color: var(--white);
+    }
+</style>

@@ -1,13 +1,13 @@
 ---
-const { title, text, items } = Astro.props;
+const { title, text, items, buttonShow, notDNA } = Astro.props;
 
 ---
 
-<section class="dna-fm sc-al-cnt sc-pd ps-rel">
+<section class={`dna-fm sc-al-cnt sc-pd ps-rel ${notDNA === "yes" ? "not-dna" : ""}`}>
     <div class="container">
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
-                <h2>{title}</h2>
+                <h2 set:html={title}></h2>
                 <div class="sc-txt">
                     <p set:html={text}></p>
                 </div>
@@ -26,17 +26,19 @@ const { title, text, items } = Astro.props;
                     </div>
                 ))}
             </div>
-            <div class="btn-row fx fx-jc">
-                <a href="#" class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc">
-                    <span>Discover Our Solutions</span>
-                </a>
-            </div>
+            {buttonShow && (
+                <div class="btn-row fx fx-jc">
+                    <a href="#" class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc">
+                        <span>Discover Our Solutions</span>
+                    </a>
+                </div>
+            )}
         </div>
     </div>
 </section>
 
 <style>
-    .dna-fm:after{
+    .dna-fm:not(.not-dna):after{
         content: "";
         position: absolute;
         bottom: -17rem;

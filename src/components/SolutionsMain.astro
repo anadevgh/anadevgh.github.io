@@ -1,0 +1,106 @@
+---
+import HeroGen from '../components/HeroGen.astro';
+import HomeSolutions from '../components/HomeSolutions.astro';
+import SolutionsChallenges from '../components/SolutionsChallenges.astro';
+import Formula from "../components/Formula.astro";
+import SolutionsAdvantages from "../components/SolutionsAdvantages.astro";
+import BannerImg from '../assets/expertise-main.png';
+
+const HeroData = {
+    heading: `Solutions That Move Your <br/> Business Forward`,
+    description: `We combine branding, UX/UI, and custom development into solutions <br/> designed around your business stage.`,
+    secText: ``,              
+    img: BannerImg,
+    buttonText: "Start Your Journey"              
+}
+
+const ChlallengesData = {
+    heading: `Your Business Challenges, Simplified`,
+    description: `Every business faces hurdles, whether it’s standing out in a crowded market, scaling <br/> efficiently, or creating a digital presence that truly converts. Most solutions focus on <br/> outputs, not outcomes. At IPOINT INT, we focus on your results first.`,
+    items: [
+        {
+            title: "Your brand isn’t noticed",
+            text: "We create clarity and a compelling digital presence"
+        },
+        {
+            title: "Your digital tools create friction",
+            text: "We simplify and streamline client experiences"
+        },
+        {
+            title: "Your platform doesn’t convert",
+            text: "We engineer UX/UI that drives engagement and action"
+        },
+    ]      
+}
+
+const AdvantagesData = {
+    heading: `From Concept to Competitive Advantage`,
+    description: `Every solution requires:`,
+    secText: "We act as an extension of your team, delivering tools, systems, and strategies that keep your business ahead",
+    items: [
+        {
+            title: "A clear understanding of your business goals",
+        },
+        {
+            title: "Expertise across branding, UX/UI, development, and digital marketing",
+        },
+        {
+            title: "Strategic planning and tailored execution",
+        },
+    ]      
+}
+
+const formulaData = {
+    heading: `How We Turn Problems <br/> Into Results`,
+    description: `No templates. No guesswork. <br/>
+                    Each solution is carefully designed to deliver measurable outcomes. <br/>
+                    Our approach combines:`,        
+                
+    items: [
+        {
+            num: "01",
+            title: "Pr",
+            subTitle: "Premium", 
+            text: "Tools that are seamless, scalable, and effortless to use"
+        },
+        {
+            num: "02",
+            title: "Si",
+            subTitle: "Simplicity", 
+            text: "Custom solutions that outperform and deliver ROI"
+        },
+        {
+            num: "03",
+            title: "Im",
+            subTitle: "Impact", 
+            text: "Work that engages, converts, and drives measurable results"
+        },
+    ]      
+}
+
+---
+
+<HeroGen 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+    buttonText={HeroData.buttonText}
+/>
+<SolutionsChallenges 
+    title={ChlallengesData.heading}
+    text={ChlallengesData.description}
+    items={ChlallengesData.items}
+/>
+<Formula
+    title={formulaData.heading}
+    text={formulaData.description}
+    items={formulaData.items}
+    notDNA="yes"
+/>
+<SolutionsAdvantages 
+    title={AdvantagesData.heading}
+    text={AdvantagesData.description}
+    items={AdvantagesData.items}
+    secText={AdvantagesData.secText}
+/>
+<HomeSolutions />
