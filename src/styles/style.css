@@ -68,6 +68,9 @@ html.dark {
 html.light {
     background: var(--lightGrey3);
 }
+html.white {
+    background: var(--white);
+}
 html.light .sc-hero p, html.light .sc-hero h1, html.light .sc-hero h2 {
     color: var(--darkGrey);
 }
