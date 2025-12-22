@@ -59,8 +59,13 @@ html, body {
 }
 html{
     scroll-behavior: smooth;
-    background: var(--darkBlue);
     font-size: 16px;
+}
+html.dark {
+    background: var(--darkBlue);
+}
+html.light {
+    background: var(--lightGrey3);
 }
 * {
     -webkit-box-sizing: border-box;
@@ -341,7 +346,7 @@ h5{
     color: var(--darkGrey);    
 }
 .col {
-    width: 49%;
+    width: calc((100% - 1.5rem)/2);
 }
 .rs-info {
     font-family: 'pp_neue_montrealbook';
@@ -431,6 +436,12 @@ h5{
     width: 24%;
 }
 .box-without-pd .boxed-col {
+    padding: 0;
+}
+.boxed-cols .boxed-col img {
+    width: 100%;
+}
+.boxed-col.no-pd {
     padding: 0;
 }
 .obj-ps-left {

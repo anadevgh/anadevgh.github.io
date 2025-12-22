@@ -4,12 +4,12 @@ import Layout from '../../layouts/Layout.astro';
 import ResultEnd from '../../components/ResultEnd.astro';
 
 import { Image } from 'astro:assets';
-import laptopGraphic from '../../assets/results/pl/laptop-graphic.webp';
-import starGraphic from '../../assets/results/pl/star-graphic.webp';
-import mobileViewBg from '../../assets/results/pl/pl-mobile-view.webp';
+import laptopBanner from '../../assets/results/laferla/laptop-banner.jpg';
+import card1Before from '../../assets/results/laferla/card-1-before.svg';
+import card1After from '../../assets/results/laferla/card-1-after.svg';
 
 const currentPageLink = Astro.url.href;
-const currentPageTitle = "Laferla Website";
+const currentPageTitle = "Laferla";
 const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
 ---
 
@@ -55,6 +55,7 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
 
         </div>
     </section>
+
     <section class="rs-details">
         <div class="container">
             <div class="cols-wrap fx fx-jb fx-wrap">
@@ -156,6 +157,24 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fw-banner">
+        <div class="container">
+            <Image src={laptopBanner} alt="laptop-banner" />
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="cols-wrap boxed-cols fx fx-jb fx-wrap">
+                <div class="boxed-col col no-pd">
+                    <Image src={card1Before} alt="card-1-before" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={card1After} alt="star-graphic-with-text" />
                 </div>
             </div>
         </div>
@@ -263,8 +282,11 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
 </Layout>
 
 <style>
-html {
+html, .rs-details {
     background: var(--white);
+}
+.fw-banner {
+    padding-bottom: 6.25rem;
 }
 </style>
 <script>
@@ -291,5 +313,44 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    const slider = document.querySelector('.hz-scroll');
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX);
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    slider.addEventListener('wheel', (e) => {
+        const canScrollHorizontally =
+        slider.scrollWidth > slider.clientWidth &&
+        (e.deltaY > 0 && slider.scrollLeft < slider.scrollWidth - slider.clientWidth ||
+        e.deltaY < 0 && slider.scrollLeft > 0);
+
+        if (canScrollHorizontally) {
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY;
+        }
+    }, { passive: false });
 });
 </script>
