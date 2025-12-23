@@ -1,0 +1,118 @@
+---
+import { Image } from 'astro:assets';
+const { title, text, items, buttonText, buttonLink } = Astro.props;
+
+---
+
+<section class="sl-list sc-al-cnt sc-grey sc-grey-C sc-pd ps-rel">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-headline sc-headline-adv ps-rel">
+                <h2 set:html={title}></h2>
+                <div class="sc-txt">
+                    <p set:html={text}></p>
+                </div>
+            </div>
+        </div>
+        <div class="sl-full-items fx fx-jb fx-jc fx-wrap">
+            {items.map((item: { title: string; subtitle: string; slIcon: string; solutions: any[]; }) => (
+                <div class="sl-f-col fx fx-ae fx-wrap">
+                    <div class="sl-info-top fwidth">
+                        <div class="sl-f-icon">
+                            <Image src={item.slIcon} alt={item.title} />
+                        </div>
+                        <h3>{item.title}</h3>
+                        <h4>{item.subtitle}</h4>
+                        <div class="sl-packages">
+                            {item.solutions.map((solution: { title: string; }) => (
+                                <div class="sl-pack fx fx-as">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M3 13L9.5 18.5L21.5 4" stroke="#27FF43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span set:html={solution.title}></span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div class="btn-row fx fx-jc fwidth">
+                        <a href={buttonLink} class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc">
+                            <span>{buttonText}</span>
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .sl-list:before{
+        content: "";
+        position: absolute;
+        top: -21rem;
+        left: 0;
+        width: 100%;
+        height: 36rem;
+        background: url(/sl-grd.webp) no-repeat;
+        background-size: 100% 100%;
+        z-index: 0;
+    }
+    .sl-full-items{
+        margin-top: 3.75rem;
+        gap: 1.5rem;
+    }
+    .sl-f-col{
+        width: calc((100% - 2*1.5rem)/3);
+        padding: 3rem 2.5rem;
+        border-radius: 1.25rem;
+        background: #252831;
+    }
+    .sl-f-icon{
+        text-align: center;
+    }
+    .sl-f-icon img{
+        width: 22rem;
+        height: auto;
+        margin: auto;
+    }
+    .sl-info-top h3{
+        color: var(--white);
+        text-align: center;
+        font-size: 2.5em;
+        font-weight: 500;
+        line-height: 2.5rem;
+        letter-spacing: 0.025rem;
+        margin: 2.5rem 0 0 0;
+        font-family: 'pp_neue_montrealmedium';
+    }
+    .sl-info-top h4{
+        color: #9EA3B2;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+        letter-spacing: 0.02rem;
+        margin: 1.25rem 0;
+    }
+    .sl-pack:not(:last-child){
+        margin-bottom: 1.25rem;
+    }
+    .sl-pack svg{
+        width: 1.5rem;
+        height: auto;
+    }
+    .sl-pack span{
+        color: var(--white);
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        letter-spacing: 0.025rem;
+        padding-left: 0.75rem;
+    }
+    .sl-info-top{
+        align-self: flex-start;
+    }
+    .btn-row{
+        margin-top: 2.5rem;
+    }
+</style>

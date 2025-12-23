@@ -4,6 +4,7 @@ import HomeSolutions from '../components/HomeSolutions.astro';
 import SolutionsChallenges from '../components/SolutionsChallenges.astro';
 import Formula from "../components/Formula.astro";
 import SolutionsAdvantages from "../components/SolutionsAdvantages.astro";
+import SolutionsList from "../components/SolutionsList.astro";
 import BannerImg from '../assets/expertise-main.png';
 
 const HeroData = {
@@ -78,6 +79,95 @@ const formulaData = {
     ]      
 }
 
+const SolutionsListData = {
+    heading: `Solutions That Match Your Growth`,
+    description: `Your business needs evolve as you grow. That’s why we offer tiered solutions aligned to <br/> your stage. Click to expand for full package details`,
+    buttonText: "View Full Package →",
+    buttonLink: "/#",
+    items: [
+        {
+            title: "Startup Solution",
+            subtitle: "Launch strong with:",
+            slIcon: BannerImg,
+            solutions: [
+                {
+                    title: `Tier 1 Branding: <br/> Logo, identity, guidelines, and brand story`
+                },
+                {
+                    title: `Tier 1 Website: <br/> Fully customized, responsive, SEO-ready site`
+                },
+                {
+                    title: `Tier 1 Marketing: <br/> Essential digital marketing setup for traction`
+                },
+            ],
+        },
+        {
+            title: "Growth Solution",
+            subtitle: "Strengthen your position with:",
+            slIcon: BannerImg,
+            solutions: [
+                {
+                    title: "UX/UI redesigns for higher engagement"
+                },
+                {
+                    title: "Website upgrades for speed, SEO, and scalability"
+                },
+                {
+                    title: "Optimized digital campaigns to expand reach"
+                },
+            ],
+        },
+        {
+            title: "Expansion Solution",
+            subtitle: "Take your business global with:",
+            slIcon: BannerImg,
+            solutions: [
+                {
+                    title: "Multilingual websites"
+                },
+                {
+                    title: "Custom platforms for scale"
+                },
+                {
+                    title: "Seamless integrations across systems"
+                },
+            ],
+        },
+        {
+            title: "Franchise Solution",
+            subtitle: "Consistency across every location with:",
+            slIcon: BannerImg,
+            solutions: [
+                {
+                    title: "Multi-site frameworks"
+                },
+                {
+                    title: "Shared brand and UX standards"
+                },
+                {
+                    title: "Scalable marketing support"
+                },
+            ],
+        },
+        {
+            title: "Enterprise Solution",
+            subtitle: "Drive enterprise transformation with:",
+            slIcon: BannerImg,
+            solutions: [
+                {
+                    title: `Enterprise Branding & Identity: <br/> Advanced brand architecture & guidelines`
+                },
+                {
+                    title: `Enterprise Website & Platforms: <br/> ERP integrations, dashboards, scalable portals`
+                },
+                {
+                    title: `Enterprise Marketing & Operations: <br/> Omni-channel automation, advanced analytics`
+                },
+            ],
+        },
+    ]      
+}
+
 ---
 
 <HeroGen 
@@ -102,5 +192,12 @@ const formulaData = {
     text={AdvantagesData.description}
     items={AdvantagesData.items}
     secText={AdvantagesData.secText}
+/>
+<SolutionsList 
+    title={SolutionsListData.heading}
+    text={SolutionsListData.description}
+    items={SolutionsListData.items}
+    buttonLink={SolutionsListData.buttonLink}
+    buttonText={SolutionsListData.buttonText}
 />
 <HomeSolutions />
