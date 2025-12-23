@@ -14,8 +14,10 @@ const { title, text, items } = Astro.props;
                 </div>
             </div>
         </div>
-        <div class="sl-full-items fx fx-jb fx-jc fx-wrap">
-            {items.map((item: { title: string; subtitle: string; slIcon: string; solutions: any[]; buttonLink: string; buttonText: string; }) => (
+    </div>
+    <div class="sl-items-scroll">
+        <div class="sl-full-items fx fx-jb fx-jc">
+            {items.map((item: { title: string; subtitle: string; slIcon: string; solutions: any[]; buttonLink: string; buttonText: string }) => (
                 <div class="sl-f-col fx fx-ae fx-wrap">
                     <div class="sl-info-top fwidth">
                         <div class="sl-f-icon">
@@ -60,6 +62,19 @@ const { title, text, items } = Astro.props;
     .sl-full-items{
         margin-top: 3.75rem;
         gap: 1.5rem;
+        flex-wrap: nowrap;
+        min-width: max-content;
+        padding: 0 0 0 5rem;
+    }
+    .sl-items-scroll{
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        cursor: grab;
+    }
+    .sl-items-scroll::-webkit-scrollbar {
+        display: none;
     }
     .sl-f-col{
         width: 32.5rem;
@@ -118,4 +133,66 @@ const { title, text, items } = Astro.props;
     .btn-row{
         margin-top: 2.5rem;
     }
+    @media screen and (min-width:1601px){
+        .sl-full-items{
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+    }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = document.querySelector('.sl-items-scroll');
+
+        const updateCursor = () => {
+            if (slider.scrollWidth > slider.clientWidth) {
+                slider.style.cursor = 'grab';
+            } else {
+                slider.style.cursor = 'default';
+            }
+        };
+
+        updateCursor();
+        window.addEventListener('resize', updateCursor);
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX);
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        slider.addEventListener('wheel', (e) => {
+            const canScrollHorizontally =
+            slider.scrollWidth > slider.clientWidth &&
+            (e.deltaY > 0 && slider.scrollLeft < slider.scrollWidth - slider.clientWidth ||
+            e.deltaY < 0 && slider.scrollLeft > 0);
+
+            if (canScrollHorizontally) {
+            e.preventDefault();
+            slider.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+    });
+</script>

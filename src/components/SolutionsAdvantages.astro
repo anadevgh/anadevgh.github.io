@@ -1,5 +1,5 @@
 ---
-const { title, text, items, secText } = Astro.props;
+const { title, text, items, secText, buttonText } = Astro.props;
 
 ---
 
@@ -25,16 +25,25 @@ const { title, text, items, secText } = Astro.props;
                 </div>
             ))}
         </div>
-        <div class="sc-wrapper">
-            <div class="sc-adv-txt">
-                <p set:html={secText}></p>
+        {secText && (
+            <div class="sc-wrapper">
+                <div class="sc-adv-txt">
+                    <p set:html={secText}></p>
+                </div>
             </div>
-        </div>
+        )}
+        {buttonText && (
+            <div class="btn-row fx fx-jc">
+                <a class="btn-primary btn-primary-lg fx fx-ac fx-jc">
+                    <span>{buttonText}</span>
+                </a>
+            </div>
+        )}
     </div>
 </section>
 
 <style>
-    .sl-adv .sc-wrapper, .sl-adv-items, .sc-adv-txt{
+    .sl-adv .sc-wrapper, .sl-adv-items, .sc-adv-txt, .btn-row{
         position: relative;
         z-index: 1;
     }
@@ -71,7 +80,7 @@ const { title, text, items, secText } = Astro.props;
     .sl-adv-col-wrap span{
         color: var(--white);
     }
-    .sc-adv-txt{
+    .sc-adv-txt, .btn-row{
         margin-top: 3.75rem;
     }
     .sc-adv-txt p{

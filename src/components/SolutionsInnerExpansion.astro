@@ -1,0 +1,212 @@
+---
+import BannerImg from '../assets/expertise-main.png';
+import SlGraphic from '../assets/sl-graphic.png';
+import HeroHalfCol from '../components/HeroHalfCol.astro';
+import SolutionsChallenges from '../components/SolutionsChallenges.astro';
+import SolutionsIncluded from '../components/SolutionsIncluded.astro';
+import SolutionsAdvantages from "../components/SolutionsAdvantages.astro";
+import SolutionsListScroll from "../components/SolutionsListScroll.astro";
+
+const HeroData = {
+    heading: `<strong>Expansion Solution</strong> <br/> Scale without limits`,
+    description: `A complete digital ecosystem built for businesses expanding into new markets, regions, or industries`,
+    secText: ``,              
+    img: BannerImg,
+    buttonText: "Let’s Build Your Global Footprint"        
+}
+
+const CoreProblemsData = {
+    heading: `Core Problems Solved`,
+    description: ``,
+    items: [
+        {
+            title: "Brand doesn’t translate across multiple markets",
+            text: "Solved"
+        },
+        {
+            title: "Website not built for multilingual/multiregional audiences",
+            text: "Solved"
+        },
+        {
+            title: "Marketing channels not integrated for scale",
+            text: "Solved"
+        },
+    ]      
+}
+
+const whatsIncludedData = {
+    heading: `What’s Included`,
+    items: [
+        {
+            title: "Tier 3 Branding:",
+            graphic: SlGraphic,
+            points: [
+                {
+                    title: `International-ready brand guidelines`
+                },
+                {
+                    title: `Market localization strategies`
+                },
+                {
+                    title: `Comprehensive brand architecture`
+                }
+            ]
+        },
+        {
+            title: "Tier 3 Website:",
+            graphic: SlGraphic,
+            points: [
+                {
+                    title: `Multilingual, multi-regional sites`
+                },
+                {
+                    title: `Enterprise-grade performance & security`
+                },
+                {
+                    title: `Scalable backend architecture`
+                }
+            ]
+        },
+        {
+            title: "Tier 3 Marketing:",
+            graphic: SlGraphic,
+            points: [
+                {
+                    title: `Cross-market campaign strategies`
+                },
+                {
+                    title: `CRM & automation integration`
+                },
+                {
+                    title: `Ongoing optimization for scale`
+                }
+            ]
+        },
+    ]      
+}
+
+const AdvantagesData = {
+    heading: `Results You Can Expect`,
+    buttonText: "Let’s Build Your Global Footprint",
+    items: [
+        {
+            title: "Seamless brand recognition in new markets",
+        },
+        {
+            title: "A platform that scales with your business",
+        },
+        {
+            title: "Streamlined systems across all channels",
+        },
+    ]      
+}
+
+const SolutionsScrollListData = {
+    heading: `Other Solutions That Match Your Growth`,
+    description: `Your business needs evolve as you grow. That’s why we offer tiered solutions aligned to <br/> your stage. Click to expand for full package details.`,
+    items: [
+        {
+            title: "Startup Solution",
+            subtitle: "Launch strong with:",
+            slIcon: BannerImg,
+            solutions: [
+                {
+                    title: `Tier 1 Branding: <br/> Logo, identity, guidelines, and brand story`
+                },
+                {
+                    title: `Tier 1 Website: <br/> Fully customized, responsive, SEO-ready site`
+                },
+                {
+                    title: `Tier 1 Marketing: <br/> Essential digital marketing setup for traction`
+                },
+            ],
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/startup",
+        },
+        {
+            title: "Growth Solution",
+            subtitle: "Strengthen your position with:",
+            slIcon: BannerImg,
+            solutions: [
+                {
+                    title: "UX/UI redesigns for higher engagement"
+                },
+                {
+                    title: "Website upgrades for speed, SEO, and scalability"
+                },
+                {
+                    title: "Optimized digital campaigns to expand reach"
+                },
+            ],
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/growth",
+        },
+        {
+            title: "Franchise Solution",
+            subtitle: "Consistency across every location with:",
+            slIcon: BannerImg,
+            solutions: [
+                {
+                    title: "Multi-site frameworks"
+                },
+                {
+                    title: "Shared brand and UX standards"
+                },
+                {
+                    title: "Scalable marketing support"
+                },
+            ],
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/franchise",
+        },
+        {
+            title: "Enterprise Solution",
+            subtitle: "Drive enterprise transformation with:",
+            slIcon: BannerImg,
+            solutions: [
+                {
+                    title: `Enterprise Branding & Identity: <br/> Advanced brand architecture & guidelines`
+                },
+                {
+                    title: `Enterprise Website & Platforms: <br/> ERP integrations, dashboards, scalable portals`
+                },
+                {
+                    title: `Enterprise Marketing & Operations: <br/> Omni-channel automation, advanced analytics`
+                },
+            ],
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/enterprise",
+        },
+    ]      
+}
+
+---
+
+<HeroHalfCol 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+    buttonText={HeroData.buttonText}
+/>
+
+<SolutionsChallenges 
+    title={CoreProblemsData.heading}
+    items={CoreProblemsData.items}
+/>
+
+<SolutionsIncluded 
+    title={whatsIncludedData.heading}
+    items={whatsIncludedData.items}
+/>
+
+<SolutionsAdvantages 
+    title={AdvantagesData.heading}
+    items={AdvantagesData.items}
+    buttonText={AdvantagesData.buttonText}
+/>
+
+<SolutionsListScroll
+    title={SolutionsScrollListData.heading}
+    text={SolutionsScrollListData.description}
+    items={SolutionsScrollListData.items}
+/>

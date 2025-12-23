@@ -8,9 +8,11 @@ const { title, text, items } = Astro.props;
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
                 <h2 set:html={title}></h2>
-                <div class="sc-txt">
-                    <p set:html={text}></p>
-                </div>
+                {text && (
+                    <div class="sc-txt">
+                        <p set:html={text}></p>
+                    </div>
+                )}
             </div>
         </div>
         <div class="sl-ch-items fx fx-jb">
@@ -42,6 +44,11 @@ const { title, text, items } = Astro.props;
     }
     .sl-ch-col{
         width: calc((100% - 2*1.5rem)/3);
+    }
+    .sl-ch h2{
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+        letter-spacing: 0.025rem;
     }
     .sl-ch-col-tt{
         padding: 2rem 2rem 2.5rem 2rem;

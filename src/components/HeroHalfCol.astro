@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+const { img, title, text, buttonText } = Astro.props;
+
+---
+
+<section class="sc-hero-hf sc-pd">
+    <div class="container">
+        <div class="sc-hr-hf-wrap fx fx-wrap fx-jb fx-ac">
+            <div class="sc-hero-hf-lcol">
+                <div class="hero-intro-text">
+                    <h1 set:html={title}></h1>
+                    <div class="sc-txt">
+                        <p set:html={text}></p>
+                    </div>
+                    {buttonText && (
+                        <div class="hero-btn-row fx">
+                            <a class="btn-primary btn-primary-lg fx fx-ac fx-jc">
+                                <span>{buttonText}</span>
+                            </a>
+                        </div>
+                    )}
+                </div>
+            </div>
+            <div class="sc-hero-hf-rcol">
+                <div class="hero-graphic">
+                    <Image src={img} alt={title} />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .hero-btn-row{
+        margin-top: 2.25rem;
+    }
+    .hero-graphic{
+        margin: 2rem auto 3.75rem auto;
+    }
+    .sc-hero{
+        padding-bottom: 9.375rem;
+    }
+    .sc-hero-hf-lcol,
+    .sc-hero-hf-rcol{
+        width: 46rem;
+    }
+    .sc-hero-hf-rcol{
+        margin-right: 5rem;
+    }
+    .hero-intro-text h1 strong{
+        font-weight: 500;
+        color: #676B78;
+    }
+</style>

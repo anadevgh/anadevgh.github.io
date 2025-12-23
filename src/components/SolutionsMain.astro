@@ -82,8 +82,6 @@ const formulaData = {
 const SolutionsListData = {
     heading: `Solutions That Match Your Growth`,
     description: `Your business needs evolve as you grow. That’s why we offer tiered solutions aligned to <br/> your stage. Click to expand for full package details`,
-    buttonText: "View Full Package →",
-    buttonLink: "/#",
     items: [
         {
             title: "Startup Solution",
@@ -100,6 +98,8 @@ const SolutionsListData = {
                     title: `Tier 1 Marketing: <br/> Essential digital marketing setup for traction`
                 },
             ],
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/startup",
         },
         {
             title: "Growth Solution",
@@ -116,6 +116,8 @@ const SolutionsListData = {
                     title: "Optimized digital campaigns to expand reach"
                 },
             ],
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/growth",
         },
         {
             title: "Expansion Solution",
@@ -132,6 +134,8 @@ const SolutionsListData = {
                     title: "Seamless integrations across systems"
                 },
             ],
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/expansion",
         },
         {
             title: "Franchise Solution",
@@ -148,6 +152,8 @@ const SolutionsListData = {
                     title: "Scalable marketing support"
                 },
             ],
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/franchise",
         },
         {
             title: "Enterprise Solution",
@@ -164,6 +170,8 @@ const SolutionsListData = {
                     title: `Enterprise Marketing & Operations: <br/> Omni-channel automation, advanced analytics`
                 },
             ],
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/enterprise",
         },
     ]      
 }
@@ -197,7 +205,5 @@ const SolutionsListData = {
     title={SolutionsListData.heading}
     text={SolutionsListData.description}
     items={SolutionsListData.items}
-    buttonLink={SolutionsListData.buttonLink}
-    buttonText={SolutionsListData.buttonText}
 />
 <HomeSolutions />
