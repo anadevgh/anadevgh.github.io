@@ -330,9 +330,9 @@ h5{
     letter-spacing: 0.01rem;
 }
 /* results styles start */
-.rs-banner {
-    height: 100vh;
-}
+/*.rs-banner {
+    height: 76vh;
+}*/
  .rs-video {
     position: relative;
     overflow: hidden;
@@ -349,7 +349,7 @@ h5{
     object-fit: cover;
 }
 .rs-details {
-    padding: 12.5rem 0;
+    padding: 6.25rem 0 12.5rem 0;
     background: var(--lightGrey3);
 }
 .dark-gray {
@@ -501,7 +501,6 @@ h5{
 }
 .rs-similar {
     padding: 6.25rem 0;
-    background: linear-gradient(180deg, rgba(245, 245, 247, 0.00) 0%, #F5F5F7 100%);
 }
 .pj-list{
     margin-top: 2.5rem;
@@ -558,6 +557,7 @@ h5{
 }
 .rs-similar .pj-ft-info-lcol-wrap h3 {
     color: var(--darkGrey);
+    font-family: 'pp_neue_montrealmedium';
 }
 .pj-featured-cols {
     margin-top: 3.75rem;
@@ -639,9 +639,12 @@ h5{
 .hz-scroll::-webkit-scrollbar {
     display: none;
 }
-.rs-banner-slider, .rs-banner-slider .swiper, .rs-banner-slider .swiper-wrapper,
+/*.rs-banner-slider, .rs-banner-slider .swiper, .rs-banner-slider .swiper-wrapper,
 .rs-banner-slider .swiper-slide, .rs-banner-bg {
     height: 100%;
+}*/
+.rs-banner-slider img {
+    width: 100%;
 }
 .cmp-fade img {
     transition: opacity 1s ease;

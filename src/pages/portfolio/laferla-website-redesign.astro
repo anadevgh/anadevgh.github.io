@@ -4,6 +4,13 @@ import Layout from '../../layouts/Layout.astro';
 import ResultEnd from '../../components/ResultEnd.astro';
 
 import { Image } from 'astro:assets';
+import banner1 from '../../assets/results/laferla/laferla-banner-1.webp';
+import banner2 from '../../assets/results/laferla/laferla-banner-2.webp';
+import banner3 from '../../assets/results/laferla/laferla-banner-3.webp';
+import banner4 from '../../assets/results/laferla/laferla-banner-4.webp';
+import banner5 from '../../assets/results/laferla/laferla-banner-5.webp';
+import banner6 from '../../assets/results/laferla/laferla-banner-6.webp'; 
+
 import laptopBanner from '../../assets/results/laferla/laptop-banner.jpg';
 import card1Before from '../../assets/results/laferla/card-1-before.svg';
 import card2Before from '../../assets/results/laferla/card-2-before.svg';
@@ -83,22 +90,22 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
                 }}>
                 <SwiperWrapper>
                     <SwiperSlide>
-                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-1.webp) no-repeat center top; background-size:cover;"></div>
+                        <Image src={banner1} alt="banner-1" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-2.webp) no-repeat center top; background-size:cover;"></div>
+                        <Image src={banner2} alt="banner-2" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-3.webp) no-repeat center top; background-size:cover;"></div>
+                        <Image src={banner3} alt="banner-3" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-4.webp) no-repeat center top; background-size:cover;"></div>
+                        <Image src={banner4} alt="banner-4" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-5.webp) no-repeat center top; background-size:cover;"></div>
+                        <Image src={banner5} alt="banner-5" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="rs-banner-bg" style="background:url(/results/laferla/laferla-banner-6.webp) no-repeat center top; background-size:cover;"></div>
+                        <Image src={banner6} alt="banner-6" />
                     </SwiperSlide>
                 </SwiperWrapper>
             </Swiper>
@@ -509,6 +516,9 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
 }
 .rs-ins-banner img {
     border-radius: 1.25rem;
+}
+.rs-similar {
+    background: linear-gradient(180deg, rgba(245, 245, 247, 0.00) 0%, #F5F5F7 100%);
 }
 </style>
 <script>
