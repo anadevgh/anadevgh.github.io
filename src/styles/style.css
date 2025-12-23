@@ -416,8 +416,17 @@ h5{
     padding: 3.75rem;
 }
 .rs-inner-cols, .boxed-col {
-    border-radius: 2.5rem;
     background: var(--lightGrey4);
+}
+.rounded-box {
+    position: relative;
+    overflow: hidden;
+}
+.row-img img {
+    width: 100%;
+}
+.rounded-box, .boxed-col {
+    border-radius: 2.5rem;
 }
 .boxed-col {
     padding: 3.75rem 2.5rem;
@@ -632,10 +641,9 @@ h5{
 .hz-scroll::-webkit-scrollbar {
     display: none;
 }
-/*.rs-banner-slider, .rs-banner-slider .swiper, .rs-banner-slider .swiper-wrapper,
-.rs-banner-slider .swiper-slide, .rs-banner-bg {
-    height: 100%;
-}*/
+.rs-fw-image img {
+    width: 100%;
+}
 .rs-banner img {
     width: 100%;
 }

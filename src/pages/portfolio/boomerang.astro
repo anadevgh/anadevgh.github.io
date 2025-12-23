@@ -5,6 +5,32 @@ import ResultEnd from '../../components/ResultEnd.astro';
 
 import { Image } from 'astro:assets';
 import heroBanner from '../../assets/results/boomerang/hero-banner.jpg';
+import introBanner from '../../assets/results/boomerang/intro-banner.jpg';
+import typographyBanner from '../../assets/results/boomerang/typography-banner.jpg';
+import brandColorsBanner from '../../assets/results/boomerang/brand-colors.jpg';
+import socialMediaVisualsBanner from '../../assets/results/boomerang/social-media-visuals-banner.jpg';
+import companyCardsBanner from '../../assets/results/boomerang/company-cards-banner.jpg';
+import brandedItemsBanner from '../../assets/results/boomerang/branded-items.jpg';
+import calendarBanner1 from '../../assets/results/boomerang/branded-calendar-banner-1.jpg';
+import calendarBanner2 from '../../assets/results/boomerang/branded-calendar-banner-2.jpg';
+import raceBanner from '../../assets/results/boomerang/race-banner.jpg';
+import card1Banner from '../../assets/results/boomerang/card-1.jpg';
+import card2Banner from '../../assets/results/boomerang/card-2.jpg';
+import card3Banner from '../../assets/results/boomerang/card-3.jpg';
+import card4Banner from '../../assets/results/boomerang/card-4.jpg';
+import stadiumBanner from '../../assets/results/boomerang/stadium-banner.jpg';
+import card5Banner from '../../assets/results/boomerang/branded-shirt.jpg';
+import card6Banner from '../../assets/results/boomerang/branded-ball.jpg';
+import card7Banner from '../../assets/results/boomerang/branded-gaming-control.jpg';
+import card8Banner from '../../assets/results/boomerang/branded-gaming-control-2.jpg';
+import card9Banner from '../../assets/results/boomerang/branded-items-batch-1.jpg';
+import card10Banner from '../../assets/results/boomerang/branded-items-batch-2.jpg';
+import matchBanner from '../../assets/results/boomerang/match-banner.jpg';
+import flagBanner from '../../assets/results/boomerang/flag.jpg';
+import boatsBanner from '../../assets/results/boomerang/boats.jpg';
+import carBanner from '../../assets/results/boomerang/car.jpg';
+import websiteBanner from '../../assets/results/boomerang/website-banners.jpg';
+import stadiumBanner2 from '../../assets/results/boomerang/stadium-banner-2.jpg';
 
 
 const currentPageLink = Astro.url.href;
@@ -122,7 +148,118 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
         </div>
     </section>
 
+    <section class="rs-fw-image">
+        <Image src={introBanner} alt="intro-banner" />
+    </section>
+
+    <section class="rs-visuals-set sc-pd">
+        <div class="container">
+            <div class="cols-wrap boxed-cols fx fx-jb fx-wrap">
+                <div class="boxed-col col no-pd">
+                    <Image src={typographyBanner} alt="typography-banner" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={brandColorsBanner} alt="brand-colors-banner" />
+                </div>
+            </div>
+            <div class="row-img inner-rows-mg rounded-box">
+                <Image src={socialMediaVisualsBanner} alt="social-media-visuals-banner" />
+            </div>
+        </div>
+    </section>
+
+    <section class="rs-fw-image">
+        <Image src={companyCardsBanner} alt="company-cards-banner" />
+    </section>
+
+    <section class="rs-visuals-set sc-pd">
+        <div class="container">
+            <div class="row-img rounded-box">
+                <Image src={brandedItemsBanner} alt="branded-items-banner" />
+            </div>
+            <div class="cols-wrap boxed-cols inner-rows-mg fx fx-jb fx-wrap">
+                <div class="boxed-col col no-pd">
+                    <Image src={calendarBanner1} alt="calendar-banner-1" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={calendarBanner2} alt="calendar-banner-2" />
+                </div>
+            </div>
+            <div class="row-img inner-rows-mg rounded-box">
+                <Image src={raceBanner} alt="race-banner" />
+            </div>
+            <div class="cols-wrap boxed-cols row-gap inner-rows-mg fx fx-jb fx-wrap">
+                <div class="boxed-col col no-pd">
+                    <Image src={card1Banner} alt="card-1" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={card2Banner} alt="card-2" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={card3Banner} alt="card-3" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={card4Banner} alt="card-4" />
+                </div>
+            </div>
+        </div>
+    </section>
     
+    <section class="rs-fw-image">
+        <Image src={stadiumBanner} alt="stadium-banner" />
+    </section>
+
+    <section class="rs-visuals-set sc-pd">
+        <div class="container">
+            <div class="cols-wrap boxed-cols row-gap fx fx-jb fx-wrap">
+                <div class="boxed-col col no-pd">
+                    <Image src={card5Banner} alt="card-5" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={card6Banner} alt="card-6" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={card7Banner} alt="card-7" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={card8Banner} alt="card-8" />
+                </div>
+            </div>
+            <div class="row-img inner-rows-mg rounded-box">
+                <Image src={card9Banner} alt="card-9" />
+            </div>
+            <div class="row-img inner-rows-mg rounded-box">
+                <Image src={card10Banner} alt="card-10" />
+            </div>
+        </div>
+    </section>
+    
+    <section class="rs-fw-image">
+        <Image src={matchBanner} alt="match-banner" />
+    </section>
+
+    <section class="rs-visuals-set sc-pd">
+        <div class="container">
+            <div class="cols-wrap boxed-cols fx fx-jb fx-wrap">
+                <div class="boxed-col col no-pd">
+                    <Image src={flagBanner} alt="flag-banner" />
+                </div>
+                <div class="boxed-col col no-pd">
+                    <Image src={boatsBanner} alt="boats-banner" />
+                </div>
+            </div>
+            <div class="row-img inner-rows-mg rounded-box">
+                <Image src={carBanner} alt="car-banner" />
+            </div>
+            <div class="row-img inner-rows-mg rounded-box">
+                <Image src={websiteBanner} alt="website-banner" />
+            </div>
+        </div>
+    </section>
+
+    <section class="rs-fw-image">
+        <Image src={stadiumBanner2} alt="stadium-banner" />
+    </section>
 
     <ResultEnd />
     <section class="rs-similar">
