@@ -1,0 +1,65 @@
+<div id="video-overlay" class="video-overlay fx fx-jc fx-ac">
+    <div class="video-popup">
+        <div class="container fx fx-jc" id="video-mid-wrap">
+            <div class="video-wrapper" id="video-container"></div>
+            <button class="popup-close-btn fx fx-ac fx-jc" aria-label="Close video">&times;</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const triggers = document.querySelectorAll('.video-trigger-btn');
+    const overlay = document.getElementById('video-overlay');
+    const videoWrap = document.getElementById('video-mid-wrap');
+    const container = document.getElementById('video-container');
+    const closeBtn = overlay.querySelector('.popup-close-btn');
+
+    function openVideo(videoId) {
+        container.innerHTML = `
+            <iframe
+                src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+            ></iframe>
+        `;
+
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideo() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+
+        overlay.addEventListener(
+            'transitionend',
+            () => {
+                container.innerHTML = '';
+            },
+            { once: true }
+        );
+    }
+
+    triggers.forEach(btn => {
+        btn.addEventListener('click', () => {
+            openVideo(btn.dataset.videoId);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeVideo);
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeVideo();
+    });
+    
+    videoWrap.addEventListener('click', (e) => {
+        if (e.target === videoWrap) closeVideo();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+            closeVideo();
+        }
+    });
+</script>
