@@ -26,7 +26,7 @@ function formatPostDate(dateString) {
 
 <Layout theme="light" isContact="yes">
     <div class="pg-wrap blog-gen">
-        <section class="sc-pd sc-grey sc-grey-C ps-rel">
+        <section class="sc-grey sc-grey-C ps-rel">
             <div class="container">
                 <div class="sc-headline">
                     <h1><strong>Insights.</strong> <br/> Trusted by Industry Leaders.</h1>
@@ -34,7 +34,6 @@ function formatPostDate(dateString) {
                 <div class="posts-grid-wrap" id="masonry-grid">
                     {posts.map(post => {
                        const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-
                         return (
                             <div class="post-card">
                                 <a href={`/blog/${post.slug}/`}>
@@ -55,7 +54,6 @@ function formatPostDate(dateString) {
                 <div class="posts-navigation">
                     {totalPages > 1 && (
                         <nav class="pagination">
-                            {/* Next only (no Prev on page 1) */}
                             {getPaginationRange(currentPage, totalPages).map(item =>
                                 item === '...' ? (
                                 <span class="dots">...</span>
@@ -78,7 +76,7 @@ function formatPostDate(dateString) {
                                 →
                                 </a>
                             )}
-                            </nav>
+                        </nav>
                     )}
                 </div>
             </div>
@@ -94,7 +92,10 @@ function formatPostDate(dateString) {
         color: #676B78;
         font-weight: 500;
     }
-    
+    .post-card{
+        width: calc((100% - 3 * 24px) / 3);
+    }
+   
 </style>
 
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
