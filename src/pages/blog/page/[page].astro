@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { getPostsPage, getPaginationRange } from '../../../lib/wordpress';
+import Layout from '../../../layouts/Layout.astro';
 
 const POSTS_PER_PAGE = 12;
 
@@ -40,56 +41,94 @@ function formatPostDate(dateString) {
 
 ---
 
+<Layout theme="light" isContact="yes">
+    <div class="pg-wrap blog-gen">
+        <section class="sc-grey sc-grey-C ps-rel">
+            <div class="container">
+                <div class="sc-headline">
+                    <h1><strong>Insights.</strong> <br/> Trusted by Industry Leaders.</h1>
+                </div>
+                <div class="posts-grid-wrap" id="masonry-grid">
+                    {posts.map(post => {
+                       const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+                        return (
+                            <div class="post-card">
+                                <a href={`/blog/${post.slug}/`}>
+                                    {image && (
+                                        <div class="post-image">
+                                            <Image src={image} alt={post.title} inferSize={true} />
+                                        </div>
+                                    )}
+                                    <div class="post-info">
+                                        <h6>{post.title.rendered}</h6>
+                                        <p>{formatPostDate(post.date)}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        );
+                    })}
+                </div>
+                <div class="posts-navigation">
+                    <nav class="pagination fx fx-jc fx-ac">
+                        {currentPage > 1 && (
+                            <a
+                                class="arrow arrow-prev fx fx-ac fx-jc"
+                                href={currentPage === 2 ? '/blog/' : `/blog/page/${currentPage - 1}/`}
+                                aria-label="Previous page"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                                    <path d="M6 12L0 6L6 0L7.4 1.4L2.8 6L7.4 10.6L6 12Z" fill="#2C2C2C"/>
+                                </svg>
+                            </a>
+                        )}
 
-<section>
-  <h2>All Blog Posts - Page {page}</h2>
-  <div class="posts-grid">
-    {posts.map(post => {
-      const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-      return (
-        <div class="post-card">
-          <a href={`/blog/${post.slug}/`}>
-            {image && <Image src={image} alt={post.title.rendered} inferSize={true} />}
-            <h6>{post.title.rendered}</h6>
-            <p>{formatPostDate(post.date)}</p>
-          </a>
-        </div>
-      );
-    })}
-  </div>
+                        {getPaginationRange(currentPage, totalPages).map(item =>
+                            item === '...' ? (
+                            <span class="dots fx fx-ac fx-jc">...</span>
+                            ) : (
+                            <a
+                                href={item === 1 ? '/blog/' : `/blog/page/${item}/`}
+                                class={`fx fx-jc fx-ac${item === currentPage ? ' active' : ''}`}
+                            >
+                                {item}
+                            </a>
+                            )
+                        )}
 
-  <nav class="pagination">
-  {currentPage > 1 && (
-    <a
-      class="arrow"
-      href={currentPage === 2 ? '/blog/' : `/blog/page/${currentPage - 1}/`}
-      aria-label="Previous page"
-    >
-      prev
-    </a>
-  )}
+                        {currentPage < totalPages && (
+                            <a
+                                class="arrow arrow-next fx fx-ac fx-jc"
+                                href={`/blog/page/${currentPage + 1}/`}
+                                aria-label="Next page"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                                    <path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6Z" fill="#2C2C2C"/>
+                                </svg>
+                            </a>
+                        )}
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>
 
-  {getPaginationRange(currentPage, totalPages).map(item =>
-    item === '...' ? (
-      <span class="dots">...</span>
-    ) : (
-      <a
-        href={item === 1 ? '/blog/' : `/blog/page/${item}/`}
-        class={item === currentPage ? 'active' : ''}
-      >
-        {item}
-      </a>
-    )
-  )}
+<style>
+    .sc-headline h1{
+        color: var(--darkGrey);
+    }
+    .sc-headline h1 strong{
+        color: #676B78;
+        font-weight: 500;
+    }
+    .post-card{
+        width: calc((100% - 3 * 24px) / 3);
+    }
+</style>
 
-  {currentPage < totalPages && (
-    <a
-      class="arrow"
-      href={`/blog/page/${currentPage + 1}/`}
-      aria-label="Next page"
-    >
-      next
-    </a>
-  )}
-</nav>
-</section>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
+<script type="module" client:visible>
+    import initMasonry from '/js/MasonryGridMain.js';
+    initMasonry('#masonry-grid');
+</script>

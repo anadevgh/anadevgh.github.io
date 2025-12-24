@@ -53,14 +53,14 @@ function formatPostDate(dateString) {
                 </div>
                 <div class="posts-navigation">
                     {totalPages > 1 && (
-                        <nav class="pagination">
+                        <nav class="pagination fx fx-jc fx-ac">
                             {getPaginationRange(currentPage, totalPages).map(item =>
                                 item === '...' ? (
-                                <span class="dots">...</span>
+                                <span class="dots fx fx-ac fx-jc">...</span>
                                 ) : (
                                 <a
                                     href={item === 1 ? '/blog/' : `/blog/page/${item}/`}
-                                    class={item === currentPage ? 'active' : ''}
+                                    class={`fx fx-jc fx-ac${item === currentPage ? ' active' : ''}`}
                                 >
                                     {item}
                                 </a>
@@ -69,11 +69,13 @@ function formatPostDate(dateString) {
 
                             {currentPage < totalPages && (
                                 <a
-                                    class="arrow"
+                                    class="arrow arrow-next fx fx-ac fx-jc"
                                     href="/blog/page/2/"
                                     aria-label="Next page"
                                 >
-                                →
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                                        <path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6Z" fill="#2C2C2C"/>
+                                    </svg>
                                 </a>
                             )}
                         </nav>
@@ -95,12 +97,11 @@ function formatPostDate(dateString) {
     .post-card{
         width: calc((100% - 3 * 24px) / 3);
     }
-   
 </style>
 
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
 <script type="module" client:visible>
-    import initMasonry from '/js/MasonryGrid.js';
+    import initMasonry from '/js/MasonryGridMain.js';
     initMasonry('#masonry-grid');
 </script>
