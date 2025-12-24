@@ -1,0 +1,96 @@
+---
+import { Image } from 'astro:assets';
+import { getPostsPage, getPaginationRange } from '../../../lib/wordpress';
+import { notFound } from 'astro:assets';
+
+const POSTS_PER_PAGE = 12;
+
+export async function getStaticPaths() {
+    const POSTS_PER_PAGE = 12;
+    const { totalPosts } = await getPostsPage({ limit: 1 });
+    const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+
+    return Array.from({ length: totalPages - 1 }).map((_, i) => ({
+        params: { page: String(i + 2) },
+    }));
+}
+
+const page = Number(Astro.params.page);
+const currentPage = page;
+if (isNaN(page) || page < 2) {
+    throw notFound();
+}
+
+const offset = (page - 1) * POSTS_PER_PAGE;
+
+const { posts, totalPosts } = await getPostsPage({
+    limit: POSTS_PER_PAGE,
+    offset,
+});
+
+if (!posts.length) {
+  throw notFound();
+}
+
+const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+
+function formatPostDate(dateString) {
+    const date = new Date(dateString);
+    return `${date.getFullYear()} - ${String(date.getMonth() + 1).padStart(2, '0')} - ${String(date.getDate()).padStart(2, '0')}`;
+}
+
+---
+
+
+<section>
+  <h2>All Blog Posts - Page {page}</h2>
+  <div class="posts-grid">
+    {posts.map(post => {
+      const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+      return (
+        <div class="post-card">
+          <a href={`/blog/${post.slug}/`}>
+            {image && <Image src={image} alt={post.title.rendered} inferSize={true} />}
+            <h6>{post.title.rendered}</h6>
+            <p>{formatPostDate(post.date)}</p>
+          </a>
+        </div>
+      );
+    })}
+  </div>
+
+  <nav class="pagination">
+  {currentPage > 1 && (
+    <a
+      class="arrow"
+      href={currentPage === 2 ? '/blog/' : `/blog/page/${currentPage - 1}/`}
+      aria-label="Previous page"
+    >
+      prev
+    </a>
+  )}
+
+  {getPaginationRange(currentPage, totalPages).map(item =>
+    item === '...' ? (
+      <span class="dots">...</span>
+    ) : (
+      <a
+        href={item === 1 ? '/blog/' : `/blog/page/${item}/`}
+        class={item === currentPage ? 'active' : ''}
+      >
+        {item}
+      </a>
+    )
+  )}
+
+  {currentPage < totalPages && (
+    <a
+      class="arrow"
+      href={`/blog/page/${currentPage + 1}/`}
+      aria-label="Next page"
+    >
+      next
+    </a>
+  )}
+</nav>
+</section>

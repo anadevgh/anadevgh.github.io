@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import { getPostsPage, getPaginationRange } from '../../lib/wordpress';
+import Layout from '../../layouts/Layout.astro';
+
+const POSTS_PER_PAGE = 12;
+const currentPage = 1;
+
+const { posts, totalPosts } = await getPostsPage({
+    limit: POSTS_PER_PAGE,
+    offset: 0,
+});
+
+const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+
+function formatPostDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year} - ${month} - ${day}`;
+}
+
+
+---
+
+<Layout theme="light" isContact="yes">
+    <div class="pg-wrap blog-gen">
+        <section class="sc-pd sc-grey sc-grey-C ps-rel">
+            <div class="container">
+                <div class="sc-headline">
+                    <h1><strong>Insights.</strong> <br/> Trusted by Industry Leaders.</h1>
+                </div>
+                <div class="posts-grid-wrap" id="masonry-grid">
+                    {posts.map(post => {
+                       const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+
+                        return (
+                            <div class="post-card">
+                                <a href={`/blog/${post.slug}/`}>
+                                    {image && (
+                                        <div class="post-image">
+                                            <Image src={image} alt={post.title} inferSize={true} />
+                                        </div>
+                                    )}
+                                    <div class="post-info">
+                                        <h6>{post.title.rendered}</h6>
+                                        <p>{formatPostDate(post.date)}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        );
+                    })}
+                </div>
+                <div class="posts-navigation">
+                    {totalPages > 1 && (
+                        <nav class="pagination">
+                            {/* Next only (no Prev on page 1) */}
+                            {getPaginationRange(currentPage, totalPages).map(item =>
+                                item === '...' ? (
+                                <span class="dots">...</span>
+                                ) : (
+                                <a
+                                    href={item === 1 ? '/blog/' : `/blog/page/${item}/`}
+                                    class={item === currentPage ? 'active' : ''}
+                                >
+                                    {item}
+                                </a>
+                                )
+                            )}
+
+                            {currentPage < totalPages && (
+                                <a
+                                    class="arrow"
+                                    href="/blog/page/2/"
+                                    aria-label="Next page"
+                                >
+                                →
+                                </a>
+                            )}
+                            </nav>
+                    )}
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<style>
+    .sc-headline h1{
+        color: var(--darkGrey);
+    }
+    .sc-headline h1 strong{
+        color: #676B78;
+        font-weight: 500;
+    }
+    
+</style>
+
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
+<script type="module" client:visible>
+    import initMasonry from '/js/MasonryGrid.js';
+    initMasonry('#masonry-grid');
+</script>
