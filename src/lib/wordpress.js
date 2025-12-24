@@ -1,13 +1,23 @@
 const WP_API_URL = 'https://www.ipoint.com.mt/blog/wp-json/wp/v2';
+let cache = null;
+let cacheTime = 0;
 
 export async function getLatestPosts(limit = 8) {
+    const now = Date.now();
+    if (cache && now - cacheTime < 60 * 1000) { // 1 minute cache
+        return cache;
+    }
+
     const res = await fetch(
         `${WP_API_URL}/posts?per_page=${limit}&_embed`
     );
-    if (!res.ok) {
-        throw new Error('Failed to fetch posts');
-    }
-    return await res.json();
+    const posts = await res.json();
+    const totalPosts = parseInt(res.headers.get('X-WP-Total'), 10);
+
+    cache = { posts, totalPosts };
+    cacheTime = now;
+
+    return cache;
 }
 
 export async function getPostsPage({ limit = 12, offset = 0 } = {}) {
