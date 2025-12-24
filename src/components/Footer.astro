@@ -8,9 +8,11 @@ const currentPath = Astro.url.pathname;
 const hideOn = ["/portfolio/paperless-website-redesign/", "/portfolio/boomerang/", "/portfolio/qbet/", "/branding-identity-design/", "/ux-ui-web-experience/", "/custom-web-development/", "/digital-marketing/", "/software-development/", "/creative-production/", "/expertise/", "/portfolio/laferla-website-redesign/"];
 const shouldHide = hideOn.includes(currentPath);
 
+const isBlogPage = currentPath.includes('/blog');
+
 ---
 
-{ !shouldHide && (
+{ (!shouldHide && !isBlogPage) && (
     <section class="get-started-form sc-pd sc-grey sc-grey-C ps-rel">
         <div class="container">
             <div class="headline ps-rel">

@@ -1,23 +1,74 @@
 ---
 import { Image } from 'astro:assets';
-import testPostPic1 from '../../public/test-post1.jpg';
-import testPostPic2 from '../../public/test-post2.jpg';
-import testPostPic3 from '../../public/test-post3.jpg';
-import testPostPic4 from '../../public/test-post4.jpg';
-import testPostPic5 from '../../public/test-post5.jpg';
-import testPostPic6 from '../../public/test-post6.jpg';
-import testPostPic7 from '../../public/test-post7.jpg';
-import testPostPic8 from '../../public/test-post8.jpg';
+import testPostPic1 from '../../src/assets/blog-pattern-1.png';
+import testPostPic2 from '../../src/assets/blog-pattern-2.png';
+import testPostPic3 from '../../src/assets/blog-pattern-3.png';
+import testPostPic4 from '../../src/assets/blog-pattern-4.png';
+import testPostPic5 from '../../src/assets/blog-pattern-5.png';
+import testPostPic6 from '../../src/assets/blog-pattern-9.png';
+import testPostPic7 from '../../src/assets/blog-pattern-7.png';
+import testPostPic8 from '../../src/assets/blog-pattern-8.png';
+import { getLatestPosts } from '../lib/wordpress';
 
-const posts = [
-    { image: testPostPic1, title: 'The Hidden Cost of Average: Why Premium Digital Experiences Win in iGaming & Beyond', date: '2025.10.03' },
-    { image: testPostPic2, title: 'The 2025 Digital Shift: Why Premium Beats Average', date: '2025.9.05' },
-    { image: testPostPic3, title: 'Website Personality Matters! See Which One Is Perfect For You And Why', date: '2025.9.05' },
-    { image: testPostPic4, title: 'iGaming Marketing Malta: Strategies That Build Sustainable Growth', date: '2025.11.02' },
-    { image: testPostPic5, title: 'The Hidden Cost of Average: Why Premium Digital Experiences Win in iGaming & Beyond', date: '2025.10.03' },
-    { image: testPostPic6, title: 'The 2025 Digital Shift: Why Premium Beats Average', date: '2025.9.05' },
-    { image: testPostPic7, title: 'Website Personality Matters! See Which One Is Perfect For You And Why', date: '2025.9.05' },
-    { image: testPostPic8, title: 'iGaming Marketing Malta: Strategies That Build Sustainable Growth', date: '2025.11.02' },
+const posts = await getLatestPosts(8);
+
+function formatPostDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year} - ${month} - ${day}`;
+}
+
+const postsDummy = [
+    { 
+        image: testPostPic1, 
+        title: 'Branding for Start Up Malta: How Early Stage Brands Build Trust, Clarity, and Investor Confidence',
+        shortTitle: 'Startup Branding That Builds Trust',
+        date: '2025.10.03' 
+    },
+    { 
+        image: testPostPic2, 
+        title: 'Branding for B2B Malta: How to Build Authority, Trust, and Long Term Relationships',
+        shortTitle: 'B2B Branding That Builds Trust',
+        date: '2025.9.05' 
+    },
+    { 
+        image: testPostPic3, 
+        title: 'Building Scalable iGaming Platforms Through UX Design',
+        shortTitle: 'Scaling iGaming Platforms Through UX',
+        date: '2025.9.05' 
+    },
+    { 
+        image: testPostPic4, 
+        title: 'Why Bespoke iGaming Websites in Malta Outperform Templates',
+        shortTitle: 'Why Custom iGaming Sites Win',
+        date: '2025.11.02' 
+    },
+    { 
+        image: testPostPic5, 
+        title: 'The Evolution of iGaming Marketing in Malta: From Acquisition to Retention',
+        shortTitle: 'How iGaming Marketing Evolved',
+        date: '2025.10.03' 
+    },
+    { 
+        image: testPostPic6, 
+        title: 'Mastering iGaming UX/UI Design in Malta',
+        shortTitle: 'Mastering iGaming UX in Malta',
+        date: '2025.9.05' 
+    },
+    { 
+        image: testPostPic7, 
+        title: 'Branding for Start Up Malta: How Early Stage Brands Build Trust, Clarity, and Investor Confidence',
+        shortTitle: 'Startup Branding That Builds Trust',
+        date: '2025.10.03'  
+    },
+    { 
+        image: testPostPic8, 
+        title: 'Branding for B2B Malta: How to Build Authority, Trust, and Long Term Relationships',
+        shortTitle: 'B2B Branding That Builds Trust',
+        date: '2025.9.05' 
+    },
 ];
 
 ---
@@ -33,11 +84,51 @@ const posts = [
             </div>
         </div>
         <div class="posts-grid-wrap" id="masonry-grid">
-            {posts.map(post => (
+            {posts.map((post) => {
+                const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+
+                return (
+                    <div class="post-card">
+                        <a href={`/blog/${post.slug}/`}>
+                            {image && (
+                                <div class="post-image">
+                                    <Image src={image} alt={post.title} inferSize={true} />
+                                </div>
+                            )}
+                            <div class="post-info">
+                                <h6>{post.title.rendered}</h6>
+                                <p>{formatPostDate(post.date)}</p>
+                            </div>
+                        </a>
+                    </div>
+                );
+            })}
+        </div>
+        <div class="btn-row fx fx-jc">
+            <a class="btn-primary btn-dark fx fx-ac fx-jc"><span>Get More Insights</span></a>
+        </div>
+    </div>
+</section>
+
+<section class="sc-pd sc-grey sc-grey-C sc-al-cnt ps-rel">
+    <div class="container">
+        <div class="sc-wrapper">
+            <div class="headline ps-rel">
+                <h2>IPOINT INT Insights</h2>
+                <div class="sc-txt">
+                    <p>From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.</p>
+                </div>
+            </div>
+        </div>
+        <div class="posts-grid-wrap" id="masonry-grid-2">
+            {postsDummy.map(post => (
                 <div class="post-card">
                     <a href="#">
-                        <div class="post-image">
+                        <div class="post-image ps-rel">
                             <Image src={post.image} alt={post.title} />
+                            <div class="post-short-title fx fx-jc fx-ac">
+                                <h5>{post.shortTitle}</h5>
+                            </div>
                         </div>
                         <div class="post-info">
                             <h6>{post.title}</h6>
@@ -54,6 +145,20 @@ const posts = [
 </section>
 
 <style>
+    .post-short-title{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .post-short-title h5{
+        font-size: 4.25rem;
+        line-height: 4.5rem;
+        padding: 0 2rem;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(0, 0, 0, 0.3);
+    }
     .posts-grid-wrap{
         margin: 3.75rem 0;
         font-size: 0;
@@ -134,4 +239,5 @@ const posts = [
 <script type="module" client:visible>
     import initMasonry from '/js/MasonryGrid.js';
     initMasonry('#masonry-grid');
+    initMasonry('#masonry-grid-2');
 </script>

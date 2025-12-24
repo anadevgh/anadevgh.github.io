@@ -1,0 +1,115 @@
+---
+import { Image } from 'astro:assets';
+import { getPostBySlug, getAllPosts, formatPostDate } from '../../lib/wordpress';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+    const posts = await getAllPosts();
+    return posts.map(post => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+const { slug } = Astro.params;
+let post = Astro.props?.post;
+if (!post) {
+  post = await getPostBySlug(slug);
+}
+
+const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
+---
+
+<Layout theme="light" isContact="yes">
+    <div class="pg-wrap single-post">
+        <div class="container">
+            <div class="single-post-wrap">
+                <article>
+                    <div class="single-post-banner-wrap">
+                        <div class="single-post-banner">
+                            {image && (
+                                <Image src={image} alt={post.title.rendered} inferSize={true} />
+                            )}
+                        </div>
+                        <div class="post-date">
+                            <p>{formatPostDate(post.date)}</p>
+                        </div>
+                        <h1>{post.title.rendered}</h1>
+                    </div>
+                    <div class="single-post-content" set:html={post.content.rendered}></div>
+                </article>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style is:global>
+    .single-post-wrap{
+        width: 58rem;
+        margin: auto;
+    }
+    .single-post-banner img{
+        border-radius: 2.5rem;
+    }
+    .post-date{
+        margin: 1.5rem 0;
+    }
+    .post-date p{
+        color: rgba(44, 44, 44, 0.40);
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1rem;
+        margin: 0;
+    }
+    .single-post-wrap h1{
+        color: var(--darkGrey);
+        font-size: 2.25rem;
+        font-weight: 500;
+        line-height: 2.5rem;
+    }
+    .single-post-content{
+        margin-top: 5.5rem;
+        color: var(--darkGrey);
+        font-family: 'pp_neue_montrealbook';
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+        letter-spacing: 0.025rem;
+    }
+    .single-post-content figure{
+        margin: 2.5rem 0;
+    }
+    .wp-block-spacer{
+        display: none;
+    }
+    .single-post-content h2{
+        color: var(--darkGrey);
+        font-size: 1.75rem;
+        font-weight: 500;
+        line-height: 2rem;
+        margin: 2.5rem 0 1.5rem 0;
+    }
+    .single-post-content h3, .single-post-content h4, .single-post-content h5, .single-post-content h6{
+        color: var(--darkGrey);
+    }
+    .single-post-content h3{
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        letter-spacing: 0.025rem;
+    }
+    .single-post-content p{
+        margin: 1.5rem 0;
+    }
+    .single-post-content ul{
+        list-style-type: disc;
+        margin: 1.5rem 0 1.5rem 2rem;
+    }
+    .single-post-content ul li:not(:last-child){
+        margin-bottom: 1rem;
+    }
+    .single-post-content a{
+        color: var(--blue);
+        border-bottom: 0.063rem solid var(--blue);
+    }
+</style>
