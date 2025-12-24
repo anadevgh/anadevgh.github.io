@@ -6,12 +6,13 @@ import Layout from '../../layouts/Layout.astro';
 const POSTS_PER_PAGE = 12;
 const currentPage = 1;
 
-const { posts: rawPosts, totalPosts } = await getPostsPage({
+const result = await getPostsPage({
     limit: POSTS_PER_PAGE,
     offset: 0,
-});
+}) || { posts: [], totalPosts: 0 };
 
-const posts = Array.isArray(rawPosts) ? rawPosts : [];
+const posts = Array.isArray(result.posts) ? result.posts : [];
+const totalPosts = result.totalPosts || 0;
 
 const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
