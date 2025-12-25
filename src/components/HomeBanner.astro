@@ -1,5 +1,5 @@
-<section class="hp-hero sc-al-cnt">
-    <div class="container">
+<section class="hp-hero sc-al-cnt ps-rel">
+    <div class="container ps-rel">
         <div class="hero-anim">
             <img src="ipoint-logo-reveal-black.webp" alt="IPOINT Logo"/>
             <img src="ipoint-logo-reveal-color.webp" alt="IPOINT Logo"/>
@@ -11,7 +11,7 @@
                     <p>At IPOINT INT, we transform ambitious businesses into digital leaders through branding, UX/UI design, custom web development, and tailored growth solutions.</p>
                 </div>
             </div>
-           <div class="hero-btm fwidth">
+           <div class="hero-btn ps-rel fwidth">
                 <div class="btn-row btn-row-rs fx fx-jc">
                     <a href="/contact" class="btn-primary fx fx-ac fx-jc"><span>Start Your Growth Journey</span></a>
                 </div>
@@ -27,8 +27,30 @@
     .hp-hero .container{
         height: 100%;
     }
+    .hp-hero:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: url('../../public/banner-lines.svg') no-repeat;
+        background-size: cover;
+    }
+    .hp-hero:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 7.5rem;
+        background: linear-gradient(180deg, rgba(23, 25, 31, 0.00) 0%, #17191F 100%);
+    }
     .hero-top{
         align-self: flex-start;
+    }
+    .hero-btn {
+        z-index: 1;
     }
     .hero-wrap{
         padding: 12.5rem 0 3.75rem 0;
@@ -72,6 +94,9 @@
         }
         .hp-hero{
             height: 56rem;
+        }
+        .hp-hero:before {
+            display:none;
         }
     }
 </style>
