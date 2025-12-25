@@ -23,6 +23,10 @@
 <style>
     .hp-hero{
         height: 100vh;
+        min-height: 720px;
+    }
+    .hero-btn {
+        margin-bottom: 80px;
     }
     .hp-hero .container {
         height: 100%;
@@ -84,15 +88,6 @@
         margin: auto;
         opacity: 0;
     }
-    @media screen and (min-width: 1000px) and (max-height: 480px){
-        .hp-hero {
-            min-height: 480px;
-            margin-bottom: 60px;
-        }
-        .hero-btn {
-            margin-top: 30px;
-        }
-    }
     @media screen and (max-width: 1000px){
         .hero-wrap {
             width: 360px;
@@ -101,13 +96,16 @@
     }
     @media screen and (min-width:479px) and (max-width:1000px) {
         .hp-hero {
-            min-height: 360px;
+            min-height: 570px;
+        }
+        .hero-btn {
+            margin-bottom: 50px;
         }
     }
     @media screen and (max-width: 479px){
         .hp-hero {
             height: 90vh;
-            min-height: 480px;
+            min-height: 730px;
         }
         .hp-hero:before {
             display:none;
@@ -116,6 +114,15 @@
             width: 100%;
             padding-left: 32px;
             padding-right: 32px;
+            padding-top: 120px;
+        }
+        .hero-btn {
+            margin-bottom: 90px;
+        }
+    }
+    @media screen and (max-width: 479px) and (min-height:800px) {
+        .hero-wrap {
+            padding-top: 150px;
         }
     }
 </style>
