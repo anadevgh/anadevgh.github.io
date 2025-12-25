@@ -1,0 +1,168 @@
+---
+import { Image } from 'astro:assets';
+const { title, text, items } = Astro.props;
+
+---
+
+<section class="hp-expertees sc-pd">
+    <div class="container">
+        <div class="sc-row fx fx-jb">
+            <div class="sl-lcol">
+                <h2 set:html={title}></h2>
+                <div class="sc-txt">
+                    <p>{text}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hp-exp-scroll">
+        <div class={`hp-exp-row fx`}>
+            {items.map((item: { graphic: string; title: string; text: string; buttonText: string; buttonLink: string; }) => (
+                <div class="hp-exp-col fx fx-ae fx-wrap">
+                    <div class="hp-exp-col-top">
+                        <h3 set:html={item.title}></h3>
+                        <p>{item.text}</p>
+                        <div class="hp-exp-sl-btn-row fx">
+                            <a class="exp-sl-btn fx fx-ac fx-jc" href={item.buttonLink}>
+                                <span>{item.buttonText}</span>
+                            </a> 
+                        </div>
+                    </div>
+                    <div class="hp-exp-col-btm">
+                        <div class="hp-exp-graphic">
+                            <Image src={item.graphic} alt={item.title}/>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .sl-lcol{
+        width: 46%;
+    }
+    .hp-exp-scroll {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        cursor: grab;
+    }
+    .hp-exp-scroll::-webkit-scrollbar {
+        display: none;
+    }
+    .hp-exp-row{
+        margin: 2.7rem 0 0 0;
+        gap: 1.5rem;
+        padding: 0 0 0 5rem;
+        flex-wrap: nowrap;
+        min-width: max-content;
+    }
+    .hp-exp-col{
+        border-radius: 1.25rem;
+        background: #252831;
+        width: 23.75rem;
+        height: 32.5rem;
+        padding: 2rem 2rem 0 2rem;
+    }
+    .hp-exp-col-top{
+        align-self: flex-start;
+    }
+    .hp-exp-col-top h3{
+        font-family: 'pp_neue_montrealmedium';
+        font-size: 1.75rem;
+        font-weight: 500;
+        line-height: 2rem;
+        letter-spacing: 0.018rem;
+    }
+    .hp-exp-col-top p{
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.25rem;
+        letter-spacing: 0.01rem;
+        margin: 1rem 0;
+        font-family: 'pp_neue_montrealbook';
+    }
+    .exp-sl-btn{
+        color: #0264FF;
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+    }
+    @media screen and (min-width:1601px){
+        .hp-exp-row{
+            padding-right: 5rem;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+    }
+    @media screen and (max-width: 479px){
+        .sl-row{
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        .sl-lcol{
+            width: 100%;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = document.querySelector('.hp-exp-scroll');
+
+        const updateCursor = () => {
+            if (slider.scrollWidth > slider.clientWidth) {
+                slider.style.cursor = 'grab';
+            } else {
+                slider.style.cursor = 'default';
+            }
+        };
+
+        updateCursor();
+        window.addEventListener('resize', updateCursor);
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX);
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        slider.addEventListener('wheel', (e) => {
+            const canScrollHorizontally =
+            slider.scrollWidth > slider.clientWidth &&
+            (e.deltaY > 0 && slider.scrollLeft < slider.scrollWidth - slider.clientWidth ||
+            e.deltaY < 0 && slider.scrollLeft > 0);
+
+            if (canScrollHorizontally) {
+            e.preventDefault();
+            slider.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+    });
+</script>

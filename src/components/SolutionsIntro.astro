@@ -1,0 +1,98 @@
+---
+import { Image } from 'astro:assets';
+const { title, text, items } = Astro.props;
+
+---
+
+<section class="sc-pd sc-pd-sl">
+    <div class="container">
+        <div class="sl-row fx fx-jb ps-rel">
+            <div class="sl-lcol">
+                <h2 set:html={title}></h2>
+                <div class="sc-txt">
+                    <p>{text}</p>
+                </div>
+            </div>
+            <div class="sl-rcol">
+                <div class="sl-hp-list">
+                    {items.map((item: { graphic: string; title: string; text: string; buttonText: string; buttonLink: string; }) => (
+                        <div class="sl-hp-item">
+                            <div class="sl-hp-graphic fwidth">
+                                <Image src={item.graphic} alt={item.title}/>
+                            </div>
+                            <div class="sl-hp-info">
+                                <h2>{item.title}</h2>
+                                <h3>{item.text}</h3>
+                                <div class="sl-btn-row fx">
+                                    <a href={item.buttonLink} class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc">
+                                        <span>{item.buttonText}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .sc-pd-sl{
+        padding-top: 13rem;
+    }
+    .sl-lcol{
+        width: 46%;
+    }
+    .sl-rcol{
+        width: 50%;
+    }
+    .sl-row{
+        z-index: 1;
+    }
+    .sl-hp-item{
+        border-radius: 1.25rem;
+        background: #252831;
+        padding: 5rem 2.5rem 2.5rem 2.5rem;
+    }
+    .sl-hp-item:not(:last-child){
+        margin-bottom: 1.5rem;
+    }
+    .sl-hp-graphic{
+        text-align: center;
+    }
+    .sl-hp-graphic img{
+        height: 13.75rem;
+        width: auto;
+        margin: auto;
+    }
+    .sl-hp-info{
+        margin-top: 6.5rem;
+    }
+    .sl-hp-info h2{
+        font-size: 2.5rem;
+        font-weight: 500;
+        line-height: 2.5rem;
+        letter-spacing: 0.025rem;
+        margin: 0;
+    }
+    .sl-hp-info h3{
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        margin-top: 1.5rem;
+        width: 80%;
+    }
+    .sl-btn-row{
+        margin-top: 2.5rem;
+    }
+    @media screen and (max-width: 479px){
+        .sl-row{
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        .sl-lcol, .sl-rcol{
+            width: 100%;
+        }
+    }
+</style>

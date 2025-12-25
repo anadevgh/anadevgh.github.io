@@ -1,16 +1,114 @@
 ---
 import HomeBanner from '../components/HomeBanner.astro';
 import IntroShowreel from '../components/IntroShowreel.astro';
+import SolutionsIntro from '../components/SolutionsIntro.astro';
 import HomeResults from '../components/HomeResults.astro';
+import ExpertiseHp from '../components/ExpertiseHp.astro';
 import Testimonials from '../components/Testimonials.astro';
 import HomeSolutions from '../components/HomeSolutions.astro';
 import HomeInsights from '../components/HomeInsights.astro';
 
+import BannerImg from '../assets/expertise-main.png';
+import Exp1Img from '../assets/exp-1.png';
+
+const SolutionsHeroData = {
+    heading: `Solutions That Fit Your <br/> Business Journey`,
+    description: "We don’t just deliver services, we craft solutions that solve real business problems. Whether you’re a startup building from zero or an established brand scaling globally, our tailored solutions put your growth first.",
+    items: [
+        {
+            graphic: BannerImg,
+            title: "Startup Solution", 
+            text: "Launch with confidence. Branding, websites, and foundational marketing to help you stand out from day one.",
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/startup",
+        },
+        {
+            graphic: BannerImg,
+            title: "Growth Solution", 
+            text: "Elevate your position with improved UX/UI, optimized websites, and digital strategies to dominate your niche.",
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/growth",
+        },
+        {
+            graphic: BannerImg,
+            title: "Expansion Solution", 
+            text: "Scale across markets with powerful platforms, multilingual websites, and advanced digital systems.",
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/expansion",
+        },
+        {
+            graphic: BannerImg,
+            title: "Franchise Solution", 
+            text: "Streamlined, multi-site digital solutions for networks that need consistency and impact at scale.",
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/franchise",
+        },
+        {
+            graphic: BannerImg,
+            title: "Custom Enterprise Solution", 
+            text: "Fully tailored digital systems, branding, and marketing for complex, multi-department organizations.",
+            buttonText: "View Full Package →",
+            buttonLink: "/solution/enterprise",
+        },
+    ]
+}
+
+const ExperteesData = {
+    heading: `Six disciplines engineered to work together — giving your business clarity, speed, and confidence.`,
+    description: "We don’t offer services. We offer expertise that strengthens every touchpoint of your brand and digital ecosystem.",
+    items: [
+        {
+            graphic: Exp1Img,
+            title: `Branding <br/> & Identity Design`, 
+            text: "Build a brand that feels premium, modern, and unmistakably yours",
+            buttonText: "Explore Expertise  →",
+            buttonLink: "/solution/startup",
+        },
+        {
+            graphic: Exp1Img,
+            title: `UX/UI & Web Experience`, 
+            text: "Design intuitive experiences that increase trust, engagement, and conversions",
+            buttonText: "Explore Expertise  →",
+            buttonLink: "/solution/startup",
+        },
+        {
+            graphic: Exp1Img,
+            title: `Custom Web <br/> Development`, 
+            text: "Fast, stable, scalable websites engineered for long-term performance",
+            buttonText: "Explore Expertise  →",
+            buttonLink: "/solution/startup",
+        },
+        {
+            graphic: Exp1Img,
+            title: `Software Development <br/> & Systems Engineering`, 
+            text: "Automated systems, dashboards, and internal tools that streamline operations",
+            buttonText: "Explore Expertise  →",
+            buttonLink: "/solution/startup",
+        },
+        {
+            graphic: Exp1Img,
+            title: `Digital Marketing`, 
+            text: "Growth systems that build visibility, consistency, and predictable results",
+            buttonText: "Explore Expertise  →",
+            buttonLink: "/solution/startup",
+        },
+    ]
+}
 
 ---
 
 <HomeBanner />
 <IntroShowreel />
+<SolutionsIntro 
+    title={SolutionsHeroData.heading}
+    text={SolutionsHeroData.description}
+    items={SolutionsHeroData.items}
+/>
+<ExpertiseHp 
+    title={ExperteesData.heading}
+    text={ExperteesData.description}
+    items={ExperteesData.items}
+/>
 <HomeResults />
 <Testimonials />
 <HomeSolutions />

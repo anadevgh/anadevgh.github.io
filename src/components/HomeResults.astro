@@ -5,13 +5,15 @@ import paperlessThumb from '../assets/results/pl/paperless-thumb.jpg';
 import boomerangThumb from '../assets/results/boomerang/hero-banner.jpg';
 ---
 
-<section class="hp-results sc-pd sc-al-cnt sc-alg-l">
+<section class="hp-results sc-pd sc-alg-l">
     <div class="container">
         <div class="sc-wrap">
-            <div class="sc-wrapper">
-                <h2>Your Success, Measured in Results</h2>
-                <div class="sc-txt">
-                    <p>Our work is designed to deliver impact, not just aesthetics. <br/> From measurable growth in brand visibility to seamless user experiences, IPOINT INT projects are built to outperform.</p>
+            <div class="sc-row fx fx-jb">
+                <div class="sl-lcol">
+                    <h2>Your Success, <br/> Measured in Results</h2>
+                    <div class="sc-txt">
+                        <p>Our work is designed to deliver impact, not just aesthetics. From measurable growth in brand visibility to seamless user experiences, IPOINT INT projects are built to outperform.</p>
+                    </div>
                 </div>
             </div>
             <div class="pj-list">
@@ -88,3 +90,19 @@ import boomerangThumb from '../assets/results/boomerang/hero-banner.jpg';
         </div>
     </div>
 </section>
+
+<style>
+    .sl-lcol{
+        width: 46%;
+    }
+    @media screen and (max-width: 479px){
+        .sl-row{
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        .sl-lcol{
+            width: 100%;
+        }
+    }
+</style>
