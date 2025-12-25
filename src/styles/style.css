@@ -989,6 +989,28 @@ h5{
         font-size: 16px;
     }
 }
+@media screen and (max-width:1200px){
+    .post-card {
+        width: calc(33% - 1.5rem);
+    }
+}
+@media screen and (max-width:1100px){
+    .sc-wrapper {
+        width: 100%;
+    }
+    .container {
+        padding: 0 4rem;
+    }
+    
+}
+@media screen and (max-width:900px){
+    .container {
+        padding: 0 2rem;
+    }
+    .post-card {
+        width: calc(50% - 1.5rem);
+    }
+}
 @media screen and (max-width:479px){
     .container {
         padding: 0 2rem;
