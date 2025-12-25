@@ -4,9 +4,9 @@ const { title, text, items } = Astro.props;
 
 ---
 
-<section class="sc-pd sc-pd-sl">
+<section class="sc-pd sc-pd-sl sl-scroll">
     <div class="container">
-        <div class="sl-row fx fx-jb ps-rel">
+        <div class="sl-row fx fx-jb ps-rel sl-sticky">
             <div class="sl-lcol">
                 <h2 set:html={title}></h2>
                 <div class="sc-txt">
@@ -14,23 +14,25 @@ const { title, text, items } = Astro.props;
                 </div>
             </div>
             <div class="sl-rcol">
-                <div class="sl-hp-list">
-                    {items.map((item: { graphic: string; title: string; text: string; buttonText: string; buttonLink: string; }) => (
-                        <div class="sl-hp-item">
-                            <div class="sl-hp-graphic fwidth">
-                                <Image src={item.graphic} alt={item.title}/>
-                            </div>
-                            <div class="sl-hp-info">
-                                <h2>{item.title}</h2>
-                                <h3>{item.text}</h3>
-                                <div class="sl-btn-row fx">
-                                    <a href={item.buttonLink} class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc">
-                                        <span>{item.buttonText}</span>
-                                    </a>
+                <div class="sl-hp-viewport">
+                    <div class="sl-hp-list">
+                        {items.map((item: { graphic: string; title: string; text: string; buttonText: string; buttonLink: string; }, i) => (
+                            <div class="sl-hp-item" data-index={i}>
+                                <div class="sl-hp-graphic fwidth">
+                                    <Image src={item.graphic} alt={item.title}/>
+                                </div>
+                                <div class="sl-hp-info">
+                                    <h2>{item.title}</h2>
+                                    <h3>{item.text}</h3>
+                                    <div class="sl-btn-row fx">
+                                        <a href={item.buttonLink} class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc">
+                                            <span>{item.buttonText}</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,6 +40,29 @@ const { title, text, items } = Astro.props;
 </section>
 
 <style>
+    .sl-sticky {
+        position: sticky;
+    }
+    .sl-hp-viewport {
+        overflow: hidden;
+        position: relative;
+    }
+    .sl-hp-list {
+        display: flex;
+        flex-direction: column;
+        will-change: transform;
+        transition: transform 0.08s linear;
+    }
+    .sl-hp-item {
+        flex-shrink: 0;
+        height: 520px;
+        opacity: 0.4;
+        transition: opacity 0.3s linear;
+    }
+    .sl-hp-item.is-active {
+        opacity: 1;
+    }
+
     .sc-pd-sl{
         padding-top: 13rem;
     }
@@ -54,6 +79,13 @@ const { title, text, items } = Astro.props;
         border-radius: 1.25rem;
         background: #252831;
         padding: 5rem 2.5rem 2.5rem 2.5rem;
+        opacity: 0.4;
+        transform: translateY(30px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .sl-hp-item.is-active, .sl-hp-item:first-child {
+        opacity: 1;
+        transform: translateY(0);
     }
     .sl-hp-item:not(:last-child){
         margin-bottom: 1.5rem;
@@ -96,3 +128,32 @@ const { title, text, items } = Astro.props;
         }
     }
 </style>
+
+<script is:inline>
+    const section = document.querySelector(".sl-scroll");
+    const items = [...document.querySelectorAll(".sl-hp-item")];
+
+    window.addEventListener("scroll", () => {
+        const viewportMiddle = window.innerHeight / 2;
+
+        items.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            const itemMiddle = rect.top + rect.height / 2;
+            const distance = Math.abs(viewportMiddle - itemMiddle);
+
+            if (distance < rect.height / 2) {
+                // Card is in focus
+                item.style.opacity = 1;
+                item.style.transform = "translateY(0)";
+            } else if (itemMiddle < viewportMiddle) {
+                // Card above focus
+                item.style.opacity = 0.4;
+                item.style.transform = "translateY(-30px)";
+            } else {
+                // Card below focus
+                item.style.opacity = 0.4;
+                item.style.transform = "translateY(30px)";
+            }
+        });
+    });
+</script>
