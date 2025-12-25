@@ -86,10 +86,23 @@ const { theme } = Astro.props;
         display: block;
         padding-top: 100%;
     }
-    @media screen and (max-width: 1200px){
+    @media screen and (max-width: 1400px){
         .logo-col img {
-            max-width: 72%;
+            max-width: 60%;
         }
+    }
+    @media screen and (max-width: 1000px){
+        .sl-logos-row {
+            gap: 10px;
+        }
+        .logo-col {
+            border-radius: 8px;
+            width: calc(50% - 5px);
+        }
+        .logo-col:last-child {
+            display: none;
+        }
+
     }
     @media screen and (max-width: 479px){
         .sl-row{
@@ -99,6 +112,12 @@ const { theme } = Astro.props;
         }
         .sl-lcol, .sl-rcol{
             width: 100%;
+        }
+        .sl-rcol {
+            margin-top: 40px;
+        }
+        .logo-col img {
+            max-width: 70%;
         }
     }
 </style>

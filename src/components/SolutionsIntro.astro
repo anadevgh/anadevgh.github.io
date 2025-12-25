@@ -9,7 +9,7 @@ const { title, text, items } = Astro.props;
         <div class="sl-row fx fx-jb ps-rel sl-sticky">
             <div class="sl-lcol sl-lcol-main fx fx-wrap">
                 <div class="sl-col-wrap">
-                    <h2 set:html={title}></h2>
+                    <h2 class="sl-heading" set:html={title}></h2>
                     <div class="sc-txt">
                         <p>{text}</p>
                     </div>
@@ -45,12 +45,6 @@ const { title, text, items } = Astro.props;
     .sl-hp-viewport {
         overflow: hidden;
         position: relative;
-    }
-    .sl-hp-list {
-        display: flex;
-        flex-direction: column;
-        will-change: transform;
-        transition: transform 0.08s linear;
     }
     .sc-pd-sl{
         padding-top: 13rem;
@@ -119,9 +113,67 @@ const { title, text, items } = Astro.props;
         from { transform: translate3d(0, 50px, 0); }
         to { transform: translate3d(0, 0, 0); }
     }
+    @media screen and (max-width:1100px){
+        .fixed-cl {
+            left: 4rem !important;
+            width: calc(46% - 4rem) !important;
+        }
+    }
     @media screen and (max-width:1000px){
         .sc-pd-sl {
             padding-top: 80px;
+        }
+        .fixed-cl {
+            left: 40px !important;
+            width: calc(46% - 40px) !important;
+        }
+        .sl-hp-item {
+            border-radius: 12px;
+            padding: 16px;
+            transform: translateY(10px);
+        }
+        .sl-hp-info {
+            margin-top: 16px;
+        }
+        .sl-hp-info h2 {
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0.2px;
+        }
+        .sl-hp-info h3 {
+            font-size: 14px;
+            line-height: 18px;
+            margin-top: 12px;
+            width: 100%;
+        }
+        .sl-btn-row {
+            margin-top: 16px;
+        }
+        .sl-hp-info .btn-primary {
+            height: 40px;
+            padding: 0 20px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .sl-hp-item:not(:last-child) {
+            margin-bottom: 0;
+        }
+        .sl-hp-graphic img {
+            height: auto;
+        }
+        
+    }
+    @media screen and (max-width: 700px){
+        .sl-row > div {
+            width: 100% !important;
+            position: static !important;
+            margin-left: 0 !important;
+        }
+        .sl-scroll .sl-lcol {
+            margin-bottom: 24px;
+        }
+        .sl-row {
+            flex-wrap: wrap;
         }
     }
     @media screen and (max-width: 479px){
@@ -133,6 +185,21 @@ const { title, text, items } = Astro.props;
         .sl-lcol, .sl-rcol{
             width: 100%;
         }
+        .fixed-cl {
+            left: 16px !important;
+            width: calc(46% - 16px) !important;
+        }
+        .sl-hp-info h3 {
+            margin-top: 8px;
+        }
+        .sl-hp-info .btn-primary {
+            height: 32px;
+            font-size: 11px;
+        }
+        .sl-scroll .sl-lcol {
+            padding: 0 16px;
+        } 
+        
     }
 </style>
 
@@ -186,7 +253,7 @@ const { title, text, items } = Astro.props;
             lcol.style.position = "fixed";
             lcol.style.top = "0";
             lcol.style.left = "6rem";
-            lcol.classList.add("fx-ac");
+            lcol.classList.add("fx-ac", "fixed-cl");
             lcol.style.width = "calc(46% - 6rem)";
             slRow.classList.remove("fx-jb");
             slRow.classList.add("fx-je", "fx-ac");
@@ -197,7 +264,8 @@ const { title, text, items } = Astro.props;
             //lcol.style.top = `${window.scrollY + sectionRect.height - lcol.offsetHeight}px`;
             lcol.style.left = "0";
             lcol.style.width = "46%";
-            slRow.classList.remove("fx-jb", "fx-ac");
+            lcol.classList.remove("fixed-cl");
+            slRow.classList.remove("fx-jb", "fx-ac", "fixed-cl");
             slRow.classList.add("fx-je");
         } else if (sectionRect.top > 0) {
             // Section not reached yet → static
@@ -208,7 +276,8 @@ const { title, text, items } = Astro.props;
             lcol.style.width = "46%";
             rcol.style.marginLeft = "0";
             slRow.classList.remove("fx-je", "fx-ac");
-            slRow.classList.add("fx-jb");
+            lcol.classList.remove("fixed-cl");
+            slRow.classList.add("fx-jb"); 
         }
     });
 </script>

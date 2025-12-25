@@ -32,16 +32,17 @@ const { theme } = Astro.props;
                         clickable: true,
                     },
                     breakpoints: {
-                        320: {
+                        1: {
                             slidesPerView: 1,
-                            spaceBetween: 24,
+                            spaceBetween: 10,
                         },
-                        700: {
+                        479: {
                             slidesPerView: 2,
-                            spaceBetween: 24,
+                            spaceBetween: 12,
                         },
                         1150: {
-                            slidesPerView: 3
+                            slidesPerView: 3,
+                            spaceBetween: 24,
                         },
                     }
                 }}>
@@ -381,6 +382,70 @@ const { theme } = Astro.props;
         display: flex;
         bottom: 0;
     }
+    .tst-info-rcol {
+        width: 100px;
+        flex-shrink: 0;
+    }
+    .tst-info-rcol img, .tst-info-rcol svg {
+        width: 100%;
+        height: auto;
+    }
+    @media screen and (max-width:1000px){
+        .tst-slider {
+            margin-top: 26px;
+        }
+        .tst-author-pic, .tst-author-pic img {
+            border-radius: 12px;
+        }
+        .tst-author-info {
+            padding: 16px;
+        }
+        .tst-rating svg {
+            width: 52px;
+            height: auto;
+        }
+        .tst-text p {
+            font-size: 12px;
+            line-height: 16px;
+            margin-top: 8px;
+        }
+        .tst-info-btm {
+            margin-top: 16px;
+        }
+        .tst-info-lcol {
+            margin-right: 15px;
+        }
+        .tst-info-lcol h5, .tst-info-lcol h6{
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 0.24px;
+        }
+        .swiper-wrapper {
+            padding-bottom: 24px;
+        }
+        .tst-pagination {
+            border-radius: 28px;
+            padding: 14px;
+        }
+
+    }
+    @media screen and (min-width:479px) and (max-width: 700px) {
+        .tst-info-btm {
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        .tst-info-rcol {
+            margin-top: 16px;
+        }
+    }
+    @media screen and (max-width:479px){
+        .swiper-wrapper {
+            padding-bottom: 40px;
+        }
+    }
+    
+
 </style>
 
 <script type="module">
