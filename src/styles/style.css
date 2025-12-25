@@ -1000,23 +1000,50 @@ h5{
         width: 100%;
     }
     .container {
-        padding: 0 4rem;
+        margin: 0 4rem;
+        padding: 0;
     }
     
 }
-@media screen and (max-width:900px){
-    .container {
-        padding: 0 2rem;
+@media screen and (max-width:1000px){
+    h1, h2 {
+        font-size: 24px;
+        line-height: 28px;
     }
+    .sc-txt {
+        margin-top: 12px;
+    }
+    .sc-txt p, .sc-txt ul {
+        font-size: 14px;
+        letter-spacing: 0.28px;
+        line-height: 18px;
+    }
+    .btn-primary {
+        height: 32px;
+        padding: 0 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 500;
+        letter-spacing: 0.24px;
+    }
+    .container {
+        margin: 0 40px;
+    }
+}
+@media screen and (max-width:900px){
     .post-card {
         width: calc(50% - 1.5rem);
     }
 }
 @media screen and (max-width:479px){
     .container {
-        padding: 0 2rem;
+        margin: 0 16px;
     }
     .sc-wrapper{
+        width: 100%;
+    }
+    .hero-top {
         width: 100%;
     }
     .pj-ft-info-lcol, .pj-ft-info-rcol,
@@ -1040,4 +1067,26 @@ h5{
         left: 0 !important;
         top: 0 !important;
     }
+    h1, h2 {
+        font-size: 32px;
+        line-height: 32px;
+        letter-spacing: 0.32px;
+    }
+    .sc-txt {
+        margin-top: 24px;
+    }
+    .sc-txt p, .sc-txt ul {
+        font-size: 16px;
+        letter-spacing: 0.32px;
+        line-height: 20px;
+    }
+    .btn-primary {
+        height: 48px;
+        padding: 0 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0.24px;
+    }
+
 }

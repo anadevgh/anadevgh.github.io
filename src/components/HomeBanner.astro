@@ -23,6 +23,7 @@
 <style>
     .hp-hero{
         height: 100vh;
+        min-height: 600px;
     }
     .hp-hero .container{
         height: 100%;
@@ -52,7 +53,7 @@
     .hero-btn {
         z-index: 1;
     }
-    .hero-wrap{
+    .hero-wrap {
         padding: 12.5rem 0 3.75rem 0;
         width: 45rem;
         margin: auto;
@@ -81,22 +82,19 @@
         margin: auto;
         opacity: 0;
     }
-    @media screen and (max-width: 900px){
+    @media screen and (max-width: 1000px){
         .hero-wrap {
-            width: 80%;
+            width: 360px;
         }
     }
     @media screen and (max-width: 479px){
-        .hero-wrap{
-            width: 100%;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-        .hp-hero{
-            height: 56rem;
-        }
         .hp-hero:before {
             display:none;
+        }
+        .hero-wrap {
+            width: 100%;
+            padding-left: 16px;
+            padding-right: 16px;
         }
     }
 </style>
