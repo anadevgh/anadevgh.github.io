@@ -24,8 +24,10 @@
     .hp-hero{
         height: 100vh;
     }
-    .hp-hero .container{
+    .hp-hero .container {
         height: 100%;
+        padding:0;
+        margin: 0;
     }
     .hp-hero:before {
         content: '';
@@ -68,6 +70,7 @@
         height: 100%;
     }
     .hero-anim img{
+        object-fit: cover;
         height: 100%;
         -webkit-transition: all .3s linear;
         -moz-transition: all .3s linear;
@@ -111,8 +114,8 @@
         }
         .hero-wrap {
             width: 100%;
-            padding-left: 16px;
-            padding-right: 16px;
+            padding-left: 32px;
+            padding-right: 32px;
         }
     }
 </style>
