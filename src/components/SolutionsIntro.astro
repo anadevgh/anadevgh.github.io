@@ -4,10 +4,10 @@ const { title, text, items } = Astro.props;
 
 ---
 
-<section class="sc-pd sc-pd-sl sl-scroll">
+<section class="sc-pd sc-pd-sl sl-scroll ps-rel">
     <div class="container">
         <div class="sl-row fx fx-jb ps-rel sl-sticky">
-            <div class="sl-lcol fx fx-wrap">
+            <div class="sl-lcol sl-lcol-main fx fx-wrap">
                 <div class="sl-col-wrap">
                     <h2 set:html={title}></h2>
                     <div class="sc-txt">
@@ -15,7 +15,7 @@ const { title, text, items } = Astro.props;
                     </div>
                 </div>
             </div>
-            <div class="sl-rcol">
+            <div class="sl-rcol sl-rcol-main">
                 <div class="sl-hp-viewport">
                     <div class="sl-hp-list">
                         {items.map((item: { graphic: string; title: string; text: string; buttonText: string; buttonLink: string; }, i) => (
@@ -139,8 +139,8 @@ const { title, text, items } = Astro.props;
 <script is:inline>
     const section = document.querySelector(".sl-scroll");
     const slRow = document.querySelector(".sl-row");
-    const lcol = document.querySelector(".sl-lcol");
-    const rcol = document.querySelector(".sl-rcol");
+    const lcol = document.querySelector(".sl-lcol-main");
+    const rcol = document.querySelector(".sl-rcol-main");
     const items = [...document.querySelectorAll(".sl-hp-item")];
 
     // Helper to restart animation
@@ -186,17 +186,18 @@ const { title, text, items } = Astro.props;
             lcol.style.position = "fixed";
             lcol.style.top = "0";
             lcol.style.left = "6rem";
+            lcol.classList.add("fx-ac");
             lcol.style.width = "calc(46% - 6rem)";
             slRow.classList.remove("fx-jb");
-            slRow.classList.add("fx-je fx-ac");
+            slRow.classList.add("fx-je", "fx-ac");
         } else if (lastRect.bottom <= window.innerHeight) {
             // Last card reached → stop fixing
             if (lcol.style.position !== "absolute") triggerAnim(lcol);
             lcol.style.position = "absolute";
-            lcol.style.top = `${window.scrollY + sectionRect.height - lcol.offsetHeight}px`;
+            //lcol.style.top = `${window.scrollY + sectionRect.height - lcol.offsetHeight}px`;
             lcol.style.left = "0";
             lcol.style.width = "46%";
-            slRow.classList.remove("fx-jb fx-ac");
+            slRow.classList.remove("fx-jb", "fx-ac");
             slRow.classList.add("fx-je");
         } else if (sectionRect.top > 0) {
             // Section not reached yet → static
@@ -206,7 +207,7 @@ const { title, text, items } = Astro.props;
             lcol.style.left = "0";
             lcol.style.width = "46%";
             rcol.style.marginLeft = "0";
-            slRow.classList.remove("fx-je fx-ac");
+            slRow.classList.remove("fx-je", "fx-ac");
             slRow.classList.add("fx-jb");
         }
     });
