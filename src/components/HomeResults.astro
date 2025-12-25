@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
-//import laferlaThumb from '../../assets/results/laferla/laferla-thumbnail.webp';
+import laferlaThumb from '../assets/results/laferla/laferla-thumb.jpg';
+import paperlessThumb from '../assets/results/pl/paperless-thumb.jpg';
+import boomerangThumb from '../assets/results/boomerang/hero-banner.jpg';
 ---
 
 <section class="hp-results sc-pd sc-al-cnt sc-alg-l">
@@ -14,66 +16,66 @@ import { Image } from 'astro:assets';
             </div>
             <div class="pj-list">
                 <div class="pj-featured-item">
-                    <a href="#">
+                    <a href="/portfolio/laferla-website-redesign/">
                         <div class="pj-ft-image">
-                            <img src="laferla-app-cover.webp" alt="Laferla"/>
+                            <Image src={laferlaThumb} alt="laferla-thumb" />
                         </div>
                         <div class="pj-ft-info-row fwidth fx fx-jb">
                             <div class="pj-ft-info-lcol">
                                 <div class="pj-ft-info-lcol-wrap">
-                                    <h3>Laferla App</h3>
+                                    <h3>Laferla</h3>
                                 </div>
                                 <div class="pj-ft-info-txt">
-                                    <h4>Creating an Insurance instrument with all functions in your pocket</h4>
+                                    <h4>Creating an Insurance instrument with all functions in your pocket.</h4>
                                 </div>
                             </div>
                             <div class="pj-ft-info-rcol">
-                                <p>UX/UI Design, Wireframing, Prototyping</p>
+                                <p>Web Design, Branding, Consulting</p>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="pj-featured-2col fx fx-jb">
                     <div class="pj-featured-item">
-                        <a href="#">
+                        <a href="/portfolio/paperless-website-redesign/">
                             <div class="pj-ft-image">
-                                <img src="laferla-project-cover.webp" alt="Laferla"/>
+                                <Image src={paperlessThumb} alt="paperless-thumb" />
                             </div>
                             <div class="pj-ft-info-row fwidth">
                                 <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
                                     <div class="pj-ft-info-lcol">
                                         <div class="pj-ft-info-lcol-wrap">
-                                            <h3>Laferla Website</h3>
+                                            <h3>Paperless</h3>
                                         </div>
                                     </div>
                                     <div class="pj-ft-info-rcol">
-                                        <p>UX/UI Design, Wireframing, Prototyping</p>
+                                        <p>Web Design, Branding, Consulting</p>
                                     </div>
                                 </div>
                                 <div class="pj-ft-info-txt">
-                                    <h4>Creating an Insurance instrument with all functions in your pocket</h4>
+                                    <h4>Website redesign for a leading document workflow provider since 1997.</h4>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="pj-featured-item">
-                        <a href="#">
+                        <a href="/portfolio/boomerang/">
                             <div class="pj-ft-image">
-                                <img src="spinbet-project-cover.webp" alt="Spinbet"/>
+                                <Image src={boomerangThumb} alt="boomerang-thumb" />
                             </div>
                             <div class="pj-ft-info-row fwidth">
                                 <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
                                     <div class="pj-ft-info-lcol">
                                         <div class="pj-ft-info-lcol-wrap">
-                                            <h3>Spinbet</h3>
+                                            <h3>Boomerang</h3>
                                         </div>
                                     </div>
                                     <div class="pj-ft-info-rcol">
-                                        <p>Brand Identity, Web Design, 3D </p>
+                                        <p>Branding</p>
                                     </div>
                                 </div>
                                 <div class="pj-ft-info-txt">
-                                    <h4>Casino and Sportsbook platforms for an iGaming startup from Germany</h4>
+                                    <h4>Brand book for the business.</h4>
                                 </div>
                             </div>
                         </a>
@@ -81,7 +83,7 @@ import { Image } from 'astro:assets';
                 </div>
             </div>
             <div class="btn-row fx fx-jc">
-                <a class="btn-primary fx fx-ac fx-jc"><span>Show More Case Studies</span></a>
+                <a href="/portfolio/" class="btn-primary fx fx-ac fx-jc"><span>Show More Case Studies</span></a>
             </div>
         </div>
     </div>
