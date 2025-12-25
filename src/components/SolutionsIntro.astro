@@ -7,7 +7,7 @@ const { title, text, items } = Astro.props;
 <section class="sc-pd sc-pd-sl sl-scroll">
     <div class="container">
         <div class="sl-row fx fx-jb ps-rel sl-sticky">
-            <div class="sl-lcol fx fx-ac fx-wrap">
+            <div class="sl-lcol fx fx-wrap">
                 <div class="sl-col-wrap">
                     <h2 set:html={title}></h2>
                     <div class="sc-txt">
@@ -137,77 +137,77 @@ const { title, text, items } = Astro.props;
 </style>
 
 <script is:inline>
-const section = document.querySelector(".sl-scroll");
-const slRow = document.querySelector(".sl-row");
-const lcol = document.querySelector(".sl-lcol");
-const rcol = document.querySelector(".sl-rcol");
-const items = [...document.querySelectorAll(".sl-hp-item")];
+    const section = document.querySelector(".sl-scroll");
+    const slRow = document.querySelector(".sl-row");
+    const lcol = document.querySelector(".sl-lcol");
+    const rcol = document.querySelector(".sl-rcol");
+    const items = [...document.querySelectorAll(".sl-hp-item")];
 
-// Helper to restart animation
-let lcolAnimated = false;
+    // Helper to restart animation
+    let lcolAnimated = false;
 
-function triggerAnim(el) {
-    el.classList.remove("anim");
-    void el.offsetWidth; // force reflow
-    el.classList.add("anim");
-}
+    function triggerAnim(el) {
+        el.classList.remove("anim");
+        void el.offsetWidth; // force reflow
+        el.classList.add("anim");
+    }
 
-window.addEventListener("scroll", () => {
-    const viewportMiddle = window.innerHeight / 2;
+    window.addEventListener("scroll", () => {
+        const viewportMiddle = window.innerHeight / 2;
 
-    // Animate each card
-    items.forEach(item => {
-        const rect = item.getBoundingClientRect();
-        const itemMiddle = rect.top + rect.height / 2;
-        const distance = Math.abs(viewportMiddle - itemMiddle);
+        // Animate each card
+        items.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            const itemMiddle = rect.top + rect.height / 2;
+            const distance = Math.abs(viewportMiddle - itemMiddle);
 
-        if (distance < rect.height / 2) {
-            item.style.opacity = 1;
-            item.style.transform = "translateY(0)";
-        } else if (itemMiddle < viewportMiddle) {
-            item.style.opacity = 0.4;
-            item.style.transform = "translateY(-15px)";
-        } else {
-            item.style.opacity = 0.4;
-            item.style.transform = "translateY(15px)";
+            if (distance < rect.height / 2) {
+                item.style.opacity = 1;
+                item.style.transform = "translateY(0)";
+            } else if (itemMiddle < viewportMiddle) {
+                item.style.opacity = 0.4;
+                item.style.transform = "translateY(-15px)";
+            } else {
+                item.style.opacity = 0.4;
+                item.style.transform = "translateY(15px)";
+            }
+        });
+
+        // Handle left column fixed/static logic
+        const sectionRect = section.getBoundingClientRect();
+        const lastItem = items[items.length - 1];
+        const lastRect = lastItem.getBoundingClientRect();
+
+        if (sectionRect.top <= 0 && lastRect.bottom > window.innerHeight) {
+            // Section started, last card not reached → fixed
+            if (lcol.style.position !== "fixed") {
+                triggerAnim(lcol);
+            }
+            lcol.style.position = "fixed";
+            lcol.style.top = "0";
+            lcol.style.left = "6rem";
+            lcol.style.width = "calc(46% - 6rem)";
+            slRow.classList.remove("fx-jb");
+            slRow.classList.add("fx-je fx-ac");
+        } else if (lastRect.bottom <= window.innerHeight) {
+            // Last card reached → stop fixing
+            if (lcol.style.position !== "absolute") triggerAnim(lcol);
+            lcol.style.position = "absolute";
+            lcol.style.top = `${window.scrollY + sectionRect.height - lcol.offsetHeight}px`;
+            lcol.style.left = "0";
+            lcol.style.width = "46%";
+            slRow.classList.remove("fx-jb fx-ac");
+            slRow.classList.add("fx-je");
+        } else if (sectionRect.top > 0) {
+            // Section not reached yet → static
+            if (lcol.style.position !== "relative") triggerAnim(lcol);
+            lcol.style.position = "relative";
+            lcol.style.top = "0";
+            lcol.style.left = "0";
+            lcol.style.width = "46%";
+            rcol.style.marginLeft = "0";
+            slRow.classList.remove("fx-je fx-ac");
+            slRow.classList.add("fx-jb");
         }
     });
-
-    // Handle left column fixed/static logic
-    const sectionRect = section.getBoundingClientRect();
-    const lastItem = items[items.length - 1];
-    const lastRect = lastItem.getBoundingClientRect();
-
-    if (sectionRect.top <= 0 && lastRect.bottom > window.innerHeight) {
-        // Section started, last card not reached → fixed
-        if (lcol.style.position !== "fixed") {
-            triggerAnim(lcol);
-        }
-        lcol.style.position = "fixed";
-        lcol.style.top = "0";
-        lcol.style.left = "6rem";
-        lcol.style.width = "calc(46% - 6rem)";
-        slRow.classList.remove("fx-jb");
-        slRow.classList.add("fx-je");
-    } else if (lastRect.bottom <= window.innerHeight) {
-        // Last card reached → stop fixing
-        if (lcol.style.position !== "absolute") triggerAnim(lcol);
-        lcol.style.position = "absolute";
-        lcol.style.top = `${window.scrollY + sectionRect.height - lcol.offsetHeight}px`;
-        lcol.style.left = "0";
-        lcol.style.width = "46%";
-        slRow.classList.remove("fx-jb");
-        slRow.classList.add("fx-je");
-    } else if (sectionRect.top > 0) {
-        // Section not reached yet → static
-        if (lcol.style.position !== "relative") triggerAnim(lcol);
-        lcol.style.position = "relative";
-        lcol.style.top = "0";
-        lcol.style.left = "0";
-        lcol.style.width = "46%";
-        rcol.style.marginLeft = "0";
-        slRow.classList.remove("fx-je");
-        slRow.classList.add("fx-jb");
-    }
-});
 </script>
