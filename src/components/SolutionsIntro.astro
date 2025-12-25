@@ -7,10 +7,12 @@ const { title, text, items } = Astro.props;
 <section class="sc-pd sc-pd-sl sl-scroll">
     <div class="container">
         <div class="sl-row fx fx-jb ps-rel sl-sticky">
-            <div class="sl-lcol">
-                <h2 set:html={title}></h2>
-                <div class="sc-txt">
-                    <p>{text}</p>
+            <div class="sl-lcol fx fx-ac fx-wrap">
+                <div class="sl-col-wrap">
+                    <h2 set:html={title}></h2>
+                    <div class="sc-txt">
+                        <p>{text}</p>
+                    </div>
                 </div>
             </div>
             <div class="sl-rcol">
@@ -40,9 +42,6 @@ const { title, text, items } = Astro.props;
 </section>
 
 <style>
-    .sl-sticky {
-        position: sticky;
-    }
     .sl-hp-viewport {
         overflow: hidden;
         position: relative;
@@ -53,24 +52,17 @@ const { title, text, items } = Astro.props;
         will-change: transform;
         transition: transform 0.08s linear;
     }
-    .sl-hp-item {
-        flex-shrink: 0;
-        height: 520px;
-        opacity: 0.4;
-        transition: opacity 0.3s linear;
-    }
-    .sl-hp-item.is-active {
-        opacity: 1;
-    }
-
     .sc-pd-sl{
         padding-top: 13rem;
     }
     .sl-lcol{
         width: 46%;
+        top: 0;
+        height: 100%;
     }
     .sl-rcol{
         width: 50%;
+        margin-left: 54%;
     }
     .sl-row{
         z-index: 1;
@@ -80,12 +72,13 @@ const { title, text, items } = Astro.props;
         background: #252831;
         padding: 5rem 2.5rem 2.5rem 2.5rem;
         opacity: 0.4;
-        transform: translateY(30px);
+        transform: translateY(15px);
         transition: opacity 0.5s ease, transform 0.5s ease;
+        flex-shrink: 0;
+        opacity: 0.4;
     }
-    .sl-hp-item.is-active, .sl-hp-item:first-child {
+    .sl-hp-item.is-active {
         opacity: 1;
-        transform: translateY(0);
     }
     .sl-hp-item:not(:last-child){
         margin-bottom: 1.5rem;
@@ -117,6 +110,20 @@ const { title, text, items } = Astro.props;
     .sl-btn-row{
         margin-top: 2.5rem;
     }
+    .anim {
+        animation: slideDown 0.4s ease forwards;
+        will-change: transform;
+    }
+
+    @keyframes slideDown {
+        from { transform: translate3d(0, 50px, 0); }
+        to { transform: translate3d(0, 0, 0); }
+    }
+    @media screen and (max-width:1000px){
+        .sc-pd-sl {
+            padding-top: 80px;
+        }
+    }
     @media screen and (max-width: 479px){
         .sl-row{
             -webkit-flex-wrap: wrap;
@@ -130,30 +137,77 @@ const { title, text, items } = Astro.props;
 </style>
 
 <script is:inline>
-    const section = document.querySelector(".sl-scroll");
-    const items = [...document.querySelectorAll(".sl-hp-item")];
+const section = document.querySelector(".sl-scroll");
+const slRow = document.querySelector(".sl-row");
+const lcol = document.querySelector(".sl-lcol");
+const rcol = document.querySelector(".sl-rcol");
+const items = [...document.querySelectorAll(".sl-hp-item")];
 
-    window.addEventListener("scroll", () => {
-        const viewportMiddle = window.innerHeight / 2;
+// Helper to restart animation
+let lcolAnimated = false;
 
-        items.forEach(item => {
-            const rect = item.getBoundingClientRect();
-            const itemMiddle = rect.top + rect.height / 2;
-            const distance = Math.abs(viewportMiddle - itemMiddle);
+function triggerAnim(el) {
+    el.classList.remove("anim");
+    void el.offsetWidth; // force reflow
+    el.classList.add("anim");
+}
 
-            if (distance < rect.height / 2) {
-                // Card is in focus
-                item.style.opacity = 1;
-                item.style.transform = "translateY(0)";
-            } else if (itemMiddle < viewportMiddle) {
-                // Card above focus
-                item.style.opacity = 0.4;
-                item.style.transform = "translateY(-30px)";
-            } else {
-                // Card below focus
-                item.style.opacity = 0.4;
-                item.style.transform = "translateY(30px)";
-            }
-        });
+window.addEventListener("scroll", () => {
+    const viewportMiddle = window.innerHeight / 2;
+
+    // Animate each card
+    items.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        const itemMiddle = rect.top + rect.height / 2;
+        const distance = Math.abs(viewportMiddle - itemMiddle);
+
+        if (distance < rect.height / 2) {
+            item.style.opacity = 1;
+            item.style.transform = "translateY(0)";
+        } else if (itemMiddle < viewportMiddle) {
+            item.style.opacity = 0.4;
+            item.style.transform = "translateY(-15px)";
+        } else {
+            item.style.opacity = 0.4;
+            item.style.transform = "translateY(15px)";
+        }
     });
+
+    // Handle left column fixed/static logic
+    const sectionRect = section.getBoundingClientRect();
+    const lastItem = items[items.length - 1];
+    const lastRect = lastItem.getBoundingClientRect();
+
+    if (sectionRect.top <= 0 && lastRect.bottom > window.innerHeight) {
+        // Section started, last card not reached → fixed
+        if (lcol.style.position !== "fixed") {
+            triggerAnim(lcol);
+        }
+        lcol.style.position = "fixed";
+        lcol.style.top = "0";
+        lcol.style.left = "6rem";
+        lcol.style.width = "calc(46% - 6rem)";
+        slRow.classList.remove("fx-jb");
+        slRow.classList.add("fx-je");
+    } else if (lastRect.bottom <= window.innerHeight) {
+        // Last card reached → stop fixing
+        if (lcol.style.position !== "absolute") triggerAnim(lcol);
+        lcol.style.position = "absolute";
+        lcol.style.top = `${window.scrollY + sectionRect.height - lcol.offsetHeight}px`;
+        lcol.style.left = "0";
+        lcol.style.width = "46%";
+        slRow.classList.remove("fx-jb");
+        slRow.classList.add("fx-je");
+    } else if (sectionRect.top > 0) {
+        // Section not reached yet → static
+        if (lcol.style.position !== "relative") triggerAnim(lcol);
+        lcol.style.position = "relative";
+        lcol.style.top = "0";
+        lcol.style.left = "0";
+        lcol.style.width = "46%";
+        rcol.style.marginLeft = "0";
+        slRow.classList.remove("fx-je");
+        slRow.classList.add("fx-jb");
+    }
+});
 </script>
