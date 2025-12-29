@@ -57,6 +57,8 @@ html, body {
     padding:0;
     font-weight: 500;
     font-family: 'pp_neue_montrealmedium';
+    position: relative;
+    overflow-x: hidden;
 }
 html{
     scroll-behavior: smooth;
@@ -1101,6 +1103,106 @@ h5{
     .posts-grid-wrap {
         margin: 24px 0;
     }
+    body .gts-form-headline h3 {
+        margin-bottom: 3px;
+        font-size: 14px;
+        line-height: 16px;
+    }
+    body .gts-form-headline h5, body .gts-form-num span {
+        font-size: 11px;
+        line-height: 14px;
+    }
+    body .gts-form-row.fourcol .gts-form-col {
+        width: calc((100% - 3 * 8px) / 4);
+    }
+    body .gts-form-col.active {
+        border-radius: 8px;
+    }
+    body .gts-form-col {
+        height: 110px;
+        border-radius: 8px;
+        padding: 10px 8px;
+    }
+    body .gts-form-main {
+        margin-top: 14px;
+        min-height: 10rem;
+    }
+    body .gts-form-wrap {
+        margin-top: 24px;
+    }
+    body .gts-lstep-form-main h5 {
+        font-size: 32px;
+        line-height: 36px;
+        margin: 24px 0;
+    }
+    body .gts-quote-icon img {
+        width: 130px;
+    }
+    body .gts-lstep-form-main h6 {
+        font-size: 20px;
+        line-height: 24px;
+    }
+    body .gts-lstep-form {
+        width: 100%;
+        margin-top: 40px;
+    }
+    body .gts-lstep-form .field-group {
+        margin-bottom: 24px;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    body .field-group input, body .field-group textarea {
+        border-radius: 8px;
+        margin-top: 8px;
+        padding: 10px;
+        font-size: 14px;
+        line-height: 24px;
+    }
+    body .field-group label {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    body .field-lbl span {
+        font-size: 10px;
+        line-height: 10px;
+    }
+    body .field-group-btm {
+        margin-top: 0;
+    }
+    body .field-group-ack {
+        width: 100%;
+    }
+    body .field-group-ack label {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    body .ct-apply-btn button {
+        border-radius: 30px;
+        height: 48px;
+        padding: 0 25px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+    body .ct-apply-btn {
+        margin-top: 15px;
+    }
+    body .field-group textarea {
+        min-height: 80px;
+        max-height: 160px;
+    }
+    body .err-msg span {
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 12px;
+        padding-top: 5px;
+    }
+    body .gts-lstep-form .field-group:first-child {
+        margin-bottom: 7px;
+    }
+
+
+
 
 }
 @media screen and (max-width:900px){
@@ -1128,6 +1230,11 @@ h5{
     }
 
 
+}
+@media screen and (max-width:700px){
+    body .gts-form-main-wrapper {
+        width: 100%;
+    }
 }
 @media screen and (min-width:479px) and (max-width: 600px) {
     .pj-featured-2col {
@@ -1228,4 +1335,72 @@ h5{
     .posts-grid-wrap {
         margin: 40px 0;
     }
+    body .gts-form-row.fourcol .gts-form-col, body .gts-form-row.threecol .gts-form-col {
+        width: 100% !important;
+    }
+    body .gts-form-main {
+        margin-top: 14px;
+        min-height: auto;
+    }
+    body .gts-form-col {
+        height: auto;
+        border-radius: 12px;
+        padding: 20px;
+        min-height: 120px;
+    }
+    body .gts-form-col.active {
+        border-radius: 12px;
+    }
+    body .gts-form-headline h3 {
+        margin-bottom: 8px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    body .gts-form-headline h5, body .gts-form-num span {
+        font-size: 15px;
+        line-height: 16px;
+        letter-spacing: 0.28px;
+    }
+    body .gts-form-step {
+        gap: 8px;
+        position: static;
+    }
+    body .gts-form-num {
+        margin-top: 10px;
+    }
+    body .gs-prev-step span {
+        margin-left: 4px;
+        letter-spacing: 0;
+    }
+    body .gs-prev-step {
+        color: var(--darkGrey2);
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0;
+    }
+    body .fm-progress-txt p {
+        font-size: 10px;
+        line-height: 12px;
+        letter-spacing: 0;
+    }
+    body .fm-progress-bar {
+        height: 4px;
+        border-radius: 12px;
+        margin-top: 8px;
+    }
+    body .fm-progress-bar-spin {
+        height: 4px;
+        border-radius: 12px;
+    }
+    body .gts-form-wrap {
+        margin-top: 20px;
+    }
+    body .field-group-h {
+        width: 100%;
+    }
+    body .gts-lstep-form .field-group > div:last-child {
+        margin-top: 24px;
+    }
+
+
 }
