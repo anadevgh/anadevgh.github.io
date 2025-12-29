@@ -14,7 +14,11 @@ const { theme, title, text, buttonLink, buttonText } = Astro.props;
                     <p set:html={text}></p>
                 </div>
                 <div class="sl-btn-row fx">
-                    <a href={buttonLink} class="btn-primary btn-dark btn-primary-lg fx fx-ac fx-jc">
+                    <a href={buttonLink}
+                        class={`btn-primary btn-primary-lg fx fx-ac fx-jc ${
+                            theme === "dark" ? "" : "btn-dark"
+                        }`}
+                    >
                         <span>{buttonText}</span>
                     </a>
                 </div>

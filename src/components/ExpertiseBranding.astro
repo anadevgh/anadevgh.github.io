@@ -15,6 +15,7 @@ import HeroImage from '../assets/branding-graphic.png';
 const HeroData = {
     img: HeroImage,
     heading: `Branding <br/> & Identity Design`,
+    subHeading: `Where clarity becomes confidence. <br/> Where identity becomes advantage.`,
     description: "Your brand is more than visuals — it's the story people believe about your business. We build brand systems that communicate authority, inspire trust, and position you for long-term success.",
 }
 
@@ -23,6 +24,7 @@ const issuesData = {
     description: `A strong brand does more than look good — <br/> 
                  it removes friction, creates trust, and drives decisions. <br/> 
                  Businesses come to us when they struggle with:`,
+    secDesc: "We fix these problems by building brands engineered for clarity, consistency, and conversion.",             
 
     items: [
         { title: "Lack of brand clarity", text: "Your audience cannot understand who you are or why you matter." },
@@ -39,8 +41,9 @@ const approachData = {
     description: `Branding at IPOINT INT is not an art project. <br/> 
                   It is a strategic, engineered system designed to help your business perform. <br/>
                   Our approach combines:`,
-    secDesc: `We begin with <span class="blue">clarity</span>, build with <span class="red">precision</span>, and end with a <span class="green">scalable brand system</span> <br/>
-              that works across platforms, markets, and teams. <br/>
+    secDesc: ` <h3>How We Work</h3>
+            We begin with <span class="blue">clarity</span>, build with <span class="red">precision</span>, and end with a <span class="green">scalable brand system</span> <br/>
+              that works across platforms, markets, and teams. <br/><br/>
               This is branding that doesn't expire — it evolves.`,              
                 
     items: [
@@ -51,7 +54,7 @@ const approachData = {
 }
 
 const expertiseListData = {
-    heading: "Full Branding Expertise",
+    heading: "Full Branding Expertise (Capabilities)",
     description: "Coprehensive capabilities designed to build brands that perform",        
     items: [
         {
@@ -175,7 +178,7 @@ const deliverablesData = {
 
 const expertiseSolutionsData = {
     heading: `How Branding Connects <br/> to Our Solutions`,
-    description: "Branding plays a critical role across all IPOINT INT Solutions:",        
+    description: "Branding plays a critical role across all IPOINT INT Solutions by defining how your business is perceived, trusted, and remembered at every stage of growth.",        
     items: [
         {
             title: `Startup <br/> Solution`,
@@ -208,6 +211,14 @@ const expertiseSolutionsData = {
             link: "/solution/enterprise"
         },
     ]
+}
+
+const TestimonialsData = {
+    heading: `Trusted By Industry Leaders`,
+    description: `Our branding work supports companies across iGaming, fintech, SaaS, and global markets.`,
+    secDesc: "Explore how our branding systems perform in real-world projects.",
+    buttonText: "See Full Case Studies in Results →",
+    buttonLink: "/results"
 }
 
 const expertiseFAQData = {
@@ -260,11 +271,13 @@ const expertiseCTAData = {
     img={HeroData.img}
     title={HeroData.heading}
     text={HeroData.description}
+    subTitle={HeroData.subHeading}
 />
 <ExpertiseIssues 
     heading={issuesData.heading}
     description={issuesData.description}
     items={issuesData.items}
+    secDesc={issuesData.secDesc}
 />
 <ExpertiseApproach 
     heading={approachData.heading}
@@ -288,7 +301,14 @@ const expertiseCTAData = {
     description={deliverablesData.description}
     items={deliverablesData.items}
 />
-<Testimonials theme="dark" />
+<Testimonials
+    title={TestimonialsData.heading}
+    text={TestimonialsData.description}
+    secDesc={TestimonialsData.secDesc}
+    buttonText={TestimonialsData.buttonText}
+    buttonLink={TestimonialsData.buttonLink}
+    theme="dark" 
+/>
 <ExpertiseSolutions 
     heading={expertiseSolutionsData.heading}
     description={expertiseSolutionsData.description}

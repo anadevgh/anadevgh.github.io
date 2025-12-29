@@ -202,6 +202,18 @@ const ExpPowerData = {
     ]
 }
 
+const SolutionsData = {
+    heading: `Solutions That Deliver`,
+    description: `We don't just promise results, we prove them. Our clients' experience:
+                    <ul>
+                        <li>Increased engagement & retention</li>
+                        <li>Higher revenue per visitor</li>
+                        <li>Streamlined, future-proof digital operations</li>
+                    </ul>`,
+    buttonLink: "/solutions",
+    buttonText: "Let’s Explore Your Solution →"
+}
+
 const expertiseFAQData = {
     heading: "General Expertise FAQs",      
     items: [
@@ -274,7 +286,13 @@ const expertiseCTAData = {
     items={ExpPowerData.items}
 />
 
-<HomeSolutions theme="dark"/>
+<HomeSolutions 
+    theme="dark"
+    title={SolutionsData.heading}
+    text={SolutionsData.description}
+    buttonLink={SolutionsData.buttonLink}
+    buttonText={SolutionsData.buttonText}
+/>
 
 <ExpertiseFAQ 
     heading={expertiseFAQData.heading}

@@ -38,9 +38,7 @@ const { heading, description, secDesc, items } = Astro.props;
         </div>
         <div class="exp-scd-txt-row">
             <div class="sc-wrapper">
-                <div class="exp-txt">
-                    <p set:html={secDesc}></p>
-                </div>
+                <div class="exp-txt" set:html={secDesc}></div>
             </div>
         </div>
     </div>

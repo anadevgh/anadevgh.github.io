@@ -100,6 +100,11 @@ const InsightsData = {
     description: "Stay ahead with perspectives from our experts on branding, UX, technology, and growth.",
 }
 
+const TestimonialsData = {
+    heading: `Trusted by Industry Leaders`,
+    description: `From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.`,
+}
+
 const SolutionsData = {
     heading: `Solutions That Deliver`,
     description: `We don't just promise results, we prove them. Our clients' experience:
@@ -127,7 +132,10 @@ const SolutionsData = {
     items={ExperteesData.items}
 />
 <HomeResults />
-<Testimonials />
+<Testimonials 
+    title={TestimonialsData.heading}
+    text={TestimonialsData.description}
+/>
 <HomeSolutions 
     title={SolutionsData.heading}
     text={SolutionsData.description}

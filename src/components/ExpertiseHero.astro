@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-const { img, title, text } = Astro.props;
+const { img, title, subTitle, text } = Astro.props;
 
 ---
 
@@ -13,6 +13,7 @@ const { img, title, text } = Astro.props;
             <div class="exp-intro-text">
                 <h1 set:html={title}></h1>
                 <div class="sc-txt">
+                    <p set:html={subTitle}></p><br/>
                     <p>{text}</p>
                 </div>
             </div>

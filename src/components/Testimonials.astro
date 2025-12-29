@@ -2,7 +2,7 @@
 import { Swiper, SwiperWrapper, SwiperSlide } from "astro-swiper";
 import { Image } from 'astro:assets';
 import keithProfile from '../../public/keith-laferla.jpg';
-const { theme } = Astro.props;
+const { theme, title, text, secDesc, buttonText, buttonLink } = Astro.props;
 
 
 ---
@@ -15,9 +15,9 @@ const { theme } = Astro.props;
     <div class="container">
         <div class="sc-wrapper">
             <div class="tst-headline ps-rel">
-                <h2>Trusted by Industry Leaders</h2>
+                <h2>{title}</h2>
                 <div class="sc-txt">
-                    <p>From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.</p>
+                    <p>{text}</p>
                 </div>
             </div>
         </div>
@@ -293,6 +293,22 @@ const { theme } = Astro.props;
                 <div class="tst-pagination fx fx-jc"></div>
             </div>
         </div>
+        {secDesc && (
+            <div class="tst-info-wrap">
+                <div class="sc-wrapper">
+                    <div class="sc-txt">
+                        <p>{secDesc}</p>
+                    </div>
+                    {buttonLink && (
+                        <div class="tst-btn-row fx fx-jc">
+                            <a class="btn-primary fx fx-ac fx-jc" href={buttonLink}>
+                                <span>{buttonText}</span>
+                            </a>
+                        </div>
+                    )}
+                </div>
+            </div>
+        )}
     </div>
 </section>
 
@@ -389,6 +405,12 @@ const { theme } = Astro.props;
     .tst-info-rcol img, .tst-info-rcol svg {
         width: 100%;
         height: auto;
+    }
+    .tst-info-wrap{
+        margin-top: 3rem;
+    }
+    .tst-btn-row{
+        margin-top: 2rem;
     }
     @media screen and (max-width:1000px){
         .tst-slider {
