@@ -513,6 +513,7 @@ h5{
 .pj-ft-image{
     overflow: hidden;
     border-radius: 1.25rem;
+    margin-bottom: 8px;
 }
 .pj-ft-image img{
     object-fit: cover;
@@ -1203,6 +1204,21 @@ h5{
     body .gts-lstep-form .field-group:first-child {
         margin-bottom: 7px;
     }
+    .pj-ft-image {
+        border-radius: 12px;
+        margin-bottom: 4px;
+    }
+    .pg-wrap {
+        padding-top: 145px;
+    }
+    body .projects-list {
+        margin-top: 24px;
+        column-gap: 12px;
+        row-gap: 24px;
+    }
+
+
+
 
 
 
@@ -1243,6 +1259,9 @@ h5{
     body .ft-rcol {
         gap: 2.25rem;
     }
+    .pg-wrap {
+        padding-top: 120px;
+    }
 }
 @media screen and (max-width:700px){
     body .gts-form-main-wrapper {
@@ -1266,15 +1285,20 @@ h5{
 }
 @media screen and (min-width:479px) and (max-width: 600px) {
     .pj-featured-2col {
+        margin-top: 44px;
         -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     }
-    .pj-featured-2col .pj-featured-item {
+    .pj-featured-2col .pj-featured-item, body .pj-featured-item {
         width: 100%;
+        margin: 0;
     }
     .pj-featured-2col .pj-featured-item:last-child {
-        margin-top: 24px;
+        margin-top: 44px;
+    }
+    body .projects-list {
+        row-gap: 44px;
     }
 }
 @media screen and (max-width:479px){
@@ -1429,7 +1453,8 @@ h5{
     body .gts-lstep-form .field-group > div:last-child {
         margin-top: 24px;
     }
-    body .gts-lstep-form-main h5, body .gts-lstep-form-main h6, body .get-started-form .headline {
+    body .gts-lstep-form-main h5, body .gts-lstep-form-main h6, body .get-started-form .headline,
+    body .hp-solutions h1, body .hp-solutions h2 {
         padding: 0 16px;
     }
     body .ft-subscribe h6 {
@@ -1516,7 +1541,14 @@ h5{
     body .ft-pv-menu ul li {
         width: 100%;
     }
-
+    body .projects-list {
+        column-gap: 0;
+        row-gap: 44px;
+    }
+    body .pj-featured-item {
+        width: 100%;
+        margin: 0;
+    }
 
 
 
