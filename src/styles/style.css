@@ -619,14 +619,17 @@ h5{
     letter-spacing: 0.025rem;
     text-align: center;
 }
-.exp-txt p span.blue{
+.exp-txt span.blue{
     color: var(--lighterBlue);
 }
-.exp-txt p span.red{
+.exp-txt span.red{
     color: var(--lightRed);
 }
-.exp-txt p span.green{
+.exp-txt span.green{
     color: var(--lightGreen);
+}
+.exp-txt h3{
+    color: var(--darkGrey);
 }
 .exp-scd-txt-row{
     margin-top: 3.75rem;
@@ -1228,13 +1231,38 @@ h5{
         margin-top: 12px;
         text-align: left;
     }
+    body .ft-lcol {
+        width: 25rem; 
+    }
+    body .ft-rcol {
+        gap: 4.25rem;
+    }
 
-
+}
+@media screen and (max-width:800px){
+    body .ft-rcol {
+        gap: 2.25rem;
+    }
 }
 @media screen and (max-width:700px){
     body .gts-form-main-wrapper {
         width: 100%;
     }
+    body .ft-wrap .ft-row:first-child {
+        padding: 180px 0 0 0;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    body .ft-row:first-child .ft-rcol, body .ft-row-f .ft-rcol {
+        width: 100%;
+        margin-top: 70px; 
+    }
+    body footer {
+        background: url(/footer-mobile-bg.png) no-repeat;
+        background-size: contain;
+    }
+    
 }
 @media screen and (min-width:479px) and (max-width: 600px) {
     .pj-featured-2col {
@@ -1401,6 +1429,101 @@ h5{
     body .gts-lstep-form .field-group > div:last-child {
         margin-top: 24px;
     }
+    body .gts-lstep-form-main h5, body .gts-lstep-form-main h6, body .get-started-form .headline {
+        padding: 0 16px;
+    }
+    body .ft-subscribe h6 {
+        font-size: 28px;
+        line-height: 32px;
+        letter-spacing: 0;
+    }
+    body .ft-subscribe {
+        margin: 40px 0 48px 0;
+    }
+    body .ft-lcol {
+        width: 100%;
+    }
+    body .sb-form {
+        margin-top: 24px;
+    }
+    body .sb-row {
+        padding: 8px 8px 8px 20px;
+        border-radius: 32px;
+        height: 56px;
+    }
+    body .sb-col input {
+        font-size: 16px;
+        line-height: 20px;
+        padding-right: 15px;
+    }
+    body .sb-btn-col button {
+        border-radius: 26px;
+        height: 40px;
+        padding: 0 16px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+    body .ft-sb-msg {
+        bottom: -34px;
+    }
+    body .ft-sb-msg p.sb-err, body .sb-scc span {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    body .sb-scc span {
+        margin-left: 5px;
+    }
+    body .ft-row:first-child .ft-rcol {
+        margin-top: 70px;
+        gap: 0;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    body .ft-menu-col h6, body .ft-menu-col ul li a, body .ft-pv-menu ul li a, body .ft-rcol p {
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.32px;
+    }
+    body .ft-rcol p {
+        margin-top: 20px;
+    }
+    body .ft-menu-col ul li a {
+        padding-bottom: 4px;
+    }
+    body .ft-menu-col ul li span {
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 4px;
+        letter-spacing: 0;
+    }
+    body .ft-menu-col ul li {
+        margin-top: 16px;
+    }
+    body .ft-menu-col:last-child {
+        margin-top: 20px;
+    }
+    body .ft-row:last-child {
+        padding: 96px 0 48px 0;
+    }
+    body .ft-pv-menu ul {
+        gap: 0;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        row-gap: 20px;
+    }
+    body .ft-pv-menu ul li {
+        width: 100%;
+    }
 
 
+
+
+}
+@media screen and (max-width: 340px) {
+    body .ft-row:first-child .ft-rcol {
+        column-gap: 30px;
+        padding-right: 25px;
+    }
 }
