@@ -12,9 +12,6 @@ const { img, title, text, secText, buttonText } = Astro.props;
             </div>
             <div class="hero-intro-text">
                 <h1 set:html={title}></h1>
-                {secText && (
-                    <p class="secondary-text">{secText}</p>
-                )}
                 <div class="sc-txt">
                     <p set:html={text}></p>
                 </div>

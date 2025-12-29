@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+const { title, text } = Astro.props;
 import testPostPic1 from '../../src/assets/blog-pattern-1.png';
 import testPostPic2 from '../../src/assets/blog-pattern-2.png';
 import testPostPic3 from '../../src/assets/blog-pattern-3.png';
@@ -77,9 +78,9 @@ const postsDummy = [
     <div class="container">
         <div class="sc-wrapper">
             <div class="headline ps-rel">
-                <h2>IPOINT INT Insights</h2>
+                <h2>{title}</h2>
                 <div class="sc-txt">
-                    <p>From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.</p>
+                    <p>{text}</p>
                 </div>
             </div>
         </div>
@@ -105,7 +106,7 @@ const postsDummy = [
             })}
         </div>
         <div class="btn-row fx fx-jc">
-            <a href="/blog" class="btn-primary btn-dark fx fx-ac fx-jc"><span>Get More Insights</span></a>
+            <a href="/blog" class="btn-primary btn-dark fx fx-ac fx-jc"><span>Read Articles</span></a>
         </div>
     </div>
 </section>
@@ -114,9 +115,9 @@ const postsDummy = [
     <div class="container">
         <div class="sc-wrapper">
             <div class="headline ps-rel">
-                <h2>IPOINT INT Insights</h2>
+                <h2>{title}</h2>
                 <div class="sc-txt">
-                    <p>From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.</p>
+                    <p>{text}</p>
                 </div>
             </div>
         </div>
@@ -139,7 +140,7 @@ const postsDummy = [
             ))}
         </div>
         <div class="btn-row fx fx-jc">
-            <a href="/blog" class="btn-primary btn-dark fx fx-ac fx-jc"><span>Get More Insights</span></a>
+            <a href="/blog" class="btn-primary btn-dark fx fx-ac fx-jc"><span>Read Articles</span></a>
         </div>
     </div>
 </section>

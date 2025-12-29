@@ -1,5 +1,5 @@
 ---
-const { theme } = Astro.props;
+const { theme, title, text, buttonLink, buttonText } = Astro.props;
 ---
 
 <section 
@@ -9,14 +9,14 @@ const { theme } = Astro.props;
     <div class="container">
         <div class="sl-row fx fx-jb ps-rel">
             <div class="sl-lcol">
-                <h2>Solutions That Deliver</h2>
+                <h2>{title}</h2>
                 <div class="sc-txt">
-                    <p>We don't just promise results, we prove them. Our clients' experience:</p>
-                    <ul>
-                        <li>Increased engagement & retention</li>
-                        <li>Higher revenue per visitor</li>
-                        <li>Streamlined, future-proof digital operations</li>
-                    </ul>
+                    <p set:html={text}></p>
+                </div>
+                <div class="sl-btn-row fx">
+                    <a href={buttonLink} class="btn-primary btn-dark btn-primary-lg fx fx-ac fx-jc">
+                        <span>{buttonText}</span>
+                    </a>
                 </div>
             </div>
             <div class="sl-rcol">
@@ -60,6 +60,9 @@ const { theme } = Astro.props;
     }
     .sl-rcol{
         width: 50%;
+    }
+    .sl-btn-row{
+        margin-top: 2.25rem;
     }
     .sl-row{
         z-index: 1;

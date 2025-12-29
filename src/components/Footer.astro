@@ -18,6 +18,12 @@ const isBlogPage = currentPath.includes('/blog');
             <div class="headline ps-rel">
                 <h2 id="gts-headline"></h2>
             </div>
+            <div class="quiz-hd headline ps-rel">
+                <h4>Let’s Build Something That Lasts</h4>
+                <div class="sc-txt">
+                    <p>We’re here to make things simple. Whether you’re exploring a new idea, scaling a business, or seeking clarity,  this is where your next step begins.</p>
+                </div>
+            </div>
             <div class="gts-form-wrap">
                 <div class="gs-form-progress-bar fx fx-ac fx-jb">
                     <div class="gs-fn-step-prev">
@@ -91,6 +97,9 @@ const isBlogPage = currentPath.includes('/blog');
                                             </div>
                                         </div>
                                     </form>
+                                </div>
+                                <div class="ct-sc-subtext">
+                                    <p>Not sure what you need? Just share your thoughts, no perfect brief required.</p>
                                 </div>
                             </div>
                         </div>
@@ -326,6 +335,10 @@ const isBlogPage = currentPath.includes('/blog');
     .gts-form-wrap{
         margin-top: 3.75rem;
     }
+    .quiz-hd h4{
+        color: var(--darkGrey);
+        margin-top: 2rem;
+    }
     .gts-form-main-wrapper{
         width: 50rem;
         margin: auto;
@@ -352,6 +365,18 @@ const isBlogPage = currentPath.includes('/blog');
     .gts-lstep-form{
         width: 42.5rem;
         margin: 3.75rem auto 0 auto;
+    }
+    .ct-sc-subtext{
+        margin-top: 2.5rem;
+    }
+    .ct-sc-subtext p{
+        color: rgba(163, 165, 172, 0.50);
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+        letter-spacing: 0.02rem;
+        margin: 0;
     }
     .field-group{
         margin-bottom: 1.25rem;

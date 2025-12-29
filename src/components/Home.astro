@@ -95,6 +95,23 @@ const ExperteesData = {
     ]
 }
 
+const InsightsData = {
+    heading: `Insights That Drive Smarter Decisions`,
+    description: "Stay ahead with perspectives from our experts on branding, UX, technology, and growth.",
+}
+
+const SolutionsData = {
+    heading: `Solutions That Deliver`,
+    description: `We don't just promise results, we prove them. Our clients' experience:
+                    <ul>
+                        <li>Increased engagement & retention</li>
+                        <li>Higher revenue per visitor</li>
+                        <li>Streamlined, future-proof digital operations</li>
+                    </ul>`,
+    buttonLink: "/solutions",
+    buttonText: "Let’s Explore Your Solution →"
+}
+
 ---
 
 <HomeBanner />
@@ -111,5 +128,13 @@ const ExperteesData = {
 />
 <HomeResults />
 <Testimonials />
-<HomeSolutions />
-<HomeInsights />
+<HomeSolutions 
+    title={SolutionsData.heading}
+    text={SolutionsData.description}
+    buttonLink={SolutionsData.buttonLink}
+    buttonText={SolutionsData.buttonText}
+/>
+<HomeInsights 
+    title={InsightsData.heading}
+    text={InsightsData.description}
+/>

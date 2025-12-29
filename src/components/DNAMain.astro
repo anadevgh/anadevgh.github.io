@@ -20,19 +20,19 @@ const formulaData = {
             num: "01",
             title: "Pr",
             subTitle: "Premium", 
-            text: "Tools that are seamless, scalable, and effortless to use"
+            text: "Custom solutions that outperform and deliver ROI."
         },
         {
             num: "02",
             title: "Si",
             subTitle: "Simplicity", 
-            text: "Custom solutions that outperform and deliver ROI"
+            text: "Tools that are seamless, scalable, and effortless to use."
         },
         {
             num: "03",
             title: "Im",
             subTitle: "Impact", 
-            text: "Work that engages, converts, and drives measurable results"
+            text: "Work that engages, converts, and drives measurable results."
         },
     ]      
 }
@@ -57,8 +57,8 @@ const TeamData = {
         {
             videoLink: "/vd/team-video-sample.mp4",
             name: "Anahit",
-            designation: "Senior Lead Developer", 
-            text: "Architecting clean, scalable solutions"
+            designation: "CTO", 
+            text: "Engineering seamless, future-proof technology"
         },
         {
             videoLink: "/vd/team-video-sample.mp4",
@@ -68,9 +68,27 @@ const TeamData = {
         },
         {
             videoLink: "/vd/team-video-sample.mp4",
-            name: "Teodora",
+            name: "Isabella",
+            designation: "Senior Designer", 
+            text: "Turning ideas into intuitive, user-first experiences"
+        },
+        {
+            videoLink: "/vd/team-video-sample.mp4",
+            name: "Yaro",
+            designation: "Senior Designer", 
+            text: "Elevating brand presence with detail and precision"
+        },
+        {
+            videoLink: "/vd/team-video-sample.mp4",
+            name: "Teo",
             designation: "Social Media Manager", 
             text: "Creating digital conversations that convert"
+        },
+        {
+            videoLink: "/vd/team-video-sample.mp4",
+            name: "Andrei",
+            designation: "Lead Video Editor", 
+            text: "Storytelling through dynamic motion"
         },
         {
             videoLink: "/vd/team-video-sample.mp4",
@@ -79,6 +97,13 @@ const TeamData = {
             text: "Ensuring clarity, trust, and peace of mind"
         },
     ]
+}
+
+const SolutionsData = {
+    heading: `Who’s Thrived with Us?`,
+    description: `Industry leaders in iGaming, fintech, and beyond trust IPOINT INT for their digital transformation. Their success stories are proof of our commitment to quality, clarity, and results.`,
+    buttonLink: "/solutions",
+    buttonText: "Let’s Explore Your Solution →"
 }
 
 ---
@@ -100,4 +125,9 @@ const TeamData = {
     items={TeamData.items}
 />
 
-<HomeSolutions />
+<HomeSolutions 
+    title={SolutionsData.heading}
+    text={SolutionsData.description}
+    buttonLink={SolutionsData.buttonLink}
+    buttonText={SolutionsData.buttonText}
+/>
