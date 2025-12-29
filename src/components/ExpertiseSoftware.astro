@@ -15,13 +15,15 @@ import HeroImage from '../assets/ux-graphic.png';
 const HeroData = {
     img: HeroImage,
     heading: `Software Development & Systems Engineering`,
+    subHeading: `Complex challenges solved with clarity, structure, and precision.`,
     description: "We build custom software and automated systems that streamline operations, scale across markets, and give your business the infrastructure it needs to grow without chaos.",
 }
 
 const issuesData = {
     heading: "What This Expertise Solves",
-    description: `Businesses often grow faster than their systems — and that’s where problems begin.<br/> 
+    description: `Businesses often grow faster than their systems — and that’s where problems begin.<br/><br/> 
                  We solve the pains that limit scalability:`,
+    secDesc: `Custom software solves these problems by creating one powerful ecosystem — designed specifically for how your business works.`,
 
     items: [
         { 
@@ -59,7 +61,7 @@ const approachData = {
     heading: "Our Engineering Philosophy",
     description: `We build systems that last.<br/> 
                   Not quick fixes. Not shortcuts. Not fragile platforms.<br/>`,
-    secDesc: `Our marketing is engineered around outcomes — not activity.`,              
+    secDesc: `Great software creates efficiency. <br/> Exceptional software creates competitive advantage.`,              
                 
     items: [
         { 
@@ -90,7 +92,7 @@ const approachData = {
 }
 
 const expertiseListData = {
-    heading: "Full Software Development Expertise ",
+    heading: "Full Software Development Expertise (Capabilities)",
     description: "",        
     items: [
         {
@@ -227,6 +229,12 @@ const deliverablesData = {
     ]
 }
 
+const TestimonialsData = {
+    heading: `Trusted By Industry Leaders`,
+    buttonText: "See More Results →",
+    buttonLink: "/results"
+}
+
 const expertiseSolutionsData = {
     heading: `How Software Connects to Our Solutions`,
     description: "",        
@@ -298,9 +306,9 @@ const expertiseCTAData = {
     heading: `Build Systems That Give <br/> You a Competitive Advantage`,
     description: "From automated workflows to enterprise platforms, we engineer solutions that create efficiency, clarity, and scalable operations.",
     button1text: "Explore Solutions",
-    button1Link: "#",
+    button1Link: "/solutions",
     button2text: "Connect With Us",
-    button2Link: "#",
+    button2Link: "/contact",
 }
 
 ---
@@ -309,11 +317,13 @@ const expertiseCTAData = {
     img={HeroData.img}
     title={HeroData.heading}
     text={HeroData.description}
+    subTitle={HeroData.subHeading}
 />
 <ExpertiseIssues 
     heading={issuesData.heading}
     description={issuesData.description}
     items={issuesData.items}
+    secDesc={issuesData.secDesc}
 />
 <ExpertiseApproach 
     heading={approachData.heading}
@@ -337,7 +347,12 @@ const expertiseCTAData = {
     description={deliverablesData.description}
     items={deliverablesData.items}
 />
-<Testimonials theme="dark" />
+<Testimonials
+    title={TestimonialsData.heading}
+    buttonText={TestimonialsData.buttonText}
+    buttonLink={TestimonialsData.buttonLink}
+    theme="dark" 
+/>
 <ExpertiseSolutions 
     heading={expertiseSolutionsData.heading}
     description={expertiseSolutionsData.description}

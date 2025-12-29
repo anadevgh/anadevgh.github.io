@@ -15,14 +15,16 @@ import HeroImage from '../assets/ux-graphic.png';
 const HeroData = {
     img: HeroImage,
     heading: `Custom Web Development`,
+    subHeading: "Fast. Scalable. Secure. Built for the way your business grows.",
     description: "We don’t build websites — we build digital infrastructure. Clean, robust, scalable systems engineered to perform today and evolve tomorrow.",
 }
 
 const issuesData = {
     heading: "What This Expertise Solves",
     description: `Your platform is your business engine.<br/> 
-                 If it breaks, slows down, confuses users, or fails under pressure — growth collapses.<br/> 
+                 If it breaks, slows down, confuses users, or fails under pressure — growth collapses.<br/><br/> 
                  We solve development problems that stop companies from scaling:`,
+    secDesc: "Your business deserves an infrastructure engineered with precision — not patched together by shortcuts.", 
 
     items: [
         { 
@@ -58,7 +60,7 @@ const issuesData = {
 
 const approachData = {
     heading: "Our Development Philosophy",
-    description: `We treat development like engineering, not production.<br/> 
+    description: `We treat development like engineering, not production.<br/> <br/> 
                   Our principles:`,
     secDesc: `Great development disappears in the background.<br/>
               Great performance does not.`,              
@@ -207,7 +209,7 @@ const expertiseProcessData = {
         },
         {
             stepNumber: "07",
-            title: `Ongoing Support <br/> (Optional)`,
+            title: `Ongoing Support`,
             description: "Performance monitoring, updates, new features."
         },
     ],
@@ -229,6 +231,14 @@ const deliverablesData = {
         { title: "Integration playbooks" },
         { title: "DevOps support" },
     ]
+}
+
+const TestimonialsData = {
+    heading: `Trusted By Industry Leaders`,
+    description: `From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.`,
+    secDesc: "Explore full engineering case studies.",
+    buttonText: "See Results →",
+    buttonLink: "/results"
 }
 
 const expertiseSolutionsData = {
@@ -302,12 +312,12 @@ const expertiseFAQData = {
 }
 
 const expertiseCTAData = {
-    heading: `Build the Platform  <br/> Users Your Business Deserves`,
+    heading: `Build the Platform  <br/> Your Business Deserves`,
     description: "Whether you need a high-performance website or a custom platform built from scratch, we’ll engineer a system built for longevity, speed, and scale.",
     button1text: "Explore Solutions",
-    button1Link: "#",
+    button1Link: "/solutions",
     button2text: "Connect With Us",
-    button2Link: "#",
+    button2Link: "/contact",
 }
 
 ---
@@ -316,11 +326,13 @@ const expertiseCTAData = {
     img={HeroData.img}
     title={HeroData.heading}
     text={HeroData.description}
+    subTitle={HeroData.subHeading}
 />
 <ExpertiseIssues 
     heading={issuesData.heading}
     description={issuesData.description}
     items={issuesData.items}
+    secDesc={issuesData.secDesc}
 />
 <ExpertiseApproach 
     heading={approachData.heading}
@@ -344,7 +356,14 @@ const expertiseCTAData = {
     description={deliverablesData.description}
     items={deliverablesData.items}
 />
-<Testimonials theme="dark" />
+<Testimonials
+    title={TestimonialsData.heading}
+    text={TestimonialsData.description}
+    secDesc={TestimonialsData.secDesc}
+    buttonText={TestimonialsData.buttonText}
+    buttonLink={TestimonialsData.buttonLink}
+    theme="dark" 
+/>
 <ExpertiseSolutions 
     heading={expertiseSolutionsData.heading}
     description={expertiseSolutionsData.description}

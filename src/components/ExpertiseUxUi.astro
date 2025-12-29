@@ -15,14 +15,16 @@ import HeroImage from '../assets/ux-graphic.png';
 const HeroData = {
     img: HeroImage,
     heading: `UX/UI & Web Experience`,
+    subHeading: "Where clarity meets usability. <br/> Where users choose to stay.",
     description: "Your digital experience is the moment your brand becomes real. We design intuitive, seamless, conversion-focused web experiences that turn first impressions into lasting engagement.",
 }
 
 const issuesData = {
     heading: "What This Expertise Solves",
     description: `Users don’t tolerate friction.<br/> 
-                 They don’t wait, they don’t guess, and they don’t forgive bad experiences.<br/> 
+                 They don’t wait, they don’t guess, and they don’t forgive bad experiences.<br/><br/>
                  We solve UX/UI problems that block growth:`,
+    secDesc: "We fix these problems by building brands engineered for clarity, consistency, and conversion.", 
 
     items: [
         { title: "Platforms that confuse users or feel outdated", text: "Users can’t navigate, find what they need, or complete actions." },
@@ -37,7 +39,7 @@ const issuesData = {
 const approachData = {
     heading: "Our UX/UI Approach",
     description: `UX and UI are not cosmetic layers.<br/> 
-                  They are engineered foundations for digital performance.<br/>
+                  They are engineered foundations for digital performance.<br/><br/>
                   Our approach combines:`,
     secDesc: `UX/UI isn’t just design — <br/>
               It’s invisible value that shapes how users trust, interact, and stay.`,              
@@ -67,7 +69,7 @@ const approachData = {
 }
 
 const expertiseListData = {
-    heading: "Full UX/UI Expertise",
+    heading: "Full UX/UI Expertise (Capabilities)",
     description: "Coprehensive capabilities designed to build brands that perform",        
     items: [
         {
@@ -204,7 +206,7 @@ const deliverablesData = {
 
 const expertiseSolutionsData = {
     heading: `How UX/UI Connects to <br/> Our Solutions`,
-    description: "Branding plays a critical role across all IPOINT INT Solutions:",        
+    description: "UX/UI plays a critical role across all IPOINT INT Solutions by shaping how users interact with your platform, turning clarity and ease of use into engagement, trust, and conversion.",        
     items: [
         {
             title: `Startup <br/> Solution`,
@@ -237,6 +239,14 @@ const expertiseSolutionsData = {
             link: "/solution/enterprise"
         },
     ]
+}
+
+const TestimonialsData = {
+    heading: `Trusted By Industry Leaders`,
+    description: `From iGaming to fintech and beyond, our clients rely on us for digital solutions that deliver peace of mind and measurable results.`,
+    secDesc: "Explore how UX/UI transforms results in real projects.",
+    buttonText: "See Full Case Studies in Results →",
+    buttonLink: "/results"
 }
 
 const expertiseFAQData = {
@@ -281,9 +291,9 @@ const expertiseCTAData = {
     heading: `Design Experiences That  <br/> Users Choose to Return To`,
     description: "Whether you need a full UX/UI transformation or targeted improvements, we’ll help you design experiences that work — beautifully and effortlessly.",
     button1text: "Explore Solutions",
-    button1Link: "#",
+    button1Link: "/solutions",
     button2text: "Connect With Us",
-    button2Link: "#",
+    button2Link: "/contact",
 }
 
 ---
@@ -292,11 +302,13 @@ const expertiseCTAData = {
     img={HeroData.img}
     title={HeroData.heading}
     text={HeroData.description}
+    subTitle={HeroData.subHeading}
 />
 <ExpertiseIssues 
     heading={issuesData.heading}
     description={issuesData.description}
     items={issuesData.items}
+    secDesc={issuesData.secDesc}
 />
 <ExpertiseApproach 
     heading={approachData.heading}
@@ -320,7 +332,14 @@ const expertiseCTAData = {
     description={deliverablesData.description}
     items={deliverablesData.items}
 />
-<Testimonials theme="dark" />
+<Testimonials
+    title={TestimonialsData.heading}
+    text={TestimonialsData.description}
+    secDesc={TestimonialsData.secDesc}
+    buttonText={TestimonialsData.buttonText}
+    buttonLink={TestimonialsData.buttonLink}
+    theme="dark" 
+/>
 <ExpertiseSolutions 
     heading={expertiseSolutionsData.heading}
     description={expertiseSolutionsData.description}

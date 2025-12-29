@@ -16,9 +16,11 @@ const { theme, title, text, secDesc, buttonText, buttonLink } = Astro.props;
         <div class="sc-wrapper">
             <div class="tst-headline ps-rel">
                 <h2>{title}</h2>
-                <div class="sc-txt">
-                    <p>{text}</p>
-                </div>
+                {text && (
+                    <div class="sc-txt">
+                        <p>{text}</p>
+                    </div>
+                )}
             </div>
         </div>
         <div class="tst-slider">
@@ -293,12 +295,14 @@ const { theme, title, text, secDesc, buttonText, buttonLink } = Astro.props;
                 <div class="tst-pagination fx fx-jc"></div>
             </div>
         </div>
-        {secDesc && (
+        {(secDesc || buttonLink) && (
             <div class="tst-info-wrap">
                 <div class="sc-wrapper">
-                    <div class="sc-txt">
-                        <p>{secDesc}</p>
-                    </div>
+                    {secDesc && (
+                        <div class="sc-txt">
+                            <p>{secDesc}</p>
+                        </div>
+                    )}
                     {buttonLink && (
                         <div class="tst-btn-row fx fx-jc">
                             <a class="btn-primary fx fx-ac fx-jc" href={buttonLink}>

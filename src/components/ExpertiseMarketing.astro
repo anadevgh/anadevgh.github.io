@@ -15,14 +15,16 @@ import HeroImage from '../assets/ux-graphic.png';
 const HeroData = {
     img: HeroImage,
     heading: `Digital Marketing`,
+    subHeading: `Visibility is not the goal. Growth is.`,
     description: "We build marketing systems that connect your brand, product, and audience — delivering measurable results that compound over time.",
 }
 
 const issuesData = {
     heading: "What This Expertise Solves",
     description: `Marketing fails when it relies on guesswork.<br/> 
-                 Our marketing succeeds because it’s engineered.<br/> 
+                 Our marketing succeeds because it’s engineered.<br/><br/> 
                  We solve core marketing problems:`,
+    secDesc: `We don’t run campaigns. <br/> We build predictable, scalable growth systems.`,
 
     items: [
         { 
@@ -89,7 +91,7 @@ const approachData = {
 }
 
 const expertiseListData = {
-    heading: "Full Marketing Expertise",
+    heading: "Full Marketing Expertise (Capabilities)",
     description: "",        
     items: [
         {
@@ -231,6 +233,13 @@ const deliverablesData = {
     ]
 }
 
+const TestimonialsData = {
+    heading: `Trusted By Industry Leaders`,
+    secDesc: "Explore full engineering case studies.",
+    buttonText: "See Full Client Results →",
+    buttonLink: "/results"
+}
+
 const expertiseSolutionsData = {
     heading: `How Marketing Connects to Our Solutions`,
     description: "",        
@@ -304,9 +313,9 @@ const expertiseCTAData = {
     heading: `Marketing Should Be Predictable. <br/> Let’s Build a System That Scales.`,
     description: "Whether you need visibility, performance, or a complete growth engine, we’ll build the system that moves your business forward.",
     button1text: "Explore Solutions",
-    button1Link: "#",
+    button1Link: "/solutions",
     button2text: "Connect With Us",
-    button2Link: "#",
+    button2Link: "/contact",
 }
 
 ---
@@ -315,11 +324,13 @@ const expertiseCTAData = {
     img={HeroData.img}
     title={HeroData.heading}
     text={HeroData.description}
+    subTitle={HeroData.subHeading}
 />
 <ExpertiseIssues 
     heading={issuesData.heading}
     description={issuesData.description}
     items={issuesData.items}
+    secDesc={issuesData.secDesc}
 />
 <ExpertiseApproach 
     heading={approachData.heading}
@@ -343,7 +354,13 @@ const expertiseCTAData = {
     description={deliverablesData.description}
     items={deliverablesData.items}
 />
-<Testimonials theme="dark" />
+<Testimonials
+    title={TestimonialsData.heading}
+    secDesc={TestimonialsData.secDesc}
+    buttonText={TestimonialsData.buttonText}
+    buttonLink={TestimonialsData.buttonLink}
+    theme="dark" 
+/>
 <ExpertiseSolutions 
     heading={expertiseSolutionsData.heading}
     description={expertiseSolutionsData.description}

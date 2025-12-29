@@ -15,6 +15,7 @@ import HeroImage from '../assets/ux-graphic.png';
 const HeroData = {
     img: HeroImage,
     heading: `Creative Production`,
+    subHeading: `High-end visuals that elevate your brand and inspire action.`,
     description: "From motion graphics to video, 3D, and campaign assets — we produce visuals that feel premium, communicate clearly, and stand out in competitive markets.",
 }
 
@@ -22,8 +23,9 @@ const issuesData = {
     heading: "What This Expertise Solves",
     description: `Great ideas fall flat with poor execution.<br/> 
                  Great brands lose momentum without consistent visuals.<br/>
-                 Great products underperform when they don’t look the part. <br/>
+                 Great products underperform when they don’t look the part. <br/><br/>
                  We solve creative problems that limit brand perception:`,
+    secDesc: `Your content is your brand. <br/> We make it premium.`,
 
     items: [
         { 
@@ -55,7 +57,8 @@ const issuesData = {
 
 const approachData = {
     heading: "Our Creative Philosophy",
-    description: `Creative work should feel effortless, precise, and unmistakably yours.`,              
+    description: `Creative work should feel effortless, precise, and unmistakably yours.`,
+    secDesc: `The result is more than content. <br/> It's communication that builds trust.`,     
                 
     items: [
         { 
@@ -82,7 +85,7 @@ const approachData = {
 }
 
 const expertiseListData = {
-    heading: "Full Creative Expertise",
+    heading: "Full Creative Expertise (Capabilities)",
     description: "",        
     items: [
         {
@@ -205,6 +208,12 @@ const deliverablesData = {
     ]
 }
 
+const TestimonialsData = {
+    heading: `Trusted By Industry Leaders`,
+    buttonText: "See Full Creative Case Studies →",
+    buttonLink: "/results"
+}
+
 const expertiseSolutionsData = {
     heading: `How Creative Production Connects to Our Solutions`,
     description: "",        
@@ -290,11 +299,13 @@ const expertiseCTAData = {
     img={HeroData.img}
     title={HeroData.heading}
     text={HeroData.description}
+    subTitle={HeroData.subHeading}
 />
 <ExpertiseIssues 
     heading={issuesData.heading}
     description={issuesData.description}
     items={issuesData.items}
+    secDesc={issuesData.secDesc}
 />
 <ExpertiseApproach 
     heading={approachData.heading}
@@ -318,7 +329,12 @@ const expertiseCTAData = {
     description={deliverablesData.description}
     items={deliverablesData.items}
 />
-<Testimonials theme="dark" />
+<Testimonials
+    title={TestimonialsData.heading}
+    buttonText={TestimonialsData.buttonText}
+    buttonLink={TestimonialsData.buttonLink}
+    theme="dark" 
+/>
 <ExpertiseSolutions 
     heading={expertiseSolutionsData.heading}
     description={expertiseSolutionsData.description}
