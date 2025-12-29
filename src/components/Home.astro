@@ -54,8 +54,12 @@ const SolutionsHeroData = {
 }
 
 const ExperteesData = {
-    heading: `Six disciplines engineered to work together — giving your business clarity, speed, and confidence.`,
+    heading: "Expertise That Elevates Every Part of Your Digital Presence",
+    subHeading: `Six disciplines engineered to work together — giving your business clarity, speed, and confidence.`,
     description: "We don’t offer services. We offer expertise that strengthens every touchpoint of your brand and digital ecosystem.",
+    buttonText: "See All Solutions →",
+    buttonLink: "/solutions",
+    
     items: [
         {
             graphic: Exp1Img,
@@ -91,6 +95,13 @@ const ExperteesData = {
             text: "Growth systems that build visibility, consistency, and predictable results",
             buttonText: "Explore Expertise  →",
             buttonLink: "/solution/startup",
+        },
+        {
+            graphic: Exp1Img,
+            title: `Creative Production`, 
+            text: "High-end video, motion, 3D, and campaign visuals that set you apart",
+            buttonText: "Explore Expertise  →",
+            buttonLink: "/creative-production/",
         },
     ]
 }
@@ -128,7 +139,10 @@ const SolutionsData = {
 />
 <ExpertiseHp 
     title={ExperteesData.heading}
+    subTitle={ExperteesData.subHeading}
     text={ExperteesData.description}
+    buttonText={ExperteesData.buttonText}
+    buttonLink={ExperteesData.buttonLink}
     items={ExperteesData.items}
 />
 <HomeResults />

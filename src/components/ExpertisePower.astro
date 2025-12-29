@@ -40,9 +40,14 @@ const { heading, description, items } = Astro.props;
         </div>
     </div>
     <div class="container">
+        <div class="sc-wrapper">
+            <div class="sc-txt sc-txt-noS">
+                <p>Your next step isn't choosing a service — it's choosing the direction you want your business to grow.</p>
+            </div>
+        </div>
         <div class="btn-row fx fx-jc">
             <a href="/solutions" class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc">
-                <span>Discover Our Solutions</span>
+                <span>Explore All Solutions →</span>
             </a>
         </div>
     </div>
@@ -65,6 +70,12 @@ const { heading, description, items } = Astro.props;
         padding: 0 0 0 5rem;
         flex-wrap: nowrap;
         min-width: max-content;
+    }
+    .sc-txt-noS{
+        margin-top: 0;
+    }
+    .btn-row{
+        margin-top: 2.5rem;
     }
     .exp-pw-col{
         border-radius: 1.25rem;

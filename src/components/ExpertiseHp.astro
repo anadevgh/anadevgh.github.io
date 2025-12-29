@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-const { title, text, items } = Astro.props;
+const { title, subTitle, buttonText, buttonLink, text, items } = Astro.props;
 
 ---
 
@@ -9,6 +9,7 @@ const { title, text, items } = Astro.props;
         <div class="sc-row fx fx-jb">
             <div class="sl-lcol">
                 <h2 set:html={title}></h2>
+                <h3>{subTitle}</h3>
                 <div class="sc-txt">
                     <p>{text}</p>
                 </div>
@@ -37,11 +38,22 @@ const { title, text, items } = Astro.props;
             ))}
         </div>
     </div>
+    <div class="container">
+        <div class="btn-row fx fx-jc">
+            <a href={buttonLink} class="btn-primary fx fx-ac fx-jc"><span>{buttonText}</span></a>
+        </div>
+    </div>
 </section>
 
 <style>
     .sl-lcol{
         width: 46%;
+    }
+    .btn-row{
+        margin-top: 3.5rem;
+    }
+    .sl-lcol h3{
+        margin-top: 1.5rem;
     }
     .hp-exp-scroll {
         overflow-x: scroll;
