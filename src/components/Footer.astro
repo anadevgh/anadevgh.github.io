@@ -805,7 +805,6 @@ const isBlogPage = currentPath.includes('/blog');
     }
     .ct-email a{
         color: #0264FF;
-        text-align: center;
         font-size: 3.75rem;
         font-weight: 500;
         line-height: 3.75rem;
@@ -828,7 +827,27 @@ const isBlogPage = currentPath.includes('/blog');
         letter-spacing: 0.02rem;
         margin: 0;
     }
-
+    @media screen and (max-width:1000px){
+        .ct-wrap h2, .ct-wrap p.ct-or {
+            font-size: 24px;
+            line-height: 28px;
+        }
+        .ct-email, .ct-social {
+            margin: 20px 0;
+        }
+        .ct-email a {
+            font-size: 24px;
+            line-height: 28px;
+        }
+        .ct-social {
+            gap: 20px;
+        }
+        .ct-wrap p:last-child {
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.28px;
+        }
+    }
     @media screen and (max-width:479px){
         .gts-form-row.fourcol .gts-form-col {
             width: calc((100% - 1 * 1.25rem) / 2);

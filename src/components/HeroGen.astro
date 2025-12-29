@@ -58,4 +58,41 @@ const { img, title, text, secText, buttonText } = Astro.props;
         letter-spacing: 0.02rem;
         margin: 0;
     }
+    @media screen and (max-width:1000px){
+        .hero-graphic {
+            margin: 0 auto 40px auto;
+        }
+        .hero-graphic img {
+            width: 120px;
+        }
+        .hero-intro-text .sc-txt, .hero-intro-text .sc-subtext {
+            margin-top: 20px;
+        }
+        .hero-intro-text .sc-txt p {
+            font-size: 16px;
+            letter-spacing: 0.32px;
+            line-height: 20px;
+        }
+        .ct-sc-subtext {
+            margin-top: 40px;
+        }
+        html.light .hero-intro-text .sc-subtext p, body .ct-sc-subtext p {
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.28px;
+        }
+        .sc-hero {
+            padding-bottom: 60px;
+        }
+    }
+    @media screen and (max-width:700px){
+        .sc-hr-wrap, .ct-wrap {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width:479px){
+        .hero-intro-text {
+            padding: 0 16px;
+        }
+    }
 </style>

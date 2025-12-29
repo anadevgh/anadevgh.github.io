@@ -1278,8 +1278,11 @@ h5{
         margin-top: 70px; 
     }
     body footer {
-        background: url(/footer-mobile-bg.png) no-repeat;
+        background: url(/footer-mobile-bg.png) var(--darkBlue) no-repeat;
         background-size: contain;
+    }
+    body .ft-row-f .ft-rcol {
+        column-gap: 60px;
     }
     
 }
