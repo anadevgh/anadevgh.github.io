@@ -19,7 +19,7 @@ const { title, text, items } = Astro.props;
             {items.map((item: { videoLink: string; name: string; designation: string; text: string; }) => (
                 <div class="team-member">
                     <div class="mmb-vd">
-                         <video muted playsinline preload="metadata">
+                         <video src={item.videoLink} muted playsinline preload="metadata">
                             <source src={item.videoLink} type="video/mp4">
                         </video>
                     </div>
