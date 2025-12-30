@@ -33,13 +33,15 @@ const { heading, description, items, secDesc } = Astro.props;
                 ))}
             </div>
         </div>
-        <div class="exp-scd-txt-row ps-rel">
-            <div class="sc-wrapper">
-                <div class="exp-txt">
-                    <p set:html={secDesc}></p>
+        {secDesc && (
+            <div class="exp-scd-txt-row ps-rel">
+                <div class="sc-wrapper">
+                    <div class="exp-txt">
+                        <p set:html={secDesc}></p>
+                    </div>
                 </div>
             </div>
-        </div>
+        )}
     </div>
 </section>
 
