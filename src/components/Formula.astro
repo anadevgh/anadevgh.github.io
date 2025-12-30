@@ -128,11 +128,19 @@ const { title, text, items, buttonShow, notDNA } = Astro.props;
         .dna-fm-col .sc-txt p {
             padding: 0;
         }
-
-
-
-
-
+        .dna-num {
+            margin-bottom: 20px; 
+        }
+        .dna-fm-col .sc-txt {
+            margin-bottom: 15px;
+        }
+        .dna-fm .container {
+            position: relative;
+            z-index: 2;
+        }
+        .dna-fm:not(.not-dna):after {
+            z-index: 1;
+        }
     }
     @media screen and (max-width: 700px) {
         .dna-fm-row {
@@ -152,9 +160,6 @@ const { title, text, items, buttonShow, notDNA } = Astro.props;
         .dna-fm .sc-headline {
             margin: 0 40px;
         }
-        
-
-
     }
     @media screen and (max-width: 479px) {
         .dna-fm-row {
@@ -190,7 +195,12 @@ const { title, text, items, buttonShow, notDNA } = Astro.props;
         .dna-fm-col .sc-txt {
             margin-top: 10px;
         }
-
+        .dna-num {
+            margin-bottom: 0; 
+        }
+        .dna-fm-col .sc-txt {
+            margin-bottom: 0;
+        }
 
 
     }

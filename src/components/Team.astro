@@ -101,10 +101,98 @@ const { title, text, items } = Astro.props;
             justify-content: center;
         }
     }
+    @media screen and (max-width:1100px){
+        .team-mb-row {
+            padding-left: 4rem;
+        }
+    }
+    @media screen and (max-width:1000px){
+        .team-mb-row {
+            padding-left: 40px;
+        }
+        .sc-team {
+            background: var(--lightGrey3);
+            z-index: auto;
+        }
+        .team-mb-scroll {
+            background: transparent;
+        }
+        .sc-team > div {
+            position: relative;
+            z-index: 2;
+        }
+        .sc-team .sc-txt {
+            width: 380px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .team-mb-row {
+            margin-top: 20px;
+            gap: 12px;
+        }
+        .team-member {
+            border-radius: 12px;
+            width: 180px;
+        }
+        .mmb-info {
+            border-radius: 12px;
+            padding: 10px 17px;
+            margin-top: -2rem;
+        }
+        .mmb-info h6, .mmb-info h5 {
+            font-size: 14px;
+            line-height: 16px;
+            letter-spacing: 0.14px;
+        }
+        .mmb-info h4 {
+            font-size: 11px;
+            line-height: 14px;
+            letter-spacing: 0.11px;
+            margin-top: 5px;
+        }
+        .team-mb-scroll {
+            padding-bottom: 40px;
+        }
+        video {
+            border-radius: 12px 12px 0 0;
+        }
+
+
+    }
+    @media screen and (max-width: 600px) {
+        .sc-team .sc-txt {
+            width: 100%;
+        }
+    }
     @media screen and (max-width: 479px) {
         .sc-headline {
             padding: 0 16px;
         }
+        .team-mb-row {
+            padding-left: 16px;
+        }
+        .team-member {
+            width: 240px;
+        }
+        .mmb-info {
+            padding: 16px;
+            margin-top: -20px;
+        }
+        .mmb-info h6, .mmb-info h5 {
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0.2px;
+        }
+        .mmb-info h4 {
+            font-size: 16px;
+            line-height: 18px;
+            letter-spacing: 0.16px;
+            margin-top: 8px;
+        }
+
+
+
+
     }
 </style>
 
