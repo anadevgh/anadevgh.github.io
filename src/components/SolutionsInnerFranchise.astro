@@ -6,6 +6,7 @@ import SolutionsChallenges from '../components/SolutionsChallenges.astro';
 import SolutionsIncluded from '../components/SolutionsIncluded.astro';
 import SolutionsAdvantages from "../components/SolutionsAdvantages.astro";
 import SolutionsListScroll from "../components/SolutionsListScroll.astro";
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
 
 const HeroData = {
     heading: `<strong>Franchise Solution</strong> <br/> Empower every location <br/> to succeed`,
@@ -181,6 +182,40 @@ const SolutionsScrollListData = {
     ]      
 }
 
+const SolutionsFAQData = {
+    heading: "FAQs",      
+    items: [
+        {
+            title: "Do you support multi-location businesses?",
+            text: `<p>Yes — this Solution is built specifically for franchise networks or multi-branch ecosystems.</p>`
+        },
+        {
+            title: `How do you ensure brand consistency across all locations?`,
+            text: `<p>Through a centralised brand system, visual guidelines, shared UX/UI components, and controlled frameworks.</p>`
+        },
+        {
+            title: `Can branches manage their own content?`,
+            text: `<p>Yes — with controlled autonomy via a central dashboard and permission-based access.</p>`
+        },
+        {
+            title: `What digital tools are included?`,
+            text: `<p>Depending on needs: multi-location sites, franchise dashboards, automated reporting, and operational tools.</p>`
+        },
+        {
+            title: `Do you handle franchise recruitment campaigns?`,
+            text: `<p>Yes — including performance marketing, landing pages, and creative production.</p>`
+        },
+        {
+            title: `How long does this Solution take?`,
+            text: `<p>16–32+ weeks depending on the number of locations and system depth.</p>`
+        },
+        {
+            title: `Who is this ideal for?`,
+            text: `<p>Franchise models, multi-brand networks, training organisations, and businesses expanding through replication.</p>`
+        }
+    ]
+}
+
 ---
 
 <HeroHalfCol 
@@ -211,4 +246,12 @@ const SolutionsScrollListData = {
     title={SolutionsScrollListData.heading}
     text={SolutionsScrollListData.description}
     items={SolutionsScrollListData.items}
+/>
+
+<ExpertiseFAQ 
+    heading={SolutionsFAQData.heading}
+    items={SolutionsFAQData.items}
+    loadJs="yes"
+    showGrd="no"
+    isSolutions="yes"
 />

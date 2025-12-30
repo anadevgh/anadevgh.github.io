@@ -6,6 +6,7 @@ import SolutionsChallenges from '../components/SolutionsChallenges.astro';
 import SolutionsIncluded from '../components/SolutionsIncluded.astro';
 import SolutionsAdvantages from "../components/SolutionsAdvantages.astro";
 import SolutionsListScroll from "../components/SolutionsListScroll.astro";
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
 
 const HeroData = {
     heading: `<strong>Expansion Solution</strong> <br/> Scale without limits`,
@@ -181,6 +182,41 @@ const SolutionsScrollListData = {
     ]      
 }
 
+const SolutionsFAQData = {
+    heading: "FAQs",      
+    items: [
+        {
+            title: "What makes the Expansion Solution different?",
+            text: `<p>It is built for multi-market and multi-language growth, with advanced UX/UI, scalable development, and software support.</p>`
+        },
+        {
+            title: `Do you build multilingual or region-specific platforms?`,
+            text: `<p>Yes — with localisation, multi-language content structures, and region-specific UX considerations.</p>`
+        },
+        {
+            title: `Does this Solution support heavy traffic?`,
+            text: `<p>Absolutely.</p>
+                    <p>We engineer performance-ready, scalable systems built for international audiences.</p>`
+        },
+        {
+            title: `Can you integrate CRM, PSP, ERP, or third-party tools?`,
+            text: `<p>Yes — seamless integrations are a core part of this Solution.</p>`
+        },
+        {
+            title: `How long does the Expansion Solution take?`,
+            text: `<p>12–20+ weeks depending on the number of markets, languages, and integrations.</p>`
+        },
+        {
+            title: `Does the Expansion Solution include marketing?`,
+            text: `<p>Yes — multi-market digital strategy, campaign frameworks, and localisation guidelines.</p>`
+        },
+        {
+            title: `Who is this ideal for?`,
+            text: `<p>Brands entering new regions, expanding their operations, or needing enterprise-level UX/UI and systems.</p>`
+        }
+    ]
+}
+
 ---
 
 <HeroHalfCol 
@@ -211,4 +247,12 @@ const SolutionsScrollListData = {
     title={SolutionsScrollListData.heading}
     text={SolutionsScrollListData.description}
     items={SolutionsScrollListData.items}
+/>
+
+<ExpertiseFAQ 
+    heading={SolutionsFAQData.heading}
+    items={SolutionsFAQData.items}
+    loadJs="yes"
+    showGrd="no"
+    isSolutions="yes"
 />

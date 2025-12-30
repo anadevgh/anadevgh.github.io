@@ -6,6 +6,7 @@ import SolutionsChallenges from '../components/SolutionsChallenges.astro';
 import SolutionsIncluded from '../components/SolutionsIncluded.astro';
 import SolutionsAdvantages from "../components/SolutionsAdvantages.astro";
 import SolutionsListScroll from "../components/SolutionsListScroll.astro";
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
 
 const HeroData = {
     heading: `<strong>Growth Solution</strong> <br/> Accelerate your market presence`,
@@ -181,6 +182,43 @@ const SolutionsScrollListData = {
     ]      
 }
 
+const SolutionsFAQData = {
+    heading: "FAQs",      
+    items: [
+        {
+            title: "When should a business choose the Growth Solution?",
+            text: `<p>When you already have a brand or website, but performance, clarity, or conversions are holding you back.</p>`
+        },
+        {
+            title: `What results can I expect?`,
+            text: `<p>Typically higher engagement, clearer user journeys, improved conversions, and stronger market positioning.</p>`
+        },
+        {
+            title: `Do you rebuild the website or improve the existing one?`,
+            text: `<p>We start with a UX/UI audit.</p>
+                    <p>If improvements can fix issues — we optimise.</p>
+                    <p>If the foundation is weak — we rebuild.</p>`
+        },
+        {
+            title: `Does the Growth Solution include SEO?`,
+            text: `<p>Yes — SEO optimisation, performance improvements, and structural updates are integrated into the process.</p>`
+        },
+        {
+            title: `Does this Solution include new branding?`,
+            text: `<p>It includes brand refinement where required (messaging, colours, updated guidelines).</p>
+                    <p>A full rebrand is optional.</p>`
+        },
+        {
+            title: `How long does the Growth Solution take?`,
+            text: `<p>8–12 weeks depending on the depth of improvements and integrations.</p>`
+        },
+        {
+            title: `Who is this ideal for?`,
+            text: `<p>Businesses ready to scale, improve conversions, or modernise outdated digital systems.</p>`
+        }
+    ]
+}
+
 ---
 
 <HeroHalfCol 
@@ -211,4 +249,12 @@ const SolutionsScrollListData = {
     title={SolutionsScrollListData.heading}
     text={SolutionsScrollListData.description}
     items={SolutionsScrollListData.items}
+/>
+
+<ExpertiseFAQ 
+    heading={SolutionsFAQData.heading}
+    items={SolutionsFAQData.items}
+    loadJs="yes"
+    showGrd="no"
+    isSolutions="yes"
 />

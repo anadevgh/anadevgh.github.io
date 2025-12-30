@@ -6,6 +6,7 @@ import SolutionsChallenges from '../components/SolutionsChallenges.astro';
 import SolutionsIncluded from '../components/SolutionsIncluded.astro';
 import SolutionsAdvantages from "../components/SolutionsAdvantages.astro";
 import SolutionsListScroll from "../components/SolutionsListScroll.astro";
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
 
 const HeroData = {
     heading: `<strong>Custom Enterprise <br/> Solution</strong> <br/> Drive transformation <br/> at scale`,
@@ -184,6 +185,50 @@ const SolutionsScrollListData = {
     ]      
 }
 
+const SolutionsFAQData = {
+    heading: "FAQs",      
+    items: [
+        {
+            title: "What qualifies a project for the Enterprise Custom Solution?",
+            text: `<p>When the business requires:</p>
+                    <ul>
+                        <li>complex internal tools</li>
+                        <li>custom platforms</li>
+                        <li>multi-department systems</li>
+                        <li>automation</li>
+                        <li>integrations</li>
+                        <li>large-scale digital transformation</li>
+                    </ul>`
+        },
+        {
+            title: `Do you build custom software from scratch?`,
+            text: `<p>Yes — fully tailored architecture, backend, frontend, dashboards, and workflows.</p>`
+        },
+        {
+            title: `Can you replace multiple tools with one system?`,
+            text: `<p>Often yes.</p>
+                    <p>We consolidate scattered tools into one efficient ecosystem.</p>`
+        },
+        {
+            title: `Do you integrate with legacy systems?`,
+            text: `<p>Yes — CRM, ERP, PSP, data lakes, proprietary systems, APIs, and secure internal tools.</p>`
+        },
+        {
+            title: `How long does an Enterprise Solution take?`,
+            text: `<p>Enterprise cycles are multi-phase.</p>
+                    <p<We prioritise what creates the most immediate value first.</p>`
+        },
+        {
+            title: `What industries do you support at the enterprise level?`,
+            text: `<p>iGaming, fintech, SaaS, government-level operations, and any organisation requiring secure, scalable digital infrastructure.</p>`
+        },
+        {
+            title: `Do you offer long-term support?`,
+            text: `<p>Yes — full lifecycle support including maintenance, updates, optimisation, and further phases of development.</p>`
+        }
+    ]
+}
+
 ---
 
 <HeroHalfCol 
@@ -214,4 +259,12 @@ const SolutionsScrollListData = {
     title={SolutionsScrollListData.heading}
     text={SolutionsScrollListData.description}
     items={SolutionsScrollListData.items}
+/>
+
+<ExpertiseFAQ 
+    heading={SolutionsFAQData.heading}
+    items={SolutionsFAQData.items}
+    loadJs="yes"
+    showGrd="no"
+    isSolutions="yes"
 />

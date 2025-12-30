@@ -6,6 +6,7 @@ import SolutionsChallenges from '../components/SolutionsChallenges.astro';
 import SolutionsIncluded from '../components/SolutionsIncluded.astro';
 import SolutionsAdvantages from "../components/SolutionsAdvantages.astro";
 import SolutionsListScroll from "../components/SolutionsListScroll.astro";
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
 
 const HeroData = {
     heading: `<strong>Startup Solution</strong> <br/> Launch your vision with confidence`,
@@ -181,6 +182,42 @@ const SolutionsScrollListData = {
     ]      
 }
 
+const SolutionsFAQData = {
+    heading: "FAQs",      
+    items: [
+        {
+            title: "Is this Solution suitable for startups with no brand or website?",
+            text: `<p>Yes. The Startup Solution is designed for businesses beginning from zero.</p>
+            <p>It includes branding, a full website, and initial marketing assets.</p>`
+        },
+        {
+            title: `What if I already have a logo?`,
+            text: `<p>If it's strong, we refine it. If it’s limiting you, we rebuild it.</p>
+            <p>The goal is to create a brand that lasts for years, not months.</p>`
+        },
+        {
+            title: `Can you help us prepare for investors or pitch decks?`,
+            text: `<p>Yes — branding, UX/UI structure, and clear messaging often improve investor confidence and approval.</p>`
+        },
+        {
+            title: `What’s included in the website build?`,
+            text: `<p>A custom-built website (no templates), SEO-ready, fast, mobile-optimised, and designed for early traction.</p>`
+        },
+        {
+            title: `Does the Startup Solution include marketing?`,
+            text: `<p>Yes. You receive a foundational marketing setup (initial content, social kit, launch assets).</p>`
+        },
+        {
+            title: `How long does the Startup Solution take?`,
+            text: `<p>6–10 weeks depending on the brand and website complexity.</p>`
+        },
+        {
+            title: `Who is the Startup Solution ideal for?`,
+            text: `<p>Founders, early-stage teams, and businesses relaunching their foundation with a premium digital presence.</p>`
+        }
+    ]
+}
+
 ---
 
 <HeroHalfCol 
@@ -211,4 +248,12 @@ const SolutionsScrollListData = {
     title={SolutionsScrollListData.heading}
     text={SolutionsScrollListData.description}
     items={SolutionsScrollListData.items}
+/>
+
+<ExpertiseFAQ 
+    heading={SolutionsFAQData.heading}
+    items={SolutionsFAQData.items}
+    loadJs="yes"
+    showGrd="no"
+    isSolutions="yes"
 />

@@ -1,8 +1,10 @@
 ---
-const { heading, items, loadJs } = Astro.props;
+const { heading, items, loadJs, showGrd, isSolutions } = Astro.props;
 ---
 
-<section class="exp-br-faq sc-al-cnt sc-pd sc-grey sc-grey-C ps-rel">
+<section
+    class={`exp-br-faq sc-al-cnt sc-pd sc-grey sc-grey-C ps-rel ${showGrd ? "no-grd" : ""} ${isSolutions ? "sl-pg" : ""}`}
+>
     <div class="container">
         <div class="sc-wrapper ps-rel">
             <div class="sc-headline ps-rel">
@@ -27,9 +29,7 @@ const { heading, items, loadJs } = Astro.props;
                         </div>
                         <div class="exp-acc-main fwidth">
                             <div class="exp-acc-wrap fx fx-wrap">
-                                <div class="sc-txt sc-br-faq">
-                                    <p set:html={item.text}></p>
-                                </div>
+                                <div class="sc-txt sc-br-faq" set:html={item.text}></div>
                             </div>
                         </div>
                     </div>
@@ -39,8 +39,8 @@ const { heading, items, loadJs } = Astro.props;
     </div>
 </section>
 
-<style>
-    .exp-br-faq:after {
+<style is:global>
+    .exp-br-faq:not(.no-grd):after {
         content: "";
         position: absolute;
         top: -23rem;
@@ -109,9 +109,13 @@ const { heading, items, loadJs } = Astro.props;
     .sc-br-faq{
         padding: 1.25rem 2rem 3.75rem 2rem;
     }
-    .sc-br-faq p{
+    .sc-br-faq p, .sl-pg .exp-faq .sc-txt ul, .sl-pg .exp-faq .sc-txt p,
+    .exp-faq .sc-txt p{
         color: #F5F5F7;
         text-align: left;
+    }
+    .exp-faq .sc-txt p:not(:last-child){
+        margin-bottom: 1rem;
     }
 </style>
 
