@@ -7,7 +7,7 @@ const { heading, description, button1text, button1Link, button2text, button2Link
         <div class="sc-wrapper ps-rel">
             <div class="sc-headline ps-rel">
                 <h2 set:html={heading}></h2>
-                <div class="sc-txt">
+                <div class="sc-txt exp-cta-desc-row">
                     <p set:html={description}></p>
                 </div>
             </div>
@@ -27,5 +27,23 @@ const { heading, description, button1text, button1Link, button2text, button2Link
     .btn-exp-row{
         gap: 1.5rem;
         margin-top: 3.125rem;
+    }
+    @media screen and (max-width:1000px) {
+        .btn-exp-row {
+            gap: 12px;
+            margin-top: 40px;
+        }
+    }
+    @media screen and (max-width:479px) {
+        .exp-br-cta .sc-headline {
+            padding: 0 16px;
+        }
+    }
+    @media screen and (max-width:340px) {
+        .btn-exp-row .btn-primary {
+            padding: 0 15px;
+            font-size: 13px;
+            text-align: center;
+        }
     }
 </style>

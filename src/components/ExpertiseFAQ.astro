@@ -117,6 +117,67 @@ const { heading, items, loadJs, showGrd, isSolutions } = Astro.props;
     .exp-faq .sc-txt p:not(:last-child){
         margin-bottom: 1rem;
     }
+    @media screen and (max-width: 1000px) {
+        .exp-br-faq:not(.no-grd):after {
+            top: -15rem;
+            height: 20rem;
+        }
+        .faq-wrap {
+            width: 100%;
+            margin-top: 24px;
+        }
+        .exp-acc-item {
+            border-radius: 12px;
+        }
+        .exp-acc-item.opened .exp-acc-top {
+            border-radius: 12px 12px 0 0;
+        }
+        .exp-acc-top {
+            padding: 12px 20px;
+            border-radius: 12px;
+            gap: 15px;
+        }
+        .exp-acc-top-lcol h5 {
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.32px;
+        }
+        .exp-acc-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+        .exp-acc-toggle svg {
+            width: 10px;
+            height: auto;
+        }
+        .sc-br-faq {
+            padding: 12px 20px 30px 20px;
+        }
+        .exp-faq .sc-txt p:not(:last-child) {
+            margin-bottom: 10px;
+        }
+        .faq-list {
+            gap: 8px;
+        }
+
+
+
+    }
+    @media screen and (max-width: 479px) {
+        .faq-wrap {
+            margin-top: 40px;
+        }
+        .exp-acc-top {
+            padding: 16px;
+        }
+        .sc-br-faq {
+            margin-top: 15px;
+            padding-bottom: 27px;
+        }
+
+
+    }
 </style>
 
 {loadJs && (

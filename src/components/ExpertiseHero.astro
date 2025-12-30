@@ -13,7 +13,9 @@ const { img, title, subTitle, text } = Astro.props;
             <div class="exp-intro-text">
                 <h1 set:html={title}></h1>
                 <div class="sc-txt">
-                    <p set:html={subTitle}></p><br/>
+                    {subTitle && (
+                        <p set:html={subTitle}></p><br/>
+                    )}
                     <p>{text}</p>
                 </div>
             </div>
@@ -31,5 +33,23 @@ const { img, title, subTitle, text } = Astro.props;
     }
     .pg-exp .exp-hero{
         padding-bottom: 9.375rem;
+    }
+    @media screen and (max-width:1000px) {
+        .pg-exp .exp-hero {
+            padding-bottom: 60px;
+        }
+        .exp-graphic {
+            margin: 30px 0 60px 0;
+        }
+    }
+    @media screen and (max-width:700px) {
+        .exp-sc-wrap {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width:479px) {
+        .exp-sc-wrap {
+            padding: 0 16px;
+        }
     }
 </style>

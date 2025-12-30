@@ -14,7 +14,7 @@ const { heading, description, items } = Astro.props;
             </div>
         </div>
     </div>
-    <div class="exp-pw-scroll">
+    <div class="exp-pw-scroll ps-rel">
         <div class={`exp-pw-row fx`}>
             {items.map((item: { title: string; subItems: any[]; }) => (
                 <div class="exp-pw-col">
@@ -39,7 +39,7 @@ const { heading, description, items } = Astro.props;
             ))}
         </div>
     </div>
-    <div class="container">
+    <div class="exp-pw-txt-row container">
         <div class="sc-wrapper">
             <div class="sc-txt sc-txt-noS">
                 <p>Your next step isn't choosing a service — it's choosing the direction you want your business to grow.</p>
@@ -67,7 +67,7 @@ const { heading, description, items } = Astro.props;
     .exp-pw-row{
         margin: 5.75rem 0 3.75rem 0;
         gap: 1.5rem;
-        padding: 0 0 0 5rem;
+        padding: 0 6rem;
         flex-wrap: nowrap;
         min-width: max-content;
     }
@@ -116,6 +116,62 @@ const { heading, description, items } = Astro.props;
             -ms-flex-pack: center;
             justify-content: center;
         }
+    }
+    @media screen and (max-width:1000px){
+        .exp-pw-row {
+            margin: 24px 0;
+            gap: 12px;
+            padding: 0 40px;
+        }
+        .exp-pw-col-top {
+            border-radius: 12px 12px 0 0;
+            padding: 16px 24px;
+        }
+        .exp-pw-col-top h4 {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        .exp-pw-col-main {
+            padding: 24px;
+            gap: 6px;
+            height: calc(100% - 50px);
+        }
+        .exp-pw-item {
+            padding: 12px;
+            border-radius: 4px;
+        }
+        .exp-pw-icon svg {
+            width: 13px;
+            height: auto;
+        }
+        .exp-pw-inner span {
+            margin-left: 6px;
+            font-size: 11px;
+            line-height: 12px;
+            letter-spacing: 0.22px;
+        }
+        .exp-pw-col[data-astro-cid-rcs5mhy7] {
+            border-radius: 12px;
+            width: 222px;
+            border-width: 1px;
+        }
+        .btn-row {
+            margin-top: 24px;
+        }
+        
+    }
+    @media screen and (max-width:479px){
+        .exp-pw-row {
+            padding: 0 16px;
+            margin: 40px 0;
+        }
+        .exp-power .sc-headline, .exp-pw-txt-row {
+            padding: 0 16px;
+        }
+        .btn-row {
+            margin-top: 40px;
+        }
+
     }
 </style>
 

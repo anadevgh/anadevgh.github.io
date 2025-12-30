@@ -14,7 +14,7 @@ const { heading, description, addt_txt, items } = Astro.props;
                 </div>
             </div>
         </div>
-        <div class="exp-pillars fx fx-wrap fx-jb ps-rel">
+        <div class="exp-pillars fx fx-jb ps-rel">
             {items.map((item: { title: string; text: string; img: string; }) => (
                 <div class="exp-pillar-item">
                     <div class="exp-pillar-grp">
@@ -67,5 +67,72 @@ const { heading, description, addt_txt, items } = Astro.props;
     }
     .exp-pillar-item .sc-txt{
         margin-top: 0.75rem;
+    }
+    @media screen and (max-width:1000px) {
+        .exp-pillars {
+            margin-top: 24px;
+            gap: 12px;
+        }
+        .exp-pillar-item {
+            border-radius: 12px;
+            padding: 16px;
+            width: calc((100% - 24px) / 3);
+        }
+        .exp-pillar-info {
+            margin-top: 12px;
+        }
+        .exp-pillar-item .sc-txt {
+            margin-top: 8px;
+        }
+        .exp-scd-txt-row {
+            margin-top: 24px;
+        }
+        .exp-pillar-info .sc-txt p {
+            font-size: 12px;
+            letter-spacing: 0.22px;
+            line-height: 16px;
+        }
+
+
+    }
+    @media screen and (max-width: 700px) {
+        .exp-pillars {
+            overflow-x: scroll;
+            justify-content: unset;
+            margin-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 5px;
+        }
+        .exp-pillar-item {
+            flex-shrink: 0;
+            width: 222px;
+        }
+        .exp-pillars-sc > .container {
+            margin: 0;
+        }
+        .exp-pillars-sc .sc-wrapper {
+            padding: 0 40px;
+        }
+        
+    }
+    @media screen and (max-width: 479px) {
+        .exp-pillars {
+            margin-left: 16px;
+            padding-right: 16px;
+        }
+        .exp-pillars-sc .sc-wrapper {
+            padding: 0 32px;
+        }
+        .exp-pillar-info h3 {
+            font-size: 16px;
+            line-height: 16px;
+            letter-spacing: 0.16px;
+        }
+        .exp-pillars {
+            margin-top: 40px;
+        }
+        .exp-scd-txt-row {
+            margin-top: 35px;
+        }
     }
 </style>

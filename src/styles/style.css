@@ -1019,7 +1019,6 @@ h5{
     h3, h4 {
         font-size: 16px;
         line-height: 20px;
-        font-weight: 500;
         letter-spacing: 0.16px;
     }
     .pj-ft-info-row {
@@ -1219,6 +1218,30 @@ h5{
     .sc-team .sc-txt p br {
         display:none;
     }
+    .exp-item-top h5 br {
+        display:none;
+    }
+    .exp-acc-key-point {
+        border-radius: 16px;
+        padding: 8px 12px 8px 8px;
+    }
+    .exp-acc-dot {
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        margin-right: 4px;
+    }
+    .exp-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+    .exp-acc-key-point span {
+        font-size: 11px;
+        line-height: 12px;
+        letter-spacing: 0.11px;
+    }
+
 
 
 
@@ -1263,6 +1286,9 @@ h5{
     .pg-wrap {
         padding-top: 120px;
     }
+    .exp-cta-desc-row p br {
+        display:none;
+    }
 }
 @media screen and (max-width:700px){
     body .gts-form-main-wrapper {
@@ -1288,7 +1314,9 @@ h5{
     body .dna-fm .sc-txt p br {
         display:none;
     }
-    
+    body .exp-scd-txt-row p br {
+        display: none;
+    }
 }
 @media screen and (min-width:479px) and (max-width: 600px) {
     .pj-featured-2col {

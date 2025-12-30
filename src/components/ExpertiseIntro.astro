@@ -7,19 +7,17 @@
         </div>
         <div class="exp-row fwidth fx fx-je ps-rel">
             <div class="exp-intro-rcol">
-                <h3>Every project we deliver is built on specialised expertise across branding,<br/> UX/UI, development, strategy, and creative production. These aren't <br/> isolated skills — they form a unified system designed to help your business <br/> grow with intention, precision, and long-term impact.
-                <br/><br/> Whether you're building your brand from the ground up or scaling across <br/> markets, our expertise ensures every decision, every pixel, every interaction <br/> is crafted for performance.</h3>
+                <p>Every project we deliver is built on specialised expertise across branding, UX/UI, development, strategy, and creative production. These aren't isolated skills — they form a unified system designed to help your business grow with intention, precision, and long-term impact.</p>
+                <p>Whether you're building your brand from the ground up or scaling across markets, our expertise ensures every decision, every pixel, every interaction is crafted for performance.</p>
             </div>
         </div>
     </div>
 </section>
 
 <style>
-    .exp-intro-lcol, .exp-intro-rcol{
-        width: 48%;
-    }
     .exp-row{
         z-index: 1;
+        padding: 0 8.5rem;
     }
     .exp-intro-lcol h2{
         font-size: 2.5rem;
@@ -27,8 +25,18 @@
         line-height: 2.5rem;
         letter-spacing: 0.025rem;
     }
-    .exp-intro-rcol h3{
+    .exp-intro-rcol p {
+        margin: 0 0 1.5rem 0;
         font-size: 1.25rem;
+        color: var(--white); 
+        font-weight: 500;
+        line-height: 1.75rem;
+        font-family: 'pp_neue_montrealbook';
+        letter-spacing: 0.02rem;
+        width: 487px;
+    }
+    .exp-intro-rcol p:last-child {
+        margin-bottom: 0;
     }
     .exp-intro:after {
         content: "";
@@ -40,5 +48,78 @@
         background: url(/gradient-shadow.png) no-repeat;
         background-size: 100% 100%;
         z-index: 0;
+    }
+    @media screen and (min-width:1601px){
+        .exp-intro-rcol p {
+            width: 650px;
+        }
+    }
+    @media screen and (max-width:1400px){
+        .exp-row{
+            padding: 0 2rem;
+        }
+    }
+    @media screen and (max-width:1200px){
+        .exp-row{
+            padding: 0;
+        }
+    }
+    @media screen and (max-width:1100px){
+        .exp-intro-rcol p {
+            width: 410px;
+        }
+    }
+    @media screen and (max-width:1000px){
+        .exp-row > div {
+            width: 48%;
+        }
+        .exp-intro-lcol h2 br {
+            display: none;
+        }
+        .exp-intro-rcol p {
+            width: 100%;
+        }
+        .exp-intro-lcol h2 {
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.32px;
+        }
+        .exp-intro-rcol p {
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.28px;
+            margin-bottom: 15px;
+        }
+        .exp-intro:after {
+            bottom: -8rem;
+            height: 20rem;
+        }
+
+    }
+    @media screen and (max-width:700px){
+        .exp-row > div {
+            width: 100%;
+            text-align: center;
+        }
+        .exp-row:last-child {
+            margin-top: 24px;
+        }
+    }
+    @media screen and (max-width:479px){
+        .exp-row {
+            padding: 0 16px;
+        }
+        .exp-intro-lcol h2 {
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0.4px;
+        }
+        .exp-intro-rcol p {
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.32px;
+        }
+        
+
     }
 </style>
