@@ -6,8 +6,8 @@ const { title, text, items } = Astro.props;
 
 <section class="sc-pd sc-pd-sl sl-scroll ps-rel">
     <div class="container">
-        <div class="sl-row fx fx-jb ps-rel sl-sticky">
-            <div class="sl-lcol sl-lcol-main fx fx-wrap">
+        <div class="sl-row fx fx-je ps-rel sl-sticky">
+            <div class="sl-lcol sl-lcol-main fx fx-wrap fx-ac">
                 <div class="sl-col-wrap">
                     <h2 class="sl-heading" set:html={title}></h2>
                     <div class="sc-txt">
@@ -50,13 +50,34 @@ const { title, text, items } = Astro.props;
         padding-top: 13rem;
     }
     .sl-lcol{
-        width: 46%;
-        top: 0;
+        width: 45%;
+        opacity: 0;
+        position: relative;
+        -webkit-transition: opacity .3s linear;
+        -moz-transition: opacity .3s linear;
+        transition: opacity .3s linear;
+        margin-right: auto;
+        height: 70vh;
+    }
+    .col-fixed{
+        position: fixed;
+        top: 0px;
+        left: 0;
         height: 100%;
+        opacity: 1;
+        padding-left: 6rem;
+    }
+    .col-fixed-btm{
+        width: 45%;
+        height: 89%;
+        position: absolute;
+        opacity: 1;
+        left: 0;
+        align-items: flex-end;
+        padding-left: 0;
     }
     .sl-rcol{
         width: 50%;
-        margin-left: 54%;
     }
     .sl-row{
         z-index: 1;
@@ -210,19 +231,9 @@ const { title, text, items } = Astro.props;
     const rcol = document.querySelector(".sl-rcol-main");
     const items = [...document.querySelectorAll(".sl-hp-item")];
 
-    // Helper to restart animation
-    let lcolAnimated = false;
-
-    function triggerAnim(el) {
-        el.classList.remove("anim");
-        void el.offsetWidth; // force reflow
-        el.classList.add("anim");
-    }
-
     window.addEventListener("scroll", () => {
         const viewportMiddle = window.innerHeight / 2;
 
-        // Animate each card
         items.forEach(item => {
             const rect = item.getBoundingClientRect();
             const itemMiddle = rect.top + rect.height / 2;
@@ -240,44 +251,21 @@ const { title, text, items } = Astro.props;
             }
         });
 
-        // Handle left column fixed/static logic
         const sectionRect = section.getBoundingClientRect();
         const lastItem = items[items.length - 1];
         const lastRect = lastItem.getBoundingClientRect();
 
         if (sectionRect.top <= 0 && lastRect.bottom > window.innerHeight) {
-            // Section started, last card not reached → fixed
-            if (lcol.style.position !== "fixed") {
-                triggerAnim(lcol);
-            }
-            lcol.style.position = "fixed";
-            lcol.style.top = "0";
-            lcol.style.left = "6rem";
-            lcol.classList.add("fx-ac", "fixed-cl");
-            lcol.style.width = "calc(46% - 6rem)";
-            slRow.classList.remove("fx-jb");
-            slRow.classList.add("fx-je", "fx-ac");
+            lcol.classList.remove("col-fixed-btm");
+            lcol.classList.add("col-fixed");
+            rcol.classList.add("rcol-fixed");
         } else if (lastRect.bottom <= window.innerHeight) {
-            // Last card reached → stop fixing
-            if (lcol.style.position !== "absolute") triggerAnim(lcol);
-            lcol.style.position = "absolute";
-            //lcol.style.top = `${window.scrollY + sectionRect.height - lcol.offsetHeight}px`;
-            lcol.style.left = "0";
-            lcol.style.width = "46%";
-            lcol.classList.remove("fixed-cl");
-            slRow.classList.remove("fx-jb", "fx-ac", "fixed-cl");
-            slRow.classList.add("fx-je");
+            console.log('1');
+            lcol.classList.add("col-fixed-btm");
         } else if (sectionRect.top > 0) {
-            // Section not reached yet → static
-            if (lcol.style.position !== "relative") triggerAnim(lcol);
-            lcol.style.position = "relative";
-            lcol.style.top = "0";
-            lcol.style.left = "0";
-            lcol.style.width = "46%";
-            rcol.style.marginLeft = "0";
-            slRow.classList.remove("fx-je", "fx-ac");
-            lcol.classList.remove("fixed-cl");
-            slRow.classList.add("fx-jb"); 
+            console.log('2');
+            lcol.classList.remove("col-fixed");
+            rcol.classList.remove("rcol-fixed");
         }
     });
 </script>
