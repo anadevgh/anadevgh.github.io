@@ -5,6 +5,7 @@ import SolutionsChallenges from '../components/SolutionsChallenges.astro';
 import Formula from "../components/Formula.astro";
 import SolutionsAdvantages from "../components/SolutionsAdvantages.astro";
 import SolutionsList from "../components/SolutionsList.astro";
+import ExpertiseFAQ from '../components/ExpertiseFAQ.astro';
 import BannerImg from '../assets/expertise-main.png';
 
 const HeroData = {
@@ -176,6 +177,19 @@ const SolutionsListData = {
     ]      
 }
 
+const expertiseFAQData = {
+    heading: "FAQs",      
+    items: [
+        {
+            title: "What’s the difference between Solutions and Services?",
+            text: `<strong>Solutions</strong> are complete, structured packages that combine branding, UX/UI, development, software, marketing, and creative production into a single outcome-driven system.
+            <br/><strong>Services</strong> are individual disciplines you can choose separately.
+            <br/><br/> Solutions are designed for businesses seeking clarity, alignment, and long-term growth — not isolated tasks.`
+        },
+        
+    ]
+}
+
 const SolutionsData = {
     heading: `Solutions That Deliver`,
     description: `We don't just promise results, we prove them. Our clients' experience:
@@ -223,4 +237,9 @@ const SolutionsData = {
     text={SolutionsData.description}
     buttonLink={SolutionsData.buttonLink}
     buttonText={SolutionsData.buttonText}
+/>
+<ExpertiseFAQ 
+    heading={expertiseFAQData.heading}
+    items={expertiseFAQData.items}
+    loadJs="yes"
 />
