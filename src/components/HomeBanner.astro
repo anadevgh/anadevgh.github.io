@@ -76,9 +76,9 @@
     .hero-anim img{
         object-fit: cover;
         height: 100%;
-        -webkit-transition: all .3s linear;
-        -moz-transition: all .3s linear;
-        transition: all .3s linear;
+        -webkit-transition: opacity 1s ease-out;
+        -moz-transition: opacity 1s ease-out;
+        transition: opacity 1s ease-out;
     }
     .hero-anim img:last-child{
         position: absolute;
@@ -87,6 +87,9 @@
         right: 0;
         margin: auto;
         opacity: 0;
+    }
+    .hero-anim img.show{
+        opacity: 1;
     }
     @media screen and (max-width: 1000px){
         .hero-wrap {
@@ -131,13 +134,21 @@
 </style>
 
 <script>
-    window.addEventListener("scroll", () => {
+   document.addEventListener("DOMContentLoaded", () => {
         const secondImg = document.querySelector(".hero-anim img:last-child");
 
-        if (window.scrollY > 25) { 
-            secondImg.style.opacity = "1";
-        } else {
-            secondImg.style.opacity = "0";
-        }
+        setTimeout(() => {
+            secondImg.classList.add("show");
+        }, 2000);
+
+        const fadeDistance = 400;
+
+        window.addEventListener("scroll", () => {
+            const scrollY = window.scrollY;
+            let opacity = 1 - scrollY / fadeDistance;
+            opacity = Math.max(0, Math.min(1, opacity));
+            secondImg.style.opacity = opacity;
+        });
+
     });
 </script>
