@@ -101,6 +101,11 @@ const { title, text, items } = Astro.props;
             justify-content: center;
         }
     }
+    @media screen and (max-width: 479px) {
+        .sc-headline {
+            padding: 0 16px;
+        }
+    }
 </style>
 
 <script>

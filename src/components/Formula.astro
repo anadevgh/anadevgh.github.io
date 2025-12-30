@@ -12,7 +12,7 @@ const { title, text, items, buttonShow, notDNA } = Astro.props;
                     <p set:html={text}></p>
                 </div>
             </div>
-            <div class="dna-fm-row fx fx-wrap fx-jc">
+            <div class="dna-fm-row fx fx-jc">
                 {items.map((item: { num: string; title: string; subTitle: string; text: string; }) => (
                     <div class="dna-fm-col">
                         <div class="dna-num">
@@ -94,5 +94,104 @@ const { title, text, items, buttonShow, notDNA } = Astro.props;
     .dna-fm-col .sc-txt p{
         color: rgba(255, 255, 255, 0.60);
         padding: 0 1rem;
+    }
+    @media screen and (max-width: 1000px) {
+        .dna-fm .sc-wrapper{
+            width: 100%;
+        }
+        .dna-fm-row {
+            padding: 40px 0;
+            gap: 12px;
+        }
+        .dna-fm-col {
+            border-radius: 12px;
+            width: 200px;
+            padding: 15px;
+            border-width: 1px;
+        }
+        .dna-num span {
+            font-size: 11px;
+            line-height: 12px;
+            letter-spacing: 0.33px;
+        }
+        .dna-fm-col h5 {
+            font-size: 72px;
+            line-height: 60px;
+            height: 52px;
+            margin: 0;
+        }
+        .dna-fm-col h6 {
+            font-size: 19px;
+            line-height: 19px;
+            margin: 25px 0 10px 0;
+        }
+        .dna-fm-col .sc-txt p {
+            padding: 0;
+        }
+
+
+
+
+
+    }
+    @media screen and (max-width: 700px) {
+        .dna-fm-row {
+            overflow-x: scroll;
+            justify-content: unset;
+            margin-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 0;
+            margin-bottom: 40px; 
+        }
+        .dna-fm-col {
+            flex-shrink: 0;
+        }
+        .dna-fm > .container {
+            margin: 0;
+        }
+        .dna-fm .sc-headline {
+            margin: 0 40px;
+        }
+        
+
+
+    }
+    @media screen and (max-width: 479px) {
+        .dna-fm-row {
+            margin-left: 16px;
+            padding-right: 16px;
+        }
+        .sc-headline {
+            padding: 0 16px;
+        }
+        .dna-fm .sc-headline {
+            margin: 0 16px;
+        }
+        .dna-fm-col {
+            width: 250px;
+            padding: 20px 20px 30px 20px;
+        }
+        .dna-num span {
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.48px;
+        }
+        .dna-fm-col h5 {
+            font-size: 120px;
+            line-height: 102px;
+            height: 87px;
+            margin: 10px 0 0 0;
+        }
+        .dna-fm-col h6 {
+            font-size: 32px;
+            line-height: 32px;
+            margin: 30px 0 0 0;
+        }
+        .dna-fm-col .sc-txt {
+            margin-top: 10px;
+        }
+
+
+
     }
 </style>

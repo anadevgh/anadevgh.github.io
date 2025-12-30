@@ -1284,6 +1284,9 @@ h5{
     body .ft-row-f .ft-rcol {
         column-gap: 60px;
     }
+    body .dna-fm .sc-txt p br {
+        display:none;
+    }
     
 }
 @media screen and (min-width:479px) and (max-width: 600px) {
