@@ -3,7 +3,9 @@ const { title, text } = Astro.props;
 ---
 
 <section class="sc-hero banner-vd" id="dna-hero">
-    <div class="sc-hero-vd" id="hero-vd-container"></div>
+    <div class="sc-hero-vd" id="hero-vd-container">
+		<img id="hero-frame" />
+	</div>
     <div class="sc-dna-intro">
         <div class="container">
             <div class="dna-sc-wrap sc-al-cnt">
@@ -19,6 +21,12 @@ const { title, text } = Astro.props;
 <style>
 	.sc-hero{
 		padding-bottom: 8.75rem;
+	}
+	#hero-frame {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		display: block;
 	}
 	.sc-hero-vd {
 		position: sticky;
@@ -65,80 +73,62 @@ const { title, text } = Astro.props;
 </style>
 
 <script>
-	const totalFrames = 41;
-	const introFrames = 20;
-	const container = document.getElementById('hero-vd-container');
-	const images = [];
+  const totalFrames = 41;
+const introFrames = 20;
+const frameElement = document.getElementById('hero-frame');
 
-	// --- Preload all frames ---
-	for (let i = 1; i <= totalFrames; i++) {
-		const img = new Image();
-		img.src = `/frames/frame${i}.png`; 
-		img.style.display = "none";
-		img.style.width = "100%";
-		img.style.height = "auto";
-		img.style.objectFit = "cover";
-		container.appendChild(img);
-		images.push(img);
-	}
+const images = [];
+let currentFrame = 0;
+let targetFrame = 0;
+let introPlaying = true;
 
-	images[0].style.display = "block";
+// --- Preload all images in memory ---
+for (let i = 1; i <= totalFrames; i++) {
+    const img = new Image();
+    img.src = `/frames/frame${i}.png`;
+    images.push(img);
+}
 
-	let currentFrame = 0;
-	let targetFrame = 0;
-	let introPlaying = true;
+// Show first frame only when loaded
+images[0].onload = () => frameElement.src = images[0].src;
 
-	// --- Auto-play first 20 frames ---
-	function playIntro() {
-		if (currentFrame < introFrames - 1) {
-			images[currentFrame].style.display = "none";
-			currentFrame++;
-			images[currentFrame].style.display = "block";
-			requestAnimationFrame(playIntro);
-		} else {
-			introPlaying = false;
-			targetFrame = introFrames;
-		}
-	}
+// --- Auto-play first 20 frames ---
+function playIntro() {
+    if (currentFrame < introFrames - 1) {
+        currentFrame++;
+        frameElement.src = images[currentFrame].src;
+        requestAnimationFrame(playIntro);
+    } else {
+        introPlaying = false;
+        targetFrame = introFrames;
+    }
+}
 
-	playIntro();
+playIntro();
 
-	// --- Scroll-driven frames 21-41 ---
-	const section = document.getElementById("dna-hero");
-	const stickyContainer = document.querySelector(".sc-hero-vd");
+// --- Scroll-driven frames 21-41 ---
+const section = document.getElementById("dna-hero");
 
-	// Make the container sticky
-	stickyContainer.style.position = "sticky";
-	stickyContainer.style.top = "0";
+window.addEventListener("scroll", () => {
+    if (introPlaying) return;
 
-	window.addEventListener("scroll", () => {
-		if (introPlaying) return;
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const sectionScroll = Math.min(Math.max(-rect.top / (rect.height - windowHeight), 0), 1);
 
-		const rect = section.getBoundingClientRect();
-		const windowHeight = window.innerHeight;
+    targetFrame = introFrames + Math.floor(sectionScroll * (totalFrames - introFrames - 1));
+});
 
-		// Calculate scrollFraction only while section is in viewport
-		// 0 = top of section at top of viewport
-		// 1 = bottom of section at top of viewport
-		const sectionScroll = Math.min(Math.max(-rect.top / (rect.height - windowHeight), 0), 1);
+// --- Smooth animation loop ---
+function animateFrames() {
+    if (!introPlaying) {
+        currentFrame += (targetFrame - currentFrame) * 0.15;
+        const displayIndex = Math.round(currentFrame);
+        frameElement.src = images[displayIndex].src;
+    }
+    requestAnimationFrame(animateFrames);
+}
 
-		// Map scroll fraction to frames 21-41
-		targetFrame = introFrames + Math.floor(sectionScroll * (totalFrames - introFrames - 1));
-	});
-
-	// --- Smooth animation loop ---
-	function animateFrames() {
-		if (!introPlaying) {
-			currentFrame += (targetFrame - currentFrame) * 0.15; // lerp for smooth transition
-			const displayIndex = Math.round(currentFrame);
-
-			images.forEach((img, i) => {
-			img.style.display = i === displayIndex ? "block" : "none";
-			});
-		}
-
-		requestAnimationFrame(animateFrames);
-	}
-
-	animateFrames();
+animateFrames();
 </script>
+
