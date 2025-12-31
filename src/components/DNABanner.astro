@@ -74,61 +74,61 @@ const { title, text } = Astro.props;
 
 <script>
   const totalFrames = 41;
-const introFrames = 20;
-const frameElement = document.getElementById('hero-frame');
+	const introFrames = 20;
+	const frameElement = document.getElementById('hero-frame');
 
-const images = [];
-let currentFrame = 0;
-let targetFrame = 0;
-let introPlaying = true;
+	const images = [];
+	let currentFrame = 0;
+	let targetFrame = 0;
+	let introPlaying = true;
 
-// --- Preload all images in memory ---
-for (let i = 1; i <= totalFrames; i++) {
-    const img = new Image();
-    img.src = `/frames/frame${i}.png`;
-    images.push(img);
-}
+	// --- Preload all images in memory ---
+	for (let i = 1; i <= totalFrames; i++) {
+		const img = new Image();
+		img.src = `/frames/frame${i}.png`;
+		images.push(img);
+	}
 
-// Show first frame only when loaded
-images[0].onload = () => frameElement.src = images[0].src;
+	// Show first frame only when loaded
+	images[0].onload = () => frameElement.src = images[0].src;
 
-// --- Auto-play first 20 frames ---
-function playIntro() {
-    if (currentFrame < introFrames - 1) {
-        currentFrame++;
-        frameElement.src = images[currentFrame].src;
-        requestAnimationFrame(playIntro);
-    } else {
-        introPlaying = false;
-        targetFrame = introFrames;
-    }
-}
+	// --- Auto-play first 20 frames ---
+	function playIntro() {
+		if (currentFrame < introFrames - 1) {
+			currentFrame++;
+			frameElement.src = images[currentFrame].src;
+			requestAnimationFrame(playIntro);
+		} else {
+			introPlaying = false;
+			targetFrame = introFrames;
+		}
+	}
 
-playIntro();
+	playIntro();
 
-// --- Scroll-driven frames 21-41 ---
-const section = document.getElementById("dna-hero");
+	// --- Scroll-driven frames 21-41 ---
+	const section = document.getElementById("dna-hero");
 
-window.addEventListener("scroll", () => {
-    if (introPlaying) return;
+	window.addEventListener("scroll", () => {
+		if (introPlaying) return;
 
-    const rect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const sectionScroll = Math.min(Math.max(-rect.top / (rect.height - windowHeight), 0), 1);
+		const rect = section.getBoundingClientRect();
+		const windowHeight = window.innerHeight;
+		const sectionScroll = Math.min(Math.max(-rect.top / (rect.height - windowHeight), 0), 1);
 
-    targetFrame = introFrames + Math.floor(sectionScroll * (totalFrames - introFrames - 1));
-});
+		targetFrame = introFrames + Math.floor(sectionScroll * (totalFrames - introFrames - 1));
+	});
 
-// --- Smooth animation loop ---
-function animateFrames() {
-    if (!introPlaying) {
-        currentFrame += (targetFrame - currentFrame) * 0.15;
-        const displayIndex = Math.round(currentFrame);
-        frameElement.src = images[displayIndex].src;
-    }
-    requestAnimationFrame(animateFrames);
-}
+	// --- Smooth animation loop ---
+	function animateFrames() {
+		if (!introPlaying) {
+			currentFrame += (targetFrame - currentFrame) * 0.15;
+			const displayIndex = Math.round(currentFrame);
+			frameElement.src = images[displayIndex].src;
+		}
+		requestAnimationFrame(animateFrames);
+	}
 
-animateFrames();
+	animateFrames();
 </script>
 
