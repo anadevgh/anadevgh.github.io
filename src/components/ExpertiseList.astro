@@ -166,6 +166,53 @@ const { heading, description, items } = Astro.props;
         letter-spacing: 0.01rem;
         margin: 0;
     }
+    @media screen and (max-width:1000px) {
+        .exp-list-items {
+            margin-top: 24px;
+            gap: 12px;
+        }
+        .exp-acc-md-wrap, .exp-acc-btm-wrap{
+            padding: 0 16px 16px 16px;
+        }
+        .exp-acc-lbl {
+            border-radius: 0 0 5px 5px;
+            padding: 6px 8px;
+        }
+        .exp-acc-lbl span {
+            font-size: 9px;
+            line-height: 12px;
+            letter-spacing: 0.18px;
+        }
+        .exp-acc-btm-txt {
+            margin-top: 12px;
+        }
+        .exp-acc-item {
+            border-radius: 10px;
+            width: calc((100% - 12px) / 2);
+        }
+        .exp-acc-item.opened {
+            border-radius: 10px;
+        }
+
+
+    }
+    @media screen and (max-width:650px) {
+        .exp-acc-item {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width:479px) {
+        .exp-list-items {
+            margin-top: 40px;
+        }
+
+        
+    }
+    @media screen and (max-width:340px) {
+        .exp-acc-key-point {
+            width: 100%;
+        }
+    }    
 </style>
 
 <script>

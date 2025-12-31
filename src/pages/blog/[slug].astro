@@ -112,4 +112,45 @@ const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
         color: var(--blue);
         border-bottom: 0.063rem solid var(--blue);
     }
+    @media screen and (max-width: 800px) {
+        .single-post-wrap{
+            width: 100%;
+        }
+        .single-post-content {
+            margin-top: 40px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0.16px;
+        }
+        .post-date p {
+            font-size: 12px;
+            line-height: 16px;
+        }
+        .single-post-banner img {
+            border-radius: 12px;
+        }
+        .post-date {
+            margin: 24px 0;
+        }
+        .single-post-wrap h1 {
+            font-size: 32px;
+            line-height: 32px;
+        }
+        .single-post-content h3 {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            letter-spacing: 0.16px;
+        }
+        .single-post-content p {
+            margin: 10px 0 24px 0;
+        }
+        .single-post-content ul {
+            margin: 0 0 20px 25px;
+        }
+
+
+
+    }
 </style>

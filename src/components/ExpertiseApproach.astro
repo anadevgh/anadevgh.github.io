@@ -4,7 +4,7 @@ const { heading, description, secDesc, items } = Astro.props;
 ---
 
 <section class="exp-approach sc-al-cnt sc-pd sc-grey-C">
-    <div class="container">
+    <div class="container ps-rel">
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
                 <h2>{heading}</h2>
@@ -15,7 +15,7 @@ const { heading, description, secDesc, items } = Astro.props;
         </div>
         <div class="exp-approach-row fx fx-wrap fx-jc">
             {items.map((item: { title: string; text: string; }) => (
-                <div class="exp-approach-col fx fx-wrap">
+                <div class="exp-approach-col">
                     <div class="exp-approach-icon">
                         <svg width="71" height="72" viewBox="0 0 71 72" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect width="71" height="72" fill="url(#pattern0_618_1733)"/>
@@ -75,5 +75,66 @@ const { heading, description, secDesc, items } = Astro.props;
     }
     .exp-approach-info .sc-txt p{
         text-align: left;
+    }
+
+    @media screen and (max-width:1000px) {
+        .exp-approach {
+            padding-top: 0;
+        }
+        .exp-approach-row {
+            margin-top: 24px;
+            gap: 12px;
+        }
+        .exp-approach-col {
+            border-radius: 8px;
+            padding: 16px;
+            width: calc((100% - 2 * 12px) / 3);
+        }
+        .exp-approach-icon svg, .exp-approach-icon img {
+            width: 48px;
+            height: auto;
+        }
+        .exp-approach-info {
+            margin-top: 8px;
+        }
+        .exp-approach-info h6 {
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.32px;
+        }
+        .exp-approach-info .sc-txt {
+            margin-top: 8px;
+        }
+        .exp-approach-info .sc-txt p {
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .exp-scd-txt-row {
+            margin-top: 24px;
+        }
+        .exp-txt {
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.28px;
+        }
+
+
+
+
+    }
+    @media screen and (max-width:670px) {
+        .exp-approach-col {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width:479px) {
+        .exp-approach .sc-headline, .exp-txt {
+            padding: 0 16px;
+        }
+        .exp-approach-row {
+            margin-top: 40px;
+        }
+
+
     }
 </style>

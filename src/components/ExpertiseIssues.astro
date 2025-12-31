@@ -14,7 +14,7 @@ const { heading, description, items, secDesc } = Astro.props;
             </div>
             <div class="exp-rcol fx fx-wrap">
                 {items.map((item: { title: string; text: string; }) => (
-                    <div class="exp-iss-col fx fx-ae fx-wrap">
+                    <div class="exp-iss-col">
                         <div class="exp-iss-col-top fx">
                             <div class="exp-iss-icon">
                                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,6 @@ const { heading, description, items, secDesc } = Astro.props;
         background: #252831;
         padding: 2rem;
         width: calc((100% - 1.5rem) / 2);
-        height: 10.5rem;
     }
     .exp-iss-icon{
         margin-right: 0.75rem;
@@ -94,15 +93,113 @@ const { heading, description, items, secDesc } = Astro.props;
         color: var(--white);
         font-family: 'pp_neue_montrealbook';
         font-size: 1em;
-        line-height: 1.125rem;
+        line-height: 1.6rem;
         letter-spacing: 0.01rem;
-        margin: 0;
+        margin: 6px 0 0 0;
     }
     .exp-iss-col-top {
         align-self: flex-start;
     }
     .exp-iss-col-top h3{
-        min-height: 3rem;
+        min-height: 3.6rem;
         margin-right: 1rem;
+    }
+
+    @media screen and (max-width:1000px) {
+        .exp-issues-row {
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        .exp-issues-row .exp-rcol {
+            width: 100%;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .exp-iss-col {
+            border-radius: 8px;
+            padding: 16px;
+            width: calc((100% - 12px) / 2);
+        }
+        .exp-iss-col-top h3 {
+            min-height: auto;
+            margin-right: 0;
+        }
+        .exp-txt p {
+            font-size: 11px;
+            line-height: 16px;
+            letter-spacing: 0.22px;
+            margin-top: 8px;
+        }
+        .exp-scd-txt-row p {
+            color: var(--darkBlue);
+        }
+        .exp-iss-col-btm .exp-txt {
+            margin-left: 23px;
+        }
+        .exp-iss-icon svg {
+            width: 15px;
+            height: auto;
+        }
+        .exp-iss-icon {
+            margin-right: 8px;
+        }
+        .exp-issues-row .exp-lcol {
+            width: 340px;
+        }
+        .sc-pd-dbl {
+            padding: 80px 0;
+        }
+        .exp-scd-txt-row {
+            margin-top: 40px;
+        }
+        .exp-issues:after {
+            bottom: -12rem;
+            height: 100%;
+            background: url(/gradient-shadow.png) var(--lightGrey3) no-repeat;
+            background-size: contain;
+        }
+    }
+    @media screen and (max-width: 720px) {
+        .exp-iss-col-top h3 {
+            min-height: 40px;
+        }
+    }
+    @media screen and (min-width: 479px) and (max-width: 580px) {
+        .exp-iss-col-top h3 {
+            font-size: 14px;
+        }
+    }
+    @media screen and (max-width: 479px) {
+        .exp-iss-col {
+            width: 100%;
+        }
+        .exp-iss-col-top h3 {
+            min-height: auto;
+        }
+        .exp-txt p {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .exp-issues-row .exp-rcol {
+            gap: 10px;
+            margin-top: 40px;
+        }
+        .exp-issues-row .exp-lcol {
+            width: 100%;
+            padding: 0 16px;
+        }
+        .exp-scd-txt-row {
+            padding: 0 16px;
+        }
+        .exp-issues:after {
+            bottom: -10rem;
+            height: 30rem;
+        }
+        .exp-iss-col-top h3 {
+            font-size: 16px;
+            line-height: 20px;
+        }
+
     }
 </style>

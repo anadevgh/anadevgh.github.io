@@ -125,14 +125,77 @@ const { heading, description, items } = Astro.props;
     .exp-sl-br-row{
         z-index: 1;
     }
-    @media screen and (max-width: 479px){
-        .sl-row{
+    @media screen and (max-width:1000px) {
+        .sl-row {
             -webkit-flex-wrap: wrap;
             -ms-flex-wrap: wrap;
             flex-wrap: wrap;
         }
-        .sl-lcol, .sl-rcol{
+        .sl-row .sl-rcol {
             width: 100%;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .sl-row .sl-lcol {
+            width: 340px;
+        }
+        .exp-sl-row {
+            gap: 12px;
+        }
+        .exp-sl-col, .exp-sl-col-last {
+            width: calc((100% - 12px) / 2);
+            padding: 16px;
+            border-radius: 12px;
+        }
+        .exp-sl-name-row h3 {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        .exp-sl-arr, .exp-sl-lt-arr {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+        }
+        .exp-sl-arr svg, .exp-sl-lt-arr svg {
+            width: auto;
+            height: 12px;
+        }
+        .exp-sl-name-t {
+            margin-top: 6px;
+        }
+        .exp-sl-name-t p, .exp-sl-col-btm .sc-txt p, .exp-sl-col-last a span {
+            font-size: 11px;
+            line-height: 16px;
+            letter-spacing: 0.22px;
+        }
+        .exp-sl-col-last a span {
+            margin-top: 10px;
+        }
+        .exp-sl-col-btm .sc-txt {
+            margin-top: 6px;
+        }
+
+
+
+
+    }
+    @media screen and (max-width: 479px){
+        .exp-sl-col, .exp-sl-col-last {
+            width: 100%;
+        }
+        .exp-sl-col-last {
+            min-height: 138px;
+        }
+        .sl-row .sl-lcol {
+            width: 100%;
+            padding: 0 16px;
+        }
+        .sl-row .sl-rcol {
+            margin-top: 40px;
+        }
+        .exp-sl-name-t p, .exp-sl-col-btm .sc-txt p, .exp-sl-col-last a span {
+            font-size: 12px;
+            line-height: 18px;
         }
     }
 </style>

@@ -54,4 +54,43 @@ const { heading, description, items } = Astro.props;
         width: auto;
         height: 5.125rem;
     }
+    @media screen and (max-width: 1000px) {
+        .exp-dv-list {
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .exp-dv-container {
+            width: 100%;
+        }
+        .exp-dv-item {
+            border-radius: 8px;
+            padding: 8px 12px;
+            height: auto;
+            width: calc((100% - 12px) / 2);
+        }
+        .exp-dv-icon {
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .exp-dv-icon img {
+            width: 30px;
+            height: auto;
+        }
+        .exp-dv-item h3 {
+            font-size: 12px;
+            line-height: 16px;
+        }
+
+
+
+    }
+    @media screen and (max-width: 479px) {
+        .exp-dv-item {
+            width: 100%;
+        }
+        .exp-dv-item h3 {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
 </style>

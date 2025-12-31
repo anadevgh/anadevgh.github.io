@@ -1241,8 +1241,13 @@ h5{
         line-height: 12px;
         letter-spacing: 0.11px;
     }
-
-
+    .exp-acc-key-points {
+        margin-top: 12px;
+        gap: 8px;
+    }
+    .exp-acc-key-point {
+        width: calc((100% - 2 * 8px) / 2);
+    }
 
 
 
@@ -1316,6 +1321,17 @@ h5{
     }
     body .exp-scd-txt-row p br {
         display: none;
+    }
+    .exp-approach .sc-headline p br, .exp-txt br {
+        display: none;
+    }
+    .ct-wrap {
+        width: 100%;
+        padding: 0 16px;
+    }
+    .post-card {
+        width: 100%;
+        margin-bottom: 24px;
     }
 }
 @media screen and (min-width:479px) and (max-width: 600px) {
@@ -1584,8 +1600,16 @@ h5{
         width: 100%;
         margin: 0;
     }
-
-
+    .exp-issues-row .exp-lcol br, .exp-br-cta .sc-headline br {
+        display: none;
+    }
+    .ct-wrap p br {
+        display: none;
+    }
+    .post-info h6 {
+        font-size: 20px;
+        line-height: 24px;
+    }
 
 }
 @media screen and (max-width: 340px) {
