@@ -3,10 +3,8 @@ const { title, text } = Astro.props;
 ---
 
 <section class="sc-hero banner-vd" id="dna-hero">
-    <div class="sc-hero-vd">
-        <video id="dna-video" muted playsinline autoplay>
-            <source src="/vd/dna-full-spin-low.mp4" type="video/mp4">
-        </video>
+    <div class="sc-hero-vd" id="hero-vd-container">
+
     </div>
     <div class="sc-dna-intro">
         <div class="container">
@@ -21,81 +19,132 @@ const { title, text } = Astro.props;
 </section>
 
 <style>
-  .sc-hero{
-    padding-bottom: 8.75rem;
-  }
-  video{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-  .sc-dna-intro{
-    margin-top: 7.5rem;
-  }
-  .dna-sc-wrap {
-    width: 60rem;
-    margin: auto;
-  }
-  @media screen and (max-width: 1000px) {
-    .dna-sc-wrap {
-        width: 100%;
-    }
-    .sc-dna-intro{
-      margin-top: 40px;
-    }
-    .dna-sc-wrap .sc-txt {
-      width: 447px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .sc-hero{
-      padding-bottom: 40px;
-    }
-  }
-  @media screen and (max-width: 479px) {
-    .dna-sc-wrap .sc-txt {
-      width: 100%;
-    }
-    .dna-sc-wrap {
-      padding: 0 16px;
-    }
-  }
+	.sc-hero{
+		padding-bottom: 8.75rem;
+	}
+	.sc-hero-vd {
+		position: sticky;
+		top: 0;
+		overflow: hidden;
+		will-change: transform;
+	}
+	video{
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+	.sc-dna-intro{
+		margin-top: 7.5rem;
+	}
+	.dna-sc-wrap {
+		width: 60rem;
+		margin: auto;
+	}
+	@media screen and (max-width: 1000px) {
+		.dna-sc-wrap {
+			width: 100%;
+		}
+		.sc-dna-intro{
+			margin-top: 40px;
+		}
+		.dna-sc-wrap .sc-txt {
+			width: 447px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.sc-hero{
+			padding-bottom: 40px;
+		}
+	}
+	@media screen and (max-width: 479px) {
+		.dna-sc-wrap .sc-txt {
+			width: 100%;
+		}
+		.dna-sc-wrap {
+			padding: 0 16px;
+		}
+	}
 </style>
 
 <script>
-  const video = document.getElementById('dna-video');
+	const totalFrames = 41;
+	const introFrames = 20;
+	const container = document.getElementById('hero-vd-container');
+	const images = [];
 
-  video.addEventListener('loadedmetadata', () => {
-    const halfDuration = video.duration / 2;
-    let scrollEnabled = false;
+	// --- Preload all frames ---
+	for (let i = 1; i <= totalFrames; i++) {
+		const img = new Image();
+		img.src = `/frames/frame${i}.png`; 
+		img.style.display = "none";
+		img.style.width = "100%";
+		img.style.height = "auto";
+		img.style.objectFit = "cover";
+		container.appendChild(img);
+		images.push(img);
+	}
 
-    // --- Step 1: Play first half automatically ---
-    video.currentTime = 0;
-    video.play();
+	images[0].style.display = "block";
 
-    const firstHalfInterval = setInterval(() => {
-      if (video.currentTime >= halfDuration) {
-        video.pause();          // stop at half
-        scrollEnabled = true;   // enable scroll control
-        clearInterval(firstHalfInterval);
-      }
-    }, 50);
+	let currentFrame = 0;
+	let targetFrame = 0;
+	let introPlaying = true;
 
-    // --- Step 2: Scroll-driven control for second half ---
-    window.addEventListener('scroll', () => {
-      if (!scrollEnabled) return; // ignore scroll until first half finishes
+	// --- Auto-play first 20 frames ---
+	function playIntro() {
+		if (currentFrame < introFrames - 1) {
+			images[currentFrame].style.display = "none";
+			currentFrame++;
+			images[currentFrame].style.display = "block";
+			requestAnimationFrame(playIntro);
+		} else {
+			introPlaying = false;
+			targetFrame = introFrames;
+		}
+	}
 
-      const scrollTop = window.scrollY;
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const scrollFraction = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+	playIntro();
 
-      if (scrollFraction === 0) {
-        // At top: reset to first frame
-        video.currentTime = 0;
-      } else {
-        // Map scrollFraction to second half
-        video.currentTime = halfDuration + scrollFraction * halfDuration;
-      }
-    });
-  });
+	// --- Scroll-driven frames 21-41 ---
+	const section = document.getElementById("dna-hero");
+	const stickyContainer = document.querySelector(".sc-hero-vd");
+
+	// Make the container sticky
+	stickyContainer.style.position = "sticky";
+	stickyContainer.style.top = "0";
+
+	window.addEventListener("scroll", () => {
+		if (introPlaying) return;
+
+		const rect = section.getBoundingClientRect();
+		const windowHeight = window.innerHeight;
+
+		// Calculate scrollFraction only while section is in viewport
+		// 0 = top of section at top of viewport
+		// 1 = bottom of section at top of viewport
+		const sectionScroll = Math.min(Math.max(-rect.top / (rect.height - windowHeight), 0), 1);
+
+		// Map scroll fraction to frames 21-41
+		targetFrame = introFrames + Math.floor(sectionScroll * (totalFrames - introFrames - 1));
+	});
+
+	// --- Smooth animation loop ---
+	function animateFrames() {
+		if (!introPlaying) {
+			currentFrame += (targetFrame - currentFrame) * 0.15; // lerp for smooth transition
+			const displayIndex = Math.round(currentFrame);
+
+			images.forEach((img, i) => {
+			img.style.display = i === displayIndex ? "block" : "none";
+			});
+		}
+
+		requestAnimationFrame(animateFrames);
+	}
+
+	animateFrames();
 </script>
+
+
+
+
