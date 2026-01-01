@@ -7,8 +7,8 @@ const { title, text, items } = Astro.props;
     <div class="container">
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
-                <h2 set:html={title}></h2>
-                <div class="sc-txt">
+                <h2 class="txt-anim" set:html={title}></h2>
+                <div class="sc-txt txt-anim">
                     <p set:html={text}></p>
                 </div>
             </div>
@@ -16,8 +16,8 @@ const { title, text, items } = Astro.props;
     </div>
     <div class="team-mb-scroll sc-grey">
         <div class={`team-mb-row fx`}>
-            {items.map((item: { videoLink: string; name: string; designation: string; text: string; }) => (
-                <div class="team-member">
+            {items.map((item: { videoLink: string; name: string; designation: string; text: string; }, i) => (
+                <div class="team-member reveal-anim" data-index={i}>
                     <div class="mmb-vd">
                          <video poster={item.posterLink} muted playsinline preload="metadata">
                             <source src={item.videoLink} type="video/mp4">

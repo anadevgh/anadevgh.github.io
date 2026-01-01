@@ -8,15 +8,15 @@ const { title, text, items } = Astro.props;
     <div class="container ps-rel">
         <div class="sc-wrapper">
             <div class="sc-headline sc-headline-adv ps-rel">
-                <h2 set:html={title}></h2>
-                <div class="sc-txt">
+                <h2 class="txt-anim" set:html={title}></h2>
+                <div class="sc-txt txt-anim">
                     <p set:html={text}></p>
                 </div>
             </div>
         </div>
         <div class="sl-full-items fx fx-jb fx-jc fx-wrap">
-            {items.map((item: { title: string; subtitle: string; slIcon: string; solutions: any[]; buttonLink: string; buttonText: string; }) => (
-                <div class="sl-f-col fx fx-ae fx-wrap">
+            {items.map((item: { title: string; subtitle: string; slIcon: string; solutions: any[]; buttonLink: string; buttonText: string; }, i) => (
+                <div class="sl-f-col fx fx-ae fx-wrap reveal-anim" data-index={i}>
                     <div class="sl-info-top fwidth">
                         <div class="sl-f-icon">
                             <Image src={item.slIcon} alt={item.title} />

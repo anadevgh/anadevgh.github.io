@@ -8,12 +8,12 @@ const { heading, items } = Astro.props;
     <div class="container">
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
-                <h2 set:html={heading}></h2>
+                <h2 class="txt-anim" set:html={heading}></h2>
             </div>
         </div>
         <div class="exp-grid-wrap fx fx-wrap fx-jc ps-rel">
-            {items.map((item: { img: string; title: string; subtitle: string; buttontext: string; buttonLink: string; solutionsBtnText: string; solutionsBtnLink: string; }) => (
-                <div class="exp-item fx fx-wrap fx-ae ps-rel">
+            {items.map((item: { img: string; title: string; subtitle: string; buttontext: string; buttonLink: string; solutionsBtnText: string; solutionsBtnLink: string; }, i) => (
+                <div class="exp-item fx fx-wrap fx-ae ps-rel reveal-anim" data-index={i}>
                     <div class="exp-item-wrap fwidth">
                         <div class="exp-item-top fwidth">
                             <h4 set:html={item.title}></h4>

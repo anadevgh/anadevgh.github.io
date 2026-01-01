@@ -9,13 +9,13 @@ const { img, title, text, buttonText } = Astro.props;
         <div class="sc-hr-hf-wrap fx fx-wrap fx-jb fx-ac">
             <div class="sc-hero-hf-lcol">
                 <div class="hero-intro-text">
-                    <h1 set:html={title}></h1>
-                    <div class="sc-txt">
+                    <h1 class="txt-anim" set:html={title}></h1>
+                    <div class="sc-txt txt-anim">
                         <p set:html={text}></p>
                     </div>
                     {buttonText && (
                         <div class="hero-btn-row fx">
-                            <a class="btn-primary btn-primary-lg fx fx-ac fx-jc" href="/contact">
+                            <a class="btn-primary btn-primary-lg fx fx-ac fx-jc txt-anim" href="/contact">
                                 <span>{buttonText}</span>
                             </a>
                         </div>

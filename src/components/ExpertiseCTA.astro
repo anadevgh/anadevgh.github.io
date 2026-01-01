@@ -6,16 +6,16 @@ const { heading, description, button1text, button1Link, button2text, button2Link
     <div class="container">
         <div class="sc-wrapper ps-rel">
             <div class="sc-headline ps-rel">
-                <h2 set:html={heading}></h2>
-                <div class="sc-txt exp-cta-desc-row">
+                <h2 class="txt-anim" set:html={heading}></h2>
+                <div class="sc-txt exp-cta-desc-row txt-anim">
                     <p set:html={description}></p>
                 </div>
             </div>
             <div class="btn-row btn-exp-row fx fx-jc"> 
-                <a href="/solutions" class="btn-primary btn-primary-lg btn-dark fx fx-ac fx-jc">
+                <a href="/solutions" class="btn-primary btn-primary-lg btn-dark fx fx-ac fx-jc txt-anim">
                     <span>{button1text}</span>
                 </a>
-                <a href="/contact" class="btn-primary btn-primary-lg btn-dark fx fx-ac fx-jc">
+                <a href="/contact" class="btn-primary btn-primary-lg btn-dark fx fx-ac fx-jc txt-anim">
                     <span>{button2text}</span>
                 </a>
             </div>

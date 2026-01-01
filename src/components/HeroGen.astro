@@ -11,18 +11,18 @@ const { img, title, text, secText, buttonText, secClass } = Astro.props;
                 <Image src={img} alt={title} />
             </div>
             <div class="hero-intro-text">
-                <h1 set:html={title}></h1>
-                <div class="sc-txt">
+                <h1 class="txt-anim" set:html={title}></h1>
+                <div class="sc-txt txt-anim">
                     <p set:html={text}></p>
                 </div>
                 {secText && (
-                    <div class="sc-subtext">
+                    <div class="sc-subtext txt-anim">
                         <p set:html={secText}></p>
                     </div>
                 )}
                 {buttonText && (
                     <div class="hero-btn-row fx fx-jc">
-                         <a class="btn-primary btn-primary-lg fx fx-ac fx-jc" href="/contact">
+                         <a class="btn-primary btn-primary-lg fx fx-ac fx-jc txt-anim" href="/contact">
                             <span>{buttonText}</span>
                         </a>
                     </div>

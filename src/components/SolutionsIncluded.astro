@@ -8,12 +8,12 @@ import { Image } from 'astro:assets';
     <div class="container">
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
-                <h2 set:html={title}></h2>
+                <h2 class="txt-anim" set:html={title}></h2>
             </div>
         </div>
         <div class="sl-inc-items fx fx-jb">
-            {items.map((item: { title: string; graphic: string; points: any[] }) => (
-                <div class="sl-inc-col fx fx-wrap">
+            {items.map((item: { title: string; graphic: string; points: any[] }, i) => (
+                <div class="sl-inc-col reveal-anim fx fx-wrap" data-index={i}>
                     <div class="sl-inc-col-wrap">
                         <div class="sl-inc-graphic fwidth">
                             <Image src={item.graphic} alt={item.title} />

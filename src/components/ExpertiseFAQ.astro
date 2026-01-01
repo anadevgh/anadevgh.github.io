@@ -8,13 +8,13 @@ const { heading, items, loadJs, showGrd, isSolutions } = Astro.props;
     <div class="container">
         <div class="sc-wrapper ps-rel">
             <div class="sc-headline ps-rel">
-                <h2>{heading}</h2>
+                <h2 class="txt-anim">{heading}</h2>
             </div>
         </div>
         <div class="faq-wrap ps-rel">
             <div class="faq-list fx fx-wrap">
-                {items.map((item: { title: string; text: string; }) => (
-                    <div class="exp-acc-item exp-faq">
+                {items.map((item: { title: string; text: string; }, i) => (
+                    <div class="exp-acc-item exp-faq reveal-anim" data-index={i}>
                         <div class="exp-acc-top fx fx-ac fx-jb fwidth">
                             <div class="exp-acc-top-lcol">
                                 <h5>{item.title}</h5>

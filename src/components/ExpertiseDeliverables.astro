@@ -6,8 +6,8 @@ const { heading, description, items } = Astro.props;
     <div class="container">
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
-                <h2>{heading}</h2>
-                <div class="sc-txt">
+                <h2 class="txt-anim">{heading}</h2>
+                <div class="sc-txt txt-anim">
                     <p>{description}</p>
                 </div>
             </div>
@@ -15,8 +15,8 @@ const { heading, description, items } = Astro.props;
         <div class="exp-dv-wrap">
             <div class="exp-dv-container">
                 <div class="exp-dv-list fx fx-wrap fx-jc">
-                    {items.map((item: { title: string; }) => (
-                        <div class="exp-dv-item fx fx-wrap">
+                    {items.map((item: { title: string; }, i) => (
+                        <div class="exp-dv-item fx fx-wrap reveal-anim" data-index={i}>
                             <div class="exp-dv-item-wrap fx fx-ac">
                                 <div class="exp-dv-icon">
                                     <img src="/file-icon.svg" alt="file icon" />

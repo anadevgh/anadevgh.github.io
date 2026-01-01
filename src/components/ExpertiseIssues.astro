@@ -7,14 +7,14 @@ const { heading, description, items, secDesc } = Astro.props;
     <div class="container">
         <div class="exp-issues-row fx fx-jb ps-rel">
             <div class="exp-lcol">
-                <h2>{heading}</h2>
-                <div class="sc-txt">
+                <h2 class="txt-anim">{heading}</h2>
+                <div class="sc-txt txt-anim">
                     <p set:html={description}></p>
                 </div>
             </div>
             <div class="exp-rcol fx fx-wrap">
-                {items.map((item: { title: string; text: string; }) => (
-                    <div class="exp-iss-col">
+                {items.map((item: { title: string; text: string; }, i) => (
+                    <div class="exp-iss-col reveal-anim" data-index={i}>
                         <div class="exp-iss-col-top fx">
                             <div class="exp-iss-icon">
                                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +36,7 @@ const { heading, description, items, secDesc } = Astro.props;
         {secDesc && (
             <div class="exp-scd-txt-row ps-rel">
                 <div class="sc-wrapper">
-                    <div class="exp-txt">
+                    <div class="exp-txt txt-anim">
                         <p set:html={secDesc}></p>
                     </div>
                 </div>

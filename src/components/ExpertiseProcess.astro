@@ -6,8 +6,8 @@ const { heading, description, steps, resultText } = Astro.props;
     <div class="container">
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
-                <h2>{heading}</h2>
-                <div class="sc-txt">
+                <h2 class="txt-anim">{heading}</h2>
+                <div class="sc-txt txt-anim">
                     <p>{description}</p>
                 </div>
             </div>
@@ -15,8 +15,8 @@ const { heading, description, steps, resultText } = Astro.props;
     </div>
     <div class="exp-br-prc-scroll" style={`--steps: ${steps.length}`}>
         <div class={`exp-br-prc-row fx ${steps.length <= 5 ? 'fx-jc m-pd' : ''}`}>
-            {steps.map((step: { stepNumber: string; title: string; description: string; }) => (
-                <div class="exp-br-prc-col fx fx-wrap fx-ae ps-rel">
+            {steps.map((step: { stepNumber: string; title: string; description: string; }, i) => (
+                <div class="exp-br-prc-col fx fx-wrap fx-ae ps-rel reveal-anim" data-index={i}>
                     <div class="exp-acc-dot fx fx-ac fx-jc">
                         <div class="exp-dot"></div>
                     </div>
@@ -33,7 +33,7 @@ const { heading, description, steps, resultText } = Astro.props;
     </div>
     <div class="container">
         <div class="sc-wrapper">
-            <div class="sc-txt">
+            <div class="sc-txt txt-anim">
                 <p>{resultText}</p>
             </div>
         </div>

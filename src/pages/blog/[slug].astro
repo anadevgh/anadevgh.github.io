@@ -26,15 +26,15 @@ const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
             <div class="single-post-wrap">
                 <article>
                     <div class="single-post-banner-wrap">
-                        <div class="single-post-banner">
+                        <div class="single-post-banner txt-anim">
                             {image && (
                                 <Image src={image} alt={post.title.rendered} inferSize={true} />
                             )}
                         </div>
-                        <div class="post-date">
+                        <div class="post-date txt-anim">
                             <p>{formatPostDate(post.date)}</p>
                         </div>
-                        <h1>{post.title.rendered}</h1>
+                        <h1 class="txt-anim">{post.title.rendered}</h1>
                     </div>
                     <div class="single-post-content" set:html={post.content.rendered}></div>
                 </article>

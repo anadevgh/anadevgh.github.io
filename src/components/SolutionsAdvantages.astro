@@ -7,15 +7,15 @@ const { title, text, items, secText, buttonText } = Astro.props;
     <div class="container">
         <div class="sc-wrapper">
             <div class="sc-headline sc-headline-adv ps-rel">
-                <h2 set:html={title}></h2>
-                <div class="sc-txt">
+                <h2 class="txt-anim" set:html={title}></h2>
+                <div class="sc-txt txt-anim">
                     <p set:html={text}></p>
                 </div>
             </div>
         </div>
         <div class="sl-adv-items fx fx-jb">
-            {items.map((item: { title: string; }) => (
-                <div class="sl-adv-col">
+            {items.map((item: { title: string; }, i) => (
+                <div class="sl-adv-col reveal-anim" data-index={i}>
                    <div class="sl-adv-col-wrap fx fx-as">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M3 14L9.5 19.5L21.5 5" stroke="#27FF43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -27,14 +27,14 @@ const { title, text, items, secText, buttonText } = Astro.props;
         </div>
         {secText && (
             <div class="sc-wrapper">
-                <div class="sc-adv-txt">
+                <div class="sc-adv-txt txt-anim">
                     <p set:html={secText}></p>
                 </div>
             </div>
         )}
         {buttonText && (
             <div class="btn-row fx fx-jc">
-                <a href="/contact" class="btn-primary btn-primary-lg fx fx-ac fx-jc">
+                <a href="/contact" class="btn-primary txt-anim btn-primary-lg fx fx-ac fx-jc">
                     <span>{buttonText}</span>
                 </a>
             </div>

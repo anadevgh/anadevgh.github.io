@@ -11,8 +11,8 @@ const { img, title, subTitle, text } = Astro.props;
                 <Image src={img} alt={title} />
             </div>
             <div class="exp-intro-text">
-                <h1 set:html={title}></h1>
-                <div class="sc-txt">
+                <h1 class="txt-anim" set:html={title}></h1>
+                <div class="sc-txt txt-anim">
                     {subTitle && (
                         <p set:html={subTitle}></p>
                     )}

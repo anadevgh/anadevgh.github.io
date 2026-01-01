@@ -7,8 +7,8 @@ const { heading, description, items } = Astro.props;
     <div class="container">
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
-                <h2 set:html={heading}></h2>
-                <div class="sc-txt">
+                <h2 class="txt-anim" set:html={heading}></h2>
+                <div class="sc-txt txt-anim">
                     <p set:html={description}></p>
                 </div>
             </div>
@@ -16,8 +16,8 @@ const { heading, description, items } = Astro.props;
     </div>
     <div class="exp-pw-scroll ps-rel">
         <div class={`exp-pw-row fx`}>
-            {items.map((item: { title: string; subItems: any[]; }) => (
-                <div class="exp-pw-col">
+            {items.map((item: { title: string; subItems: any[]; }, i) => (
+                <div class="exp-pw-col reveal-anim" data-index={i}>
                    <div class="exp-pw-col-top">
                         <h4 set:html={item.title}></h4>
                    </div>
@@ -41,12 +41,12 @@ const { heading, description, items } = Astro.props;
     </div>
     <div class="exp-pw-txt-row container">
         <div class="sc-wrapper">
-            <div class="sc-txt sc-txt-noS">
+            <div class="sc-txt sc-txt-noS txt-anim">
                 <p>Your next step isn't choosing a service — it's choosing the direction you want your business to grow.</p>
             </div>
         </div>
         <div class="btn-row fx fx-jc">
-            <a href="/solutions" class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc">
+            <a href="/solutions" class="btn-primary btn-primary-lg btn-primary-blue fx fx-ac fx-jc txt-anim">
                 <span>Explore All Solutions →</span>
             </a>
         </div>

@@ -7,17 +7,17 @@ const { title, text, items } = Astro.props;
     <div class="container">
         <div class="sc-wrapper">
             <div class="sc-headline ps-rel">
-                <h2 set:html={title}></h2>
+                <h2 class="txt-anim" set:html={title}></h2>
                 {text && (
-                    <div class="sc-txt">
+                    <div class="sc-txt txt-anim">
                         <p set:html={text}></p>
                     </div>
                 )}
             </div>
         </div>
         <div class="sl-ch-items fx fx-jb">
-            {items.map((item: { title: string; text: string; }) => (
-                <div class="sl-ch-col">
+            {items.map((item: { title: string; text: string; }, i) => (
+                <div class="sl-ch-col reveal-anim" data-index={i}>
                    <div class="sl-ch-col-tt fx fx-ac">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23" fill="none">
                             <path d="M10.2679 2C11.0377 0.666667 12.9623 0.666667 13.7321 2L22.3923 17C23.1621 18.3333 22.1999 20 20.6603 20H3.33975C1.80015 20 0.837895 18.3333 1.6077 17L10.2679 2Z" stroke="#FF6725" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
