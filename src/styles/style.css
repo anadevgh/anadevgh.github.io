@@ -1294,6 +1294,9 @@ h5{
     .exp-cta-desc-row p br {
         display:none;
     }
+    .sl-list .sc-txt br {
+        display: none;
+    }
 }
 @media screen and (max-width:700px){
     body .gts-form-main-wrapper {
@@ -1339,6 +1342,7 @@ h5{
     .sc-adv-txt br {
         display: none;
     }
+    
 }
 @media screen and (min-width:479px) and (max-width: 600px) {
     .pj-featured-2col {
@@ -1616,6 +1620,7 @@ h5{
         font-size: 20px;
         line-height: 24px;
     }
+    
 
 }
 @media screen and (max-width: 340px) {

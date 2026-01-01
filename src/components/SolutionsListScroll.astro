@@ -16,7 +16,7 @@ const { title, text, items } = Astro.props;
         </div>
     </div>
     <div class="sl-items-scroll">
-        <div class="sl-full-items fx fx-jb fx-jc">
+        <div class="sl-full-items ps-rel fx fx-jb fx-jc">
             {items.map((item: { title: string; subtitle: string; slIcon: string; solutions: any[]; buttonLink: string; buttonText: string }) => (
                 <div class="sl-f-col fx fx-ae fx-wrap">
                     <div class="sl-info-top fwidth">
@@ -64,7 +64,7 @@ const { title, text, items } = Astro.props;
         gap: 1.5rem;
         flex-wrap: nowrap;
         min-width: max-content;
-        padding: 0 0 0 5rem;
+        padding: 0 6rem;
     }
     .sl-items-scroll{
         overflow-x: scroll;
@@ -138,6 +138,61 @@ const { title, text, items } = Astro.props;
             -webkit-box-pack: center;
             -ms-flex-pack: center;
             justify-content: center;
+        }
+    }
+    @media screen and (max-width:1000px) {
+        .sl-full-items{
+            margin-top: 40px;
+            gap: 12px;
+            padding: 0 40px;
+        }
+        .sl-f-col {
+            width: 380px;
+            padding: 31px 26px;
+            border-radius: 12px;
+        }
+        .sl-f-icon img {
+            width: 20rem;
+            margin-top: 20px;
+        }
+        .sl-info-top h3 {
+            font-size: 24px;
+            line-height: 28px;
+            letter-spacing: 0;
+            margin-top: 40px;
+        }
+        .sl-info-top h4 {
+            font-size: 12px;
+            line-height: 14px;
+            letter-spacing: 0.24px;
+            margin: 13px 0 16px 0;
+        }
+        .sl-pack:not(:last-child) {
+            margin-bottom: 13px;
+        }
+        .sl-pack svg {
+            width: 16px;
+        }
+        .sl-pack span {
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.28px;
+            padding-left: 7px;
+        }
+        .btn-row {
+            margin-top: 31px;
+        }
+
+    }
+    @media screen and (max-width:479px) {
+        .sl-full-items{
+            padding: 0 16px;
+        }
+        .sl-f-col {
+            width: 330px;
+        }
+        .sc-headline {
+            padding: 0 16px;
         }
     }
 </style>
