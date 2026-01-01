@@ -19,6 +19,10 @@ import iconsBundle1 from '../../assets/results/pl/icons-bundle-1.svg';
 import iconsBundle2 from '../../assets/results/pl/icons-bundle-2.svg';
 import macbookBg from '../../assets/results/pl/macbook-bg.webp';
 
+import laferlaThumb from '../../assets/results/laferla/laferla-thumb.jpg';
+import boomerangThumb from '../../assets/results/boomerang/hero-banner.jpg';
+import qbetThumb from '../../assets/results/qbet/hero-banner.jpg';
+
 const currentPageLink = Astro.url.href;
 const currentPageTitle = "Paperless";
 const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
@@ -233,19 +237,19 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
         <div class="pj-list hz-scroll">
             <div class="pj-featured-cols fx fx-jb">
                 <div class="pj-featured-item">
-                    <a href="#">
+                    <a href="/portfolio/laferla-website-redesign/">
                         <div class="pj-ft-image">
-                            <img src="/laferla-app-cover.webp" alt="Laferla"/>
+                            <Image src={laferlaThumb} alt="laferla-thumb" />
                         </div>
                         <div class="pj-ft-info-row fwidth">
                             <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
                                 <div class="pj-ft-info-lcol">
                                     <div class="pj-ft-info-lcol-wrap">
-                                        <h3>Laferla App</h3>
+                                        <h3>Laferla</h3>
                                     </div>
                                 </div>
                                 <div class="pj-ft-info-rcol">
-                                    <p>UX/UI Design, Wireframing, Prototyping</p>
+                                    <p>Web Design, Branding, Consulting</p>
                                 </div>
                             </div>
                             <div class="pj-ft-info-txt">
@@ -255,67 +259,45 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
                     </a>
                 </div>
                 <div class="pj-featured-item">
-                    <a href="#">
+                    <a href="/portfolio/boomerang/">
                         <div class="pj-ft-image">
-                            <img src="/laferla-project-cover.webp" alt="Laferla"/>
+                            <Image src={boomerangThumb} alt="boomerang-thumb" />
                         </div>
                         <div class="pj-ft-info-row fwidth">
                             <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
                                 <div class="pj-ft-info-lcol">
                                     <div class="pj-ft-info-lcol-wrap">
-                                        <h3>Laferla Website</h3>
+                                        <h3>Boomerang</h3>
                                     </div>
                                 </div>
                                 <div class="pj-ft-info-rcol">
-                                    <p>UX/UI Design, Wireframing, Prototyping</p>
+                                    <p>Branding</p>
                                 </div>
                             </div>
                             <div class="pj-ft-info-txt">
-                                <h4>Creating an Insurance instrument with all functions in your pocket</h4>
+                                <h4>Brand book for the business</h4>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="pj-featured-item">
-                    <a href="#">
+                    <a href="/portfolio/qbet/">
                         <div class="pj-ft-image">
-                            <img src="/spinbet-project-cover.webp" alt="Spinbet"/>
+                            <Image src={qbetThumb} alt="qbet-thumb" />
                         </div>
                         <div class="pj-ft-info-row fwidth">
                             <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
                                 <div class="pj-ft-info-lcol">
                                     <div class="pj-ft-info-lcol-wrap">
-                                        <h3>Spinbet</h3>
+                                        <h3>QBet</h3>
                                     </div>
                                 </div>
                                 <div class="pj-ft-info-rcol">
-                                    <p>Brand Identity, Web Design, 3D </p>
+                                    <p>Branding</p>
                                 </div>
                             </div>
                             <div class="pj-ft-info-txt">
-                                <h4>Casino and Sportsbook platforms for an iGaming startup from Germany</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="pj-featured-item">
-                    <a href="#">
-                        <div class="pj-ft-image">
-                            <img src="/laferla-project-cover.webp" alt="Laferla"/>
-                        </div>
-                        <div class="pj-ft-info-row fwidth">
-                            <div class="pj-ft-info-wrap fx fx-jb fx-wrap">
-                                <div class="pj-ft-info-lcol">
-                                    <div class="pj-ft-info-lcol-wrap">
-                                        <h3>Laferla Website</h3>
-                                    </div>
-                                </div>
-                                <div class="pj-ft-info-rcol">
-                                    <p>UX/UI Design, Wireframing, Prototyping</p>
-                                </div>
-                            </div>
-                            <div class="pj-ft-info-txt">
-                                <h4>Creating an Insurance instrument with all functions in your pocket</h4>
+                                <h4>QBet text goes here</h4>
                             </div>
                         </div>
                     </a>
@@ -337,6 +319,27 @@ const currentPageMetaTitle = currentPageTitle+" - IPOINT INT";
 }
 .mobile-views .rs-inner-cols:first-child {
     row-gap: 1.5rem;
+}
+
+@media screen and (max-width:1000px) {
+    .mobile-views .rs-inner-cols:first-child {
+        row-gap: 12px; 
+    }
+}
+@media screen and (max-width:479px) {
+    .rs-inner-smcol {
+        width: 100%;
+    }
+    .rs-ar-videos video {
+        aspect-ratio: auto;
+    }
+    .rs-inner-lgcol {
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+
+
 }
 </style>
 <script>
