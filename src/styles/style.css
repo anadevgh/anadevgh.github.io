@@ -1008,6 +1008,9 @@ h5{
     opacity: 1;
     transform: translateY(0);
 }
+.hero-graphic {
+    text-align: center;
+}
 
 @media screen and (max-width:1600px){
     html{
@@ -1354,9 +1357,6 @@ h5{
     }
     .bottom-lg-pd {
         padding-bottom: 80px;
-    }
-    .hero-graphic {
-        text-align: center;
     }
     .mid-wrap {
         width: 100%;
