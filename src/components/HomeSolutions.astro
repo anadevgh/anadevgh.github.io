@@ -9,12 +9,12 @@ const { theme, title, text, buttonLink, buttonText } = Astro.props;
     <div class="container">
         <div class="sl-row fx fx-jb ps-rel">
             <div class="sl-lcol">
-                <h2>{title}</h2>
-                <div class="sc-txt">
+                <h2 class="txt-anim">{title}</h2>
+                <div class="sc-txt txt-anim">
                     <p set:html={text}></p>
                 </div>
                 {buttonLink && (
-                    <div class="sl-btn-row fx">
+                    <div class="sl-btn-row fx txt-anim">
                         <a href={buttonLink}
                             class={`btn-primary btn-primary-lg fx fx-ac fx-jc ${
                                 theme === "dark" ? "" : "btn-dark"
@@ -27,31 +27,31 @@ const { theme, title, text, buttonLink, buttonText } = Astro.props;
             </div>
             <div class="sl-rcol">
                 <div class="sl-logos-row fx fx-jb fx-wrap">
-                   <div class="logo-col fx fx-jc fx-ac">
+                   <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="0">
                         <img src="/logos/sigma-logo.svg" alt="Sigma Logo" />
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac">
+                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="1">
                         <img src="/logos/laferla-logo-new.svg" alt="Laferla Logo" />
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac">
+                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="2">
                         <img src="/logos/spinbet-logo.svg" alt="Spinbet Logo" />
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac">
+                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="3">
                         <img src="/logos/C21-logo.svg" alt="C21 Logo" />
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac">
+                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="4">
                         <img src="/logos/boomerang-logo.svg" alt="Boomerang Logo" />
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac">
+                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="5">
                         <img src="/logos/medilink-logo.svg" alt="Medilink Logo" />
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac">
+                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="6">
                         <img src="/logos/quantum-logo.svg" alt="Quantum Logo" />
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac">
+                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="7">
                         <img src="/logos/alunafi-logo.svg" alt="Alunafi Logo" />
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac">
+                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="8">
                         <img src="/logos/gamanza-logo.svg" alt="Gamanza Logo" />
                     </div>
                 </div>

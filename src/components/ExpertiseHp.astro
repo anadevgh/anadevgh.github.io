@@ -8,9 +8,9 @@ const { title, subTitle, buttonText, buttonLink, text, items } = Astro.props;
     <div class="container">
         <div class="sc-row fx fx-jb">
             <div class="sl-lcol">
-                <h2 set:html={title}></h2>
-                <h3>{subTitle}</h3>
-                <div class="sc-txt">
+                <h2 class="txt-anim" set:html={title}></h2>
+                <h3 class="txt-anim">{subTitle}</h3>
+                <div class="sc-txt txt-anim">
                     <p>{text}</p>
                 </div>
             </div>
@@ -18,8 +18,8 @@ const { title, subTitle, buttonText, buttonLink, text, items } = Astro.props;
     </div>
     <div class="hp-exp-scroll">
         <div class={`hp-exp-row fx`}>
-            {items.map((item: { graphic: string; title: string; text: string; buttonText: string; buttonLink: string; }) => (
-                <div class="hp-exp-col fx fx-ae fx-wrap">
+            {items.map((item: { graphic: string; title: string; text: string; buttonText: string; buttonLink: string; }, i) => (
+                <div class="hp-exp-col reveal-anim fx fx-ae fx-wrap" data-index={i}>
                     <div class="hp-exp-col-top">
                         <h3 set:html={item.title}></h3>
                         <p>{item.text}</p>
@@ -178,6 +178,57 @@ const { title, subTitle, buttonText, buttonLink, text, items } = Astro.props;
        
     }
 </style>
+
+<script is:inline>
+    function initExpColumns() {
+        const cols = document.querySelectorAll('.reveal-anim');
+        if (!cols.length) return;
+
+        cols.forEach(col => {
+            const index = col.dataset.index || 0;
+            col.style.setProperty('--delay', index);
+        });
+
+        const observer = new IntersectionObserver(
+            (entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.25,
+                rootMargin: '0px 0px -10% 0px',
+            }
+        );
+
+        cols.forEach(col => observer.observe(col));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initExpColumns();
+
+        const headings = document.querySelectorAll('.txt-anim');
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+            }
+        );
+
+        headings.forEach((h) => observer.observe(h));
+    });
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {

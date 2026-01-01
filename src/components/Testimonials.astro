@@ -15,9 +15,9 @@ const { theme, title, text, secDesc, buttonText, buttonLink } = Astro.props;
     <div class="container">
         <div class="sc-wrapper">
             <div class="tst-headline ps-rel">
-                <h2>{title}</h2>
+                <h2 class="txt-anim">{title}</h2>
                 {text && (
-                    <div class="sc-txt">
+                    <div class="sc-txt txt-anim">
                         <p>{text}</p>
                     </div>
                 )}
