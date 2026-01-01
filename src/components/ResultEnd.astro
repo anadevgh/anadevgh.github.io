@@ -1,3 +1,8 @@
+---
+const { nextLink } = Astro.props;
+
+---
+
 <section class="rs-next-ref sc-grey">
     <div class="container">
         <div class="sm-wrap tx-center">
@@ -8,7 +13,7 @@
                     <span>Contact Us</span>
                 </a>
             </div>
-            <p class="next-rs-link-text md-text">Or just click the link to see our <a href="#">Next Case Study</a></p>
+            <p class="next-rs-link-text md-text">Or just click the link to see our <a href={nextLink}>Next Case Study</a></p>
         </div>
     </div>
 </section>
