@@ -984,7 +984,15 @@ h5{
 .posts-navigation a.arrow-prev{
     margin-right: 1.25rem;
 }
-
+.txt-anim {
+    opacity: 0;
+    transform: matrix(1, 0, 0, 1, 0, 50);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+.txt-anim.visible {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
 
 @media screen and (max-width:1600px){
     html{
@@ -1248,7 +1256,63 @@ h5{
     .exp-acc-key-point {
         width: calc((100% - 2 * 8px) / 2);
     }
-    
+    .rs-details {
+        padding: 40px 0 80px 0;
+    }
+    .rs-info {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0.28px;
+        padding-bottom: 60px;
+        border-bottom-width: 1px;
+        margin-top: 0;
+    }
+    .rs-heading {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .rs-info p {
+        margin-bottom: 15px;
+    }
+    .col {
+        width: calc((100% - 12px) / 2);
+    }
+    .rs-actions-row {
+        margin: 60px 0 0 0;
+    }
+    .rs-sharing {
+        margin-right: 32px;
+    }
+    .rs-action-links > span {
+        margin-right: 16px;
+        line-height: 16px;
+    }
+    .md-text {
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0.24px;
+    }
+    .rs-action-links a:not(:last-child) {
+        margin-right: 8px;
+    }
+    .rs-action-links svg {
+        width: 24px;
+    }
+    .rs-info-cols {
+        margin-top: 60px;
+    }
+    .rs-info-rows {
+        margin-top: 16px;
+    }
+    .rs-info-col {
+        width: 20%;
+    }
+
+
+
+
+
+
 
 
 
