@@ -70,6 +70,7 @@ const { title, text, items, secText, buttonText } = Astro.props;
     .sl-adv-col-wrap svg{
         width: 1.5rem;
         height: 1.5rem;
+        flex-shrink: 0;
     }
     .sl-adv-col-wrap{
         padding: 2rem;
@@ -91,5 +92,61 @@ const { title, text, items, secText, buttonText } = Astro.props;
         margin: 0;
         text-align: center;
         font-family: 'pp_neue_montrealbook';
+    }
+    @media screen and (max-width:1000px) {
+        .sl-adv .sc-wrapper {
+            width: 100%;
+        }
+        .sl-adv-items {
+            margin-top: 26px;
+            gap: 12px;
+        }
+        .sl-adv-col {
+            width: calc((100% - 2 * 12px) / 3);
+        }
+        .sl-adv-col-wrap {
+            padding: 20px;
+            border-radius: 12px;
+            border-width: 1px;
+        }
+        .sl-adv-col-wrap svg {
+            width: 16px;
+            height: auto;
+            flex-shrink: 0;
+        }
+        .sl-adv-col-wrap span {
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.32px;
+            margin-left: 8px;
+        }
+        .sc-adv-txt, .btn-row {
+            margin-top: 40px;
+        }
+    }
+    @media screen and (max-width:800px) {
+        .sl-adv-items {
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        .sl-adv-col {
+            width: calc((100% - 12px) / 2);
+        }
+        
+    }
+    @media screen and (max-width:600px) {
+        .sl-adv-col {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width:479px) {
+        .sl-adv .sc-headline, .sc-adv-txt {
+            padding: 0 16px;
+        }
+        
     }
 </style>

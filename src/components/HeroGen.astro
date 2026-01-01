@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-const { img, title, text, secText, buttonText } = Astro.props;
+const { img, title, text, secText, buttonText, secClass } = Astro.props;
 
 ---
 
-<section class="sc-hero sc-al-cnt">
+<section class={`sc-hero sc-al-cnt ${secClass}`}>
     <div class="container">
-        <div class="sc-hr-wrap fx fx-wrap">
+        <div class="sc-hr-wrap">
             <div class="hero-graphic">
                 <Image src={img} alt={title} />
             </div>
@@ -62,7 +62,7 @@ const { img, title, text, secText, buttonText } = Astro.props;
         .hero-graphic {
             margin: 0 auto 40px auto;
         }
-        .hero-graphic img {
+        .ct-hero-banner .hero-graphic img {
             width: 120px;
         }
         .hero-intro-text .sc-txt, .hero-intro-text .sc-subtext {
@@ -84,15 +84,39 @@ const { img, title, text, secText, buttonText } = Astro.props;
         .sc-hero {
             padding-bottom: 60px;
         }
+        .sl-hero-banner {
+            padding-top: 40px;
+        }
+        .sl-hero-banner .hero-graphic {
+            margin-bottom: 53px;
+        }
+        .hero-btn-row {
+            margin-top: 40px;
+        }
     }
     @media screen and (max-width:700px){
         .sc-hr-wrap, .ct-wrap {
             width: 100%;
         }
+        .hero-intro-text .sc-txt br {
+            display: none;
+        }
     }
     @media screen and (max-width:479px){
         .hero-intro-text {
             padding: 0 16px;
+        }
+        .hero-intro-text h1 br {
+            display: none;
+        }
+        .sl-hero-banner .hero-graphic {
+            padding: 0 30px;
+        }
+        .sl-hero-banner {
+            padding-top: 20px;
+        }
+        .hero-intro-text .sc-txt, .hero-intro-text .sc-subtext {
+            margin-top: 24px;
         }
     }
 </style>

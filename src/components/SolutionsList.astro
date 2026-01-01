@@ -5,7 +5,7 @@ const { title, text, items } = Astro.props;
 ---
 
 <section class="sl-list sc-al-cnt sc-grey sc-grey-C sc-pd ps-rel">
-    <div class="container">
+    <div class="container ps-rel">
         <div class="sc-wrapper">
             <div class="sc-headline sc-headline-adv ps-rel">
                 <h2 set:html={title}></h2>
@@ -103,6 +103,7 @@ const { title, text, items } = Astro.props;
     .sl-pack svg{
         width: 1.5rem;
         height: auto;
+        flex-shrink: 0;
     }
     .sl-pack span{
         color: var(--white);
@@ -117,5 +118,52 @@ const { title, text, items } = Astro.props;
     }
     .btn-row{
         margin-top: 2.5rem;
+    }
+    @media screen and (max-width:1000px) {
+        .sl-full-items {
+            margin-top: 40px;
+            gap: 12px;
+        }
+        .sl-f-col {
+            width: calc((100% - 12px) / 2);
+            padding: 31px 26px;
+            border-radius: 12px;
+        }
+        .sl-f-icon img {
+            width: 20rem;
+            margin-top: 20px;
+        }
+        .sl-info-top h3 {
+            font-size: 24px;
+            line-height: 28px;
+            letter-spacing: 0;
+            margin-top: 40px;
+        }
+        .sl-info-top h4 {
+            font-size: 12px;
+            line-height: 14px;
+            letter-spacing: 0.24px;
+            margin: 13px 0 16px 0;
+        }
+        .sl-pack:not(:last-child) {
+            margin-bottom: 13px;
+        }
+        .sl-pack svg {
+            width: 16px;
+        }
+        .sl-pack span {
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.28px;
+            padding-left: 7px;
+        }
+        .btn-row {
+            margin-top: 31px;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .sl-f-col {
+            width: 100%;
+        }
     }
 </style>

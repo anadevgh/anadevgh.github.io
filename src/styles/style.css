@@ -1076,7 +1076,7 @@ h5{
         margin-top: 24px;
     }
     .sc-txt ul {
-        margin: 16px 0 0 20px;
+        margin: 16px 0 16px 25px;
     }
     .post-image {
         border-radius: 12px 12px 0 0;
@@ -1248,7 +1248,7 @@ h5{
     .exp-acc-key-point {
         width: calc((100% - 2 * 8px) / 2);
     }
-
+    
 
 
 
@@ -1332,6 +1332,12 @@ h5{
     .post-card {
         width: 100%;
         margin-bottom: 24px;
+    }
+    .sl-ch .sc-txt p br {
+        display: none;
+    }
+    .sc-adv-txt br {
+        display: none;
     }
 }
 @media screen and (min-width:479px) and (max-width: 600px) {
