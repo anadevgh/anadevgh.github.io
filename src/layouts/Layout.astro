@@ -20,6 +20,6 @@ import Footer from '../components/Footer.astro';
 		<Header />
 		<slot />
 		{isContact === "yes" ? <Footer isContact="yes" /> : <Footer />}
-		<script src="/src/lib/global.js" type="module"></script>
+		<script type="module" src="/js/global.js"></script>
 	</body>
 </html>
