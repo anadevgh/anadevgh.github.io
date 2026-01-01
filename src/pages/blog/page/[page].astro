@@ -122,7 +122,17 @@ function formatPostDate(dateString) {
         font-weight: 500;
     }
     .post-card{
-        width: calc((100% - 3 * 24px) / 3);
+        width: calc((100% - 2 * 24px) / 3);
+    }
+    @media screen and (max-width: 700px) {
+        .post-card {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width: 479px) {
+        .sc-headline {
+            padding: 0 16px;
+        }
     }
 </style>
 

@@ -58,19 +58,24 @@ const { title, subTitle, buttonText, buttonLink, text, items } = Astro.props;
     .hp-exp-scroll {
         overflow-x: scroll;
         overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-        cursor: grab;
+        cursor:grab;
     }
     .hp-exp-scroll::-webkit-scrollbar {
-        display: none;
+        width: auto;
+        height: 1px;
+    }
+    .hp-exp-scroll::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 0;
+    }
+    .hp-exp-scroll::-webkit-scrollbar-thumb {
+        background: transparent;
+        border-radius: 0;
     }
     .hp-exp-row{
         margin: 2.7rem 0 0 0;
         gap: 1.5rem;
         padding: 0 0 0 6rem;
-        flex-wrap: nowrap;
-        min-width: max-content;
     }
     .hp-exp-col{
         border-radius: 1.25rem;
@@ -78,6 +83,7 @@ const { title, subTitle, buttonText, buttonLink, text, items } = Astro.props;
         width: 23.75rem;
         height: 32.5rem;
         padding: 2rem 2rem 0 2rem;
+        flex-shrink: 0;
     }
     .hp-exp-col-top{
         align-self: flex-start;
@@ -180,7 +186,7 @@ const { title, subTitle, buttonText, buttonLink, text, items } = Astro.props;
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    /*document.addEventListener('DOMContentLoaded', () => {
         const slider = document.querySelector('.hp-exp-scroll');
 
         const updateCursor = () => {
@@ -231,5 +237,5 @@ const { title, subTitle, buttonText, buttonLink, text, items } = Astro.props;
             slider.scrollLeft += e.deltaY;
             }
         }, { passive: false });
-    });
+    });*/
 </script>
