@@ -130,50 +130,37 @@ import soundOnIcon from '../../public/volume-down-fill.svg';
     const soundToggle = document.getElementById("sound-toggle");
     const iconWrap = soundToggle.querySelector(".sound-switcher-icon");
 
-    // Ensure scaling happens from top
     wrapper.style.transformOrigin = 'top center';
 
     function handleScroll() {
         const rect = section.getBoundingClientRect();
         const vh = window.innerHeight;
 
-        // section fully above viewport
-        if (rect.bottom <= 0) {
+        // Fully out of view → reset
+        if (rect.bottom <= 0 || rect.top >= vh) {
             wrapper.style.transform = 'translate3d(0,0,0) scale(1)';
             wrapper.style.zIndex = 1;
+            wrapper.style.top = "0";
             video.pause();
             return;
         }
 
-        // section fully below viewport
-        if (rect.top >= vh) {
-            wrapper.style.transform = 'translate3d(0,0,0) scale(1)';
-            wrapper.style.zIndex = 1;
-            video.pause();
-            return;
+        const visibleHeight = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+        const visibilityRatio = Math.max(0, Math.min(visibleHeight / rect.height, 1));
+
+        let scale = 1;
+
+        if (visibilityRatio > 0.8) {
+            const progress = Math.min((visibilityRatio - 0.5) / 0.4, 1); // 0 → 1
+            scale = 1 + 0.3 * progress;
         }
 
-        // progress for scaling
-        const shrinkStartOffset = 0.5; // start shrinking earlier
-        const shrinkTrigger = vh * shrinkStartOffset;
-        let progress;
-
-        if (rect.top < vh / 2) {
-            progress = Math.max((rect.bottom - shrinkTrigger) / (vh - shrinkTrigger), 0); // 1 → 0
-        } else {
-            progress = Math.min((vh/2 - rect.top)/(vh/2), 1); // 0 → 1
-        }
-
-        const scale = 1 + 0.3 * progress;
-
-        // Use translate3d to keep it pinned at the top
-        wrapper.style.transform = `translate3d(0, 0, 0) scale(${scale})`;
-        wrapper.style.zIndex = 10;
-
+        wrapper.style.transform = `translate3d(0,0,0) scale(${scale})`;
+        wrapper.style.zIndex = 9;
+        wrapper.style.top = "-2rem";
         video.play();
     }
 
-    // Throttle scroll with requestAnimationFrame
     let ticking = false;
     window.addEventListener('scroll', () => {
         if (!ticking) {
@@ -186,13 +173,10 @@ import soundOnIcon from '../../public/volume-down-fill.svg';
     });
 
     window.addEventListener('resize', handleScroll);
-
-    // Initial
     handleScroll();
 
     soundToggle.addEventListener("click", () => {
         video.muted = !video.muted;
         iconWrap.classList.toggle("sound-on", !video.muted);
     });
-
 </script>

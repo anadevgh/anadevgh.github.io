@@ -76,9 +76,9 @@
     .hero-anim img{
         object-fit: cover;
         height: 100%;
-        -webkit-transition: opacity 1s ease-out;
-        -moz-transition: opacity 1s ease-out;
-        transition: opacity 1s ease-out;
+        -webkit-transition: opacity 0.5s ease-out;
+        -moz-transition: opacity 0.5s ease-out;
+        transition: opacity 0.5s ease-out;
     }
     .hero-anim img:last-child{
         position: absolute;
@@ -141,7 +141,7 @@
             secondImg.classList.add("show");
         }, 1000);
 
-        const fadeDistance = 400;
+        const fadeDistance = 250;
 
         window.addEventListener("scroll", () => {
             const scrollY = window.scrollY;
