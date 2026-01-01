@@ -339,6 +339,17 @@ import qbetThumb from '../assets/results/qbet/hero-banner.jpg';
     .hp-solutions h1{
         color: var(--lightGrey);
     }
+    .hp-solutions h1.visible, .hp-solutions h2.visible{
+        animation: blurPulse 2s 1 ease-in-out;
+    }
+    @keyframes blurPulse {
+        0%, 100% {
+            filter: blur(1px);
+        }
+        50% {
+            filter: blur(3px);
+        }
+    }
     .sl-filter-row{
         margin: 2.5rem 0 0 0;
         gap: 0.5rem;
