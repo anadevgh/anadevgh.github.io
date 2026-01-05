@@ -131,6 +131,7 @@ import soundOnIcon from '../../public/volume-down-fill.svg';
     const iconWrap = soundToggle.querySelector(".sound-switcher-icon");
 
     wrapper.style.transformOrigin = 'top center';
+    let hasPlayed = false;
 
     function handleScroll() {
         const rect = section.getBoundingClientRect();
@@ -142,6 +143,7 @@ import soundOnIcon from '../../public/volume-down-fill.svg';
             wrapper.style.zIndex = 1;
             wrapper.style.top = "0";
             video.pause();
+            hasPlayed = false;
             return;
         }
 
@@ -153,12 +155,20 @@ import soundOnIcon from '../../public/volume-down-fill.svg';
         if (visibilityRatio > 0.8) {
             const progress = Math.min((visibilityRatio - 0.5) / 0.4, 1); // 0 → 1
             scale = 1 + 0.3 * progress;
+
+            if (!hasPlayed) {
+                video.play();
+                hasPlayed = true;
+            }else {
+                video.pause();
+                hasPlayed = false;
+            }
         }
 
         wrapper.style.transform = `translate3d(0,0,0) scale(${scale})`;
         wrapper.style.zIndex = 9;
         wrapper.style.top = "-2rem";
-        video.play();
+        //video.play();
     }
 
     let ticking = false;
