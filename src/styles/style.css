@@ -58,7 +58,6 @@ html, body {
     font-weight: 500;
     font-family: 'pp_neue_montrealmedium';
     position: relative;
-    overflow-x: hidden;
 }
 html{
     scroll-behavior: smooth;

@@ -58,11 +58,16 @@ const isBlogPage = currentPath.includes('/blog');
                                         <div class="field-group fx fx-jb">
                                             <div class="field-group-h ps-rel">
                                                 <label for="ct-name">Name</label>
-                                                <input type="text" name="ct-name" id="ct-name" value="" autocomplete="nope">
+                                                <input type="text" name="ct-name" id="ct-name" value="" autocomplete="nope" required>
+                                                <div class="err-msg" id="err-email">
+                                                    <div class="fx fx-ac">
+                                                        <span>This field is required!</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="field-group-h ps-rel">
                                                 <label for="ct-email">Email</label>
-                                                <input type="text" name="ct-email" id="ct-email" value="" placeholder="example@email.com" autocomplete="nope">
+                                                <input type="email" name="ct-email" id="ct-email" value="" placeholder="example@email.com" autocomplete="nope" required>
                                                 <div class="err-msg" id="err-email">
                                                     <div class="fx fx-ac">
                                                         <span>Invalid email: only letters, numbers, '@', and '.' allowed</span>
@@ -72,7 +77,12 @@ const isBlogPage = currentPath.includes('/blog');
                                         </div>
                                         <div class="field-group">
                                             <label for="ct-company">Company</label>
-                                            <input type="text" name="ct-company" id="ct-company" value="" autocomplete="nope">
+                                            <input type="text" name="ct-company" id="ct-company" value="" autocomplete="nope" required>
+                                            <div class="err-msg" id="err-email">
+                                                <div class="fx fx-ac">
+                                                    <span>This field is required!</span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="field-group ps-rel">
                                             <div  class="field-lbl fx fx-jb fx-ac">
@@ -86,7 +96,7 @@ const isBlogPage = currentPath.includes('/blog');
                                                 <label>By sending your data, you confirm you have read and agree with our <a>Privacy Policy</a>, which details data collection purposes, recipients, retention periods, and your rights.</label>
                                             </div>
                                             <div class="ct-apply-btn fx ps-rel">
-                                                <button id="ct-submit" type="submit" class="btn-submit fx fx-ac" disabled="">Submit</button>
+                                                <button id="ct-submit" type="submit" class="btn-submit fx fx-ac" disabled>Submit</button>
                                                 <div class="hidden-mask"></div>
                                             </div>
                                         </div>
@@ -441,7 +451,7 @@ const isBlogPage = currentPath.includes('/blog');
         cursor: not-allowed;
     }
     .err-msg{
-        opacity: 0;
+        display:none;
         -webkit-transition: all .3s linear;
         -moz-transition: all .3s linear;
         transition: all .3s linear;
@@ -759,7 +769,7 @@ const isBlogPage = currentPath.includes('/blog');
     }
     .gts-form-last-step {
         opacity: 0; 
-        display: none; 
+        display: none;
         transition: opacity .45s ease; 
     }
     .gts-form-row.active { 
@@ -1053,5 +1063,7 @@ const isBlogPage = currentPath.includes('/blog');
     if(row){
         renderStep();
     }
+
+
 
 </script>
