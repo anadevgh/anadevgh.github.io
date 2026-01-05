@@ -51,29 +51,26 @@ const { title, text, items } = Astro.props;
     }
     .sl-lcol{
         width: 45%;
-        opacity: 0;
         position: relative;
         -webkit-transition: opacity .3s linear;
         -moz-transition: opacity .3s linear;
         transition: opacity .3s linear;
         margin-right: auto;
-        height: 70vh;
     }
     .col-fixed{
         position: fixed;
         top: 0px;
         left: 0;
         height: 100%;
-        opacity: 1;
         padding-left: 6rem;
     }
     .col-fixed-btm{
         width: 45%;
-        height: 89%;
         position: absolute;
         opacity: 1;
         left: 0;
-        align-items: flex-end;
+        /*height: 89%;
+        align-items: flex-end;*/
         padding-left: 0;
     }
     .sl-rcol{
@@ -255,10 +252,8 @@ const { title, text, items } = Astro.props;
             lcol.classList.add("col-fixed");
             rcol.classList.add("rcol-fixed");
         } else if (lastRect.bottom <= window.innerHeight) {
-            console.log('1');
             lcol.classList.add("col-fixed-btm");
         } else if (sectionRect.top > 0) {
-            console.log('2');
             lcol.classList.remove("col-fixed");
             rcol.classList.remove("rcol-fixed");
         }
