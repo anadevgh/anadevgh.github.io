@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import nodemailer from 'nodemailer';
 
-const FILE_PATH = path.resolve('./submissions.json');
+//const FILE_PATH = path.resolve('./submissions.json');
 
 function saveSubmission(data){
     let submissions = [];
@@ -21,14 +21,14 @@ export async function POST({ request }) {
         const company = body['ct-company'];
         const message = body['ct-message'];
         const answers = body.answers;
-        console.log(body);
+        /*console.log(body);
         console.log(name);
         console.log(email);
         console.log(company);
         console.log(message);
         console.log(answers);
-        console.log(answers[0]);
-        //const { name,email,company,message } = body;
+        console.log(answers[0]);*/
+
         if(!name || !email || !company || !answers) return new Response(
             JSON.stringify({success:false,error:'Missing fields'}),{status:400}
         );
