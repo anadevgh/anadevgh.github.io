@@ -2,17 +2,17 @@
 import { Image } from 'astro:assets';
 import quoteIcon from '../../public/quotation-icon.png';
 const year = new Date().getFullYear();
-const { isContact = "no" } = Astro.props;
+const { isContact = "no", isErr = "no" } = Astro.props;
 
 const currentPath = Astro.url.pathname;
-const hideOn = ["/portfolio/paperless-website-redesign/", "/portfolio/boomerang/", "/portfolio/qbet/", "/branding-identity-design/", "/ux-ui-web-experience/", "/custom-web-development/", "/digital-marketing/", "/software-development/", "/creative-production/", "/expertise/", "/portfolio/laferla-website-redesign/"];
+const hideOn = ["/portfolio/paperless-website-redesign/", "/portfolio/boomerang/", "/portfolio/qbet/", "/branding-identity-design/", "/ux-ui-web-experience/", "/custom-web-development/", "/digital-marketing/", "/software-development/", "/creative-production/", "/expertise/", "/portfolio/laferla-website-redesign/", "/privacy-policy/", "/terms-and-conditions/", "/cookie-policy/"];
 const shouldHide = hideOn.includes(currentPath);
 
 const isBlogPage = currentPath.includes('/blog');
 
 ---
 
-{ (!shouldHide && !isBlogPage) && (
+{ (!shouldHide && !isBlogPage && isErr !== "yes") && (
     <section class="get-started-form sc-pd sc-grey sc-grey-C ps-rel">
         <div class="container">
             <div class="headline ps-rel">
@@ -45,7 +45,7 @@ const isBlogPage = currentPath.includes('/blog');
                 </div>
                 <div class="gts-form-main ps-rel">
                     <div id="gts-row" class="gts-form-row gts-form-step fourcol fx"></div>
-                    <div class="gts-form-last-step" id="gts-last-step">
+                    <div class="gts-form-last-step ps-rel" id="gts-last-step">
                         <div class="gts-form-main-wrapper">
                             <div class="gts-quote-icon">
                                 <Image src={quoteIcon} alt=" " />
@@ -56,44 +56,59 @@ const isBlogPage = currentPath.includes('/blog');
                                 <div class="gts-lstep-form">
                                     <form id="ct-form" method="post" autocomplete="off">
                                         <div class="field-group fx fx-jb">
-                                            <div class="field-group-h ps-rel">
+                                            <div class="field field-group-h ps-rel">
                                                 <label for="ct-name">Name</label>
                                                 <input type="text" name="ct-name" id="ct-name" value="" autocomplete="nope" required>
                                                 <div class="err-msg" id="err-email">
                                                     <div class="fx fx-ac">
-                                                        <span>This field is required!</span>
+                                                        <span class="error"></span>
                                                     </div>
                                                 </div>
+                                                <div class="success-icon" aria-hidden="true">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                                                        <path d="M4 9.4L0 5.4L1.4 4L4 6.6L10.6 0L12 1.4L4 9.4Z" fill="#04A107"/>
+                                                    </svg>
+                                                </div>
                                             </div>
-                                            <div class="field-group-h ps-rel">
+                                            <div class="field field-group-h ps-rel">
                                                 <label for="ct-email">Email</label>
                                                 <input type="email" name="ct-email" id="ct-email" value="" placeholder="example@email.com" autocomplete="nope" required>
                                                 <div class="err-msg" id="err-email">
                                                     <div class="fx fx-ac">
-                                                        <span>Invalid email: only letters, numbers, '@', and '.' allowed</span>
+                                                        <span class="error"></span>
                                                     </div>
+                                                </div>
+                                                <div class="success-icon" aria-hidden="true">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                                                        <path d="M4 9.4L0 5.4L1.4 4L4 6.6L10.6 0L12 1.4L4 9.4Z" fill="#04A107"/>
+                                                    </svg>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="field-group">
+                                        <div class="field field-group ps-rel">
                                             <label for="ct-company">Company</label>
                                             <input type="text" name="ct-company" id="ct-company" value="" autocomplete="nope" required>
                                             <div class="err-msg" id="err-email">
                                                 <div class="fx fx-ac">
-                                                    <span>This field is required!</span>
+                                                    <span class="error"></span>
                                                 </div>
                                             </div>
+                                            <div class="success-icon" aria-hidden="true">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                                                <path d="M4 9.4L0 5.4L1.4 4L4 6.6L10.6 0L12 1.4L4 9.4Z" fill="#04A107"/>
+                                                </svg>
+                                            </div>
                                         </div>
-                                        <div class="field-group ps-rel">
+                                        <div class="field field-group ps-rel">
                                             <div  class="field-lbl fx fx-jb fx-ac">
                                                 <label for="ct-message">Message</label>
                                                 <span>Optional</span>
                                             </div>
                                             <textarea id="ct-message" name="ct-message" placeholder="Leave a message if you'd like" rows="2" autocomplete="off"></textarea>
                                         </div>
-                                        <div class="field-group-btm field-terms fx fx-jb fx-ac fx-wrap">
+                                        <div class="field-group-btm field-terms fx fx-jb fx-ac">
                                             <div class="field-group-ack fx fx-ac">
-                                                <label>By sending your data, you confirm you have read and agree with our <a>Privacy Policy</a>, which details data collection purposes, recipients, retention periods, and your rights.</label>
+                                                <label>By sending your data, you confirm you have read and agree with our <a class="rg-link" href="/privacy-policy/" target="_blank">Privacy Policy</a>, which details data collection purposes, recipients, retention periods, and your rights.</label>
                                             </div>
                                             <div class="ct-apply-btn fx ps-rel">
                                                 <button id="ct-submit" type="submit" class="btn-submit fx fx-ac" disabled>Submit</button>
@@ -104,6 +119,41 @@ const isBlogPage = currentPath.includes('/blog');
                                 </div>
                                 <div class="ct-sc-subtext">
                                     <p>Not sure what you need? Just share your thoughts, no perfect brief required.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-status-box">
+                            <div class="form-status-area fx fx-ac fx-jc fx-wrap">
+                                <div class="form-status-box-wrap">
+                                    <div class="form-status-type form-success-status">
+                                        <div class="form-status-icon form-status-success fx fx-jc">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+                                                <circle cx="80" cy="80" r="50" fill="#04A107" fill-opacity="0.08"/>
+                                                <circle cx="80" cy="80" r="50" fill="#04A107" fill-opacity="0.14"/>
+                                                <circle cx="80" cy="80" r="50" fill="#04A107" fill-opacity="0.2"/>
+                                                <circle cx="80" cy="80" r="50" fill="#04A107"/>
+                                                <path d="M73.3333 96L60 82.8085L64.6667 78.1915L73.3333 86.766L95.3333 65L100 69.617L73.3333 96Z" fill="#F5F5F7"/>
+                                            </svg>
+                                        </div>
+                                        <h5 class="form-status-heading">Details submitted.</h5>
+                                        <h6 class="form-status-subheading">Thanks! We'll reach out with next steps.</h6>
+                                    </div>
+                                    <div class="form-status-type form-error-status">
+                                        <div class="form-status-icon form-status-error fx fx-jc">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+                                                <circle cx="80" cy="80" r="50" fill="#E20000" fill-opacity="0.08"/>
+                                                <circle cx="80" cy="80" r="50" fill="#E20000" fill-opacity="0.14"/>
+                                                <circle cx="80" cy="80" r="50" fill="#E20000" fill-opacity="0.2"/>
+                                                <circle cx="80" cy="80" r="50" fill="#E20000"/>
+                                                <path d="M68.4912 96L64 91.5088L75.5489 79.9599L64 68.4912L68.4912 64L80.0401 75.5489L91.5088 64L96 68.4912L84.4511 79.9599L96 91.5088L91.5088 96L80.0401 84.4511L68.4912 96Z" fill="#F5F5F7"/>
+                                            </svg>
+                                        </div>
+                                        <h5 class="form-status-heading">Oops!</h5>
+                                        <h6 class="form-status-subheading">Something went wrong</h6>
+                                        <div class="try-again-btn">
+                                            <button class="btn-primary">Try again</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -249,18 +299,6 @@ const isBlogPage = currentPath.includes('/blog');
                                 </defs>
                             </svg>
                         </a>
-                        <a href="/" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37101 0 0 5.37491 0 11.9978C0 18.2934 4.85696 23.4609 11.0266 23.9567V24H12C18.629 24 24 18.6251 24 12.0022C24 5.37975 18.6295 0 12 0ZM14.6516 21.7002C13.8988 21.9055 13.1107 22.0256 12.2985 22.0492H12C10.6456 22.0492 9.35338 21.781 8.17376 21.2947C9.3159 17.1794 12.4121 14.2318 15.9559 12.9146C16.5675 15.8785 16.1236 19.0547 14.6516 21.7002ZM15.4163 11.04C11.3716 12.4968 7.83914 15.7784 6.41977 20.3582C3.72339 18.5548 1.94675 15.4824 1.94675 11.9978C1.94675 10.7621 2.16994 9.57831 2.57825 8.48452C3.79532 9.09094 5.09671 9.5199 6.43503 9.75844C8.13986 10.071 9.88657 10.0606 11.5864 9.75412C12.554 9.57944 13.4986 9.3012 14.4044 8.93044C14.8075 9.60063 15.1466 10.3068 15.4163 11.04ZM17.8323 12.3789C18.4168 15.0767 18.2395 17.9357 17.3067 20.5404C20.0742 18.817 21.9426 15.7861 22.0485 12.3139C20.6728 12.0645 19.2387 12.0949 17.8323 12.3789ZM21.9132 10.3212C20.3897 10.1072 18.8229 10.1767 17.2925 10.5037C16.9911 9.65803 16.6106 8.84342 16.1573 8.06991C17.4147 7.3437 18.563 6.42968 19.5501 5.3639C20.7573 6.73654 21.5965 8.44064 21.9132 10.3212ZM6.77898 7.84264C5.61636 7.63565 4.4871 7.26251 3.43327 6.73584C4.33961 5.26412 5.61473 4.04339 7.12997 3.20271L7.14164 3.20639L7.14208 3.20652L7.14214 3.20654L7.14216 3.20655C7.30723 3.2585 7.46483 3.30809 7.61658 3.36256C7.67257 3.38394 7.72739 3.40473 7.78098 3.42504L7.78182 3.42536L7.78187 3.42538L7.7819 3.42539C8.02797 3.51869 8.24771 3.60201 8.43127 3.68711L8.48366 3.7133L8.49614 3.7191C8.61206 3.77301 8.77908 3.85262 8.92961 3.9244C9.00959 3.96257 9.08497 3.9985 9.14553 4.02715L9.14778 4.02839C9.19841 4.05557 9.24093 4.07841 9.28057 4.10204C9.31282 4.12296 9.34162 4.13991 9.35707 4.14895C9.38531 4.16549 9.41433 4.18184 9.43826 4.19515C9.45869 4.20651 9.47875 4.21757 9.49379 4.22582L9.50137 4.22999L9.51738 4.23884L9.51941 4.24C9.54172 4.25286 9.56879 4.26831 9.59966 4.28594C9.66584 4.3237 9.74951 4.37144 9.84138 4.42521C9.90614 4.46316 9.96674 4.49935 10.0162 4.52999C10.0529 4.55281 10.0729 4.56605 10.0805 4.57109L10.0809 4.57139C10.084 4.57346 10.0848 4.57395 10.0835 4.57299L10.1262 4.60532L10.1736 4.63349C10.2459 4.67639 10.3171 4.72569 10.406 4.7872L10.4061 4.78722L10.4061 4.78724L10.4065 4.7875C10.447 4.81559 10.4913 4.84622 10.5411 4.87997L10.5748 4.90289L10.6036 4.91909C10.6035 4.91914 10.6049 4.92004 10.6077 4.92197C10.6155 4.92717 10.6342 4.93981 10.6669 4.96322C10.7172 4.99922 10.7779 5.04441 10.8447 5.09466L10.9239 5.15429C10.9645 5.185 11.0058 5.21612 11.0409 5.24237C11.0872 5.27706 11.1439 5.31917 11.1951 5.35465C11.9421 5.92594 12.6249 6.57827 13.2328 7.29729C12.586 7.53394 11.9194 7.71612 11.2407 7.83866C9.76121 8.1054 8.25 8.1126 6.78408 7.84358L6.78153 7.84309L6.77898 7.84264ZM12 1.9464C14.3075 1.9464 16.4333 2.72466 18.1299 4.03257C17.2404 4.99495 16.1987 5.81456 15.0582 6.45596C14.274 5.45927 13.3668 4.56192 12.3553 3.79142L12.3309 3.77282L12.3055 3.75591L12.2986 3.75111C12.2932 3.7473 12.286 3.74215 12.2768 3.73544C12.2581 3.72188 12.235 3.70475 12.2072 3.68397C12.1757 3.66042 12.1442 3.63659 12.1103 3.611L12.1102 3.61095L12.1032 3.6057C12.0757 3.58494 12.0466 3.56297 12.0148 3.53903C11.9458 3.4872 11.8702 3.43083 11.8008 3.38106C11.7523 3.34628 11.6825 3.29709 11.6113 3.25371L11.5661 3.22245L11.5658 3.22227L11.5658 3.22226C11.4731 3.15808 11.3341 3.0618 11.2077 2.98413C11.0895 2.9013 10.9298 2.80694 10.8252 2.74567C10.7239 2.68635 10.6148 2.6241 10.5471 2.58545L10.5466 2.58515L10.4953 2.55582C10.4826 2.54839 10.4715 2.54225 10.4672 2.53985L10.4666 2.53952L10.4403 2.52498L10.4314 2.52008C10.4163 2.51176 10.4012 2.50344 10.3855 2.49469C10.3675 2.48468 10.353 2.47642 10.3423 2.47024L10.335 2.46512L10.3092 2.44934C10.2157 2.39221 10.1183 2.34004 10.0654 2.31172L10.0643 2.31112L10.0459 2.30125L10.0233 2.28908L10 2.27811C9.95359 2.25619 9.88492 2.22348 9.80696 2.18631C10.5129 2.02925 11.2467 1.9464 12 1.9464Z" fill="white"/>
-                            </svg>
-                        </a>
-                        <a href="/" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <rect width="24" height="24" rx="12" fill="white"/>
-                                <path d="M8.65327 6.74219C9.1143 6.74219 9.54021 6.77731 9.93099 6.88269C10.3218 6.95295 10.6423 7.09784 10.9277 7.27347C11.2131 7.44911 11.4239 7.69938 11.5688 8.01991C11.7093 8.34044 11.7839 8.73122 11.7839 9.15713C11.7839 9.65329 11.6785 10.0792 11.4283 10.3997C11.2131 10.7203 10.8618 11.0057 10.4315 11.2164C11.0375 11.392 11.4985 11.7126 11.7795 12.1385C12.0605 12.5644 12.2406 13.0957 12.2406 13.7016C12.2406 14.1978 12.1352 14.6237 11.9552 14.9793C11.7795 15.335 11.4941 15.6555 11.1736 15.8663C10.8531 16.0814 10.4623 16.257 10.0364 16.3624C9.61046 16.4678 9.18456 16.5381 8.75865 16.5381L3.99902 16.5468V6.74219H8.65327ZM8.36787 10.7203C8.75865 10.7203 9.07918 10.6149 9.32506 10.4348C9.57095 10.2548 9.68072 9.93869 9.68072 9.54791C9.68072 9.33276 9.64559 9.122 9.57534 8.98149C9.50509 8.84099 9.39971 8.73122 9.25481 8.62584C9.1143 8.55559 8.96941 8.48533 8.79378 8.45021C8.61814 8.41508 8.43812 8.41508 8.22736 8.41508H6.16808V10.7246C6.16808 10.7203 8.36787 10.7203 8.36787 10.7203ZM8.47325 14.9135C8.6884 14.9135 8.89915 14.8783 9.07918 14.8432C9.25481 14.8081 9.43483 14.7378 9.57534 14.6281C9.71584 14.5183 9.82561 14.4129 9.93099 14.2373C10.0012 14.0616 10.0715 13.8465 10.0715 13.5962C10.0715 13.1001 9.93099 12.7444 9.64559 12.4941C9.36019 12.279 8.96941 12.1736 8.50837 12.1736H6.16808V14.9091H8.47325V14.9135Z" fill="#17191F"/>
-                                <path d="M15.3315 14.8779C15.6169 15.1633 16.0428 15.3038 16.6092 15.3038C17 15.3038 17.3556 15.1985 17.641 15.0184C17.9264 14.8033 18.1021 14.5925 18.1723 14.3774H19.9111C19.6257 15.2292 19.1998 15.8351 18.6333 16.2259C18.0669 16.5816 17.3908 16.7923 16.5741 16.7923C16.0077 16.7923 15.5071 16.6869 15.0461 16.5069C14.585 16.3313 14.2294 16.081 13.9089 15.7254C13.5883 15.4048 13.3424 15.0141 13.1975 14.553C13.0219 14.092 12.9473 13.5958 12.9473 13.025C12.9473 12.4937 13.0175 11.9932 13.1975 11.5321C13.3776 11.0711 13.6234 10.6803 13.944 10.3247C14.2645 10.0041 14.6553 9.71875 15.0812 9.54312C15.5422 9.36748 16.0033 9.25771 16.5741 9.25771C17.18 9.25771 17.7113 9.36309 18.1723 9.61337C18.6333 9.86364 18.989 10.1447 19.2744 10.5706C19.5598 10.9613 19.7706 11.4224 19.9155 11.9185C19.9857 12.4147 20.0208 12.9152 19.9857 13.4817H14.8353C14.8353 14.0612 15.0461 14.5925 15.3315 14.8779ZM17.5708 11.1458C17.3205 10.8955 16.9297 10.755 16.4687 10.755C16.1482 10.755 15.9023 10.8252 15.6871 10.9306C15.472 11.036 15.3315 11.1809 15.191 11.3214C15.0505 11.4619 14.9758 11.6419 14.9407 11.8175C14.9056 11.9932 14.8704 12.1381 14.8704 12.2786H18.0669C17.9967 11.7517 17.8167 11.396 17.5708 11.1458ZM14.4445 7.41797H18.4226V8.37516H14.4445V7.41797Z" fill="#17191F"/>
-                            </svg>
-                        </a>
                     </div>
                 </div>
                 <div class="ft-rcol fx fx-wrap">
@@ -321,9 +359,9 @@ const isBlogPage = currentPath.includes('/blog');
                 <div class="ft-lcol">
                     <div class="ft-pv-menu">
                         <ul class="fx fx-ac">
-                            <li><a href="/" target="_blank">Terms & Conditions</a></li>
-                            <li><a href="/" target="_blank">Privacy Policy</a></li>
-                            <li><a href="/" target="_blank">Cookie Policy</a></li>
+                            <li><a href="/terms-and-conditions/">Terms & Conditions</a></li>
+                            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                            <li><a href="/cookie-policy/">Cookie Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -353,6 +391,7 @@ const isBlogPage = currentPath.includes('/blog');
     .gts-lstep-form-main h5{
         color: var(--darkGrey);
         text-align: center;
+        font-family: 'pp_neue_montrealmedium'; 
         font-size: 3rem;
         font-weight: 500;
         line-height: 3rem;
@@ -361,6 +400,7 @@ const isBlogPage = currentPath.includes('/blog');
     .gts-lstep-form-main h6{
         color: rgba(44, 44, 44, 0.60);
         font-size: 2rem;
+        font-family: 'pp_neue_montrealmedium';
         font-weight: 500;
         line-height: 2rem;
         margin: 0;
@@ -409,12 +449,21 @@ const isBlogPage = currentPath.includes('/blog');
         font-family: 'pp_neue_montrealmedium';
         width: 100%;
     }
+    .field-group input {
+        padding-right: 3rem;
+    }
     .field-group textarea{
         resize: none;
         min-height: 6.75rem;
         height: auto;
         overflow-y: auto;
         max-height: 12.5em;
+    }
+    .field input.is-error, .field textare.is-error {
+        border-color: var(--darkRed);
+    }
+    .field input.is-success, .field textare.is-success {
+        border-color: var(--green);
     }
     .field-lbl span{
         color: rgba(44, 44, 44, 0.30);
@@ -445,6 +494,7 @@ const isBlogPage = currentPath.includes('/blog');
         line-height: 1.75rem;
         border: none;
         outline: none;
+        cursor: pointer;
     }
     .ct-apply-btn button:disabled {
         opacity: 0.3;
@@ -463,6 +513,16 @@ const isBlogPage = currentPath.includes('/blog');
         font-weight: 400;
         line-height: 1rem;
         padding-top: 0.5rem;
+    }
+    .success-icon {
+        position: absolute;
+        right: 1.125rem;
+        top: 3.2rem;
+        opacity: 0;
+        transition: all 0.2s ease;
+    }
+    .is-success + .err-msg + .success-icon {
+        opacity: 1;
     }
     .gs-prev-step{
         color: var(--darkGrey2);
@@ -1064,6 +1124,164 @@ const isBlogPage = currentPath.includes('/blog');
         renderStep();
     }
 
+    const form = document.getElementById('ct-form');
+    const fields = form.querySelectorAll('input, textarea');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const statusBox = document.querySelector('.form-status-box');
+    const statusSuccessBox = document.querySelector('.form-success-status');
+    const statusErrorBox = document.querySelector('.form-error-status');
 
+    fields.forEach(field => {
+        field.addEventListener('input', () => {
+            validateField(field);
+            toggleSubmit();
+        });
 
+        field.addEventListener('blur', () => {
+            validateField(field);
+        });
+    });
+
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        fields.forEach(validateField);
+        if (!form.checkValidity()) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        // Submit logic
+        const formData = Object.fromEntries(new FormData(form));
+        const payload = {
+            ...formData,
+            answers
+        };
+
+        console.log(answers);
+        console.log(formData);
+
+        try {
+            const res = await fetch('/api/contact', {
+                method:'POST',
+                headers:{ 'Content-Type':'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await res.json();
+
+            statusBox.classList.add('revealed');
+            if(result.success){
+                statusErrorBox.classList.remove('revealed');
+                statusSuccessBox.classList.add('revealed');
+                submitBtn.textContent = 'Send';
+                form.reset();
+                fields.forEach(f=>{f.classList.remove('is-success')});
+                setTimeout(()=>toggleSubmit(), 10);
+            } else {
+                statusSuccessBox.classList.remove('revealed');
+                statusErrorBox.classList.add('revealed');
+                submitBtn.textContent = 'Send';
+                //alert(result.error || 'Something went wrong');
+            }
+        } catch(err){
+            console.error(err);
+            console.error('Network error');
+            submitBtn.textContent = 'Send';
+            statusSuccessBox.classList.remove('revealed');
+            statusErrorBox.classList.add('revealed');
+            //alert('Network error');
+        }
+    });
+
+    function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email.trim());
+    }
+
+    function validateField(field) {
+        const errorEl = field.closest('.field')?.querySelector('.error');
+        const errorContainer = errorEl?.closest('.err-msg');
+        const value = field.value.trim();
+
+        // Optional + empty → ignore
+        if (!field.required && value === '') {
+            field.classList.remove('is-error', 'is-success');
+            if (errorEl) errorEl.textContent = '';
+            if (errorContainer) errorContainer.style.display = 'none';
+            field.setCustomValidity('');
+            return;
+        }
+
+        // Required + whitespace only
+        if (field.required && value === '') {
+            field.classList.add('is-error');
+            field.classList.remove('is-success');
+            if (errorEl) errorEl.textContent = 'This field is required';
+            if (errorContainer) errorContainer.style.display = 'block';
+            field.setCustomValidity('This field is required');
+            return;
+        }
+
+        // **Email custom validation**
+        if (field.type === 'email' && !isValidEmail(value)) {
+            field.classList.add('is-error');
+            field.classList.remove('is-success');
+            if (errorEl) errorEl.textContent = "Invalid email: only letters, numbers, '@', and '.' allowed";
+            if (errorContainer) errorContainer.style.display = 'block';
+            field.setCustomValidity('Invalid email');
+            return;
+        }
+
+        // Everything else is valid
+        field.classList.remove('is-error');
+        field.classList.add('is-success');
+        if (errorEl) errorEl.textContent = '';
+        if (errorContainer) errorContainer.style.display = 'none';
+        field.setCustomValidity('');
+    }
+
+    /*function validateField(field) {
+        const errorEl = field.closest('.field')?.querySelector('.error');
+        const errorContainer = errorEl?.closest('.err-msg');
+
+        // Optional + empty → ignore
+        if (!field.required && !field.value.trim()) {
+            field.classList.remove('is-error', 'is-success');
+            if (errorEl) errorEl.textContent = '';
+            if (errorContainer) errorContainer.style.display = 'none';
+            field.setCustomValidity('');
+            return;
+        }
+
+        field.setCustomValidity('');
+
+        if (!field.checkValidity()) {
+            field.classList.add('is-error');
+            field.classList.remove('is-success');
+            if (errorEl) errorEl.textContent = getErrorMessage(field);
+            if (errorContainer) errorContainer.style.display = 'block';
+        } else {
+            field.classList.remove('is-error');
+            field.classList.add('is-success');
+            if (errorEl) errorEl.textContent = '';
+            if (errorContainer) errorContainer.style.display = 'none';
+        }
+    }*/
+
+    function toggleSubmit() {
+        submitBtn.disabled = !form.checkValidity();
+    }
+
+    function getErrorMessage(field) {
+        if (field.validity.valueMissing) {
+            return 'This field is required';
+        }
+
+        if (field.type === 'email' && field.validity.typeMismatch) {
+            return "Invalid email: only letters, numbers, '@', and '.' allowed";
+        }
+
+        return 'Invalid value';
+    }
 </script>

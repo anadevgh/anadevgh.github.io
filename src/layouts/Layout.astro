@@ -21,7 +21,7 @@ import Footer from '../components/Footer.astro';
 		<slot />
 		<Footer
 			{...(isContact === "yes" ? { isContact: "yes" } : {})}
-			{...(isErr ? { isErr } : {})}
+			{...(isErr === "yes" ? { isErr: "yes" } : {})}
 		/>
 		<script type="module" src="/js/global.js"></script>
 	</body>
