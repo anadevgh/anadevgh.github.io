@@ -21,6 +21,7 @@ export async function POST({ request }) {
         const company = body['ct-company'];
         const message = body['ct-message'];
         const answers = body.answers;
+        
         /*console.log(body);
         console.log(name);
         console.log(email);
