@@ -1,0 +1,23 @@
+---
+import HeroGen from '../components/HeroGen.astro';
+import ContactImg from '../../public/quotation-icon.png';
+
+const HeroData = {
+    heading: `Sorry, The page you’re looking for doesn’t exist`,
+    description: `No worries. We’ve got it sorted.`,           
+    img: ContactImg,
+    buttonText: "Back to Homepage",
+    buttonLink: "/",
+    buttonStyle: "dark"
+}
+
+---
+
+<HeroGen 
+    img={HeroData.img}
+    title={HeroData.heading}
+    text={HeroData.description}
+    buttonText={HeroData.buttonText}
+    buttonLink={HeroData.buttonLink}
+    buttonStyle={HeroData.buttonStyle}
+/>

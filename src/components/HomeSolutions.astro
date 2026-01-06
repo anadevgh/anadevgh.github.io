@@ -27,32 +27,46 @@ const { theme, title, text, buttonLink, buttonText } = Astro.props;
             </div>
             <div class="sl-rcol">
                 <div class="sl-logos-row fx fx-jb fx-wrap">
-                   <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="0">
-                        <img src="/logos/sigma-logo.svg" alt="Sigma Logo" />
+                   <div class="logo-col reveal-anim" data-index="0">
+                        <a class="fx fx-jc fx-ac">
+                            <img src="/logos/sigma-logo.svg" alt="Sigma Logo" />
+                        </a>
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="1">
-                        <img src="/logos/laferla-logo-new.svg" alt="Laferla Logo" />
+                    <div class="logo-col reveal-anim" data-index="1">
+                        <a class="fx fx-jc fx-ac" href="/portfolio/laferla-website-redesign/">
+                            <img src="/logos/laferla-logo-new.svg" alt="Laferla Logo" />
+                        </a>
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="2">
-                        <img src="/logos/spinbet-logo.svg" alt="Spinbet Logo" />
+                    <div class="logo-col reveal-anim" data-index="2">
+                        <a class="fx fx-jc fx-ac">
+                            <img src="/logos/enteractive-logo.svg" alt="Enteractive Logo" />
+                        </a>
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="3">
-                        <img src="/logos/C21-logo.svg" alt="C21 Logo" />
+                    <div class="logo-col reveal-anim" data-index="2">
+                        <a class="fx fx-jc fx-ac"></a>
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="4">
-                        <img src="/logos/boomerang-logo.svg" alt="Boomerang Logo" />
+                    <div class="logo-col reveal-anim" data-index="6">
+                        <a class="fx fx-jc fx-ac">
+                            <img src="/logos/quantum-logo.svg" alt="Quantum Logo" />
+                        </a>
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="5">
-                        <img src="/logos/medilink-logo.svg" alt="Medilink Logo" />
+                    <div class="logo-col reveal-anim" data-index="4">
+                        <a class="fx fx-jc fx-ac" href="/portfolio/boomerang/">
+                            <img src="/logos/boomerang-logo.svg" alt="Boomerang Logo" />
+                        </a>
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="6">
-                        <img src="/logos/quantum-logo.svg" alt="Quantum Logo" />
+                    <div class="logo-col reveal-anim" data-index="3">
+                        <a class="fx fx-jc fx-ac">
+                            <img src="/logos/C21-logo.svg" alt="C21 Logo" />
+                        </a>
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="7">
-                        <img src="/logos/alunafi-logo.svg" alt="Alunafi Logo" />
+                    <div class="logo-col reveal-anim" data-index="2">
+                        <a class="fx fx-jc fx-ac"></a>
                     </div>
-                    <div class="logo-col fx fx-jc fx-ac reveal-anim" data-index="8">
-                        <img src="/logos/gamanza-logo.svg" alt="Gamanza Logo" />
+                    <div class="logo-col reveal-anim" data-index="7">
+                        <a class="fx fx-jc fx-ac">
+                            <img src="/logos/alunafi-logo.svg" alt="Alunafi Logo" />
+                        </a>
                     </div>
                 </div>
             </div>
@@ -86,11 +100,12 @@ const { theme, title, text, buttonLink, buttonText } = Astro.props;
         -webkit-transition: transform 0.5s ease;
         -moz-transition: transform 0.5s ease;
         transition: transform 0.5s ease;
+        max-width: 80%;
     }
     .logo-col:hover img{
         transform: scale(1.05);
     }
-    .logo-col::before {
+    .logo-col a:before {
         content: "";
         display: block;
         padding-top: 100%;

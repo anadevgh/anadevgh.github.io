@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-const { img, title, text, secText, buttonText, secClass } = Astro.props;
+const { img, title, text, secText, buttonText, buttonLink, secClass, buttonStyle } = Astro.props;
 
 ---
 
@@ -22,7 +22,9 @@ const { img, title, text, secText, buttonText, secClass } = Astro.props;
                 )}
                 {buttonText && (
                     <div class="hero-btn-row fx fx-jc">
-                         <a class="btn-primary btn-primary-lg fx fx-ac fx-jc txt-anim" href="/contact">
+                         <a 
+                            class={`btn-primary btn-primary-lg fx fx-ac fx-jc txt-anim ${buttonStyle === 'dark' ? 'btn-dark' : ''}`}
+                            href={buttonLink}>
                             <span>{buttonText}</span>
                         </a>
                     </div>

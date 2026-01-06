@@ -1,32 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 const { title, text } = Astro.props;
-import testPostPic1 from '../../src/assets/blog-pattern-1.png';
-import testPostPic2 from '../../src/assets/blog-pattern-2.png';
-import testPostPic3 from '../../src/assets/blog-pattern-3.png';
-import testPostPic4 from '../../src/assets/blog-pattern-4.png';
-import testPostPic5 from '../../src/assets/blog-pattern-5.png';
-import testPostPic6 from '../../src/assets/blog-pattern-9.png';
-import testPostPic7 from '../../src/assets/blog-pattern-7.png';
-import testPostPic8 from '../../src/assets/blog-pattern-8.png';
-
-import testPostPic1_2 from '../../src/assets/blog/grd-test-1.png';
-import testPostPic2_2 from '../../src/assets/blog/grd-test-2.png';
-import testPostPic3_2 from '../../src/assets/blog/grd-test-3.png';
-import testPostPic4_2 from '../../src/assets/blog/grd-test-4.png';
-import testPostPic5_2 from '../../src/assets/blog/grd-test-5.png';
-import testPostPic6_2 from '../../src/assets/blog/grd-test-6.png';
-import testPostPic7_2 from '../../src/assets/blog/grd-test-7.png';
-import testPostPic8_2 from '../../src/assets/blog/grd-test-8.png';
-
-import testPostPic1_3 from '../../src/assets/blog/grd-test-v2-1.png';
-import testPostPic2_3 from '../../src/assets/blog/grd-test-v2-2.png';
-import testPostPic3_3 from '../../src/assets/blog/grd-test-v2-3.png';
-import testPostPic4_3 from '../../src/assets/blog/grd-test-v2-4.png';
-import testPostPic5_3 from '../../src/assets/blog/grd-test-v2-5.png';
-import testPostPic6_3 from '../../src/assets/blog/grd-test-v2-6.png';
-import testPostPic7_3 from '../../src/assets/blog/grd-test-v2-7.jpg';
-import testPostPic8_3 from '../../src/assets/blog/grd-test-v2-8.png';
+import testPostPic1 from '../../src/assets/blog/grd-test-1.png';
+import testPostPic2 from '../../src/assets/blog/grd-test-2.png';
+import testPostPic3 from '../../src/assets/blog/grd-test-9.png';
+import testPostPic4 from '../../src/assets/blog/grd-test-4.png';
+import testPostPic5 from '../../src/assets/blog/grd-test-5.png';
+import testPostPic6 from '../../src/assets/blog/grd-test-6.png';
+import testPostPic7 from '../../src/assets/blog/grd-test-7.png';
+import testPostPic8 from '../../src/assets/blog/grd-test-8.png';
 
 import { getLatestPosts } from '../lib/wordpress';
 
@@ -91,108 +73,6 @@ const postsDummy = [
     },
 ];
 
-const postsDummy_2 = [
-    { 
-        image: testPostPic1_2, 
-        title: 'Branding for Start Up Malta: How Early Stage Brands Build Trust, Clarity, and Investor Confidence',
-        shortTitle: 'Startup Branding That Builds Trust',
-        date: '2025.10.03' 
-    },
-    { 
-        image: testPostPic2_2, 
-        title: 'Branding for B2B Malta: How to Build Authority, Trust, and Long Term Relationships',
-        shortTitle: 'B2B Branding That Builds Trust',
-        date: '2025.9.05' 
-    },
-    { 
-        image: testPostPic3_2, 
-        title: 'Building Scalable iGaming Platforms Through UX Design',
-        shortTitle: 'Scaling iGaming Platforms Through UX',
-        date: '2025.9.05' 
-    },
-    { 
-        image: testPostPic4_2, 
-        title: 'Why Bespoke iGaming Websites in Malta Outperform Templates',
-        shortTitle: 'Why Custom iGaming Sites Win',
-        date: '2025.11.02' 
-    },
-    { 
-        image: testPostPic5_2, 
-        title: 'The Evolution of iGaming Marketing in Malta: From Acquisition to Retention',
-        shortTitle: 'How iGaming Marketing Evolved',
-        date: '2025.10.03' 
-    },
-    { 
-        image: testPostPic6_2, 
-        title: 'Mastering iGaming UX/UI Design in Malta',
-        shortTitle: 'Mastering iGaming UX in Malta',
-        date: '2025.9.05' 
-    },
-    { 
-        image: testPostPic7_2, 
-        title: 'Branding for Start Up Malta: How Early Stage Brands Build Trust, Clarity, and Investor Confidence',
-        shortTitle: 'Startup Branding That Builds Trust',
-        date: '2025.10.03'  
-    },
-    { 
-        image: testPostPic8_2, 
-        title: 'Branding for B2B Malta: How to Build Authority, Trust, and Long Term Relationships',
-        shortTitle: 'B2B Branding That Builds Trust',
-        date: '2025.9.05' 
-    },
-];
-
-const postsDummy_3 = [
-    { 
-        image: testPostPic1_3, 
-        title: 'Branding for Start Up Malta: How Early Stage Brands Build Trust, Clarity, and Investor Confidence',
-        shortTitle: 'Startup Branding That Builds Trust',
-        date: '2025.10.03' 
-    },
-    { 
-        image: testPostPic2_3, 
-        title: 'Branding for B2B Malta: How to Build Authority, Trust, and Long Term Relationships',
-        shortTitle: 'B2B Branding That Builds Trust',
-        date: '2025.9.05' 
-    },
-    { 
-        image: testPostPic3_3, 
-        title: 'Building Scalable iGaming Platforms Through UX Design',
-        shortTitle: 'Scaling iGaming Platforms Through UX',
-        date: '2025.9.05' 
-    },
-    { 
-        image: testPostPic4_3, 
-        title: 'Why Bespoke iGaming Websites in Malta Outperform Templates',
-        shortTitle: 'Why Custom iGaming Sites Win',
-        date: '2025.11.02' 
-    },
-    { 
-        image: testPostPic5_3, 
-        title: 'The Evolution of iGaming Marketing in Malta: From Acquisition to Retention',
-        shortTitle: 'How iGaming Marketing Evolved',
-        date: '2025.10.03' 
-    },
-    { 
-        image: testPostPic6_3, 
-        title: 'Mastering iGaming UX/UI Design in Malta',
-        shortTitle: 'Mastering iGaming UX in Malta',
-        date: '2025.9.05' 
-    },
-    { 
-        image: testPostPic7_3, 
-        title: 'Branding for Start Up Malta: How Early Stage Brands Build Trust, Clarity, and Investor Confidence',
-        shortTitle: 'Startup Branding That Builds Trust',
-        date: '2025.10.03'  
-    },
-    { 
-        image: testPostPic8_3, 
-        title: 'Branding for B2B Malta: How to Build Authority, Trust, and Long Term Relationships',
-        shortTitle: 'B2B Branding That Builds Trust',
-        date: '2025.9.05' 
-    },
-];
-
 ---
 
 <section class="home-insights sc-pd sc-grey sc-grey-C sc-al-cnt ps-rel">
@@ -248,7 +128,7 @@ const postsDummy_3 = [
                     <a href="#">
                         <div class="post-image ps-rel">
                             <Image src={post.image} alt={post.title} />
-                            <div class="post-short-title fx fx-jc fx-ac">
+                            <div class="post-short-title fx fx-jc">
                                 <h5>{post.shortTitle}</h5>
                             </div>
                         </div>
@@ -277,46 +157,12 @@ const postsDummy_3 = [
             </div>
         </div>
         <div class="posts-grid-wrap" id="masonry-grid-3">
-            {postsDummy_2.map(post => (
+            {postsDummy.map(post => (
                 <div class="post-card">
                     <a href="#">
                         <div class="post-image ps-rel">
                             <Image src={post.image} alt={post.title} />
-                            <div class="post-short-title fx fx-jc fx-ac">
-                                <h5>{post.shortTitle}</h5>
-                            </div>
-                        </div>
-                        <div class="post-info">
-                            <h6>{post.title}</h6>
-                            <p>{post.date}</p>
-                        </div>
-                    </a>
-                </div>
-            ))}
-        </div>
-        <div class="btn-row fx fx-jc">
-            <a href="/blog" class="btn-primary btn-dark fx fx-ac fx-jc"><span>Read Articles</span></a>
-        </div>
-    </div>
-</section>
-
-<section class="home-insights-opt sc-pd sc-grey sc-grey-C sc-al-cnt ps-rel">
-    <div class="container">
-        <div class="sc-wrapper">
-            <div class="headline ps-rel">
-                <h2 class="txt-anim">{title}</h2>
-                <div class="sc-txt txt-anim">
-                    <p>{text}</p>
-                </div>
-            </div>
-        </div>
-        <div class="posts-grid-wrap" id="masonry-grid-4">
-            {postsDummy_3.map(post => (
-                <div class="post-card">
-                    <a href="#">
-                        <div class="post-image ps-rel">
-                            <Image src={post.image} alt={post.title} />
-                            <div class="post-short-title fx fx-jc fx-ac">
+                            <div class="post-short-title fx fx-jc">
                                 <h5>{post.shortTitle}</h5>
                             </div>
                         </div>
@@ -345,6 +191,7 @@ const postsDummy_3 = [
         right: 0;
         bottom: 0;
         margin: auto;
+        z-index: 2;
     }
     .post-short-title h5{
         font-size: 4.25rem;
@@ -352,6 +199,41 @@ const postsDummy_3 = [
         padding: 0 2rem;
         font-weight: 500;
         font-family: 'pp_neue_montrealmedium';
+    }
+    #masonry-grid-2 .post-card .post-image:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+    #masonry-grid-2 .post-card .post-short-title h5{
+        color: var(--white);
+    }
+    #masonry-grid-3 .post-card .post-image:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.4);
+        z-index: 1;
+    }
+    #masonry-grid-3 .post-card .post-short-title h5{
+        color: var(--black);
+    }
+    #masonry-grid-2 .post-image,
+    #masonry-grid-3 .post-image{
+        max-height: 25rem;
+    }
+    #masonry-grid-2 .post-short-title,
+    #masonry-grid-3 .post-short-title{
+        padding-top: 3rem;
+        padding-bottom: 3rem;
     }
     @media screen and (max-width:1000px){
         .post-short-title h5 {
@@ -381,5 +263,4 @@ const postsDummy_3 = [
     initMasonry('#masonry-grid');
     initMasonry('#masonry-grid-2');
     initMasonry('#masonry-grid-3');
-    initMasonry('#masonry-grid-4');
 </script>

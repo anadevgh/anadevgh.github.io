@@ -1,5 +1,5 @@
 ---
-const { theme = "dark", isContact = "no" } = Astro.props;
+const { theme = "dark", isContact = "no", isErr = "no" } = Astro.props;
 import "../styles/style.css";
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -19,7 +19,10 @@ import Footer from '../components/Footer.astro';
 	<body class={isContact === "yes" ? "ct-pg" : ""}>
 		<Header />
 		<slot />
-		{isContact === "yes" ? <Footer isContact="yes" /> : <Footer />}
+		<Footer
+			{...(isContact === "yes" ? { isContact: "yes" } : {})}
+			{...(isErr ? { isErr } : {})}
+		/>
 		<script type="module" src="/js/global.js"></script>
 	</body>
 </html>

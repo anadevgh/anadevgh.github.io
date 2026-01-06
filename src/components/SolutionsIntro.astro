@@ -233,26 +233,14 @@ const { title, text, items } = Astro.props;
         const lastItem = items[items.length - 1];
         const lastRect = lastItem.getBoundingClientRect();
         
-        const offset = 38; // top percentage sticky top
+        const offset = 38;
         const stopPoint = lastRect.top - window.innerHeight / 2 + lastRect.height / 2;
 
         if (stopPoint < 0) {
-            // user reached last item center
             lcol.style.transform = `translateY(${stopPoint}px)`;
         } else {
-            // normal sticky
             lcol.style.transform = `translateY(0)`;
         }
 
-        /*if (sectionRect.top <= 0 && lastRect.bottom > window.innerHeight) {
-            lcol.classList.remove("col-fixed-btm");
-            lcol.classList.add("col-fixed");
-            rcol.classList.add("rcol-fixed");
-        } else if (lastRect.bottom <= window.innerHeight) {
-            lcol.classList.add("col-fixed-btm");
-        } else if (sectionRect.top > 0) {
-            lcol.classList.remove("col-fixed");
-            rcol.classList.remove("rcol-fixed");
-        }*/
     });
 </script>
