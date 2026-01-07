@@ -4,7 +4,7 @@ const { title, text } = Astro.props;
 
 <section class="sc-hero banner-vd" id="dna-hero">
     <div class="sc-hero-vd" id="hero-vd-container">
-		<img id="hero-frame" />
+		<img id="hero-frame" src="/frames/opt/frame1.webp" loading="eager" />
 	</div>
     <div class="sc-dna-intro">
         <div class="container">
@@ -76,7 +76,7 @@ const { title, text } = Astro.props;
 </style>
 
 <script>
-  const totalFrames = 41;
+	const totalFrames = 41;
 	const introFrames = 20;
 	const frameElement = document.getElementById('hero-frame');
 
@@ -85,51 +85,62 @@ const { title, text } = Astro.props;
 	let targetFrame = 0;
 	let introPlaying = true;
 
-	// --- Preload all images in memory ---
-	for (let i = 1; i <= totalFrames; i++) {
-		const img = new Image();
-		img.src = `/frames/opt/frame${i}.webp`;
-		images.push(img);
-	}
-
-	// Show first frame only when loaded
+	// --- Load first frame immediately ---
+	images[0] = new Image();
+	images[0].src = '/frames/opt/frame1.webp';
 	images[0].onload = () => frameElement.src = images[0].src;
 
-	// --- Auto-play first 20 frames ---
-	function playIntro() {
-		if (currentFrame < introFrames - 1) {
-			currentFrame++;
-			frameElement.src = images[currentFrame].src;
-			requestAnimationFrame(playIntro);
-		} else {
-			introPlaying = false;
-			targetFrame = introFrames;
-		}
+	// --- Function to load intro frames sequentially ---
+	function loadIntroFrame(index) {
+	if (index >= introFrames) {
+		introPlaying = false;
+		targetFrame = introFrames;
+		preloadRemainingFrames();
+		return;
 	}
 
-	playIntro();
+	images[index] = new Image();
+	images[index].src = `/frames/opt/frame${index + 1}.webp`;
+	images[index].onload = () => {
+		currentFrame = index;
+		frameElement.src = images[index].src;
+		requestAnimationFrame(() => loadIntroFrame(index + 1));
+	};
+	}
+
+	// Start intro animation
+	loadIntroFrame(1);
+
+	// --- Lazy-load the remaining frames ---
+	function preloadRemainingFrames() {
+	for (let i = introFrames; i < totalFrames; i++) {
+		const img = new Image();
+		img.src = `/frames/opt/frame${i + 1}.webp`;
+		images[i] = img;
+	}
+	}
 
 	// --- Scroll-driven frames 21-41 ---
 	const section = document.getElementById("dna-hero");
 
 	window.addEventListener("scroll", () => {
-		if (introPlaying) return;
+	if (introPlaying) return;
 
-		const rect = section.getBoundingClientRect();
-		const windowHeight = window.innerHeight;
-		const sectionScroll = Math.min(Math.max(-rect.top / (rect.height - windowHeight), 0), 1);
+	const rect = section.getBoundingClientRect();
+	const windowHeight = window.innerHeight;
+	const sectionScroll = Math.min(Math.max(-rect.top / (rect.height - windowHeight), 0), 1);
 
-		targetFrame = introFrames + Math.floor(sectionScroll * (totalFrames - introFrames - 1));
+	targetFrame = introFrames + Math.floor(sectionScroll * (totalFrames - introFrames - 1));
 	});
 
 	// --- Smooth animation loop ---
 	function animateFrames() {
-		if (!introPlaying) {
-			currentFrame += (targetFrame - currentFrame) * 0.15;
-			const displayIndex = Math.round(currentFrame);
-			frameElement.src = images[displayIndex].src;
-		}
-		requestAnimationFrame(animateFrames);
+	if (!introPlaying) {
+		currentFrame += (targetFrame - currentFrame) * 0.15;
+		const displayIndex = Math.round(currentFrame);
+		if (images[displayIndex]) frameElement.src = images[displayIndex].src;
+	}
+	requestAnimationFrame(animateFrames);
 	}
 
 	animateFrames();

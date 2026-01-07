@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/node": "^9.5.1",
+    "@astrojs/vercel": "^9.0.3",
     "astro": "^5.15.3",
     "astro-swiper": "^1.1.0",
     "imagesloaded": "^5.0.0",

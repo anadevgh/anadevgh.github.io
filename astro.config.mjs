@@ -7,12 +7,10 @@ export default defineConfig({
 });*/
 
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
-    site: 'http://localhost:4321',
-    output: 'server', // must be "server" to enable API routes
-    adapter: node({
-        mode: 'standalone', 
-    }),
+    //site: 'http://localhost:4321',
+    output: 'server',
+    adapter: vercel()
 });
