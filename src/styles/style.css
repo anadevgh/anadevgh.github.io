@@ -1923,12 +1923,27 @@ body .revealed {
         margin-top: 24px;
     }
     body .sb-col input {
-        padding: 8px 8px 8px 20px;
+        padding: 8px 140px 8px 15px;
         border-radius: 32px;
         height: 56px;
         font-size: 16px;
         line-height: 20px;
-        padding-right: 15px;
+    }
+    body .sb-col input::-webkit-input-placeholder {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    body .sb-col input:-moz-placeholder {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    body .sb-col input::-moz-placeholder {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    body .sb-col input:-ms-input-placeholder {
+        font-size: 16px;
+        line-height: 20px;
     }
     body .sb-btn-col button {
         border-radius: 26px;
@@ -1936,9 +1951,6 @@ body .revealed {
         padding: 0 16px;
         font-size: 16px;
         line-height: 20px;
-    }
-    body .ft-sb-msg {
-        bottom: -34px;
     }
     body .ft-sb-msg p.sb-err, body .sb-scc span {
         font-size: 12px;

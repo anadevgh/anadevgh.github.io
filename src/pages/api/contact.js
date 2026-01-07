@@ -82,8 +82,14 @@ export async function POST({ request }) {
         // User email
         const userEmailHtml = `<html>
             <body>
-                <p style="font-family: Verdana;font-size: 13px;margin: 10px 0;">Dear <strong>${name}</strong>,</p>
-                <p style="font-family: Verdana;font-size: 13px;margin: 15px 0 20px 0;">Thank you for contacting IPOINT INT. We will contact you shortly.</p>
+                <p style="font-family: Verdana;font-size: 13px;margin: 10px 0;">Hello <strong>${name}</strong>,</p>
+                <p style="font-family: Verdana;font-size: 13px;margin: 15px 0 20px 0;">Thank you for reaching out to IPOINT INT.</p>
+                <p style="font-family: Verdana;font-size: 13px;margin: 15px 0 20px 0;">We've received your details and will review them carefully.</p>
+                <p style="font-family: Verdana;font-size: 13px;margin: 15px 0 20px 0;">One of our team members will be in touch shortly to understand your situation better and outline the most suitable next steps.</p>
+                <p style="font-family: Verdana;font-size: 13px;margin: 15px 0 20px 0;">We value clarity and relevance, so our response will be thoughtful and focused on whether and how we can genuinely support your goals.</p>
+                <p style="font-family: Verdana;font-size: 13px;margin: 15px 0 20px 0;">If your enquiry is time-sensitive, feel free to reply directly to this email.</p><br/>
+                <p style="font-family: Verdana;font-size: 13px;margin: 15px 0 20px 0;">Kind regards,</p>
+                <p style="font-family: Verdana;font-size: 13px;margin: 15px 0 20px 0;">The IPOINT INT Team</p>
                 <p><a href="https://ipoint.com.mt/" target="_blank"><img src="${siteUrl}/ipoint-black-logo.png" width="60" height="60" alt="IPOINT INT logo"></a></p>
             </body>
         </html>`;
