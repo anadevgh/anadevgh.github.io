@@ -59,7 +59,7 @@ const isBlogPage = currentPath.includes('/blog');
                                             <div class="field field-group-h ps-rel">
                                                 <label for="ct-name">Name</label>
                                                 <input type="text" name="ct-name" id="ct-name" value="" autocomplete="nope" required>
-                                                <div class="err-msg" id="err-email">
+                                                <div class="err-msg">
                                                     <div class="fx fx-ac">
                                                         <span class="error"></span>
                                                     </div>
@@ -73,7 +73,7 @@ const isBlogPage = currentPath.includes('/blog');
                                             <div class="field field-group-h ps-rel">
                                                 <label for="ct-email">Email</label>
                                                 <input type="email" name="ct-email" id="ct-email" value="" placeholder="example@email.com" autocomplete="nope" required>
-                                                <div class="err-msg" id="err-email">
+                                                <div class="err-msg">
                                                     <div class="fx fx-ac">
                                                         <span class="error"></span>
                                                     </div>
@@ -88,7 +88,7 @@ const isBlogPage = currentPath.includes('/blog');
                                         <div class="field field-group ps-rel">
                                             <label for="ct-company">Company</label>
                                             <input type="text" name="ct-company" id="ct-company" value="" autocomplete="nope" required>
-                                            <div class="err-msg" id="err-email">
+                                            <div class="err-msg">
                                                 <div class="fx fx-ac">
                                                     <span class="error"></span>
                                                 </div>
@@ -237,23 +237,27 @@ const isBlogPage = currentPath.includes('/blog');
                         <div class="sb-form ps-rel">
                             <form name="subscribe-form" id="subscribe-form" method="post" autocomplete="nope">
                                 <div class="sb-row fx fx-jb">
-                                    <div class="sb-col fx fx-ac">
-                                        <input type="email" name="sb-email" id="sb-email" value="" placeholder="your@email.here" autocomplete="nope">
+                                    <div class="field sb-col fx fx-ac">
+                                        <input type="email" name="sb-email" id="sb-email" value="" placeholder="your@email.here" autocomplete="nope" required>
+                                        <div class="err-msg">
+                                            <div class="fx fx-ac">
+                                                <span class="error"></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="sb-btn-col">
-                                        <button id="sb-submit-btn">
-                                            Subscribe
-                                        </button>
+                                    <div class="sb-btn-col fx fx-ac">
+                                        <button type="submit" id="sb-submit-btn" disabled>Subscribe</button>
                                     </div>
                                 </div>
                                 <div class="ft-sb-msg">
-                                    <p class="sb-err">Invalid email: only letters, numbers, '@', and '.' allowed</p>
                                     <div class="sb-scc">
                                         <div class="fx fx-ac">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 11 9" fill="none">
-                                                <path d="M3.8 8.01667L0 4.21667L0.95 3.26667L3.8 6.11667L9.91667 0L10.8667 0.95L3.8 8.01667Z" fill="white"/>
-                                            </svg>
-                                            <span>You've subscribed with this email</span>
+                                            <div class="sb-status-icon fx">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 11 9" fill="none">
+                                                    <path d="M3.8 8.01667L0 4.21667L0.95 3.26667L3.8 6.11667L9.91667 0L10.8667 0.95L3.8 8.01667Z" fill="white"/>
+                                                </svg>
+                                            </div>
+                                            <span class="sb-status-text"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -459,11 +463,14 @@ const isBlogPage = currentPath.includes('/blog');
         overflow-y: auto;
         max-height: 12.5em;
     }
-    .field input.is-error, .field textare.is-error {
+    .field input.is-error, .field textare.is-error, body .has-errors .field input {
         border-color: var(--darkRed);
     }
+    .ft-sb-msg.has-errors .sb-status-text {
+        color: var(--darkRed);
+    }
     .field input.is-success, .field textare.is-success {
-        border-color: var(--green);
+        border-color: var(--green); 
     }
     .field-lbl span{
         color: rgba(44, 44, 44, 0.30);
@@ -496,7 +503,7 @@ const isBlogPage = currentPath.includes('/blog');
         outline: none;
         cursor: pointer;
     }
-    .ct-apply-btn button:disabled {
+    .ct-apply-btn button:disabled, form button:disabled {
         opacity: 0.3;
         cursor: not-allowed;
     }
@@ -682,23 +689,65 @@ const isBlogPage = currentPath.includes('/blog');
     .ft-lcol{
         width: 27.5rem;
     }
-    .sb-row {
-        padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+    .sb-col input{
+        border: 1px solid transparent;
+        color: var(--darkGrey);
+        font-size: 1rem; 
+        font-weight: 500;
+        line-height: 1.25rem;
+        width: 100%;
+        padding: 0.5rem 9.2rem 0.5rem 1.25rem;
         border-radius: 2rem;
         background: var(--white);
         height: 3.5rem;
     }
-    .sb-row.err{
-        border: 1px solid var(--darkRed);
-    }
-    .sb-col input{
+    .sb-col input::-webkit-input-placeholder {
         color: rgba(44, 44, 44, 0.32);
         font-size: 1rem;
+        font-family: 'pp_neue_montrealmedium';
         font-weight: 500;
         line-height: 1.25rem;
-        border: none;
-        width: 100%;
-        padding: 0;
+        opacity:1;
+        -msopaci-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: alpha(opacity=100);
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+    }
+    .sb-col input:-moz-placeholder {
+        color: rgba(44, 44, 44, 0.32);
+        font-size: 1rem;
+        font-family: 'pp_neue_montrealmedium';
+        font-weight: 500;
+        line-height: 1.25rem;
+        opacity:1;
+        -msopaci-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: alpha(opacity=100);
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+    }
+    .sb-col input::-moz-placeholder {
+        color: rgba(44, 44, 44, 0.32);
+        font-size: 1rem;
+        font-family: 'pp_neue_montrealmedium';
+        font-weight: 500;
+        line-height: 1.25rem;
+        opacity:1;
+        -msopaci-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: alpha(opacity=100);
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+    }
+    .sb-col input:-ms-input-placeholder {
+        color: rgba(44, 44, 44, 0.32);
+        font-size: 1rem;
+        font-family: 'pp_neue_montrealmedium';
+        font-weight: 500;
+        line-height: 1.25rem;
+        opacity:1;
+        -msopaci-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: alpha(opacity=100);
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
     }
     .sb-btn-col button{
         border-radius: 1.25rem;
@@ -712,11 +761,22 @@ const isBlogPage = currentPath.includes('/blog');
         line-height: 1.25rem;
         cursor: pointer;
     }
+    .sb-btn-col button.succeeded {
+        background: var(--green);
+        opacity: 1;
+        cursor: default; 
+    }
     .sb-btn-col.sccs input{
         background: var(--green);
     }
     .sb-col{
-        width: 70%;
+        width: 100%;
+    }
+    .sb-btn-col {
+        position: absolute;
+        right: 0.5rem;
+        top: 0;
+        bottom: 0;
     }
     .ft-subscribe{
         margin: 2.5rem 0 3rem 0;
@@ -798,16 +858,25 @@ const isBlogPage = currentPath.includes('/blog');
         line-height: 1.25rem;
         margin: 0;
     }
-    .ft-sb-msg{
+    .ft-sb-msg {
+        display:none;
+    }
+    .ft-sb-msg, .sb-col .err-msg {
         position: absolute;
         bottom: -1.5rem;
         left: 0;
+        width: 100%;
     }
     .sb-err, .sb-scc{
         -webkit-transition: all 0.5s linear;
         -moz-transition: all 0.5s linear;
-        transition: all 0.5s linear;
-        opacity: 0;
+        transition: all 0.5s linear; 
+    }
+    .sb-status-icon {
+        display:none;
+    }
+    .show-icon .sb-status-icon {
+        display: block;
     }
     .ft-sb-msg p.sb-err{
         color: var(--red);
@@ -1158,8 +1227,8 @@ const isBlogPage = currentPath.includes('/blog');
             answers
         };
 
-        console.log(answers);
-        console.log(formData);
+        /*console.log(answers);
+        console.log(formData);*/
 
         try {
             const res = await fetch('/api/contact', {
@@ -1198,6 +1267,100 @@ const isBlogPage = currentPath.includes('/blog');
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email.trim());
     }
+
+    function toggleSubmit() {
+        submitBtn.disabled = !form.checkValidity();
+    }
+
+    //subscribe form
+    const subscribeForm = document.getElementById('subscribe-form');
+    const subscribeFields = subscribeForm.querySelectorAll('input');
+    const subscribeSubmitBtn = subscribeForm.querySelector('button[type="submit"]');
+    const sbErrorEl = subscribeForm.querySelector('.ft-sb-msg');
+    const sbErrorText = subscribeForm.querySelector('.sb-status-text');
+
+    function toggleSbSubmit() {
+        subscribeSubmitBtn.disabled = !subscribeForm.checkValidity();
+    }
+
+    subscribeFields.forEach(field => {
+        field.addEventListener('input', () => {
+            validateField(field);
+            toggleSbSubmit();
+            
+            subscribeForm.classList.remove('has-errors');
+            if (sbErrorEl) sbErrorEl.style.display = 'none';
+            if (sbErrorText) sbErrorText.textContent = '';
+            sbErrorEl.classList.remove('has-errors');
+        });
+
+        field.addEventListener('blur', () => {
+            validateField(field);
+
+            subscribeForm.classList.remove('has-errors');
+            if (sbErrorEl) sbErrorEl.style.display = 'none';
+            if (sbErrorText) sbErrorText.textContent = '';
+            sbErrorEl.classList.remove('has-errors');
+        });
+    });
+
+    subscribeForm.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        subscribeFields.forEach(validateField);
+        if (!subscribeForm.checkValidity()) return;
+
+        subscribeSubmitBtn.disabled = true;
+        subscribeSubmitBtn.textContent = 'Processing...';
+
+        const formData = Object.fromEntries(new FormData(subscribeForm));
+
+        try {
+            const res = await fetch('/api/subscribe', {
+                method:'POST',
+                headers:{ 'Content-Type':'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await res.json();
+            if(result.success){
+                subscribeSubmitBtn.textContent = 'Subscribed';
+                sbErrorEl.classList.add('show-icon');
+
+                if(result.message){
+                    if (sbErrorText) sbErrorText.textContent = result.message;
+                    if (sbErrorEl) sbErrorEl.style.display = 'block';
+                }
+                
+                subscribeSubmitBtn.classList.add('succeeded');
+
+                setTimeout(() => {
+                    subscribeSubmitBtn.textContent = 'Subscribe';
+                    subscribeForm.reset();
+                    subscribeFields.forEach(f=>{f.classList.remove('is-success')});
+                    subscribeSubmitBtn.classList.remove('succeeded');
+                    if (sbErrorText) sbErrorText.textContent = '';
+                    if (sbErrorEl) sbErrorEl.style.display = 'none';
+                    toggleSbSubmit();
+                }, 3000);
+            } else {
+                subscribeForm.classList.add('has-errors');
+                subscribeSubmitBtn.disabled = false;
+                subscribeSubmitBtn.textContent = 'Subscribe';
+                if (sbErrorText) sbErrorText.textContent = result.message;
+                if (sbErrorEl) sbErrorEl.style.display = 'block';
+                sbErrorEl.classList.add('has-errors');
+            }
+        } catch(err){
+            console.error(err);
+            console.error('Network error');
+            subscribeSubmitBtn.textContent = 'Subscribe';
+            if (sbErrorText) sbErrorText.textContent = 'Something went wrong. Please try again.';
+            if (sbErrorEl) sbErrorEl.style.display = 'block';
+            sbErrorEl.classList.add('has-errors');
+            subscribeForm.classList.add('has-errors');
+        }
+    });
 
     function validateField(field) {
         const errorEl = field.closest('.field')?.querySelector('.error');
@@ -1239,49 +1402,5 @@ const isBlogPage = currentPath.includes('/blog');
         if (errorEl) errorEl.textContent = '';
         if (errorContainer) errorContainer.style.display = 'none';
         field.setCustomValidity('');
-    }
-
-    /*function validateField(field) {
-        const errorEl = field.closest('.field')?.querySelector('.error');
-        const errorContainer = errorEl?.closest('.err-msg');
-
-        // Optional + empty → ignore
-        if (!field.required && !field.value.trim()) {
-            field.classList.remove('is-error', 'is-success');
-            if (errorEl) errorEl.textContent = '';
-            if (errorContainer) errorContainer.style.display = 'none';
-            field.setCustomValidity('');
-            return;
-        }
-
-        field.setCustomValidity('');
-
-        if (!field.checkValidity()) {
-            field.classList.add('is-error');
-            field.classList.remove('is-success');
-            if (errorEl) errorEl.textContent = getErrorMessage(field);
-            if (errorContainer) errorContainer.style.display = 'block';
-        } else {
-            field.classList.remove('is-error');
-            field.classList.add('is-success');
-            if (errorEl) errorEl.textContent = '';
-            if (errorContainer) errorContainer.style.display = 'none';
-        }
-    }*/
-
-    function toggleSubmit() {
-        submitBtn.disabled = !form.checkValidity();
-    }
-
-    function getErrorMessage(field) {
-        if (field.validity.valueMissing) {
-            return 'This field is required';
-        }
-
-        if (field.type === 'email' && field.validity.typeMismatch) {
-            return "Invalid email: only letters, numbers, '@', and '.' allowed";
-        }
-
-        return 'Invalid value';
     }
 </script>

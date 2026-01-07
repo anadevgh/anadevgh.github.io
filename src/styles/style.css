@@ -1922,12 +1922,10 @@ body .revealed {
     body .sb-form {
         margin-top: 24px;
     }
-    body .sb-row {
+    body .sb-col input {
         padding: 8px 8px 8px 20px;
         border-radius: 32px;
         height: 56px;
-    }
-    body .sb-col input {
         font-size: 16px;
         line-height: 20px;
         padding-right: 15px;

@@ -1,12 +1,12 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+/*import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://anadevgh.github.io',
-});
+});*/
 
-/*import { defineConfig } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 
 export default defineConfig({
@@ -15,4 +15,4 @@ export default defineConfig({
     adapter: node({
         mode: 'standalone', 
     }),
-});*/
+});
