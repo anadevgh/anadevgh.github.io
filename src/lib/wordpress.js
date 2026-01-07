@@ -11,17 +11,17 @@ export async function getLatestPosts(limit = 8) {
 }
 
 export async function getPostsPage({ limit = 12, offset = 0 } = {}) {
-  const res = await fetch(`${WP_API_URL}/posts?per_page=${limit}&offset=${offset}&_embed`);
-  const posts = await res.json();
-  const totalPosts = parseInt(res.headers.get('X-WP-Total'), 10);
-  
-  return { posts, totalPosts };
+    const res = await fetch(`${WP_API_URL}/posts?per_page=${limit}&offset=${offset}&_embed`);
+    const posts = await res.json();
+    const totalPosts = parseInt(res.headers.get('X-WP-Total'), 10);
+    
+    return { posts, totalPosts };
 }
 
 export async function getAllPosts() {
-  const res = await fetch(`${WP_API_URL}/posts?per_page=100&_embed`);
-  const data = await res.json();
-  return data;
+    const res = await fetch(`${WP_API_URL}/posts?per_page=100&_embed`);
+    const data = await res.json();
+    return data;
 }
 
 export async function getPostBySlug(slug) {

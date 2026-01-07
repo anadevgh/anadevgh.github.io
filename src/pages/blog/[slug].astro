@@ -17,7 +17,9 @@ if (!post) {
   post = await getPostBySlug(slug);
 }
 
-const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
+const imageOld = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
+const imageNew = post.acf_image_style?.source_url;
+const imageToUse = imageNew || imageOld;
 ---
 
 <Layout theme="light" isContact="yes">
@@ -26,11 +28,15 @@ const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
             <div class="single-post-wrap">
                 <article>
                     <div class="single-post-banner-wrap">
-                        <div class="single-post-banner txt-anim">
-                            {image && (
-                                <Image src={image} alt={post.title.rendered} inferSize={true} />
-                            )}
-                        </div>
+                        <div 
+                            class="single-post-banner txt-anim"
+                            style={{
+                                backgroundImage: `url(${imageToUse})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                backgroundRepeat: 'no-repeat'
+                            }}
+                        ></div>
                         <div class="post-date txt-anim">
                             <p>{formatPostDate(post.date)}</p>
                         </div>
@@ -48,8 +54,9 @@ const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
         width: 58rem;
         margin: auto;
     }
-    .single-post-banner img{
+    .single-post-banner{
         border-radius: 2.5rem;
+        height: 30rem;
     }
     .post-date{
         margin: 1.5rem 0;

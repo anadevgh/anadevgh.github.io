@@ -87,16 +87,27 @@ const postsDummy = [
         </div>
         <div class="posts-grid-wrap" id="masonry-grid">
             {posts.map((post) => {
-                const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+                const imageOld = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+                const imageNew = post.acf_image_style?.source_url;
+                const imageToUse = imageNew || imageOld;
+                const shortTitle = post.acf.short_title;
 
                 return (
                     <div class="post-card">
                         <a href={`/blog/${post.slug}/`}>
-                            {image && (
-                                <div class="post-image">
-                                    <Image src={image} alt={post.title} inferSize={true} />
+                            <div 
+                                class="post-image ps-rel"
+                                style={{
+                                    backgroundImage: `url(${imageToUse})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    backgroundRepeat: 'no-repeat'
+                                }}
+                            >
+                                <div class="post-short-title fx fx-jc ps-rel">
+                                    <h5>{shortTitle}</h5>
                                 </div>
-                            )}
+                            </div>
                             <div class="post-info">
                                 <h6>{post.title.rendered}</h6>
                                 <p>{formatPostDate(post.date)}</p>
@@ -112,108 +123,24 @@ const postsDummy = [
     </div>
 </section>
 
-<section class="home-insights-opt sc-pd sc-grey sc-grey-C sc-al-cnt ps-rel">
-    <div class="container">
-        <div class="sc-wrapper">
-            <div class="headline ps-rel">
-                <h2 class="txt-anim">{title}</h2>
-                <div class="sc-txt txt-anim">
-                    <p>{text}</p>
-                </div>
-            </div>
-        </div>
-        <div class="posts-grid-wrap" id="masonry-grid-2">
-            {postsDummy.map(post => (
-                <div class="post-card">
-                    <a href="#">
-                        <div class="post-image ps-rel">
-                            <Image src={post.image} alt={post.title} />
-                            <div class="post-short-title fx fx-jc">
-                                <h5>{post.shortTitle}</h5>
-                            </div>
-                        </div>
-                        <div class="post-info">
-                            <h6>{post.title}</h6>
-                            <p>{post.date}</p>
-                        </div>
-                    </a>
-                </div>
-            ))}
-        </div>
-        <div class="btn-row fx fx-jc">
-            <a href="/blog" class="btn-primary btn-dark fx fx-ac fx-jc"><span>Read Articles</span></a>
-        </div>
-    </div>
-</section>
-
-<section class="home-insights-opt sc-pd sc-grey sc-grey-C sc-al-cnt ps-rel">
-    <div class="container">
-        <div class="sc-wrapper">
-            <div class="headline ps-rel">
-                <h2 class="txt-anim">{title}</h2>
-                <div class="sc-txt txt-anim">
-                    <p>{text}</p>
-                </div>
-            </div>
-        </div>
-        <div class="posts-grid-wrap" id="masonry-grid-3">
-            {postsDummy.map(post => (
-                <div class="post-card">
-                    <a href="#">
-                        <div class="post-image ps-rel">
-                            <Image src={post.image} alt={post.title} />
-                            <div class="post-short-title fx fx-jc">
-                                <h5>{post.shortTitle}</h5>
-                            </div>
-                        </div>
-                        <div class="post-info">
-                            <h6>{post.title}</h6>
-                            <p>{post.date}</p>
-                        </div>
-                    </a>
-                </div>
-            ))}
-        </div>
-        <div class="btn-row fx fx-jc">
-            <a href="/blog" class="btn-primary btn-dark fx fx-ac fx-jc"><span>Read Articles</span></a>
-        </div>
-    </div>
-</section>
-
 <style>
-    .home-insights, .home-insights-opt {
+    .home-insights{
         overflow: hidden; 
     }
     .post-short-title{
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        z-index: 2;
+        padding: 2rem 0 4rem 0;
+        z-index: 1;
+        min-height: 12rem;
     }
     .post-short-title h5{
-        font-size: 4.25rem;
-        line-height: 4.5rem;
+        font-size: 3.25rem;
+        line-height: 3.5rem;
         padding: 0 2rem;
         font-weight: 500;
         font-family: 'pp_neue_montrealmedium';
+        color: var(--darkGrey);
     }
-    #masonry-grid-2 .post-card .post-image:before{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 1;
-    }
-    #masonry-grid-2 .post-card .post-short-title h5{
-        color: var(--white);
-    }
-    #masonry-grid-3 .post-card .post-image:before{
+    .post-card .post-image:before{
         content: '';
         position: absolute;
         top: 0;
@@ -223,17 +150,8 @@ const postsDummy = [
         background: rgba(255, 255, 255, 0.4);
         z-index: 1;
     }
-    #masonry-grid-3 .post-card .post-short-title h5{
-        color: var(--black);
-    }
-    #masonry-grid-2 .post-image,
-    #masonry-grid-3 .post-image{
-        max-height: 25rem;
-    }
-    #masonry-grid-2 .post-short-title,
-    #masonry-grid-3 .post-short-title{
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+    .post-image{
+        max-height: unset;
     }
     @media screen and (max-width:1000px){
         .post-short-title h5 {
