@@ -3,6 +3,8 @@
     --black: #000000;
     --darkGrey: #2C2C2C;
     --darkGrey2: #2D3035;
+    --darkGrey3: #343741;
+    --darkGrey4: #444854;
     --darkBlue: #17191F;
     --lightGrey: #676B78;
     --lightGrey2: #E3DFD9;
@@ -12,6 +14,8 @@
     --lightblue: #DEE6EE;
     --lightblue2: #48A3FF;
     --blue: #0264FF;
+    --blue2: #0392F3;
+    --blue3: #0098FF;
     --red: #FF8787;
     --darkRed: #E20000;
     --green: #04A107;
@@ -323,7 +327,7 @@ h5{
 }
 .exp-acc-key-point{
     border-radius: 1.375rem;
-    background: #343741;
+    background: var(--darkGrey3);
     padding: 0.75rem 20px 0.75rem 0.75rem;
     width: calc((100% - 2 * 0.75rem) / 3);
 }
@@ -1223,14 +1227,75 @@ body .cky-btn-close img {
 body .cky-btn-close:before {
     content: '';
     background: url(/cookie-modal-close-icon.svg) no-repeat;
-    background-size: contain;
+    background-size: 13px 13px;
+    background-position: center;
     width: 24px;
     height: 24px;
+    display: block;
 }
 body .cky-preference-body-wrapper {
     padding: 0 20px;
 }
-
+body .cky-preference-content-wrapper .cky-show-desc-btn {
+    border: none;
+    font-size: 16px;
+    color: var(--blue3) !important;
+    line-height: 20px;
+    letter-spacing: 0.16px;
+}
+body .cky-accordion {
+    border-radius: 8px;
+    background: var(--darkGrey3);
+    padding: 8px;
+    border: none !important;
+    margin-bottom: 8px;
+}
+body .cky-accordion:last-child {
+    margin-bottom: 0;
+}
+body .cky-accordion-header .cky-accordion-btn, body .cky-accordion-header .cky-always-active {
+    font-size: 16px;
+    color: #212121;
+    line-height: 20px;
+    font-weight: 500;
+    letter-spacing: 0.16px;
+    font-family: 'pp_neue_montrealmedium';
+}
+body .cky-accordion-header .cky-always-active {
+    color: var(--blue3);
+}
+body .cky-accordion .cky-accordion-item {
+    margin-top: 0;
+}
+body .cky-accordion-chevron {
+    margin-right: 32px;
+}
+body .cky-accordion-chevron {
+    margin-right: 8px;
+    background: var(--darkGrey4);
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    border-radius: 4px;
+}
+body .cky-accordion .cky-accordion-chevron i::before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 7px;
+    left: 7px;
+}
+body .cky-accordion-header-des {
+    margin: 14px 0 0 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.28px;
+    color: rgba(255, 255, 255, 0.60) !important;
+    font-family: 'pp_neue_montrealbook';
+}
 
 
 
