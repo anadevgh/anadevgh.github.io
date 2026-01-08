@@ -1097,6 +1097,9 @@ body .revealed {
     font-weight: 400;
     line-height: 1.7rem;
     letter-spacing: 0.025rem;
+    position: relative;
+    z-index: 1;
+    word-wrap: break-word;
 }
 .page-content p{
     margin: 1rem 0;
@@ -1126,6 +1129,45 @@ td {
     padding: 1rem;
     width: 30%;
 }
+/* cookie bar styles */
+body .cky-consent-container .cky-consent-bar {
+    padding: 28px 20px;
+    box-shadow: none;
+    border-radius: 12px;
+}
+body .cky-notice .cky-title {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 16px 0;
+    letter-spacing: 0.2px;
+    font-family: 'pp_neue_montrealmedium';
+    font-weight: 500;
+}
+body .cky-notice-des {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    font-family: 'pp_neue_montrealbook';
+}
+body .cky-consent-container {
+    width: 285px;
+    border-radius: 12px;
+}
+body .cky-box-bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+body .cky-btn-accept {
+    order: 0;
+}
+body .cky-btn-reject {
+    order: 1;
+}
+body .cky-btn-customize {
+    order: 2;
+}
+
+
 
 
 
@@ -1564,6 +1606,9 @@ td {
     .rs-similar {
         padding: 0;
     }
+    .pg-content-wrap {
+        margin-top: 40px;
+    }
 
 }
 @media screen and (max-width:900px){
@@ -1627,7 +1672,33 @@ td {
     .rs-inner-sm-col {
         width: 32%;
     }
-
+    .page-content {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.16px;
+    }
+    .page-content h1 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .page-content h2 {
+        font-size: 22px;
+        line-height: 26px;
+        margin-top: 30px;
+    }
+    .page-content h3 {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: 0.16px;
+    }
+    .page-content p {
+        margin: 10px 0 24px 0;
+    }
+    .page-content ul {
+        margin: 0 0 20px 25px; 
+    }
 
 }
 @media screen and (max-width:767px){
@@ -2120,7 +2191,7 @@ td {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        padding: 1rem;
+        padding: 16px;
     }
     tr:first-child td:first-child {
         padding-top: 1.5rem;
