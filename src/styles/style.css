@@ -1244,7 +1244,12 @@ body .cky-preference-content-wrapper .cky-show-desc-btn {
     color: var(--blue3) !important;
     line-height: 20px;
     letter-spacing: 0.16px;
-    margin-top: 5px;
+}
+body .cky-preference-content-wrapper .cky-show-desc-btn[aria-label="Show more"] {
+    margin: 5px 0 8px 0;
+}
+body .cky-preference-content-wrapper .cky-show-desc-btn[aria-label="Show less"] {
+    margin: 0 0 13px 0;
 }
 body .cky-accordion {
     border-radius: 8px;
