@@ -9,11 +9,33 @@ const hideOn = ["/portfolio/paperless-website-redesign/", "/portfolio/boomerang/
 const shouldHide = hideOn.includes(currentPath);
 
 const isBlogPage = currentPath.includes('/blog');
+const isHomePage = currentPath === '/';
 
 ---
 
+{isHomePage && (
+    <div class="sc-al-cnt sc-pd sc-grey sc-grey-C ps-rel">
+        <div class="container">
+            <div class="sc-ct-wrap">
+                <h2 class="txt-anim">Let’s Build Something That Lasts</h2>
+                <div class="sc-txt txt-anim">
+                    <p>We’re here to make things simple. Whether you’re exploring a new idea, looking for the right partner, or need clarity on scaling, this is where your next step begins.</p>
+                </div>
+                <div class="ct-btn-row fx fx-jc"> 
+                    <a id="scroll-to-quiz" class="btn-primary btn-dark fx fx-ac fx-jc txt-anim"> 
+                        <span>See if Your Business Qualifies →</span> 
+                    </a> 
+                </div>
+                <div class="sc-subtext txt-anim">
+                    <p>No perfect brief required, just tell us what you’re thinking. <br/> You’ll always get a fast, real reply.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+)}
+
 { (!shouldHide && !isBlogPage && isErr !== "yes") && (
-    <section class="get-started-form sc-pd sc-grey sc-grey-C ps-rel">
+    <section class="get-started-form sc-pd sc-grey sc-grey-C ps-rel" id="quiz-form">
         <div class="container">
             <div class="headline ps-rel">
                 <h2 class="txt-anim" id="gts-headline"></h2>
@@ -214,7 +236,6 @@ const isBlogPage = currentPath.includes('/blog');
     </section>
 )}
 
-
 <footer>
     <div class="ft-wrap">
         <div class="container">
@@ -378,6 +399,32 @@ const isBlogPage = currentPath.includes('/blog');
 </footer>
 
 <style is:global>
+    .sc-ct-wrap{
+        width: 45rem;
+        margin: auto;
+    }
+    .sc-ct-wrap h2{
+        width: 90%;
+        margin: auto;
+    }
+    #scroll-to-quiz{
+        cursor: pointer;
+    }
+    .ct-btn-row{
+        margin: 2.5rem 0;
+    }
+    .sc-subtext{
+        color: rgba(163, 165, 172, 0.50);
+        text-align: center;
+        font-size: 1rem;
+        font-family: 'pp_neue_montrealmedium';
+        font-weight: 500;
+        line-height: 1.25rem;
+        letter-spacing: 0.02rem;
+    }
+    .sc-subtext p{
+        margin: 0;
+    }
     .gts-form-wrap{
         margin-top: 3.75rem;
     }
@@ -1006,6 +1053,22 @@ const isBlogPage = currentPath.includes('/blog');
 </style>
 
 <script is:inline>
+    const btn = document.getElementById('scroll-to-quiz');
+    const header = document.querySelector('header'); // adjust if your header has a different selector
+
+    if (btn) {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.getElementById('quiz-form');
+            if (target) {
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+        });
+    }
+
     const MAX_COLS = 4;
     const stepsData = [
         { columns: 4, headline: "Where is your business today?", items: [

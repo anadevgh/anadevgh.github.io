@@ -6,21 +6,23 @@ const { title, text } = Astro.props;
     <div class="sc-hero-vd" id="hero-vd-container">
 		<img id="hero-frame" src="/frames/opt/frame1.webp" loading="eager" />
 	</div>
-    <div class="sc-dna-intro">
-        <div class="container">
-            <div class="dna-sc-wrap sc-al-cnt">
-                <h1 class="txt-anim" set:html={title}></h1>
-                <div class="sc-txt txt-anim">
-                    <p set:html={text}></p>
-                </div>
-            </div>
-        </div>
-    </div>
+</section>
+<section class="sc-dna-intro">
+	<div class="container">
+		<div class="dna-sc-wrap sc-al-cnt">
+			<h1 class="txt-anim" set:html={title}></h1>
+			<div class="sc-txt txt-anim">
+				<p set:html={text}></p>
+			</div>
+		</div>
+	</div>
 </section>
 
 <style>
 	.sc-hero{
-		padding-bottom: 8.75rem;
+		/*padding-bottom: 8.75rem;*/
+		position: relative;
+		height: 100vh;
 	}
 	#hero-frame {
 		width: 100%;
@@ -39,9 +41,6 @@ const { title, text } = Astro.props;
 		height: auto;
 		object-fit: cover;
 	}
-	.sc-dna-intro{
-		margin-top: 7.5rem;
-	}
 	.dna-sc-wrap {
 		width: 60rem;
 		margin: auto;
@@ -50,9 +49,9 @@ const { title, text } = Astro.props;
 		.dna-sc-wrap {
 			width: 100%;
 		}
-		.sc-dna-intro{
+		/*.sc-dna-intro{
 			margin-top: 40px;
-		}
+		}*/
 		.dna-sc-wrap .sc-txt {
 			width: 447px;
 			margin-left: auto;
