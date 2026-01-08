@@ -27,7 +27,7 @@ const { heading, description, items } = Astro.props;
                                         </div>
                                     </div>
                                     <div class="exp-sl-name-t">
-                                        <p>{item.subtitle}</p>
+                                        <p set:html={item.subtitle}></p>
                                     </div>
                                 </div>
                                 <div class="exp-sl-col-btm">
