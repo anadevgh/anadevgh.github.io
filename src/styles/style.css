@@ -1143,7 +1143,8 @@ body .cky-notice .cky-title {
     font-family: 'pp_neue_montrealmedium';
     font-weight: 500;
 }
-body .cky-notice-des {
+body .cky-notice-des,
+body .cky-preference-content-wrapper, body .cky-gpc-wrapper .cky-gpc-desc {
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
@@ -1165,7 +1166,79 @@ body .cky-btn-reject {
 }
 body .cky-btn-customize {
     order: 2;
+    padding: 0;
+    flex-grow: 0;
+    letter-spacing: 0.32px;
+    line-height: normal;
+    text-decoration: underline;
+    border: none;
 }
+body .cky-notice-btn-wrapper {
+    margin-top: 16px;
+    row-gap: 16px;
+    column-gap: 12px;
+}
+body .cky-notice-btn-wrapper {
+    row-gap: 16px;
+    column-gap: 12px;
+}
+body .cky-btn {
+    font-size: 16px;
+    line-height: 18px;
+    padding: 12px 5px;
+    font-weight: 500;
+    margin: 0;
+    border-radius: 6px;
+    font-family: 'pp_neue_montrealmedium';
+}
+body .cky-modal div[data-cky-tag="detail-powered-by"] {
+    display:none !important;
+}
+body .cky-overlay {
+    opacity: .6;
+    background: rgba(23, 25, 31, 0.60);
+}
+body .cky-preference-center {
+    width: 360px;
+}
+body .cky-preference-header {
+    padding: 20px;
+}
+body .cky-preference-header .cky-preference-title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    font-family: 'pp_neue_montrealmedium';
+    letter-spacing: 0.2px;
+    margin-top: 36px;
+}
+body .cky-btn-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+body .cky-btn-close img {
+    display:none;
+}
+body .cky-btn-close:before {
+    content: '';
+    background: url(/cookie-modal-close-icon.svg) no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+}
+body .cky-preference-body-wrapper {
+    padding: 0 20px;
+}
+
+
+
+
+
+
+
+
+
 
 
 
