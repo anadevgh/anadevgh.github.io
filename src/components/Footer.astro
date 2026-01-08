@@ -1029,12 +1029,15 @@ const isHomePage = currentPath === '/';
         }
     }
     @media screen and (max-width:700px){
-        .ct-wrap {
+        .ct-wrap, .sc-ct-wrap {
             width: 100%;
             padding: 0 16px;
         }
     }
     @media screen and (max-width:479px){
+        .sc-ct-wrap h2 {
+            width: 100%;
+        }
         .gts-form-row.fourcol .gts-form-col {
             width: calc((100% - 1 * 1.25rem) / 2);
         }
@@ -1048,6 +1051,11 @@ const isHomePage = currentPath === '/';
         }
         .ft-lcol, .ft-rcol{
             width: 100%;
+        }
+    }
+    @media screen and (max-width:380px) {
+        .sc-subtext br {
+            display:none;
         }
     }
 </style>
@@ -1257,74 +1265,77 @@ const isHomePage = currentPath === '/';
     }
 
     const form = document.getElementById('ct-form');
-    const fields = form.querySelectorAll('input, textarea');
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const statusBox = document.querySelector('.form-status-box');
-    const statusSuccessBox = document.querySelector('.form-success-status');
-    const statusErrorBox = document.querySelector('.form-error-status');
 
-    fields.forEach(field => {
-        field.addEventListener('input', () => {
-            validateField(field);
-            toggleSubmit();
-        });
+    if(form){
+        const fields = form.querySelectorAll('input, textarea');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const statusBox = document.querySelector('.form-status-box');
+        const statusSuccessBox = document.querySelector('.form-success-status');
+        const statusErrorBox = document.querySelector('.form-error-status');
 
-        field.addEventListener('blur', () => {
-            validateField(field);
-        });
-    });
-
-    form.addEventListener('submit', async e => {
-        e.preventDefault();
-
-        fields.forEach(validateField);
-        if (!form.checkValidity()) return;
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-
-        // Submit logic
-        const formData = Object.fromEntries(new FormData(form));
-        const payload = {
-            ...formData,
-            answers
-        };
-
-        /*console.log(answers);
-        console.log(formData);*/
-
-        try {
-            const res = await fetch('/api/contact', {
-                method:'POST',
-                headers:{ 'Content-Type':'application/json' },
-                body: JSON.stringify(payload)
+        fields.forEach(field => {
+            field.addEventListener('input', () => {
+                validateField(field);
+                toggleSubmit();
             });
 
-            const result = await res.json();
+            field.addEventListener('blur', () => {
+                validateField(field);
+            });
+        });
 
-            statusBox.classList.add('revealed');
-            if(result.success){
-                statusErrorBox.classList.remove('revealed');
-                statusSuccessBox.classList.add('revealed');
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+
+            fields.forEach(validateField);
+            if (!form.checkValidity()) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Submit logic
+            const formData = Object.fromEntries(new FormData(form));
+            const payload = {
+                ...formData,
+                answers
+            };
+
+            /*console.log(answers);
+            console.log(formData);*/
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method:'POST',
+                    headers:{ 'Content-Type':'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await res.json();
+
+                statusBox.classList.add('revealed');
+                if(result.success){
+                    statusErrorBox.classList.remove('revealed');
+                    statusSuccessBox.classList.add('revealed');
+                    submitBtn.textContent = 'Send';
+                    form.reset();
+                    fields.forEach(f=>{f.classList.remove('is-success')});
+                    setTimeout(()=>toggleSubmit(), 10);
+                } else {
+                    statusSuccessBox.classList.remove('revealed');
+                    statusErrorBox.classList.add('revealed');
+                    submitBtn.textContent = 'Send';
+                    //alert(result.error || 'Something went wrong');
+                }
+            } catch(err){
+                console.error(err);
+                console.error('Network error');
                 submitBtn.textContent = 'Send';
-                form.reset();
-                fields.forEach(f=>{f.classList.remove('is-success')});
-                setTimeout(()=>toggleSubmit(), 10);
-            } else {
                 statusSuccessBox.classList.remove('revealed');
                 statusErrorBox.classList.add('revealed');
-                submitBtn.textContent = 'Send';
-                //alert(result.error || 'Something went wrong');
+                //alert('Network error');
             }
-        } catch(err){
-            console.error(err);
-            console.error('Network error');
-            submitBtn.textContent = 'Send';
-            statusSuccessBox.classList.remove('revealed');
-            statusErrorBox.classList.add('revealed');
-            //alert('Network error');
-        }
-    });
+        });
+    }
 
     function isValidEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1337,93 +1348,95 @@ const isHomePage = currentPath === '/';
 
     //subscribe form
     const subscribeForm = document.getElementById('subscribe-form');
-    const subscribeFields = subscribeForm.querySelectorAll('input');
-    const subscribeSubmitBtn = subscribeForm.querySelector('button[type="submit"]');
-    const sbErrorEl = subscribeForm.querySelector('.ft-sb-msg');
-    const sbErrorText = subscribeForm.querySelector('.sb-status-text');
+    if(subscribeForm){
+        const subscribeFields = subscribeForm.querySelectorAll('input');
+        const subscribeSubmitBtn = subscribeForm.querySelector('button[type="submit"]');
+        const sbErrorEl = subscribeForm.querySelector('.ft-sb-msg');
+        const sbErrorText = subscribeForm.querySelector('.sb-status-text');
 
-    function toggleSbSubmit() {
-        subscribeSubmitBtn.disabled = !subscribeForm.checkValidity();
-    }
+        function toggleSbSubmit() {
+            subscribeSubmitBtn.disabled = !subscribeForm.checkValidity();
+        }
 
-    subscribeFields.forEach(field => {
-        field.addEventListener('input', () => {
-            validateField(field);
-            toggleSbSubmit();
-            
-            subscribeForm.classList.remove('has-errors');
-            if (sbErrorEl) sbErrorEl.style.display = 'none';
-            if (sbErrorText) sbErrorText.textContent = '';
-            sbErrorEl.classList.remove('has-errors');
-        });
-
-        field.addEventListener('blur', () => {
-            validateField(field);
-
-            subscribeForm.classList.remove('has-errors');
-            if (sbErrorEl) sbErrorEl.style.display = 'none';
-            if (sbErrorText) sbErrorText.textContent = '';
-            sbErrorEl.classList.remove('has-errors');
-        });
-    });
-
-    subscribeForm.addEventListener('submit', async e => {
-        e.preventDefault();
-
-        subscribeFields.forEach(validateField);
-        if (!subscribeForm.checkValidity()) return;
-
-        subscribeSubmitBtn.disabled = true;
-        subscribeSubmitBtn.textContent = 'Processing...';
-
-        const formData = Object.fromEntries(new FormData(subscribeForm));
-
-        try {
-            const res = await fetch('/api/subscribe', {
-                method:'POST',
-                headers:{ 'Content-Type':'application/json' },
-                body: JSON.stringify(formData)
+        subscribeFields.forEach(field => {
+            field.addEventListener('input', () => {
+                validateField(field);
+                toggleSbSubmit();
+                
+                subscribeForm.classList.remove('has-errors');
+                if (sbErrorEl) sbErrorEl.style.display = 'none';
+                if (sbErrorText) sbErrorText.textContent = '';
+                sbErrorEl.classList.remove('has-errors');
             });
 
-            const result = await res.json();
-            if(result.success){
-                subscribeSubmitBtn.textContent = 'Subscribed';
-                sbErrorEl.classList.add('show-icon');
+            field.addEventListener('blur', () => {
+                validateField(field);
 
-                if(result.message){
+                subscribeForm.classList.remove('has-errors');
+                if (sbErrorEl) sbErrorEl.style.display = 'none';
+                if (sbErrorText) sbErrorText.textContent = '';
+                sbErrorEl.classList.remove('has-errors');
+            });
+        });
+
+        subscribeForm.addEventListener('submit', async e => {
+            e.preventDefault();
+
+            subscribeFields.forEach(validateField);
+            if (!subscribeForm.checkValidity()) return;
+
+            subscribeSubmitBtn.disabled = true;
+            subscribeSubmitBtn.textContent = 'Processing...';
+
+            const formData = Object.fromEntries(new FormData(subscribeForm));
+
+            try {
+                const res = await fetch('/api/subscribe', {
+                    method:'POST',
+                    headers:{ 'Content-Type':'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await res.json();
+                if(result.success){
+                    subscribeSubmitBtn.textContent = 'Subscribed';
+                    sbErrorEl.classList.add('show-icon');
+
+                    if(result.message){
+                        if (sbErrorText) sbErrorText.textContent = result.message;
+                        if (sbErrorEl) sbErrorEl.style.display = 'block';
+                    }
+                    
+                    subscribeSubmitBtn.classList.add('succeeded');
+
+                    setTimeout(() => {
+                        subscribeSubmitBtn.textContent = 'Subscribe';
+                        subscribeForm.reset();
+                        subscribeFields.forEach(f=>{f.classList.remove('is-success')});
+                        subscribeSubmitBtn.classList.remove('succeeded');
+                        if (sbErrorText) sbErrorText.textContent = '';
+                        if (sbErrorEl) sbErrorEl.style.display = 'none';
+                        toggleSbSubmit();
+                    }, 3000);
+                } else {
+                    subscribeForm.classList.add('has-errors');
+                    subscribeSubmitBtn.disabled = false;
+                    subscribeSubmitBtn.textContent = 'Subscribe';
                     if (sbErrorText) sbErrorText.textContent = result.message;
                     if (sbErrorEl) sbErrorEl.style.display = 'block';
+                    sbErrorEl.classList.add('has-errors');
                 }
-                
-                subscribeSubmitBtn.classList.add('succeeded');
-
-                setTimeout(() => {
-                    subscribeSubmitBtn.textContent = 'Subscribe';
-                    subscribeForm.reset();
-                    subscribeFields.forEach(f=>{f.classList.remove('is-success')});
-                    subscribeSubmitBtn.classList.remove('succeeded');
-                    if (sbErrorText) sbErrorText.textContent = '';
-                    if (sbErrorEl) sbErrorEl.style.display = 'none';
-                    toggleSbSubmit();
-                }, 3000);
-            } else {
-                subscribeForm.classList.add('has-errors');
-                subscribeSubmitBtn.disabled = false;
+            } catch(err){
+                console.error(err);
+                console.error('Network error');
                 subscribeSubmitBtn.textContent = 'Subscribe';
-                if (sbErrorText) sbErrorText.textContent = result.message;
+                if (sbErrorText) sbErrorText.textContent = 'Something went wrong. Please try again.';
                 if (sbErrorEl) sbErrorEl.style.display = 'block';
                 sbErrorEl.classList.add('has-errors');
+                subscribeForm.classList.add('has-errors');
             }
-        } catch(err){
-            console.error(err);
-            console.error('Network error');
-            subscribeSubmitBtn.textContent = 'Subscribe';
-            if (sbErrorText) sbErrorText.textContent = 'Something went wrong. Please try again.';
-            if (sbErrorEl) sbErrorEl.style.display = 'block';
-            sbErrorEl.classList.add('has-errors');
-            subscribeForm.classList.add('has-errors');
-        }
-    });
+        });
+    }
 
     function validateField(field) {
         const errorEl = field.closest('.field')?.querySelector('.error');

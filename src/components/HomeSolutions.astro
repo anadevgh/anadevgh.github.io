@@ -134,18 +134,19 @@ const { theme, title, text, buttonLink, buttonText } = Astro.props;
             max-width: 60%;
         }
     }
-    @media screen and (max-width: 1000px){
+    @media screen and (max-width: 1200px){
         .sl-logos-row {
             gap: 10px;
         }
         .logo-col {
             border-radius: 8px;
-            width: calc(50% - 5px);
+            width: calc((100% - 20px) / 3);
         }
-        .logo-col:last-child {
-            display: none;
+    }
+    @media screen and (max-width: 767px){
+        .logo-col {
+            width: calc((100% - 10px) / 2);
         }
-
     }
     @media screen and (max-width: 479px){
         .sl-row{
