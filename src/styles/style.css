@@ -1164,21 +1164,6 @@ body .cky-box-bottom-left {
     bottom: 20px;
     left: 20px;
 }
-body .cky-btn-accept {
-    order: 0 !important;
-}
-body .cky-btn-reject {
-    order: 1 !important;
-}
-body .cky-btn-customize {
-    order: 2 !important;
-    padding: 0;
-    flex-grow: 0;
-    letter-spacing: 0.32px;
-    line-height: normal;
-    text-decoration: underline;
-    border: none;
-}
 body .cky-notice-btn-wrapper {
     margin-top: 16px;
     row-gap: 16px;
@@ -1186,7 +1171,7 @@ body .cky-notice-btn-wrapper {
     padding: 0;
 }
 body .cky-btn {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 18px;
     padding: 12px 5px;
     font-weight: 500;
@@ -1196,6 +1181,24 @@ body .cky-btn {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
+}
+body .cky-btn-accept {
+    order: 0 !important;
+}
+body .cky-btn-reject {
+    order: 1 !important;
+}
+body .cky-btn-customize {
+    order: 2 !important;
+    padding: 0 !important;
+    flex-grow: 0;
+    width: 100%;
+    text-align: left;
+    text-align: left;
+    letter-spacing: .32px;
+    line-height: normal;
+    text-decoration: underline;
+    border: none;
 }
 body .cky-modal div[data-cky-tag="detail-powered-by"] {
     display:none !important;
