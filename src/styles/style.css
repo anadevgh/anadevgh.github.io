@@ -1194,6 +1194,9 @@ body .cky-btn {
     margin: 0;
     border-radius: 6px;
     font-family: 'pp_neue_montrealmedium';
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 body .cky-modal div[data-cky-tag="detail-powered-by"] {
     display:none !important;
@@ -1262,7 +1265,8 @@ body .cky-accordion-header .cky-accordion-btn, body .cky-accordion-header .cky-a
     font-family: 'pp_neue_montrealmedium';
 }
 body .cky-accordion-header .cky-always-active {
-    color: var(--blue3);
+    color: var(--blue3) !important;
+    font-size: 14px;
 }
 body .cky-accordion .cky-accordion-item {
     margin-top: 0;
@@ -1296,10 +1300,46 @@ body .cky-accordion-header-des {
     color: rgba(255, 255, 255, 0.60) !important;
     font-family: 'pp_neue_montrealbook';
 }
-
-
-
-
+body .cky-preference-body-wrapper::-webkit-scrollbar {
+    width: 4px;
+}
+body .cky-preference-body-wrapper::-webkit-scrollbar-track {
+    background: var(--darkGrey4);
+    margin: 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+body .cky-preference-body-wrapper::-webkit-scrollbar-thumb {
+    background: #FFFFFF;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+body .cky-accordion-item .cky-accordion-header {
+    margin-top: 4px;
+}
+body .cky-accordion.cky-accordion-active .cky-accordion-chevron i::before {
+    -webkit-transform: rotate(228deg);
+    -moz-transform: rotate(228deg);
+    -ms-transform: rotate(228deg);
+    -o-transform: rotate(228deg);
+    transform: rotate(228deg);
+    top: 11px;
+}
+body .cky-accordion.cky-accordion-active .cky-accordion-body {
+    padding: 0 8px 0 20px;
+    margin-bottom: 0;
+}
+body .cky-audit-table {
+    background: #2c2f3a !important;
+    border-radius: 4px;
+}
+body .cky-audit-table .cky-cookie-des-table {
+    line-height: 18px;
+    padding: 8px 10px;
+}
 
 
 
