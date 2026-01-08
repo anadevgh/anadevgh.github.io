@@ -1146,6 +1146,7 @@ body .cky-notice .cky-title {
     letter-spacing: 0.2px;
     font-family: 'pp_neue_montrealmedium';
     font-weight: 500;
+    padding: 0;
 }
 body .cky-notice-des,
 body .cky-preference-content-wrapper, body .cky-gpc-wrapper .cky-gpc-desc {
@@ -1153,6 +1154,7 @@ body .cky-preference-content-wrapper, body .cky-gpc-wrapper .cky-gpc-desc {
     line-height: 20px;
     font-weight: 400;
     font-family: 'pp_neue_montrealbook';
+    padding: 0;
 }
 body .cky-consent-container {
     width: 285px;
@@ -1163,13 +1165,13 @@ body .cky-box-bottom-left {
     left: 20px;
 }
 body .cky-btn-accept {
-    order: 0;
+    order: 0 !important;
 }
 body .cky-btn-reject {
-    order: 1;
+    order: 1 !important;
 }
 body .cky-btn-customize {
-    order: 2;
+    order: 2 !important;
     padding: 0;
     flex-grow: 0;
     letter-spacing: 0.32px;
@@ -1181,10 +1183,7 @@ body .cky-notice-btn-wrapper {
     margin-top: 16px;
     row-gap: 16px;
     column-gap: 12px;
-}
-body .cky-notice-btn-wrapper {
-    row-gap: 16px;
-    column-gap: 12px;
+    padding: 0;
 }
 body .cky-btn {
     font-size: 16px;
@@ -1241,10 +1240,11 @@ body .cky-preference-body-wrapper {
 }
 body .cky-preference-content-wrapper .cky-show-desc-btn {
     border: none;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--blue3) !important;
     line-height: 20px;
     letter-spacing: 0.16px;
+    margin-top: 5px;
 }
 body .cky-accordion {
     border-radius: 8px;
@@ -1787,7 +1787,10 @@ body .cky-audit-table .cky-cookie-des-table {
     .pg-content-wrap {
         margin-top: 40px;
     }
-
+    body .cky-box-bottom-left {
+        bottom: 16px;
+        left: 16px;
+    }
 }
 @media screen and (max-width:900px){
     .post-card {
@@ -2377,7 +2380,19 @@ body .cky-audit-table .cky-cookie-des-table {
     tr:first-child td:last-child {
         padding-bottom: 1.5rem;
     }
-    
+    body .cky-consent-container {
+        width: calc(100% - 32px);
+    }
+    body .cky-box-bottom-left {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+    body .cky-preference-center {
+        width: 100%;
+    }
+
+
 
 }
 @media screen and (max-width: 340px) {
